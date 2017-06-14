@@ -1,0 +1,40 @@
+{
+  "name": "temp",
+  "version": "1.0.0",
+  "description": "auxprogen",
+  "main": "main.js",
+  "scripts": {
+    "watch": "webpack-dev-server --progress --colors --history-api-fallback",
+    "prod": "webpack -p"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.1",
+    "react-marked": "^0.3.1",
+    "react-router": "^3.0.0",
+    "react-router-bootstrap": "^0.23.1",
+    "ap-flux": "git+https://github.com/ash-uncover/ap-flux.git",
+    "ap-react-bootstrap": "git+https://github.com/ash-uncover/ap-react-bootstrap.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  }
+}

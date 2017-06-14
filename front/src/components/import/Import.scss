@@ -1,0 +1,44 @@
+@import '../var.scss';
+
+.ap-import {
+	.sm-import-title {
+		color: $color-text;
+		font-size: 25px;
+		text-align: center;
+	}
+	.sm-sheet-mid {
+		margin-top: 25px;
+	}
+	.sm-upload {
+		.sm-upload-label {
+			display: block;
+		    padding: 10px;
+		    background-color: rgba(46, 29, 16, 0.80);
+		}
+		input[type="file"] {
+		    display: none !important;
+		}
+		.sm-upload-button {
+			margin-top: 15px;
+			margin-bottom: 5px;
+			text-align: center;
+		}
+		.sm-upload-filters {
+			text-align: center;
+			li {
+				display: inline-block;
+				padding: 10px;
+			}
+		}
+	}
+	.sm-import-img-content {
+		text-align: center;
+		.sm-import-img {
+			width: 100%;
+		    margin: auto;
+		    margin-top: 25px;
+		    height: 375px;
+		    object-fit: cover;
+		}
+	}
+}

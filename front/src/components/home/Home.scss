@@ -1,0 +1,30 @@
+@import '../var.scss';
+
+.ap-home {
+	.sm-login {
+		.sm-login-title {
+			color: $color-text;
+			text-align: center;
+			padding: 10px;
+		}
+		.sm-login-label-mid {
+			margin-top: 20px;
+		}
+		.sm-login-button {
+			text-align: center;
+			margin: 20px 0;
+		}
+		.sm-login-register {
+			text-align: center;
+			margin-top: 25px;
+		    display: block;
+		}
+	}
+	.sm-home-text {
+		color: $color-text;
+	}
+	.sm-home-img {
+		width: 100%;
+		margin-top: 20px;
+	}
+}
