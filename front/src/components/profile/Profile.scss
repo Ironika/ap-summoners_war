@@ -1,0 +1,52 @@
+@import '../var.scss';
+
+.ap-profile {
+	.sm-profile-user {
+		.sm-profile-img {
+			max-width: 130px;
+		    width: 100%;
+		    margin: auto;
+		    display: block;
+		    cursor: pointer;
+		}
+		.sm-sheet-profil-top {
+			margin-top: 20px;
+		}
+		li {
+			font-size: 17px;
+		    padding: 10px;
+		}
+		.sm-profil-user-key {
+			li {
+			    color: $color-text;
+			}
+		}
+		.sm-profil-user-values {
+			li {
+				color: white;
+			}
+		}
+		.sm-profl-user-update {
+			text-align: center;
+		}
+	}
+
+	.sm-sheet-profil-mid {
+		margin-top: 20px;
+	}
+	.sm-profil-stat {
+		.sm-profil-stat-img {
+			width: 45px;
+		}
+		.sm-profil-stat-key {
+			display: inline;
+		    margin-left: 20px;
+		    color: $color-text;
+		    font-size: 18px;
+		}
+		.sm-profil-stat-value {
+			color: white;
+	    	font-size: 18px;
+		}
+	}
+}

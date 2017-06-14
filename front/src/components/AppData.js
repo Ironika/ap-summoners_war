@@ -5,9 +5,35 @@ class AppData {
 
 	register(obj) {
 		this.obj = obj
+		this.init();
 	}
 
 	unregister() {
+	}
+
+	onClick(id) {
+		if(id == '/')
+			AppHelper.navigate('/');
+		else
+			AppHelper.navigate('/' + id);
+	}
+
+	init() {
+		this.home = this.onClick.bind(this, '/')
+		this.profile = this.onClick.bind(this, 'profile')
+		this.import = this.onClick.bind(this, 'import')
+		this.monsters = this.onClick.bind(this, 'monsters')
+		this.runes = this.onClick.bind(this, 'runes')
+		this.builds = this.onClick.bind(this, 'builds')
+		
+		this.obj.setState({
+			home: this.home, 
+			profile: this.profile,
+			import: this.import, 
+			monsters: this.monsters, 
+			runes: this.runes, 
+			builds: this.builds
+		})
 	}
 
 }
