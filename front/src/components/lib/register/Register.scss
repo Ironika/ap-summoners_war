@@ -1,0 +1,23 @@
+@import '../../var.scss';
+
+.sm-register {
+	.sm-register-title {
+		color: $color-text;
+		text-align: center;
+		padding: 10px;
+		margin: 0;
+		margin-bottom: 10px;
+	}
+	.sm-register-label-mid {
+		margin-top: 15px;
+	}
+	.sm-register-button {
+		text-align: center;
+		margin: 20px 0;
+	}
+	.sm-register-login {
+		text-align: center;
+		margin-top: 15px;
+	    display: block;
+	}
+}

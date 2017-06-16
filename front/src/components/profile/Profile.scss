@@ -35,18 +35,18 @@
 		margin-top: 20px;
 	}
 	.sm-profil-stat {
-		.sm-profil-stat-img {
+		img {
 			width: 45px;
 		}
-		.sm-profil-stat-key {
+		p {
 			display: inline;
 		    margin-left: 20px;
 		    color: $color-text;
 		    font-size: 18px;
-		}
-		.sm-profil-stat-value {
-			color: white;
-	    	font-size: 18px;
+		    span {
+				color: white;
+		    	font-size: 18px;
+			}
 		}
 	}
 }

@@ -8,6 +8,7 @@ html, body, .app, .ap-app {
 	a {
 		color: $color-text;
 		text-decoration: none;
+		cursor: pointer;
 		&:hover, &:focus {
 			color: $color-text;
 		}

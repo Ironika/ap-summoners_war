@@ -1,0 +1,34 @@
+@import '../../var.scss';
+
+.sm-monster-runes {
+	.sm-monster-rune-row {
+		margin-left: 12%;
+		.sm-monster-runes-img {
+			width: 95%;
+		}
+		.sm-monster-rune-set {
+			h4 {
+				background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
+				border-top: 1px solid $color-text;
+				border-bottom: 1px solid $color-text;
+				color: $color-text;
+				padding: 10px;
+				font-family: $font;
+				text-align: center;
+			}
+			img {
+				width: 25px;
+    			margin-right: 5px;
+			}
+			p {
+				display: inline-block;
+				color: green;
+				font-family: $font;
+				font-size: 18px;
+			}
+		}
+		.sm-monster-runes-list {
+			padding-left: 15px;
+		}
+	}
+}

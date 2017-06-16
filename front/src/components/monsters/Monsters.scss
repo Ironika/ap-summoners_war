@@ -17,33 +17,6 @@
 		overflow: auto;
 		height: 315px;
 		margin-top: 20px;
-		.sm-monster {
-			margin-bottom: 5px;
-		    align-self: auto;
-		    margin-right: 5px; 
-		    width: 100px;
-		    height: 100px;
-		    cursor: pointer;
-		}
-		.sm-monster-active {
-			border: 3px solid $yellow-dark;
-		}
-		.sm-monster-image {
-			border-radius: 5px;
-			width: 100px;
-		}
-		.sm-monster-star {
-			font-size: 13px;
-		    color: $yellow;
-		    top: -100px !important;
-		}
-		.sm-monster-lvl {
-			position: relative;
-		    bottom: 25px;
-    		left: -5px;
-			color: white;
-			font-size: 18px;
-		}
 	}
 
 	.sm-monster-tab {
@@ -72,74 +45,6 @@
 		top: 210px;
 	}
 
-
-	.sm-monster-infos {
-		.sm-monster-content {
-			background-color: $marron;
-			width: 75%;
-			margin-left: 20%;
-			margin-top: 15px;
-			border-radius: 5px;
-			padding: 5px;
-			.sm-monster-info {
-				padding: 5px 10px;
-				.sm-monster-element {
-					width: 9%;
-				}
-				.sm-monster-name {
-					font-size: 16px;
-					color: white;
-					font-family: $font;
-					display: inline-block;
-					margin: 0 10px;
-				}
-				.sm-monster-star {
-					font-size: 13px;
-		   	 		color: $yellow;
-				}
-				.sm-monster-xp {
-					color: white;
-					font-size: 18px;
-					display: inline-block;
-				}
-				.sm-monster-progressbar {
-					background-color: rgba(46, 29, 16, 0.80) !important;
-					margin-bottom: 0px;
-					.sm-monster-progressbar-value {
-						width: 60% !important;
-					}
-				}
-			}
-		}
-		.sm-monster-stats {
-			background-color: rgba(46, 29, 16, 0.80);
-			width: 75%;
-		    height: 270px;
-		    margin-left: 20%;
-		    margin-top: 15px;
-		    overflow:auto;
-		    border-radius: 5px;
-		    padding: 10px;
-		    .sm-monster-keys {
-		    	li {
-		    		color: $yellow;
-					font-size: 17px;
-		    	}
-		    }
-		    .sm-monster-values {
-		    	li {
-		    		color:	white;
-					font-size: 17px;
-		    	}
-	    		.sm-monster-extra {
-					color: green;
-				}
-		    }
-		    .sm-monster-separator {
-	    		padding: 15px;
-	    	}
-		}
-	}
 	.sm-monster-filters-top {
 		margin-top: 10px;
 	}

@@ -1,0 +1,29 @@
+@import '../../var.scss';
+
+.sm-monster {
+	margin-bottom: 5px;
+    align-self: auto;
+    margin-right: 5px; 
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    .sm-monster-active {
+		border: 3px solid $yellow-dark;
+	}
+	.sm-monster-image {
+		border-radius: 5px;
+		width: 100px;
+	}
+	.sm-monster-star {
+	    position: relative;
+    	top: -98px !important;
+    	left: 4px;
+	}
+	.sm-monster-lvl {
+	    position: relative;
+	    bottom: 45px;
+	    left: 75px;
+	    color: white;
+	    font-size: 18px;
+	}
+}

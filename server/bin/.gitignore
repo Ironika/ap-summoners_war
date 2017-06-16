@@ -1,0 +1,10 @@
+# Maven files
+target/
+
+# Eclipse files
+.project
+.classpath
+.settings/
+
+# AP files
+files/*

@@ -15,18 +15,6 @@
 			    flex-wrap: nowrap;
 			    align-items: flex-start;
 			    overflow: auto;
-			    .sm-rune {
-					margin-bottom: 5px;
-				    align-self: auto;
-				    margin-right: 5px; 
-				    width: 100px;
-				    height: 100px;
-				    cursor: pointer;
-				    .sm-rune-image {
-						border-radius: 5px;
-						width: 100px;
-					}
-				}
 				.sm-rune-active {
 					border: 3px solid $yellow-dark;
 				}

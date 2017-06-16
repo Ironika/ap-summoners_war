@@ -23,7 +23,7 @@ class Profile extends React.Component {
 				<div className="row">
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-profile-user">
-							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monster.jpg"/>
+							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monsters/monster.png"/>
 							<div className="sm-sheet sm-sheet-profil-top">
 								<div className="row">
 									<div className="col-xs-5">
@@ -36,8 +36,8 @@ class Profile extends React.Component {
 									</div>
 									<div className="col-xs-7">
 										<ul className="sm-profil-user-values">
-											<li>PseudoName</li>
-											<li>pseudoName@gmail.com</li>
+											<li>{this.state.user.name}</li>
+											<li>{this.state.user.mail}</li>
 											<li>*********</li>
 											<li>13/06/2017</li>
 										</ul>
@@ -54,20 +54,20 @@ class Profile extends React.Component {
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-sheet">
 							<div className="sm-profil-stat">
-								<img alt="Summoners War" className="sm-profil-stat-img" src="assets/images/runes.png"/>
-								<p className="sm-profil-stat-key">Monsters : <span className="sm-profil-stat-value">322</span></p>
+								<img alt="Summoners War" src="assets/images/runes.png"/>
+								<p>Monsters : <span>{this.state.monsters}</span></p>
 							</div>
 						</div>
 						<div className="sm-sheet sm-sheet-profil-mid">
 							<div className="sm-profil-stat">
-								<img alt="Summoners War" className="sm-profil-stat-img" src="assets/images/runes.png"/>
-								<p className="sm-profil-stat-key">Runes : <span className="sm-profil-stat-value">104</span></p>
+								<img alt="Summoners War" src="assets/images/runes.png"/>
+								<p>Runes : <span>{this.state.runes}</span></p>
 							</div>
 						</div>
 						<div className="sm-sheet sm-sheet-profil-mid">
 							<div className="sm-profil-stat">
-								<img alt="Summoners War" className="sm-profil-stat-img" src="assets/images/runes.png"/>
-								<p className="sm-profil-stat-key">Builds : <span className="sm-profil-stat-value">240</span></p>
+								<img alt="Summoners War" src="assets/images/runes.png"/>
+								<p>Builds : <span>{this.state.builds}</span></p>
 							</div>
 						</div>
 					</div>

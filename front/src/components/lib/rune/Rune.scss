@@ -1,0 +1,61 @@
+@import '../../var.scss';
+
+.sm-rune {
+	width: 110px;
+	height: 110px;
+	background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
+	border-color: $marroon-light;
+	border-radius: 10px;
+	position: relative;
+	display: inline-block;
+	margin:2px 4px;
+	.sm-rune-stats {
+	    position: absolute;
+	    top: 60px;
+	    left: 1px;
+	    padding: 2px;
+	    width: 98%;
+	    z-index: 10;
+	    background-color: rgba(46, 29, 16, 0.8);
+	    border-radius: 10px;
+		.sm-rune-stat{
+			display: inline-block;
+			.first {
+				text-transform: uppercase;
+			}
+			li {
+				color: green;
+				font-size: 10px;
+				font-weight: bold;
+				span {
+					color: $yellow;
+				}
+			}
+		}
+	}
+	.sm-rune-star {
+		position: absolute;
+		left: 12px;
+		span {
+			z-index: 10;
+		}
+	}
+	.sm-rune-lvl {
+		color: white;
+	    position: relative;
+        top: 40px;
+		left: 85px;
+	    font-size: 12px;
+	}
+	.sm-rune-set {
+	    width: 35px;
+	    position: absolute;
+	    top: 18px;
+	    left: 38px;
+	    padding: 7px;
+	    background-color: orange;
+	    border-radius: 100px;
+	    z-index: 5;
+	}
+	
+}
