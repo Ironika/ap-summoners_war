@@ -47,7 +47,7 @@ class App extends React.Component {
 					</div>
 		    		<div className="sm-sidebar-profile">
 		    			<a onClick={this.state.profile}>
-		    				<img alt="Summoners War" className="sm-sidebar-profile-img" src="assets/images/monsters/homunculus.png"/>
+		    				<img alt="Summoners War" className="sm-sidebar-profile-img" src="assets/images/monsters/homunculus.jpg"/>
 		    				Homunculus
 		    			</a>
 		    		</div>

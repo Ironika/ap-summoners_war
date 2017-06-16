@@ -26,7 +26,7 @@ class Monster extends React.Component {
 	render() {
 		return (
 			<div className="sm-monster" onClick={this.onClick.bind(this)}>
-				<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/" + this.state.monster.name + ".png"}/>
+				<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/" + this.state.monster.name + ".jpg"}/>
 				<RaterStar className="sm-monster-star" value={this.state.monster.star} starMax={6}/>
 				<span className="sm-monster-lvl">{this.state.monster.lvl}</span>
 			</div>
