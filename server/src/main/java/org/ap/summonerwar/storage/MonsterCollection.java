@@ -51,6 +51,12 @@ public class MonsterCollection {
 		return result != null;
 	}
 
+	public static boolean updateNull(MonsterData data) throws APWebException {
+		Document document = toNullDocument(data);
+		Document result = Mongo.get().collection("monster").findOneAndUpdate(eq("id", data.getId()), new Document("$set", document));
+		return result != null;
+	}
+
 	public static boolean delete(MonsterData data) throws APWebException {
 		Document result = Mongo.get().collection("monster").findOneAndDelete(eq("id", data.getId()));
 		return result != null;
@@ -117,6 +123,28 @@ public class MonsterCollection {
 			document.append("id", monster.id);
 		if (monster.user != null)
 			document.append("user", monster.user);
+		return document;
+	}
+
+	public static Document toNullDocument(MonsterData monster) {
+		Document document = new Document();
+		document.append("acc", monster.acc);
+		document.append("res", monster.res);
+		document.append("lvl", monster.lvl);
+		document.append("role", monster.role);
+		document.append("star", monster.star);
+		document.append("isAwaked", monster.isAwaked);
+		document.append("def", monster.def);
+		document.append("spd", monster.spd);
+		document.append("hp", monster.hp);
+		document.append("crate", monster.crate);
+		document.append("elemType", monster.elemType);
+		document.append("cdmg", monster.cdmg);
+		document.append("name", monster.name);
+		document.append("xp", monster.xp);
+		document.append("atk", monster.atk);
+		document.append("id", monster.id);
+		document.append("user", monster.user);
 		return document;
 	}
 

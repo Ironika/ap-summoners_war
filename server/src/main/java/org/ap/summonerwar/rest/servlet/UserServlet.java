@@ -35,6 +35,7 @@ public class UserServlet extends APServletBase {
 			List<UserBean> beanList = new ArrayList<UserBean>();
 			for (Document document: documents){
 				UserBean bean = new UserBean();
+				bean.lastImport = document.getLong("lastImport");
 				bean.id = document.getString("id");
 				bean.username = document.getString("username");
 				bean.password = document.getString("password");
@@ -73,6 +74,7 @@ public class UserServlet extends APServletBase {
 			UserData dataEntity = new UserData();
 			dataEntity.id = dataAuth.entityId;
 			dataEntity.authId = dataAuth.id;
+			dataEntity.lastImport = userBean.lastImport;
 			UserCollection.create(dataEntity);
 			
 			return Response.status(Status.CREATED).build();
@@ -94,6 +96,7 @@ public class UserServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			UserBean bean = new UserBean();
+			bean.lastImport = document.getLong("lastImport");
 			bean.id = document.getString("id");
 			bean.username = document.getString("username");
 			bean.password = document.getString("password");
@@ -110,6 +113,8 @@ public class UserServlet extends APServletBase {
 	public Response putUser(@Context SecurityContext sc, @PathParam("id") final String id, UserBean userBean) {
 		try {
 			Document document = new Document();
+			if(userBean.lastImport != null)
+				document.append("lastImport", userBean.lastImport);
 			if(userBean.id != null)
 				document.append("id", userBean.id);
 			if(userBean.username != null)

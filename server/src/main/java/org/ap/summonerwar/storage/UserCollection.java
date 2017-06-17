@@ -61,6 +61,12 @@ public class UserCollection {
 		return result != null;
 	}
 
+	public static boolean updateNull(UserData data) throws APWebException {
+		Document document = toNullDocument(data);
+		Document result = Mongo.get().collection("user").findOneAndUpdate(eq("id", data.getId()), new Document("$set", document));
+		return result != null;
+	}
+
 	public static boolean delete(UserData data) throws APWebException {
 		Document result = Mongo.get().collection("user").findOneAndDelete(eq("id", data.getId()));
 		return result != null;
@@ -71,14 +77,24 @@ public class UserCollection {
 			return null;
 		}
 		UserData data = new UserData();
+		data.lastImport = document.getLong("lastImport");
 		data.id = document.getString("id");
 		return data;
 	}
 
 	public static Document toDocument(UserData user) {
 		Document document = new Document();
+		if (user.lastImport != null)
+			document.append("lastImport", user.lastImport);
 		if (user.id != null)
 			document.append("id", user.id);
+		return document;
+	}
+
+	public static Document toNullDocument(UserData user) {
+		Document document = new Document();
+		document.append("lastImport", user.lastImport);
+		document.append("id", user.id);
 		return document;
 	}
 

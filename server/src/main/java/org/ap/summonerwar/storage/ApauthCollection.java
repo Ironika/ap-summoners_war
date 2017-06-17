@@ -22,6 +22,16 @@ public class ApauthCollection {
 		return document != null;
 	}
 
+	public static ApauthData getByToken(String token) throws APWebException {
+		Document document = Mongo.get().collection("apauth").find(eq("token", token)).first();
+		return fromDocument(document);
+	}
+
+	public static boolean deleteByToken(String token) throws APWebException {
+		Document document = Mongo.get().collection("apauth").findOneAndDelete(eq("token", token));
+		return document != null;
+	}
+
 	public static ApauthData getById(String id) throws APWebException {
 		Document document = Mongo.get().collection("apauth").find(eq("id", id)).first();
 		return fromDocument(document);
@@ -39,16 +49,6 @@ public class ApauthCollection {
 
 	public static boolean deleteByUsername(String username) throws APWebException {
 		Document document = Mongo.get().collection("apauth").findOneAndDelete(eq("username", username));
-		return document != null;
-	}
-
-	public static ApauthData getByToken(String token) throws APWebException {
-		Document document = Mongo.get().collection("apauth").find(eq("token", token)).first();
-		return fromDocument(document);
-	}
-
-	public static boolean deleteByToken(String token) throws APWebException {
-		Document document = Mongo.get().collection("apauth").findOneAndDelete(eq("token", token));
 		return document != null;
 	}
 
@@ -81,6 +81,12 @@ public class ApauthCollection {
 		return result != null;
 	}
 
+	public static boolean updateNull(ApauthData data) throws APWebException {
+		Document document = toNullDocument(data);
+		Document result = Mongo.get().collection("apauth").findOneAndUpdate(eq("id", data.getId()), new Document("$set", document));
+		return result != null;
+	}
+
 	public static boolean delete(ApauthData data) throws APWebException {
 		Document result = Mongo.get().collection("apauth").findOneAndDelete(eq("id", data.getId()));
 		return result != null;
@@ -92,47 +98,68 @@ public class ApauthCollection {
 			return null;
 		}
 		ApauthData data = new ApauthData();
-		data.password = document.getString("password");
+		data.tokenData = document.getString("tokenData");
 		data.roles = (List<String>)document.get("roles");
 		data.tokenDateTime = (List<Integer>)document.get("tokenDateTime");
-		data.registrationDate = (List<Integer>)document.get("registrationDate");
 		data.registered = document.getBoolean("registered");
 		data.active = document.getBoolean("active");
 		data.entityId = document.getString("entityId");
-		data.id = document.getString("id");
 		data.type = document.getString("type");
+		data.token = document.getString("token");
+		data.password = document.getString("password");
+		data.registrationDate = (List<Integer>)document.get("registrationDate");
+		data.id = document.getString("id");
 		data.tokenType = document.getString("tokenType");
 		data.username = document.getString("username");
-		data.token = document.getString("token");
 		return data;
 	}
 
 	public static Document toDocument(ApauthData apauth) {
 		Document document = new Document();
-		if (apauth.password != null)
-			document.append("password", apauth.password);
+		if (apauth.tokenData != null)
+			document.append("tokenData", apauth.tokenData);
 		if (apauth.roles != null)
 			document.append("roles", apauth.roles);
 		if (apauth.tokenDateTime != null)
 			document.append("tokenDateTime", apauth.tokenDateTime);
-		if (apauth.registrationDate != null)
-			document.append("registrationDate", apauth.registrationDate);
 		if (apauth.registered != null)
 			document.append("registered", apauth.registered);
 		if (apauth.active != null)
 			document.append("active", apauth.active);
 		if (apauth.entityId != null)
 			document.append("entityId", apauth.entityId);
-		if (apauth.id != null)
-			document.append("id", apauth.id);
 		if (apauth.type != null)
 			document.append("type", apauth.type);
+		if (apauth.token != null)
+			document.append("token", apauth.token);
+		if (apauth.password != null)
+			document.append("password", apauth.password);
+		if (apauth.registrationDate != null)
+			document.append("registrationDate", apauth.registrationDate);
+		if (apauth.id != null)
+			document.append("id", apauth.id);
 		if (apauth.tokenType != null)
 			document.append("tokenType", apauth.tokenType);
 		if (apauth.username != null)
 			document.append("username", apauth.username);
-		if (apauth.token != null)
-			document.append("token", apauth.token);
+		return document;
+	}
+
+	public static Document toNullDocument(ApauthData apauth) {
+		Document document = new Document();
+		document.append("tokenData", apauth.tokenData);
+		document.append("roles", apauth.roles);
+		document.append("tokenDateTime", apauth.tokenDateTime);
+		document.append("registered", apauth.registered);
+		document.append("active", apauth.active);
+		document.append("entityId", apauth.entityId);
+		document.append("type", apauth.type);
+		document.append("token", apauth.token);
+		document.append("password", apauth.password);
+		document.append("registrationDate", apauth.registrationDate);
+		document.append("id", apauth.id);
+		document.append("tokenType", apauth.tokenType);
+		document.append("username", apauth.username);
 		return document;
 	}
 

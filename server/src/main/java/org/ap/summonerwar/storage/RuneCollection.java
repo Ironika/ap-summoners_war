@@ -51,6 +51,12 @@ public class RuneCollection {
 		return result != null;
 	}
 
+	public static boolean updateNull(RuneData data) throws APWebException {
+		Document document = toNullDocument(data);
+		Document result = Mongo.get().collection("rune").findOneAndUpdate(eq("id", data.getId()), new Document("$set", document));
+		return result != null;
+	}
+
 	public static boolean delete(RuneData data) throws APWebException {
 		Document result = Mongo.get().collection("rune").findOneAndDelete(eq("id", data.getId()));
 		return result != null;
@@ -126,6 +132,31 @@ public class RuneCollection {
 			document.append("id", rune.id);
 		if (rune.user != null)
 			document.append("user", rune.user);
+		return document;
+	}
+
+	public static Document toNullDocument(RuneData rune) {
+		Document document = new Document();
+		document.append("lvl", rune.lvl);
+		document.append("set", rune.set);
+		document.append("stat4Type", rune.stat4Type);
+		document.append("star", rune.star);
+		document.append("stat2Type", rune.stat2Type);
+		document.append("statSub", rune.statSub);
+		document.append("statMain", rune.statMain);
+		document.append("stat4", rune.stat4);
+		document.append("monster", rune.monster);
+		document.append("stat3Type", rune.stat3Type);
+		document.append("stat2", rune.stat2);
+		document.append("pos", rune.pos);
+		document.append("stat3", rune.stat3);
+		document.append("statSubType", rune.statSubType);
+		document.append("stat1", rune.stat1);
+		document.append("name", rune.name);
+		document.append("stat1Type", rune.stat1Type);
+		document.append("statMainType", rune.statMainType);
+		document.append("id", rune.id);
+		document.append("user", rune.user);
 		return document;
 	}
 

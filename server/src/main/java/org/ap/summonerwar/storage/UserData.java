@@ -4,6 +4,7 @@ package org.ap.summonerwar.storage;
 public class UserData {
 
 	public String authId;
+	public Long lastImport;
 	public String id;
 
 	public String getAuthId() {
@@ -12,6 +13,14 @@ public class UserData {
 
 	public void setAuthId(String authId) {
 		this.authId = authId;
+	}
+
+	public Long getLastImport() {
+		return this.lastImport;
+	}
+
+	public void setLastImport(Long lastImport) {
+		this.lastImport = lastImport;
 	}
 
 	public String getId() {
