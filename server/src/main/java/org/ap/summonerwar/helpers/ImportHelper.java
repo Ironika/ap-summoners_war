@@ -34,7 +34,7 @@ public class ImportHelper {
 				monster.user = importBean.user;
 				monster.id = UUIDGenerator.nextId();
 				monster.name = obj.getString("name");
-				monster.elemType = obj.getString("attribute").toLowerCase();
+				monster.elemType = obj.getString("attribute");
 				monster.star = obj.getInt("stars");
 				monster.lvl = obj.getInt("level");
 				monster.hp = obj.getInt("b_hp");
