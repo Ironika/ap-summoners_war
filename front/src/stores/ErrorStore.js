@@ -106,14 +106,14 @@ ErrorStore.handleDeleteMonsterError = function(error, params) {
 	ErrorStore.notifyPath('/DELETE_MONSTER');
 }
 
-ErrorStore.handleGetMonsterMonstersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_MONSTER_MONSTERS;
-	ErrorStore.notifyPath('/GET_MONSTER_MONSTERS');
+ErrorStore.handleGetMonsterRunesSuccess = function(results, params) {
+	delete ErrorStore._content.GET_MONSTER_RUNES;
+	ErrorStore.notifyPath('/GET_MONSTER_RUNES');
 }
 
-ErrorStore.handleGetMonsterMonstersError = function(error, params) {
-	ErrorStore._content.GET_MONSTER_MONSTERS = error;
-	ErrorStore.notifyPath('/GET_MONSTER_MONSTERS');
+ErrorStore.handleGetMonsterRunesError = function(error, params) {
+	ErrorStore._content.GET_MONSTER_RUNES = error;
+	ErrorStore.notifyPath('/GET_MONSTER_RUNES');
 }
 
 ErrorStore.handleGetUserSuccess = function(results, params) {
@@ -207,7 +207,7 @@ Dispatcher.register('POST_MONSTER', ErrorStore.handlePostMonsterSuccess, ErrorSt
 Dispatcher.register('GET_MONSTER', ErrorStore.handleGetMonsterSuccess, ErrorStore.handleGetMonsterError);
 Dispatcher.register('PUT_MONSTER', ErrorStore.handlePutMonsterSuccess, ErrorStore.handlePutMonsterError);
 Dispatcher.register('DELETE_MONSTER', ErrorStore.handleDeleteMonsterSuccess, ErrorStore.handleDeleteMonsterError);
-Dispatcher.register('GET_MONSTER_MONSTERS', ErrorStore.handleGetMonsterMonstersSuccess, ErrorStore.handleGetMonsterMonstersError);
+Dispatcher.register('GET_MONSTER_RUNES', ErrorStore.handleGetMonsterRunesSuccess, ErrorStore.handleGetMonsterRunesError);
 Dispatcher.register('GET_USER', ErrorStore.handleGetUserSuccess, ErrorStore.handleGetUserError);
 Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.handlePostUserError);
 Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError);

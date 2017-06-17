@@ -26,25 +26,16 @@ class Profile extends React.Component {
 							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monsters/King Angelmon.jpg"/>
 							<div className="sm-sheet sm-sheet-profil-top">
 								<div className="row">
-									<div className="col-xs-5">
+									<div className="col-xs-12">
 										<ul className="sm-profil-user-key">
-											<li>Pseudo :</li>
-											<li>Mail :</li>
-											<li>Password :</li>
-											<li>Last Update :</li>
-										</ul>
-									</div>
-									<div className="col-xs-7">
-										<ul className="sm-profil-user-values">
-											<li>{this.state.user.name}</li>
-											<li>{this.state.user.mail}</li>
-											<li>*********</li>
-											<li>13/06/2017</li>
+											<li>Pseudo : <input className="sm-input" type="text" value={this.state.user.name} onChange={this.state.onChange.bind(this, 'name')}/></li>
+											<li>Mail : <input className="sm-input" type="text" value={this.state.user.mail} onChange={this.state.onChange.bind(this, 'mail')}/></li>
+											<li>Last import : <input className="sm-input" value="13/06/2017" disabled={true}/></li>
 										</ul>
 									</div>
 									<div className="col-xs-12">
 										<div className="sm-profl-user-update">
-											<button className="sm-button">Update</button>
+											<button className="sm-button" onClick={this.state.onClick.bind(this)}>Update</button>
 										</div>
 									</div>
 								</div>

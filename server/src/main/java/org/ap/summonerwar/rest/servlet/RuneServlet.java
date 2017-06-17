@@ -30,6 +30,7 @@ public class RuneServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (Document document: documents){
 				RuneBean bean = new RuneBean();
+				bean.lvl = document.getInteger("lvl");
 				bean.set = document.getString("set");
 				bean.stat4Type = document.getString("stat4Type");
 				bean.star = document.getInteger("star");
@@ -40,6 +41,7 @@ public class RuneServlet extends APServletBase {
 				bean.monster = document.getString("monster");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
+				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
@@ -63,6 +65,7 @@ public class RuneServlet extends APServletBase {
 		try {
 			RuneData data = new RuneData();
 			data.id = UUIDGenerator.nextId();
+			data.lvl = runeBean.lvl;
 			data.set = runeBean.set;
 			data.stat4Type = runeBean.stat4Type;
 			data.star = runeBean.star;
@@ -73,6 +76,7 @@ public class RuneServlet extends APServletBase {
 			data.monster = runeBean.monster;
 			data.stat3Type = runeBean.stat3Type;
 			data.stat2 = runeBean.stat2;
+			data.pos = runeBean.pos;
 			data.stat3 = runeBean.stat3;
 			data.statSubType = runeBean.statSubType;
 			data.stat1 = runeBean.stat1;
@@ -100,6 +104,7 @@ public class RuneServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			RuneBean bean = new RuneBean();
+			bean.lvl = document.getInteger("lvl");
 			bean.set = document.getString("set");
 			bean.stat4Type = document.getString("stat4Type");
 			bean.star = document.getInteger("star");
@@ -110,6 +115,7 @@ public class RuneServlet extends APServletBase {
 			bean.monster = document.getString("monster");
 			bean.stat3Type = document.getString("stat3Type");
 			bean.stat2 = document.getInteger("stat2");
+			bean.pos = document.getString("pos");
 			bean.stat3 = document.getInteger("stat3");
 			bean.statSubType = document.getString("statSubType");
 			bean.stat1 = document.getInteger("stat1");
@@ -131,6 +137,8 @@ public class RuneServlet extends APServletBase {
 	public Response putRune(@Context SecurityContext sc, @PathParam("id") final String id, RuneBean runeBean) {
 		try {
 			Document document = new Document();
+			if(runeBean.lvl != null)
+				document.append("lvl", runeBean.lvl);
 			if(runeBean.set != null)
 				document.append("set", runeBean.set);
 			if(runeBean.stat4Type != null)
@@ -151,6 +159,8 @@ public class RuneServlet extends APServletBase {
 				document.append("stat3Type", runeBean.stat3Type);
 			if(runeBean.stat2 != null)
 				document.append("stat2", runeBean.stat2);
+			if(runeBean.pos != null)
+				document.append("pos", runeBean.pos);
 			if(runeBean.stat3 != null)
 				document.append("stat3", runeBean.stat3);
 			if(runeBean.statSubType != null)

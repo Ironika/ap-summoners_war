@@ -61,6 +61,7 @@ public class RuneCollection {
 			return null;
 		}
 		RuneData data = new RuneData();
+		data.lvl = document.getInteger("lvl");
 		data.set = document.getString("set");
 		data.stat4Type = document.getString("stat4Type");
 		data.star = document.getInteger("star");
@@ -71,6 +72,7 @@ public class RuneCollection {
 		data.monster = document.getString("monster");
 		data.stat3Type = document.getString("stat3Type");
 		data.stat2 = document.getInteger("stat2");
+		data.pos = document.getString("pos");
 		data.stat3 = document.getInteger("stat3");
 		data.statSubType = document.getString("statSubType");
 		data.stat1 = document.getInteger("stat1");
@@ -84,6 +86,8 @@ public class RuneCollection {
 
 	public static Document toDocument(RuneData rune) {
 		Document document = new Document();
+		if (rune.lvl != null)
+			document.append("lvl", rune.lvl);
 		if (rune.set != null)
 			document.append("set", rune.set);
 		if (rune.stat4Type != null)
@@ -104,6 +108,8 @@ public class RuneCollection {
 			document.append("stat3Type", rune.stat3Type);
 		if (rune.stat2 != null)
 			document.append("stat2", rune.stat2);
+		if (rune.pos != null)
+			document.append("pos", rune.pos);
 		if (rune.stat3 != null)
 			document.append("stat3", rune.stat3);
 		if (rune.statSubType != null)

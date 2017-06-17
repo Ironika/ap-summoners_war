@@ -25,10 +25,10 @@ class RegisterData {
 	}
 
 	onSubmit() {
-		let user = {username: this.name, mail: this.mail, password: this.password}
+		let user = {username: this.name, password: this.password}
 		UserHelper.postUser(user)
 			.then(function() {
-				let values = {username: this.mail, password: this.password}
+				let values = {username: this.name, password: this.password}
 				AuthHelper.getAuth(values)
 					.then(function() {
 						AppHelper.navigate("profile")

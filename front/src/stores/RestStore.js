@@ -65,7 +65,7 @@ RestStore.handleGetMonster = function(result, params) {
 	RestStore.notifyPath('/monster')
 }
 
-RestStore.handleGetMonsterMonsters = function(result, params) {
+RestStore.handleGetMonsterRunes = function(result, params) {
 	let content = RestStore.getContent()
 	content.rune = {};
 	if (result && result.length)
@@ -108,7 +108,7 @@ Dispatcher.register('GET_RUNES', RestStore.handleGetRunes);
 Dispatcher.register('GET_RUNE', RestStore.handleGetRune);
 Dispatcher.register('GET_MONSTERS', RestStore.handleGetMonsters);
 Dispatcher.register('GET_MONSTER', RestStore.handleGetMonster);
-Dispatcher.register('GET_MONSTER_MONSTERS', RestStore.handleGetMonsterMonsters);
+Dispatcher.register('GET_MONSTER_RUNES', RestStore.handleGetMonsterRunes);
 Dispatcher.register('GET_USER', RestStore.handleGetUser);
 Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes);
 Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters);

@@ -10,7 +10,6 @@ import org.ap.summonerwar.bean.UserBean;
 import java.util.ArrayList;
 import java.util.List;
 import com.mongodb.client.FindIterable;
-import org.ap.summonerwar.bean.UserCredentialsBean;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
 import org.ap.summonerwar.storage.ApauthData;
@@ -36,9 +35,9 @@ public class UserServlet extends APServletBase {
 			List<UserBean> beanList = new ArrayList<UserBean>();
 			for (Document document: documents){
 				UserBean bean = new UserBean();
-				bean.mail = document.getString("mail");
-				bean.name = document.getString("name");
 				bean.id = document.getString("id");
+				bean.username = document.getString("username");
+				bean.password = document.getString("password");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new UserBean[beanList.size()])).build();
@@ -50,9 +49,9 @@ public class UserServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response postUser(@Context SecurityContext sc, UserCredentialsBean userCredentialsBean) {
+	public Response postUser(@Context SecurityContext sc, UserBean userBean) {
 		try {
-			ApauthData dataAuth = ApauthCollection.getByUsername(userCredentialsBean.username);
+			ApauthData dataAuth = ApauthCollection.getByUsername(userBean.username);
 			if(dataAuth != null) {
 				throw APWebException.AP_AUTH_REG_001;
 			}
@@ -62,8 +61,8 @@ public class UserServlet extends APServletBase {
 			
 			dataAuth = new ApauthData();
 			dataAuth.id = UUIDGenerator.nextId();
-			dataAuth.username = userCredentialsBean.username;
-			dataAuth.password = userCredentialsBean.password;
+			dataAuth.username = userBean.username;
+			dataAuth.password = userBean.password;
 			dataAuth.entityId = UUIDGenerator.nextId();
 			dataAuth.type = "user";
 			dataAuth.roles = roles;
@@ -74,7 +73,6 @@ public class UserServlet extends APServletBase {
 			UserData dataEntity = new UserData();
 			dataEntity.id = dataAuth.entityId;
 			dataEntity.authId = dataAuth.id;
-			dataEntity.mail = userCredentialsBean.mail;
 			UserCollection.create(dataEntity);
 			
 			return Response.status(Status.CREATED).build();
@@ -96,9 +94,9 @@ public class UserServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			UserBean bean = new UserBean();
-			bean.mail = document.getString("mail");
-			bean.name = document.getString("name");
 			bean.id = document.getString("id");
+			bean.username = document.getString("username");
+			bean.password = document.getString("password");
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {
@@ -112,12 +110,12 @@ public class UserServlet extends APServletBase {
 	public Response putUser(@Context SecurityContext sc, @PathParam("id") final String id, UserBean userBean) {
 		try {
 			Document document = new Document();
-			if(userBean.mail != null)
-				document.append("mail", userBean.mail);
-			if(userBean.name != null)
-				document.append("name", userBean.name);
 			if(userBean.id != null)
 				document.append("id", userBean.id);
+			if(userBean.username != null)
+				document.append("username", userBean.username);
+			if(userBean.password != null)
+				document.append("password", userBean.password);
 			Document result = Mongo.get().collection("user").findOneAndUpdate(and(eq("id", id)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();
@@ -150,6 +148,7 @@ public class UserServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (Document document: documents){
 				RuneBean bean = new RuneBean();
+				bean.lvl = document.getInteger("lvl");
 				bean.set = document.getString("set");
 				bean.stat4Type = document.getString("stat4Type");
 				bean.star = document.getInteger("star");
@@ -160,6 +159,7 @@ public class UserServlet extends APServletBase {
 				bean.monster = document.getString("monster");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
+				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");

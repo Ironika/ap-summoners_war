@@ -187,14 +187,15 @@ public class MonsterServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{monster}/monsters")
+	@Path("/{monster}/runes")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getMonsterMonsters(@Context SecurityContext sc, @PathParam("monster") final String monster) {
+	public Response getMonsterRunes(@Context SecurityContext sc, @PathParam("monster") final String monster) {
 		try {
 			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("monster", monster)));
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (Document document: documents){
 				RuneBean bean = new RuneBean();
+				bean.lvl = document.getInteger("lvl");
 				bean.set = document.getString("set");
 				bean.stat4Type = document.getString("stat4Type");
 				bean.star = document.getInteger("star");
@@ -205,6 +206,7 @@ public class MonsterServlet extends APServletBase {
 				bean.monster = document.getString("monster");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
+				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");

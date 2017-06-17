@@ -10,12 +10,10 @@ class Rune extends React.Component {
 	}
 
 	componentWillMount() {
-		console.log("AaaaaaaaaaaAAAAAAAA ", this.props.rune)
 		this.setState({rune: this.props.rune})
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("BBBBBBBBBBBBBBBBBBB ", this.props.rune)
 		this.setState({rune: nextProps.rune})
 	}
 
@@ -24,7 +22,8 @@ class Rune extends React.Component {
 			<div className="sm-rune">
 				<RaterStar className="sm-rune-star" value={this.state.rune.star} starMax={6}/>
 				<img className="sm-rune-set" src={"assets/images/runes/Rune-" + this.state.rune.set + ".png"}/>
-				<span className="sm-rune-lvl">+12</span>
+				<span className="sm-rune-pos">{this.state.rune.pos}</span>
+				<span className="sm-rune-lvl">+{this.state.rune.lvl}</span>
 				<div className="sm-rune-stats">
 					<ul className="sm-rune-stat">
 						<li className="first">{this.state.rune.statMainType} <span>{this.state.rune.statMain}%</span></li>

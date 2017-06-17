@@ -71,18 +71,12 @@ public class UserCollection {
 			return null;
 		}
 		UserData data = new UserData();
-		data.mail = document.getString("mail");
-		data.name = document.getString("name");
 		data.id = document.getString("id");
 		return data;
 	}
 
 	public static Document toDocument(UserData user) {
 		Document document = new Document();
-		if (user.mail != null)
-			document.append("mail", user.mail);
-		if (user.name != null)
-			document.append("name", user.name);
 		if (user.id != null)
 			document.append("id", user.id);
 		return document;

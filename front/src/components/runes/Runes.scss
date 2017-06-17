@@ -33,6 +33,46 @@
 		}
 	}
 
+	.sm-runes-pos-filters {
+		position: relative;
+		input[type=checkbox] {
+		  transform: scale(1.5);
+		}
+		.sm-runes-pos-img {
+			width: 60%;
+			margin: auto;
+			display: block;
+		}
+		.sm-checkbox {
+			position: absolute;
+		}
+		.sm-checkbox-1 {
+	        top: 20%;
+    		left: 44%;
+		}
+		.sm-checkbox-2 {
+	        top: 32%;
+			left: 57%;
+		}
+		.sm-checkbox-3 {
+	   	    top: 56%;
+    		left: 57%;
+		}
+		.sm-checkbox-4 {
+			top: 68%;
+    		left: 44%;
+		}
+		.sm-checkbox-5 {
+		    top: 56%;
+    		left: 31%;
+
+		}
+		.sm-checkbox-6 {
+		    top: 32%;
+    		left: 31%;
+		}
+	}
+
 	.sm-runes-types {
 		display: flex;
 	    flex-wrap: nowrap;
@@ -50,5 +90,8 @@
 				width: 100%;
 			}
 		}
+	}
+	.sm-sheet-mid {
+		margin-top: 10px;
 	}
 }

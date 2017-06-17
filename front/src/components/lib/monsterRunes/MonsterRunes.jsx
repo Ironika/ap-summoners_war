@@ -1,6 +1,6 @@
 import React from 'react';
 import {RaterStar, Utils} from 'ap-react-bootstrap';
-import RuneHelper from 'helpers/MonsterHelper';
+import RuneHelper from 'helpers/RuneHelper';
 import AuthHelper from 'helpers/AuthHelper';
 import Rune from 'components/lib/rune/Rune';
 
@@ -15,12 +15,14 @@ class MonsterRunes extends React.Component {
 
 	componentWillMount() {
 		RuneHelper.register(this, this.buildData.bind(this))
-		RuneHelper.getRuneMonsters(this.props.monster)
+		RuneHelper.getMonsterRunes(this.props.monster.id)
 		this.setState({monster: this.props.monster})
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({monster: nextProps.monster})
+		RuneHelper.getMonsterRunes(nextProps.monster.id)
+		this.runes = RuneHelper.getData()
+		this.setState({monster: nextProps.monster, runes: this.runes})
 	}
 
 	buildData() {

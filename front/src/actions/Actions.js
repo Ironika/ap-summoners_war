@@ -13,7 +13,7 @@ let post_monster = new ActionBase({ name: 'POST_MONSTER' });
 let get_monster = new ActionBase({ name: 'GET_MONSTER' });
 let put_monster = new ActionBase({ name: 'PUT_MONSTER' });
 let delete_monster = new ActionBase({ name: 'DELETE_MONSTER' });
-let get_monster_monsters = new ActionBase({ name: 'GET_MONSTER_MONSTERS' });
+let get_monster_runes = new ActionBase({ name: 'GET_MONSTER_RUNES' });
 let get_user = new ActionBase({ name: 'GET_USER' });
 let post_user = new ActionBase({ name: 'POST_USER' });
 let put_user = new ActionBase({ name: 'PUT_USER' });
@@ -146,11 +146,11 @@ delete_monster.do = function(args) {
 	return RestService._request(reqParam);
 }
 
-get_monster_monsters.do = function(args) {
+get_monster_runes.do = function(args) {
 	Utils.checkMembers(args, ['token', 'monster']);
 	var reqParam = {
 		method: 'GET',
-		url: '/monsters/' + args.monster + '/monsters',
+		url: '/monsters/' + args.monster + '/runes',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

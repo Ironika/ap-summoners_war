@@ -84,12 +84,25 @@ class Runes extends React.Component {
 								</li>
 							</ul>
 						</div>
+						<div className="sm-sheet sm-sheet-mid">
+							<div className="sm-runes-pos-filters">
+								<img src="assets/images/runes.png" className="sm-runes-pos-img"/>
+								<input className="sm-checkbox sm-checkbox-1" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-2" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-3" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-4" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-5" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-6" type="checkbox"/>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="row">
 					<div className="col-xs-12">
-						<div className="sm-runes-types">
-							{Utils.map(this.state.types, this.buildType)}
+						<div className="sm-sheet sm-sheet-mid">
+							<div className="sm-runes-types">
+								{Utils.map(this.state.types, this.buildType)}
+							</div>
 						</div>
 					</div>
 				</div>

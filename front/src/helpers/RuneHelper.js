@@ -32,8 +32,8 @@ class RuneHelper {
 		return Dispatcher.issue('DELETE_RUNE', {token: AuthHelper.getToken(), id: id});
 	}
 
-	getMonsterMonsters(monster) {
-		return Dispatcher.issue('GET_MONSTER_MONSTERS', {token: AuthHelper.getToken(), monster: monster});
+	getMonsterRunes(monster) {
+		return Dispatcher.issue('GET_MONSTER_RUNES', {token: AuthHelper.getToken(), monster: monster});
 	}
 
 	getUserRunes(user) {

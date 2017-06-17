@@ -4,8 +4,6 @@ package org.ap.summonerwar.storage;
 public class UserData {
 
 	public String authId;
-	public String mail;
-	public String name;
 	public String id;
 
 	public String getAuthId() {
@@ -14,22 +12,6 @@ public class UserData {
 
 	public void setAuthId(String authId) {
 		this.authId = authId;
-	}
-
-	public String getMail() {
-		return this.mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getId() {
