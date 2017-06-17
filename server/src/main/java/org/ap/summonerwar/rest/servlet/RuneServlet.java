@@ -45,7 +45,6 @@ public class RuneServlet extends APServletBase {
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
-				bean.name = document.getString("name");
 				bean.stat1Type = document.getString("stat1Type");
 				bean.statMainType = document.getString("statMainType");
 				bean.id = document.getString("id");
@@ -80,7 +79,6 @@ public class RuneServlet extends APServletBase {
 			data.stat3 = runeBean.stat3;
 			data.statSubType = runeBean.statSubType;
 			data.stat1 = runeBean.stat1;
-			data.name = runeBean.name;
 			data.stat1Type = runeBean.stat1Type;
 			data.statMainType = runeBean.statMainType;
 			data.user = runeBean.user;
@@ -119,7 +117,6 @@ public class RuneServlet extends APServletBase {
 			bean.stat3 = document.getInteger("stat3");
 			bean.statSubType = document.getString("statSubType");
 			bean.stat1 = document.getInteger("stat1");
-			bean.name = document.getString("name");
 			bean.stat1Type = document.getString("stat1Type");
 			bean.statMainType = document.getString("statMainType");
 			bean.id = document.getString("id");
@@ -167,8 +164,6 @@ public class RuneServlet extends APServletBase {
 				document.append("statSubType", runeBean.statSubType);
 			if(runeBean.stat1 != null)
 				document.append("stat1", runeBean.stat1);
-			if(runeBean.name != null)
-				document.append("name", runeBean.name);
 			if(runeBean.stat1Type != null)
 				document.append("stat1Type", runeBean.stat1Type);
 			if(runeBean.statMainType != null)

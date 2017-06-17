@@ -27,16 +27,16 @@ class Import extends React.Component {
 				</div>
 				<div className="row">
 					<div className="col-xs-12 col-sm-6">
-						<form className="sm-upload">
+						<div className="sm-upload">
 							<div className="sm-sheet sm-sheet-mid">
 								<div className="sm-content">
 									<label htmlFor="file-upload" className="sm-label sm-upload-label">
 									    Upload your Json file
 									</label>
-									<input id="file-upload" type="file"/>
+									<input id="file-upload" type="file" ref={(c) => this.fileInput = c}/>
 								</div>
 								<div className="sm-upload-button">
-									<input className="sm-button" type="submit" value="Import"/>
+									<button className="sm-button" onClick={this.state.onClickImport}>Import</button>
 								</div>
 							</div>
 							<div className="sm-sheet sm-sheet-mid">
@@ -55,7 +55,7 @@ class Import extends React.Component {
 									</li>
 								</ul>
 							</div>
-						</form>
+						</div>
 					</div>
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-import-img-content">

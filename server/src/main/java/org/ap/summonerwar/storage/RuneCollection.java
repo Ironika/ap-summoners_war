@@ -82,7 +82,6 @@ public class RuneCollection {
 		data.stat3 = document.getInteger("stat3");
 		data.statSubType = document.getString("statSubType");
 		data.stat1 = document.getInteger("stat1");
-		data.name = document.getString("name");
 		data.stat1Type = document.getString("stat1Type");
 		data.statMainType = document.getString("statMainType");
 		data.id = document.getString("id");
@@ -122,8 +121,6 @@ public class RuneCollection {
 			document.append("statSubType", rune.statSubType);
 		if (rune.stat1 != null)
 			document.append("stat1", rune.stat1);
-		if (rune.name != null)
-			document.append("name", rune.name);
 		if (rune.stat1Type != null)
 			document.append("stat1Type", rune.stat1Type);
 		if (rune.statMainType != null)
@@ -152,7 +149,6 @@ public class RuneCollection {
 		document.append("stat3", rune.stat3);
 		document.append("statSubType", rune.statSubType);
 		document.append("stat1", rune.stat1);
-		document.append("name", rune.name);
 		document.append("stat1Type", rune.stat1Type);
 		document.append("statMainType", rune.statMainType);
 		document.append("id", rune.id);

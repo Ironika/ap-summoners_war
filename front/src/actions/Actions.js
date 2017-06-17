@@ -20,6 +20,7 @@ let put_user = new ActionBase({ name: 'PUT_USER' });
 let delete_user = new ActionBase({ name: 'DELETE_USER' });
 let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' });
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' });
+let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' });
 
 get_auth.do = function(args) {
 	Utils.checkMembers(args, ['username', 'password']);
@@ -213,6 +214,17 @@ get_user_monsters.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/user/' + args.user + '/monsters',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_user_import.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/user/import',
+		data : args.data,
 		token : args.token,
 	};
 	return RestService._request(reqParam);

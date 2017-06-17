@@ -18,7 +18,6 @@ public class RuneBean {
 	public Integer stat3;
 	public String statSubType;
 	public Integer stat1;
-	public String name;
 	public String stat1Type;
 	public String statMainType;
 	public String id;

@@ -210,7 +210,6 @@ public class MonsterServlet extends APServletBase {
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
-				bean.name = document.getString("name");
 				bean.stat1Type = document.getString("stat1Type");
 				bean.statMainType = document.getString("statMainType");
 				bean.id = document.getString("id");

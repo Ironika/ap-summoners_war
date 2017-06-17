@@ -18,7 +18,6 @@ public class RuneData {
 	public Integer stat3;
 	public String statSubType;
 	public Integer stat1;
-	public String name;
 	public String stat1Type;
 	public String statMainType;
 	public String id;
@@ -142,14 +141,6 @@ public class RuneData {
 
 	public void setStat1(Integer stat1) {
 		this.stat1 = stat1;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getStat1Type() {

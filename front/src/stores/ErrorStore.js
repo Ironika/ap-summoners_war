@@ -176,6 +176,16 @@ ErrorStore.handleGetUserMonstersError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_MONSTERS');
 }
 
+ErrorStore.handlePostUserImportSuccess = function(results, params) {
+	delete ErrorStore._content.POST_USER_IMPORT;
+	ErrorStore.notifyPath('/POST_USER_IMPORT');
+}
+
+ErrorStore.handlePostUserImportError = function(error, params) {
+	ErrorStore._content.POST_USER_IMPORT = error;
+	ErrorStore.notifyPath('/POST_USER_IMPORT');
+}
+
 ErrorStore.handleGetAuthSuccess = function(results, params) {
 	delete ErrorStore._content.GET_AUTH;
 	ErrorStore.notifyPath('/GET_AUTH');
@@ -214,5 +224,6 @@ Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.hand
 Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError);
 Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError);
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError);
+Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError);
 Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError);
 Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError);
