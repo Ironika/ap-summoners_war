@@ -33,8 +33,9 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 					throw new WebApplicationException(Status.UNAUTHORIZED);
 				}
 				Document document = Mongo.get().collection("apauth").find(and(eq("username", credentials[0]), eq("password", credentials[1]))).first();
-				if (document == null)
+				if (document == null) {
 					throw new WebApplicationException(Status.UNAUTHORIZED);
+				}
 				requestContext.setSecurityContext(new APSecurityContext(document.getString("username"), new String[0]));
 			} catch (APWebException e) {
 				throw new WebApplicationException(Status.UNAUTHORIZED);

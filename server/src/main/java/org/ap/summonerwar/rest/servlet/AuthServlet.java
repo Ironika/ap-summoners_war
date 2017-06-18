@@ -19,11 +19,8 @@ public class AuthServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuth(@Context SecurityContext sc) {
 		try {
-			// check user exists
+			// Get user from the DB
 			ApauthData dataAuth = ApauthCollection.getByUsername(sc.getUserPrincipal().getName());
-			if (dataAuth == null) {
-				return Response.status(Status.NOT_FOUND).build();
-			}
 			// build response
 			APAuthInfoBean result = new APAuthInfoBean();
 			result.username = dataAuth.getUsername();
@@ -43,11 +40,8 @@ public class AuthServlet extends APServletBase {
 	@Path("/password")
 	public Response putPassword(@Context SecurityContext sc, APAuthPasswordBean bean) {
 		try {
-			// check user exists
+			// Get user from the DB
 			ApauthData dataAuth = ApauthCollection.getByUsername(sc.getUserPrincipal().getName());
-			if (dataAuth == null) {
-				return Response.status(Status.NOT_FOUND).build();
-			}
 			// check previous password
 			if (!dataAuth.password.equals(bean.oldPassword)) {
 				return Response.status(Status.UNAUTHORIZED).build();
