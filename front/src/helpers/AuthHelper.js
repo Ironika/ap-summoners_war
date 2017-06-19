@@ -32,6 +32,10 @@ class AuthHelper {
 		return StoreRegistry.getStore('AUTH_STORE').getData('/username');
 	}
 
+	getEmail() {
+		return StoreRegistry.getStore('AUTH_STORE').getData('/email');
+	}
+
 	getAuth(data) {
 		return Dispatcher.issue('GET_AUTH', data);
 	}
@@ -42,6 +46,38 @@ class AuthHelper {
 
 	putAuthPassword(data) {
 		return Dispatcher.issue('PUT_AUTH_PASSWORD', { token: this.getToken(), data: data });
+	}
+
+	postAuthRegister(data) {
+		return Dispatcher.issue('POST_AUTH_REGISTER', { token: Utils.encode('guest', 'guest'), data: data });
+	}
+
+	postAuthRecover(data) {
+		return Dispatcher.issue('POST_AUTH_RECOVER', { token: Utils.encode('guest', 'guest'), data: data });
+	}
+
+	postAuthRecoverCheck(data) {
+		return Dispatcher.issue('POST_AUTH_RECOVER_CHECK', { token: Utils.encode('guest', 'guest'), data: data });
+	}
+
+	putAuthRecover(data) {
+		return Dispatcher.issue('PUT_AUTH_RECOVER', { token: Utils.encode('guest', 'guest'), data: data });
+	}
+
+	postAuthChangemail() {
+		return Dispatcher.issue('POST_AUTH_CHANGEMAIL', { token: this.getToken() });
+	}
+
+	postAuthChangemailCheck(data) {
+		return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CHECK', { token: this.getToken(), data: data });
+	}
+
+	putAuthChangemail(data) {
+		return Dispatcher.issue('PUT_AUTH_CHANGEMAIL', { token: this.getToken(), data: data });
+	}
+
+	postAuthChangemailConfirm(data) {
+		return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CONFIRM', { token: this.getToken(), data: data });
 	}
 
 }

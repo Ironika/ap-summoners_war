@@ -17,6 +17,7 @@ public class ApauthData {
 	public List<Integer> registrationDate;
 	public String id;
 	public String tokenType;
+	public String email;
 	public String username;
 
 	public String getTokenData() {
@@ -113,6 +114,14 @@ public class ApauthData {
 
 	public void setTokenType(String tokenType) {
 		this.tokenType = tokenType;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUsername() {

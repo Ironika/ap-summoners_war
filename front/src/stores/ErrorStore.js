@@ -206,6 +206,86 @@ ErrorStore.handlePutAuthPasswordError = function(error, params) {
 	ErrorStore.notifyPath('/PUT_AUTH_PASSWORD');
 }
 
+ErrorStore.handlePostAuthRegisterSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_REGISTER;
+	ErrorStore.notifyPath('/POST_AUTH_REGISTER');
+}
+
+ErrorStore.handlePostAuthRegisterError = function(error, params) {
+	ErrorStore._content.POST_AUTH_REGISTER = error;
+	ErrorStore.notifyPath('/POST_AUTH_REGISTER');
+}
+
+ErrorStore.handlePostAuthRecoverSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_RECOVER;
+	ErrorStore.notifyPath('/POST_AUTH_RECOVER');
+}
+
+ErrorStore.handlePostAuthRecoverError = function(error, params) {
+	ErrorStore._content.POST_AUTH_RECOVER = error;
+	ErrorStore.notifyPath('/POST_AUTH_RECOVER');
+}
+
+ErrorStore.handlePostAuthRecoverCheckSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_RECOVER_CHECK;
+	ErrorStore.notifyPath('/POST_AUTH_RECOVER_CHECK');
+}
+
+ErrorStore.handlePostAuthRecoverCheckError = function(error, params) {
+	ErrorStore._content.POST_AUTH_RECOVER_CHECK = error;
+	ErrorStore.notifyPath('/POST_AUTH_RECOVER_CHECK');
+}
+
+ErrorStore.handlePutAuthRecoverSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_AUTH_RECOVER;
+	ErrorStore.notifyPath('/PUT_AUTH_RECOVER');
+}
+
+ErrorStore.handlePutAuthRecoverError = function(error, params) {
+	ErrorStore._content.PUT_AUTH_RECOVER = error;
+	ErrorStore.notifyPath('/PUT_AUTH_RECOVER');
+}
+
+ErrorStore.handlePostAuthChangemailSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL');
+}
+
+ErrorStore.handlePostAuthChangemailError = function(error, params) {
+	ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL');
+}
+
+ErrorStore.handlePostAuthChangemailCheckSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CHECK');
+}
+
+ErrorStore.handlePostAuthChangemailCheckError = function(error, params) {
+	ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK = error;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CHECK');
+}
+
+ErrorStore.handlePostAuthChangemailSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL');
+}
+
+ErrorStore.handlePostAuthChangemailError = function(error, params) {
+	ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL');
+}
+
+ErrorStore.handlePostAuthChangemailConfirmSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CONFIRM');
+}
+
+ErrorStore.handlePostAuthChangemailConfirmError = function(error, params) {
+	ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM = error;
+	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CONFIRM');
+}
+
 Dispatcher.register('LOGOUT', ErrorStore.handleLogout);
 Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError);
 Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError);
@@ -227,3 +307,11 @@ Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess
 Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError);
 Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError);
 Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError);
+Dispatcher.register('POST_AUTH_REGISTER', ErrorStore.handlePostAuthRegisterSuccess, ErrorStore.handlePostAuthRegisterError);
+Dispatcher.register('POST_AUTH_RECOVER', ErrorStore.handlePostAuthRecoverSuccess, ErrorStore.handlePostAuthRecoverError);
+Dispatcher.register('POST_AUTH_RECOVER_CHECK', ErrorStore.handlePostAuthRecoverCheckSuccess, ErrorStore.handlePostAuthRecoverCheckError);
+Dispatcher.register('PUT_AUTH_RECOVER', ErrorStore.handlePutAuthRecoverSuccess, ErrorStore.handlePutAuthRecoverError);
+Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError);
+Dispatcher.register('POST_AUTH_CHANGEMAIL_CHECK', ErrorStore.handlePostAuthChangemailCheckSuccess, ErrorStore.handlePostAuthChangemailCheckError);
+Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError);
+Dispatcher.register('POST_AUTH_CHANGEMAIL_CONFIRM', ErrorStore.handlePostAuthChangemailConfirmSuccess, ErrorStore.handlePostAuthChangemailConfirmError);

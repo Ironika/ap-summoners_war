@@ -17,6 +17,9 @@ import org.ap.summonerwar.storage.ApauthCollection;
 import org.ap.summonerwar.storage.UserData;
 import org.ap.summonerwar.storage.UserCollection;
 import org.ap.web.internal.APWebException;
+import org.ap.summonerwar.internal.MailSender;
+import org.ap.summonerwar.internal.ETokenType;
+import org.ap.common.TimeHelper;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.summonerwar.bean.RuneBean;
 import org.ap.summonerwar.bean.MonsterBean;
@@ -41,6 +44,7 @@ public class UserServlet extends APServletBase {
 				bean.id = document.getString("id");
 				bean.username = document.getString("username");
 				bean.password = document.getString("password");
+				bean.email = document.getString("email");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new UserBean[beanList.size()])).build();
@@ -55,34 +59,58 @@ public class UserServlet extends APServletBase {
 	public Response postUser(@Context SecurityContext sc, UserBean userBean) {
 		try {
 			ApauthData dataAuth = ApauthCollection.getByUsername(userBean.username);
+			UserData dataEntity;
 			if(dataAuth != null) {
-				throw APWebException.AP_AUTH_REG_001;
+				if(dataAuth.getRegistered()) {
+					throw APWebException.AP_AUTH_REG_001;
+				} else {
+					UserCollection.deleteByAuthId(dataAuth.id);
+					ApauthCollection.delete(dataAuth);
+				}
+			}
+			dataAuth = ApauthCollection.getByEmail(userBean.email);
+			if(dataAuth != null) {
+				if(dataAuth.getRegistered()) {
+					throw APWebException.AP_AUTH_REG_002;
+				} else {
+					UserCollection.deleteByAuthId(dataAuth.id);
+					ApauthCollection.delete(dataAuth);
+				}
 			}
 			
 			List<String> roles = new ArrayList<String>();
 			roles.add("user");
+			roles.add("apauth");
 			
 			dataAuth = new ApauthData();
-			dataAuth.id = UUIDGenerator.nextId();
-			dataAuth.username = userBean.username;
-			dataAuth.password = userBean.password;
-			dataAuth.entityId = UUIDGenerator.nextId();
-			dataAuth.type = "user";
-			dataAuth.roles = roles;
-			dataAuth.registered = true;
-			dataAuth.active = true;
+			dataAuth.setId(UUIDGenerator.nextId());
+			dataAuth.setEntityId(UUIDGenerator.nextId());
+			dataAuth.setUsername(userBean.username);
+			dataAuth.setPassword(userBean.password);
+			dataAuth.setEmail(userBean.email);
+			dataAuth.setType("user");
+			dataAuth.setRoles(roles);
+			dataAuth.setRegistered(Boolean.FALSE);
+			dataAuth.setActive(Boolean.TRUE);
+			dataAuth.setToken(UUIDGenerator.nextCode());
+			dataAuth.setTokenType(ETokenType.REGISTER.name());
+			dataAuth.setTokenDateTime(TimeHelper.nowDateTimeIntegers());
 			ApauthCollection.create(dataAuth);
 			
-			UserData dataEntity = new UserData();
+			dataEntity = new UserData();
 			dataEntity.id = dataAuth.entityId;
 			dataEntity.authId = dataAuth.id;
 			dataEntity.lastImport = userBean.lastImport;
 			UserCollection.create(dataEntity);
 			
+			MailSender.sendRegistrationMail(dataAuth);
+			
 			return Response.status(Status.CREATED).build();
 			
 		} catch (MongoWriteException e) {
 			return Response.status(Status.FORBIDDEN).build();
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
@@ -102,6 +130,7 @@ public class UserServlet extends APServletBase {
 			bean.id = document.getString("id");
 			bean.username = document.getString("username");
 			bean.password = document.getString("password");
+			bean.email = document.getString("email");
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {
@@ -123,6 +152,8 @@ public class UserServlet extends APServletBase {
 				document.append("username", userBean.username);
 			if(userBean.password != null)
 				document.append("password", userBean.password);
+			if(userBean.email != null)
+				document.append("email", userBean.email);
 			Document result = Mongo.get().collection("user").findOneAndUpdate(and(eq("id", id)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();

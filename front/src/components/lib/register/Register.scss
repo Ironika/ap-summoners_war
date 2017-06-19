@@ -11,6 +11,13 @@
 	.sm-register-label-mid {
 		margin-top: 15px;
 	}
+    .sm-register-message {
+        color: $color-text;
+    }
+    .sm-register-error {
+        color: $color-text;
+        padding: 10px;
+    }
 	.sm-register-button {
 		text-align: center;
 		margin: 20px 0;

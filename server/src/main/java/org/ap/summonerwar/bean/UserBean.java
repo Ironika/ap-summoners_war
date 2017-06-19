@@ -7,5 +7,6 @@ public class UserBean {
 	public String id;
 	public String username;
 	public String password;
+	public String email;
 
 }

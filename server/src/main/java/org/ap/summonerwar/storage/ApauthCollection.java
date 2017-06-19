@@ -32,6 +32,16 @@ public class ApauthCollection {
 		return document != null;
 	}
 
+	public static ApauthData getByEmail(String email) throws APWebException {
+		Document document = Mongo.get().collection("apauth").find(eq("email", email)).first();
+		return fromDocument(document);
+	}
+
+	public static boolean deleteByEmail(String email) throws APWebException {
+		Document document = Mongo.get().collection("apauth").findOneAndDelete(eq("email", email));
+		return document != null;
+	}
+
 	public static ApauthData getByUsername(String username) throws APWebException {
 		Document document = Mongo.get().collection("apauth").find(eq("username", username)).first();
 		return fromDocument(document);
@@ -100,6 +110,7 @@ public class ApauthCollection {
 		data.registrationDate = (List<Integer>)document.get("registrationDate");
 		data.id = document.getString("id");
 		data.tokenType = document.getString("tokenType");
+		data.email = document.getString("email");
 		data.username = document.getString("username");
 		return data;
 	}
@@ -130,6 +141,8 @@ public class ApauthCollection {
 			document.append("id", apauth.id);
 		if (apauth.tokenType != null)
 			document.append("tokenType", apauth.tokenType);
+		if (apauth.email != null)
+			document.append("email", apauth.email);
 		if (apauth.username != null)
 			document.append("username", apauth.username);
 		return document;
@@ -149,6 +162,7 @@ public class ApauthCollection {
 		document.append("registrationDate", apauth.registrationDate);
 		document.append("id", apauth.id);
 		document.append("tokenType", apauth.tokenType);
+		document.append("email", apauth.email);
 		document.append("username", apauth.username);
 		return document;
 	}

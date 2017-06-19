@@ -3,6 +3,14 @@ import { Utils, RestService } from 'ap-react-bootstrap';
 
 let get_auth = new ActionBase({ name: 'GET_AUTH' });
 let put_auth_password = new ActionBase({ name: 'PUT_AUTH_PASSWORD' });
+let post_auth_register = new ActionBase({ name: 'POST_AUTH_REGISTER' });
+let post_auth_recover = new ActionBase({ name: 'POST_AUTH_RECOVER' });
+let post_auth_recover_check = new ActionBase({ name: 'POST_AUTH_RECOVER_CHECK' });
+let put_auth_recover = new ActionBase({ name: 'PUT_AUTH_RECOVER' });
+let post_auth_changemail = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL' });
+let post_auth_changemail_check = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CHECK' });
+let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' });
+let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' });
 let get_runes = new ActionBase({ name: 'GET_RUNES' });
 let post_rune = new ActionBase({ name: 'POST_RUNE' });
 let get_rune = new ActionBase({ name: 'GET_RUNE' });
@@ -37,6 +45,93 @@ put_auth_password.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/auth/password',
+		token : args.token,
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_register.do = function(args) {
+	Utils.checkMembers(args, ['data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/register',
+		token: Utils.encode('guest', 'guest'),
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_recover.do = function(args) {
+	Utils.checkMembers(args, ['data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/recover',
+		token: Utils.encode('guest', 'guest'),
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_recover_check.do = function(args) {
+	Utils.checkMembers(args, ['data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/recover/check',
+		token: Utils.encode('guest', 'guest'),
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+put_auth_recover.do = function(args) {
+	Utils.checkMembers(args, ['data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/auth/recover',
+		token: Utils.encode('guest', 'guest'),
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_changemail.do = function(args) {
+	Utils.checkMembers(args, ['token']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/changemail',
+		token : args.token
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_changemail_check.do = function(args) {
+	Utils.checkMembers(args, ['data', 'token']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/changemail/check',
+		token : args.token,
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+put_auth_changemail.do = function(args) {
+	Utils.checkMembers(args, ['data', 'token']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/auth/changemail',
+		token : args.token,
+		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+post_auth_changemail_confirm.do = function(args) {
+	Utils.checkMembers(args, ['data', 'token']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth/changemail/confirm',
 		token : args.token,
 		data: args.data
 	};
@@ -168,12 +263,12 @@ get_user.do = function(args) {
 }
 
 post_user.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
+	Utils.checkMembers(args, ['data']);
 	var reqParam = {
 		method: 'POST',
 		url: '/user',
 		data : args.data,
-		token : args.token,
+		token : Utils.encode('guest', 'guest'),
 	};
 	return RestService._request(reqParam);
 }
