@@ -17,6 +17,15 @@ class Rune extends React.Component {
 		this.setState({rune: nextProps.rune})
 	}
 
+	buildStat(statType, stat) {
+		if (statType) {
+			if(statType == "AtkFlat" || statType == "DefFlat" || statType == "HpFlat") 
+				return (<li key={statType}>{statType} <span>{stat}</span></li>)
+			else 
+				return (<li key={statType}>{statType} <span>{stat}%</span></li>)
+		}
+	}
+
 	render() {
 		return (
 			<div className="sm-rune">
@@ -26,14 +35,14 @@ class Rune extends React.Component {
 				<span className="sm-rune-lvl">+{this.state.rune.lvl}</span>
 				<div className="sm-rune-stats">
 					<ul className="sm-rune-stat">
-						<li className="first">{this.state.rune.statMainType} <span>{this.state.rune.statMain}%</span></li>
-						<li>{this.state.rune.stat1Type} <span>{this.state.rune.stat1}%</span></li>
-						<li>{this.state.rune.stat2Type} <span>{this.state.rune.stat2}%</span></li>
+						{this.buildStat(this.state.rune.statMainType, this.state.rune.statMain)}
+						{this.buildStat(this.state.rune.stat1Type, this.state.rune.stat1)}
+						{this.buildStat(this.state.rune.stat2Type, this.state.rune.stat2)}
 					</ul>
-					<ul className="sm-rune-stat">
-						<li className="first">{this.state.rune.statSubType} <span>{this.state.rune.statSub}%</span></li>
-						<li>{this.state.rune.stat3Type} <span>{this.state.rune.stat3}%</span></li>
-						<li>{this.state.rune.stat4Type} <span>{this.state.rune.stat4}%</span></li>
+					<ul className="sm-rune-stat sm-rune-stat2">
+						{this.buildStat(this.state.rune.statSubType, this.state.rune.statSub)}
+						{this.buildStat(this.state.rune.stat3Type, this.state.rune.stat3)}
+						{this.buildStat(this.state.rune.stat4Type, this.state.rune.stat4)}
 					</ul>
 				</div>
 			</div>

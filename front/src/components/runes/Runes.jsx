@@ -19,14 +19,14 @@ class Runes extends React.Component {
 		RunesData.unregister()
 	}
 
-	buildRune(rune) {
-		return (<Rune key={rune.id} rune={rune}/>)
+	buildRune(rune, key) {
+		return (<Rune key={rune.id + key} rune={rune}/>)
 	}
 
-	buildType(type) {
+	buildType(type, key) {
 		return (
-			<div className="sm-rune-type">
-				<img key={type.name} className="sm-rune-type-image sm-rune-active" src={"assets/images/runes/Rune-" + type.name + ".png"}/>
+			<div key={key} onClick={this.state.onClickFilters.bind(this, "set", key)} className={(type) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
+				<img src={"assets/images/runes/Rune-" + key + ".png"}/>
 			</div>
 		)
 	}
@@ -35,75 +35,129 @@ class Runes extends React.Component {
 		return (
 			<div className='ap-runes'>
 				<div className="row">
-					<div className="col-xs-8">
-						<div className="sm-runes-lists">
-							<div className="sm-runes-list">
-								<h3 className="sm-runes-list-title">All</h3>
-								<div className="sm-runes">
-									{Utils.map(this.state.runes, this.buildRune)}
-								</div>
+					<div className="col-xs-12">
+						<div className="sm-sheet">
+							<div className="sm-runes-types">
+								{Utils.map(this.state.filters.set, this.buildType.bind(this))}
 							</div>
 						</div>
 					</div>
-					<div className="col-xs-4">
-						<div className="sm-sheet">
-							<ul className="sm-runes-filters">
-								<li>
-									<label className="sm-label">Grade</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Atk</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Def</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Spd</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-							</ul>
-							<ul className="sm-runes-filters">
-								<li>
-									<label className="sm-label">Crate</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Cdmg</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Res</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Acc</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-							</ul>
+					<div className="col-xs-12 col-md-8">
+						<div className="sm-runes sm-sheet-mid">
+							{Utils.map(this.state.runes, this.buildRune)}
 						</div>
+					</div>
+					<div className="col-xs-12 col-md-4">
 						<div className="sm-sheet sm-sheet-mid">
 							<div className="sm-runes-pos-filters">
 								<img src="assets/images/runes.png" className="sm-runes-pos-img"/>
-								<input className="sm-checkbox sm-checkbox-1" type="checkbox"/>
-								<input className="sm-checkbox sm-checkbox-2" type="checkbox"/>
-								<input className="sm-checkbox sm-checkbox-3" type="checkbox"/>
-								<input className="sm-checkbox sm-checkbox-4" type="checkbox"/>
-								<input className="sm-checkbox sm-checkbox-5" type="checkbox"/>
-								<input className="sm-checkbox sm-checkbox-6" type="checkbox"/>
+								<input className="sm-checkbox sm-checkbox-1" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 1)}/>
+								<input className="sm-checkbox sm-checkbox-2" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 2)}/>
+								<input className="sm-checkbox sm-checkbox-3" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 3)}/>
+								<input className="sm-checkbox sm-checkbox-4" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 4)}/>
+								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 5)}/>
+								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 6)}/>
+								<ul className="sm-runes-filters">
+									<li>
+										<label className="sm-label">Star</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Lvl</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div className="row">
-					<div className="col-xs-12">
 						<div className="sm-sheet sm-sheet-mid">
-							<div className="sm-runes-types">
-								{Utils.map(this.state.types, this.buildType)}
+							<div className="sm-runes-filters-main"> 
+								<h4>Main Stat</h4>
+								<ul>
+									<li>
+										<label className="sm-label">Hp</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">HpFLat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Atk</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">AtkFlat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Def</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">DefFlat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Spd</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Acc</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Res</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+								</ul>
 							</div>
 						</div>
+
+
+						<div className="sm-sheet sm-sheet-mid">
+							<div className="sm-runes-filters-main"> 
+								<h4>Sub Stat</h4>
+								<ul>
+									<li>
+										<label className="sm-label">Hp</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">HpFLat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Atk</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">AtkFlat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Def</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">DefFlat</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Spd</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Acc</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+									<li>
+										<label className="sm-label">Res</label>
+										<input className="sm-checkbox" type="checkbox"/>
+									</li>
+								</ul>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>

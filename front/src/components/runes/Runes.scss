@@ -1,94 +1,93 @@
 @import '../var.scss';
 
 .ap-runes {
-	.sm-runes-lists {
-		overflow: auto;
+	.sm-runes {
 		height: 400px;
-		.sm-runes-list {
-			.sm-runes-list-title {
-				padding: 15px;
-				color: $color-text;
-				text-align: center;
-			}
-			.sm-runes {
-				display: flex;
-			    flex-wrap: nowrap;
-			    align-items: flex-start;
-			    overflow: auto;
-				.sm-rune-active {
-					border: 3px solid $yellow-dark;
-				}
-			}
+	    overflow: auto;
+		.sm-rune-active {
+			border: 3px solid $yellow-dark;
 		}
 	}
 
-	.sm-runes-filters {
-		margin-right: 15px; 
-		display: inline-block;
+	.sm-runes-filters-main {
+		h4 {
+			color: $color-text;
+			text-align: center;
+		}
 		li {
-			padding: 10px;
-			label {
-				width: 40px;
-			}
+			display: inline-block;
+			padding: 5px;
 		}
 	}
 
 	.sm-runes-pos-filters {
 		position: relative;
+		text-align: center;
+		ul {
+			display: inline-block;
+	        position: relative;
+    		top: 0;
+    		left: 25px;
+		    li {
+		    	padding: 10px;
+		    }
+		}
 		input[type=checkbox] {
-		  transform: scale(1.5);
+		  transform: scale(1.2);
 		}
 		.sm-runes-pos-img {
-			width: 60%;
-			margin: auto;
-			display: block;
+			width: 80px;
+		    position: absolute;
+		    top: 0;
+		    left: 10px;
 		}
 		.sm-checkbox {
 			position: absolute;
 		}
 		.sm-checkbox-1 {
-	        top: 20%;
-    		left: 44%;
+	        top: 10px;
+    		left: 33px;
 		}
 		.sm-checkbox-2 {
-	        top: 32%;
-			left: 57%;
+            top: 21px;
+    		left: 51px;
 		}
 		.sm-checkbox-3 {
-	   	    top: 56%;
-    		left: 57%;
+   	        top: 43px;
+    		left: 51px;
 		}
 		.sm-checkbox-4 {
-			top: 68%;
-    		left: 44%;
+	        top: 54px;
+    		left: 33px;
 		}
 		.sm-checkbox-5 {
-		    top: 56%;
-    		left: 31%;
-
+            top: 43px;
+    		left: 14px;
 		}
 		.sm-checkbox-6 {
-		    top: 32%;
-    		left: 31%;
+		    top: 21px;
+    		left: 14px;
 		}
 	}
 
 	.sm-runes-types {
-		display: flex;
-	    flex-wrap: nowrap;
-	    align-items: flex-start;
-	    overflow: auto;
+	    width: 100%;
+	    text-align: center;
 	    .sm-rune-type {
-			margin-bottom: 5px;
-		    align-self: auto;
-		    margin-right: 5px; 
-		    width: 60px;
-		    height: 60px;
+		   	display: inline-block;
+		    padding: 10px;
+		    border-radius: 1000px;
 		    cursor: pointer;
-		    .sm-rune-type-image {
-				border-radius: 5px;
-				width: 100%;
+		    margin-right: 5px;
+			img {
+				width: 20px;
 			}
+			&:hover {
+				background-color: $color-text;
+			}
+		}
+		.sm-rune-type-active { 
+			background-color: $color-text;
 		}
 	}
 	.sm-sheet-mid {

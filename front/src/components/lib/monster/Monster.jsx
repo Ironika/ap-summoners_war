@@ -23,10 +23,36 @@ class Monster extends React.Component {
 		}
 	}
 
+	buildImg(monster){
+		let storage = "(In Storage)"
+		let element = "(" + monster.elemType + ")"
+
+		let name = monster.name
+
+		if(name.search("Unknow") != -1) {
+			return (<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/default-monster.jpg"}/>)
+		}
+
+		if(name.search(storage) != -1) {
+			name = name.slice(0 , name.search(storage) - 2)
+		}
+
+		if(name.search(element) != -1) {
+			name = name.slice(0 , name.search(element) - 2)
+			name = name + "_" + monster.elemType
+		}
+
+		while(name.search(" ") != -1)
+			name = name.replace(" ", "-")
+
+
+		return (<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/" + name + ".jpg"}/>)
+	}
+
 	render() {
 		return (
 			<div className="sm-monster" onClick={this.onClick.bind(this)}>
-				<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/" + this.state.monster.name + ".jpg"}/>
+				{this.buildImg(this.state.monster)}
 				<RaterStar className="sm-monster-star" value={this.state.monster.star} starMax={6}/>
 				<span className="sm-monster-lvl">{this.state.monster.lvl}</span>
 			</div>

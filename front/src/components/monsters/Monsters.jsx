@@ -32,17 +32,30 @@ class Monsters extends React.Component {
 			return (<MonsterRunes monster={this.state.monster}/>)
 	}
 
+	buildElementFilters(elementFilter, key) {
+		return (
+			<div key={key} onClick={this.state.onClickElementFilters.bind(this, key)} className={(elementFilter) ? "sm-monster-filters-element sm-monster-filters-element-active" : "sm-monster-filters-element"}>
+				<img src={"assets/images/elements/" + key + ".png"}/>
+			</div>
+		)
+	}
+
+	buildSorts(sort, key) {
+		return (
+			<li key={key}>
+				<label className="sm-label">{key}</label>
+				<input className="sm-checkbox" type="checkbox" onClick={this.state.onClickSort.bind(this, key)}/>
+			</li>
+		)
+	}
+
 	render() {
 		return (
 			<div className='ap-monsters'>
 				<div className="row">
 					<div className="col-xs-12 col-md-6">
-						<div className="sm-sheet sm-monster-filters-element">
-							<img className="sm-monster-filter-element" src="assets/images/elements/water.png"/>
-							<img className="sm-monster-filter-element" src="assets/images/elements/fire.png"/>
-							<img className="sm-monster-filter-element" src="assets/images/elements/wind.png"/>
-							<img className="sm-monster-filter-element" src="assets/images/elements/light.png"/>
-							<img className="sm-monster-filter-element" src="assets/images/elements/dark.png"/>
+						<div className="sm-sheet sm-monster-filters-elements">
+							{Utils.map(this.state.elementFilters, this.buildElementFilters.bind(this))}
 						</div>
 						<div className="sm-monster-list">
 							{Utils.map(this.state.monsters, this.buildMonster.bind(this))}
@@ -51,29 +64,12 @@ class Monsters extends React.Component {
 					<div className="col-xs-12 col-md-6">
 						<div className="sm-sheet">
 							<div className={"sm-monster-tab " + (this.state.currentPage == 'infos' ? 'sm-monster-tab-active' : "")} onClick={this.state.onClickInfos}>Infos</div>
-							<div className={"sm-monster-tab sm-monster-mid "+ (this.state.currentPage == 'runes' ? 'sm-monster-tab-active' : "")} onClick={this.state.onClickRune}>Runes</div>
+							<div className={"sm-monster-tab sm-monster-mid "+ (this.state.currentPage == 'runes' ? 'sm-monster-tab-active' : "")} onClick={this.state.onClickRunes}>Runes</div>
 							{ this.buildMonsterInfos(this.state.currentPage) }
 						</div>
-					</div>
-					<div className="col-xs-12">
 						<div className="sm-sheet sm-monster-filters-top">
 							<ul className="sm-monster-filters">
-								<li>
-									<label className="sm-label">Grade</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Lvl</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Attribute</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
-								<li>
-									<label className="sm-label">Recent</label>
-									<input className="sm-checkbox" type="checkbox"/>
-								</li>
+								{Utils.map(this.state.sorts, this.buildSorts.bind(this))}
 							</ul>
 						</div>
 					</div>

@@ -23,7 +23,7 @@ class Profile extends React.Component {
 				<div className="row">
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-profile-user">
-							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monsters/King Angelmon.jpg"/>
+							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
 							<div className="sm-sheet sm-sheet-profil-top">
 								<div className="row">
 									<div className="col-xs-12">

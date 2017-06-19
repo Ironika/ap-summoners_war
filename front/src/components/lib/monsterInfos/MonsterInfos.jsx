@@ -39,8 +39,8 @@ class MonsterInfos extends React.Component {
 							</div>
 							<div className="col-xs-10">
 								<div className="progress sm-monster-progressbar">
-								  	<div className={"progress-bar sm-monster-" + this.state.monster.elemType} style={{width: this.state.monster.xp + "%"}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-									    {this.state.monster.xp}%
+								  	<div className={"progress-bar sm-monster-" + this.state.monster.elemType} style={{width: '100%'}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+									    100%
 								  	</div>
 								</div>
 							</div>

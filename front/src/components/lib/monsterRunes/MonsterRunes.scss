@@ -4,7 +4,7 @@
 	.sm-monster-rune-row {
 		margin-left: 12%;
 		.sm-monster-runes-img {
-			width: 95%;
+			width: 100%;
 		}
 		.sm-monster-rune-set {
 			h4 {
@@ -19,6 +19,13 @@
 			img {
 				width: 25px;
     			margin-right: 5px;
+			}
+			ul {
+				text-align: center;
+				li {
+					display: inline-block;
+					margin-right: 20px;
+				}
 			}
 			p {
 				display: inline-block;

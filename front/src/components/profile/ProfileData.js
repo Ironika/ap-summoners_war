@@ -19,11 +19,13 @@ class ProfileData {
 	}
 
 	unregister() {
+		UserHelper.unregister(this)
+		MonsterHelper.unregister(this)
+		RuneHelper.unregister(this)
 	}
 
 	buildData(id) {
 		if(id == 'user') {
-			console.log(AuthHelper.getData())
 			this.user = UserHelper.getData(AuthHelper.getEntityId())
 			this.user.username = AuthHelper.getData().username
 			this.user.mail = AuthHelper.getData().mail

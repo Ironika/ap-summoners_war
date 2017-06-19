@@ -39,10 +39,10 @@ class MonsterRunes extends React.Component {
 			<div className="sm-monster-runes">
 				<div className="row sm-monster-rune-row">
 					<div className="col-xs-12">
-						<div className="col-xs-6">
+						<div className="col-xs-3">
 							<img className="sm-monster-runes-img" src="assets/images/runes.png" />
 						</div>
-						<div className="col-xs-6">
+						<div className="col-xs-9">
 							<div className="sm-monster-rune-set">
 								<h4>Set Effect</h4>
 								<ul>
