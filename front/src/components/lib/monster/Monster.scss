@@ -1,12 +1,11 @@
 @import '../../var.scss';
 
 .sm-monster {
-	margin-bottom: 5px;
-    align-self: auto;
-    margin-right: 5px; 
-    width: 100px;
+    margin-bottom: 5px;
+    margin-right: 5px;
     height: 100px;
     cursor: pointer;
+    display: inline-grid;
     .sm-monster-active {
 		border: 3px solid $yellow-dark;
 	}
@@ -16,13 +15,13 @@
 	}
 	.sm-monster-star {
 	    position: relative;
-    	top: -98px !important;
-    	left: 4px;
+	    top: 47px !important;
+	    left: 8px;
 	}
 	.sm-monster-lvl {
 	    position: relative;
-	    bottom: 45px;
-	    left: 75px;
+	    top: 100px;
+    	left: 75px;
 	    color: white;
 	    font-size: 18px;
 	}
