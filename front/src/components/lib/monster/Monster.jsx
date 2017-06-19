@@ -53,7 +53,7 @@ class Monster extends React.Component {
 		return (
 			<div className="sm-monster" onClick={this.onClick.bind(this)}>
 				<RaterStar className="sm-monster-star" value={this.state.monster.star} starMax={6}/>
-				<span className="sm-monster-lvl">{this.state.monster.lvl}</span>
+				<span className="sm-monster-lvl">{(this.state.monster.lvl > 9) ? this.state.monster.lvl : "0" + this.state.monster.lvl}</span>
 				{this.buildImg(this.state.monster)}
 			</div>
 		);
