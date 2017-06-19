@@ -1,5 +1,6 @@
 # Maven files
 target/
+bin/
 
 # Eclipse files
 .project

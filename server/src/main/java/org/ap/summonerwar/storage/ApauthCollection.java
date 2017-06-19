@@ -22,16 +22,6 @@ public class ApauthCollection {
 		return document != null;
 	}
 
-	public static ApauthData getByToken(String token) throws APWebException {
-		Document document = Mongo.get().collection("apauth").find(eq("token", token)).first();
-		return fromDocument(document);
-	}
-
-	public static boolean deleteByToken(String token) throws APWebException {
-		Document document = Mongo.get().collection("apauth").findOneAndDelete(eq("token", token));
-		return document != null;
-	}
-
 	public static ApauthData getById(String id) throws APWebException {
 		Document document = Mongo.get().collection("apauth").find(eq("id", id)).first();
 		return fromDocument(document);

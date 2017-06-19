@@ -2,7 +2,6 @@ db.dropDatabase()
 
 db.apauth.drop()
 db.apauth.createIndex({"entityId": 1}, {"unique": true, "partialFilterExpression": { "entityId": { $exists: true } }})
-db.apauth.createIndex({"token": 1}, {"unique": true, "partialFilterExpression": { "token": { $exists: true } }})
 db.apauth.createIndex({"id": 1}, {"unique": true})
 db.apauth.createIndex({"username": 1}, {"unique": true})
 
