@@ -9,76 +9,72 @@ class ProfileData {
 
 	register(obj) {
 		this.obj = obj
-		this.init()
-		UserHelper.register(this, this.buildData.bind(this, 'user'))
-		MonsterHelper.register(this, this.buildData.bind(this, 'monster'))
-		RuneHelper.register(this, this.buildData.bind(this, 'rune'))
+
+        this.obj.onClick = this.onClick.bind(this)
+        this.obj.onChange = this.onChange.bind(this)
+
+        this.setState({
+            username: '', 
+            email: '', 
+            monsters: 0,
+            runes: 0, 
+            builds: 0
+        })
+
+        this.buildDataUser()
+        this.buildDataMonster()
+        this.buildDataRune()
+
+		AuthHelper.register(this, this.buildDataUser.bind(this))
+		MonsterHelper.register(this, this.buildDataMonster.bind(this))
+		RuneHelper.register(this, this.buildDataRune.bind(this))
+
 		UserHelper.getUser(AuthHelper.getEntityId())
 		MonsterHelper.getUserMonsters(AuthHelper.getEntityId())
 		RuneHelper.getUserRunes(AuthHelper.getEntityId())
 	}
-
 	unregister() {
-		UserHelper.unregister(this)
+		AuthHelper.unregister(this)
 		MonsterHelper.unregister(this)
 		RuneHelper.unregister(this)
 	}
+    setState(arg) {
+        this.obj.setState(arg || this)
+    }
+    getState(arg) {
+        return arg ? this.obj.state[arg] : this.obj.state
+    }
 
-	buildData(id) {
-		if(id == 'user') {
-			this.user = UserHelper.getData(AuthHelper.getEntityId())
-			this.user.username = AuthHelper.getData().username
-			this.user.mail = AuthHelper.getData().mail
-			if(this.user) {
-				this.obj.setState({user: this.user})
-			}
-		} else if(id == "monster"){
-			this.monsters = Object.keys(MonsterHelper.getData()).length;
-			if(this.monsters) {
-				this.obj.setState({monsters: this.monsters})
-			}
-		} else {
-			this.runes = Object.keys(RuneHelper.getData()).length;
-			if(this.runes) {
-				this.obj.setState({runes: this.runes})
-			}
-		}
+	buildDataUser(id) {
+        console.log(JSON.stringify(AuthHelper.getData()))
+		this.setState({
+            username: '' + AuthHelper.getUsername(),
+            email: '' + AuthHelper.getEmail()
+        })
 	}
-
-	onChange(id, event) {
-		if (id == 'mail') {
-			this.user.mail = event.target.value;
-	    	this.obj.setState({user: this.user})
-		} else if (id == 'name') {
-			this.user.name = event.target.value;
-	    	this.obj.setState({user: this.user});
-		}
-	}
+    buildDataMonster(id) {
+        this.setState({
+            monsters: (Object.keys(MonsterHelper.getData() || {})).length
+        })
+    }
+    buildDataRune(id) {
+        this.setState({
+            runes: (Object.keys(RuneHelper.getData() || {})).length
+        })
+    }
 
 	onClick() {
-		this.user.username = this.name
-		this.user.mail = this.mail
-		UserHelper.putUser(this.user)
+		UserHelper.putUser({
+            username: this.getState('username'),
+            email: this.getState('email')
+        })
 	}
 
-	init() {
-		this.user = {username: AuthHelper.getData().username, mail: AuthHelper.getData().mail }
-		this.monsters = 0
-		this.runes = 0
-		this.builds = 0
-		this.onClick = this.onClick.bind(this)
-		this.onChange = this.onChange.bind(this)
-
-		this.obj.setState({
-			user: this.user, 
-			monsters: this.monsters, 
-			runes: this.runes, 
-			builds: this.builds, 
-			onChange: this.onChange,
-			onClick: this.onClick,
-		});
-	}
-
+    onChange(id, event) {
+        let data = {}
+        data[id] = event.target.value
+        this.setState(data)
+    }
 }
-var ProfileObj = new ProfileData();
-export default ProfileObj;
+let ProfileObj = new ProfileData()
+export default ProfileObj

@@ -28,14 +28,14 @@ class Profile extends React.Component {
 								<div className="row">
 									<div className="col-xs-12">
 										<ul className="sm-profil-user-key">
-											<li>Pseudo : <input className="sm-input" type="text" value={this.state.user.name} onChange={this.state.onChange.bind(this, 'name')}/></li>
-											<li>Mail : <input className="sm-input" type="text" value={this.state.user.mail} onChange={this.state.onChange.bind(this, 'mail')}/></li>
+											<li>Pseudo : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/></li>
+											<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')}/></li>
 											<li>Last import : <input className="sm-input" value="13/06/2017" disabled={true}/></li>
 										</ul>
 									</div>
 									<div className="col-xs-12">
 										<div className="sm-profl-user-update">
-											<button className="sm-button" onClick={this.state.onClick.bind(this)}>Update</button>
+											<button className="sm-button" onClick={this.onClick}>Update</button>
 										</div>
 									</div>
 								</div>

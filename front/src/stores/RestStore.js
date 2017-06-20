@@ -8,6 +8,7 @@ AuthStore.handleGetAuth = function(result, params) {
 	let content = AuthStore.getContent()
 	content.entityId = result.entityId
 	content.username = result.username
+	content.email = result.email
 	content.type = result.type
 	content.token = Utils.encode(params.username, params.password)
 	AuthStore.storeToLocalStorage()

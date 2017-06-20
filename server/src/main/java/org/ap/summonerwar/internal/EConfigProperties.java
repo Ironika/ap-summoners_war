@@ -15,7 +15,7 @@ public enum EConfigProperties {
 	SMTP_HOST ("smtp_host", "smtp.gmail.com"),
 	SMTP_PORT ("smtp_port", "587"),
 	SMTP_USER ("smtp_user", "ash.devmail@gmail.com"),
-	SMTP_USERNAME ("smtp_username", "AP Test Sender"),
+	SMTP_USERNAME ("smtp_username", "Summoner Wars Builder"),
 	SMTP_PASS ("smtp_pass", "**1Mail2"),
 	SMTP_USEAUTH ("smtp_useauth", "true"),
 	SMTP_STARTTLS ("smtp_starttls", "true"),
