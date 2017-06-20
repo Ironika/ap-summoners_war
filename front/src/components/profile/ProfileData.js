@@ -48,8 +48,8 @@ class ProfileData {
 	buildDataUser(id) {
         console.log(JSON.stringify(AuthHelper.getData()))
 		this.setState({
-            username: '' + AuthHelper.getUsername(),
-            email: '' + AuthHelper.getEmail()
+            username: AuthHelper.getUsername(),
+            email: AuthHelper.getEmail()
         })
 	}
     buildDataMonster(id) {
