@@ -20,12 +20,12 @@ class Runes extends React.Component {
 	}
 
 	buildRune(rune, key) {
-		return (<Rune key={rune.id + key} rune={rune}/>)
+		return (<Rune key={rune.id} rune={rune}/>)
 	}
 
 	buildType(type, key) {
 		return (
-			<div key={key} onClick={this.state.onClickFilters.bind(this, "set", key)} className={(type) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
+			<div key={key} onClick={this.onClickFilterSet.bind(this, key)} className={(this.state.filterSet[type]) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
 				<img src={"assets/images/runes/Rune-" + key + ".png"}/>
 			</div>
 		)
@@ -38,7 +38,7 @@ class Runes extends React.Component {
 					<div className="col-xs-12">
 						<div className="sm-sheet">
 							<div className="sm-runes-types">
-								{Utils.map(this.state.filters.set, this.buildType.bind(this))}
+								{Utils.map(RunesData.RUNE_SET, this.buildType.bind(this))}
 							</div>
 						</div>
 					</div>
@@ -51,12 +51,12 @@ class Runes extends React.Component {
 						<div className="sm-sheet sm-sheet-mid">
 							<div className="sm-runes-pos-filters">
 								<img src="assets/images/runes.png" className="sm-runes-pos-img"/>
-								<input className="sm-checkbox sm-checkbox-1" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 1)}/>
-								<input className="sm-checkbox sm-checkbox-2" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 2)}/>
-								<input className="sm-checkbox sm-checkbox-3" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 3)}/>
-								<input className="sm-checkbox sm-checkbox-4" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 4)}/>
-								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 5)}/>
-								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.state.onClickFilters.bind(this, "pos", 6)}/>
+								<input className="sm-checkbox sm-checkbox-1" type="checkbox" onClick={this.onClickFilterPos.bind(this, 1)}/>
+								<input className="sm-checkbox sm-checkbox-2" type="checkbox" onClick={this.onClickFilterPos.bind(this, 2)}/>
+								<input className="sm-checkbox sm-checkbox-3" type="checkbox" onClick={this.onClickFilterPos.bind(this, 3)}/>
+								<input className="sm-checkbox sm-checkbox-4" type="checkbox" onClick={this.onClickFilterPos.bind(this, 4)}/>
+								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.onClickFilterPos.bind(this, 5)}/>
+								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.onClickFilterPos.bind(this, 6)}/>
 								<ul className="sm-runes-filters">
 									<li>
 										<label className="sm-label">Star</label>
