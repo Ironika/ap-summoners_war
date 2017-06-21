@@ -30,6 +30,8 @@ class ImportData {
 	    } else { 
 	      console.log("Failed to load file");
 	    }
+
+	    AppHelper.navigate("/profile")
 	}
 
 
