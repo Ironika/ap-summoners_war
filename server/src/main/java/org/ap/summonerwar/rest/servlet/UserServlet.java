@@ -10,14 +10,13 @@ import org.ap.summonerwar.bean.UserBean;
 import javax.annotation.security.RolesAllowed;
 import org.ap.summonerwar.storage.UserData;
 import org.ap.summonerwar.storage.UserCollection;
-import java.util.ArrayList;
+import org.ap.web.internal.APWebException;
 import java.util.List;
-import com.mongodb.client.FindIterable;
+import java.util.ArrayList;
+import org.ap.summonerwar.storage.ApauthCollection;
+import org.ap.summonerwar.storage.ApauthData;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
-import org.ap.summonerwar.storage.ApauthData;
-import org.ap.summonerwar.storage.ApauthCollection;
-import org.ap.web.internal.APWebException;
 import org.ap.summonerwar.internal.MailSender;
 import org.ap.summonerwar.internal.ETokenType;
 import org.ap.common.TimeHelper;
@@ -40,22 +39,30 @@ public class UserServlet extends APServletBase {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("user")
-	@SuppressWarnings("unchecked")
 	public Response getUsers(@Context SecurityContext sc) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("user").find();
+			List<UserData> datas = UserCollection.getAll();
+			
 			List<UserBean> beanList = new ArrayList<UserBean>();
-			for (Document document: documents){
+			for (UserData data : datas) {
+				ApauthData dataAuth = ApauthCollection.getById(data.authId);
+				if(dataAuth == null) {
+					return Response.status(Status.NOT_FOUND).build();
+				}
+				
 				UserBean bean = new UserBean();
-				bean.lastImport = (List<Integer>)document.get("lastImport");
-				bean.id = document.getString("id");
-				bean.username = document.getString("username");
-				bean.password = document.getString("password");
-				bean.email = document.getString("email");
+				bean.lastImport = data.getLastImport();
+				bean.id = data.getId();
+				bean.username = dataAuth.getUsername();
+				bean.email = dataAuth.getEmail();
+				
 				beanList.add(bean);
 			}
+			
 			return Response.status(Status.OK).entity(beanList.toArray(new UserBean[beanList.size()])).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
@@ -145,6 +152,8 @@ public class UserServlet extends APServletBase {
 			bean.email = dataAuth.getEmail();
 			return Response.status(Status.OK).entity(bean).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
@@ -197,33 +206,38 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getUserRunes(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("userId", userId)));
+			List<RuneData> datas = RuneCollection.get(and(eq("userId", userId)));
+			
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
-			for (Document document: documents){
+			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
-				bean.lvl = document.getInteger("lvl");
-				bean.set = document.getString("set");
-				bean.stat4Type = document.getString("stat4Type");
-				bean.star = document.getInteger("star");
-				bean.stat2Type = document.getString("stat2Type");
-				bean.statSub = document.getInteger("statSub");
-				bean.statMain = document.getInteger("statMain");
-				bean.stat4 = document.getInteger("stat4");
-				bean.userId = document.getString("userId");
-				bean.stat3Type = document.getString("stat3Type");
-				bean.stat2 = document.getInteger("stat2");
-				bean.pos = document.getString("pos");
-				bean.stat3 = document.getInteger("stat3");
-				bean.statSubType = document.getString("statSubType");
-				bean.stat1 = document.getInteger("stat1");
-				bean.monsterId = document.getString("monsterId");
-				bean.stat1Type = document.getString("stat1Type");
-				bean.statMainType = document.getString("statMainType");
-				bean.id = document.getString("id");
+				bean.lvl = data.getLvl();
+				bean.set = data.getSet();
+				bean.stat4Type = data.getStat4Type();
+				bean.star = data.getStar();
+				bean.stat2Type = data.getStat2Type();
+				bean.statSub = data.getStatSub();
+				bean.statMain = data.getStatMain();
+				bean.stat4 = data.getStat4();
+				bean.userId = data.getUserId();
+				bean.stat3Type = data.getStat3Type();
+				bean.stat2 = data.getStat2();
+				bean.pos = data.getPos();
+				bean.stat3 = data.getStat3();
+				bean.statSubType = data.getStatSubType();
+				bean.stat1 = data.getStat1();
+				bean.monsterId = data.getMonsterId();
+				bean.stat1Type = data.getStat1Type();
+				bean.statMainType = data.getStatMainType();
+				bean.id = data.getId();
+				
 				beanList.add(bean);
 			}
+			
 			return Response.status(Status.OK).entity(beanList.toArray(new RuneBean[beanList.size()])).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
@@ -235,31 +249,36 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getUserMonsters(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("monster").find(and(eq("userId", userId)));
+			List<MonsterData> datas = MonsterCollection.get(and(eq("userId", userId)));
+			
 			List<MonsterBean> beanList = new ArrayList<MonsterBean>();
-			for (Document document: documents){
+			for (MonsterData data : datas) {
 				MonsterBean bean = new MonsterBean();
-				bean.acc = document.getInteger("acc");
-				bean.res = document.getInteger("res");
-				bean.lvl = document.getInteger("lvl");
-				bean.role = document.getString("role");
-				bean.star = document.getInteger("star");
-				bean.isAwaked = document.getBoolean("isAwaked");
-				bean.def = document.getInteger("def");
-				bean.spd = document.getInteger("spd");
-				bean.hp = document.getInteger("hp");
-				bean.crate = document.getInteger("crate");
-				bean.userId = document.getString("userId");
-				bean.elemType = document.getString("elemType");
-				bean.cdmg = document.getInteger("cdmg");
-				bean.name = document.getString("name");
-				bean.xp = document.getInteger("xp");
-				bean.atk = document.getInteger("atk");
-				bean.id = document.getString("id");
+				bean.acc = data.getAcc();
+				bean.res = data.getRes();
+				bean.lvl = data.getLvl();
+				bean.role = data.getRole();
+				bean.star = data.getStar();
+				bean.isAwaked = data.getIsAwaked();
+				bean.def = data.getDef();
+				bean.spd = data.getSpd();
+				bean.hp = data.getHp();
+				bean.crate = data.getCrate();
+				bean.userId = data.getUserId();
+				bean.elemType = data.getElemType();
+				bean.cdmg = data.getCdmg();
+				bean.name = data.getName();
+				bean.xp = data.getXp();
+				bean.atk = data.getAtk();
+				bean.id = data.getId();
+				
 				beanList.add(bean);
 			}
+			
 			return Response.status(Status.OK).entity(beanList.toArray(new MonsterBean[beanList.size()])).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}

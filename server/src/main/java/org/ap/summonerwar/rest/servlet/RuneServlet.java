@@ -10,9 +10,9 @@ import org.ap.summonerwar.bean.RuneBean;
 import javax.annotation.security.RolesAllowed;
 import org.ap.summonerwar.storage.RuneData;
 import org.ap.summonerwar.storage.RuneCollection;
-import java.util.ArrayList;
+import org.ap.web.internal.APWebException;
 import java.util.List;
-import com.mongodb.client.FindIterable;
+import java.util.ArrayList;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
 import static com.mongodb.client.model.Filters.*;
@@ -28,33 +28,38 @@ public class RuneServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getRunes(@Context SecurityContext sc) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("rune").find();
+			List<RuneData> datas = RuneCollection.getAll();
+			
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
-			for (Document document: documents){
+			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
-				bean.lvl = document.getInteger("lvl");
-				bean.set = document.getString("set");
-				bean.stat4Type = document.getString("stat4Type");
-				bean.star = document.getInteger("star");
-				bean.stat2Type = document.getString("stat2Type");
-				bean.statSub = document.getInteger("statSub");
-				bean.statMain = document.getInteger("statMain");
-				bean.stat4 = document.getInteger("stat4");
-				bean.userId = document.getString("userId");
-				bean.stat3Type = document.getString("stat3Type");
-				bean.stat2 = document.getInteger("stat2");
-				bean.pos = document.getString("pos");
-				bean.stat3 = document.getInteger("stat3");
-				bean.statSubType = document.getString("statSubType");
-				bean.stat1 = document.getInteger("stat1");
-				bean.monsterId = document.getString("monsterId");
-				bean.stat1Type = document.getString("stat1Type");
-				bean.statMainType = document.getString("statMainType");
-				bean.id = document.getString("id");
+				bean.lvl = data.getLvl();
+				bean.set = data.getSet();
+				bean.stat4Type = data.getStat4Type();
+				bean.star = data.getStar();
+				bean.stat2Type = data.getStat2Type();
+				bean.statSub = data.getStatSub();
+				bean.statMain = data.getStatMain();
+				bean.stat4 = data.getStat4();
+				bean.userId = data.getUserId();
+				bean.stat3Type = data.getStat3Type();
+				bean.stat2 = data.getStat2();
+				bean.pos = data.getPos();
+				bean.stat3 = data.getStat3();
+				bean.statSubType = data.getStatSubType();
+				bean.stat1 = data.getStat1();
+				bean.monsterId = data.getMonsterId();
+				bean.stat1Type = data.getStat1Type();
+				bean.statMainType = data.getStatMainType();
+				bean.id = data.getId();
+				
 				beanList.add(bean);
 			}
+			
 			return Response.status(Status.OK).entity(beanList.toArray(new RuneBean[beanList.size()])).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
@@ -127,6 +132,8 @@ public class RuneServlet extends APServletBase {
 			bean.id = data.getId();
 			return Response.status(Status.OK).entity(bean).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
