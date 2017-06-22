@@ -24,7 +24,7 @@ class ImportData {
 	      var r = new FileReader();
 	      r.onload = function(e) { 
 		    var contents = e.target.result;
-		    DefaultHelper.postUserImport({data: contents, user: AuthHelper.getEntityId()})
+		    DefaultHelper.postUserImport({data: contents, userId: AuthHelper.getEntityId()})
 	      }
 	      r.readAsText(f);
 	    } else { 

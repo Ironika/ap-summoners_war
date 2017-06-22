@@ -5,6 +5,6 @@ public class ImportBean {
 
 	public String data;
 	public String id;
-	public String user;
+	public String userId;
 
 }

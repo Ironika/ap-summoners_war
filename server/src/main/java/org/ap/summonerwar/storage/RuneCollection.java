@@ -75,17 +75,17 @@ public class RuneCollection {
 		data.statSub = document.getInteger("statSub");
 		data.statMain = document.getInteger("statMain");
 		data.stat4 = document.getInteger("stat4");
-		data.monster = document.getString("monster");
+		data.userId = document.getString("userId");
 		data.stat3Type = document.getString("stat3Type");
 		data.stat2 = document.getInteger("stat2");
 		data.pos = document.getString("pos");
 		data.stat3 = document.getInteger("stat3");
 		data.statSubType = document.getString("statSubType");
 		data.stat1 = document.getInteger("stat1");
+		data.monsterId = document.getString("monsterId");
 		data.stat1Type = document.getString("stat1Type");
 		data.statMainType = document.getString("statMainType");
 		data.id = document.getString("id");
-		data.user = document.getString("user");
 		return data;
 	}
 
@@ -107,8 +107,8 @@ public class RuneCollection {
 			document.append("statMain", rune.statMain);
 		if (rune.stat4 != null)
 			document.append("stat4", rune.stat4);
-		if (rune.monster != null)
-			document.append("monster", rune.monster);
+		if (rune.userId != null)
+			document.append("userId", rune.userId);
 		if (rune.stat3Type != null)
 			document.append("stat3Type", rune.stat3Type);
 		if (rune.stat2 != null)
@@ -121,14 +121,14 @@ public class RuneCollection {
 			document.append("statSubType", rune.statSubType);
 		if (rune.stat1 != null)
 			document.append("stat1", rune.stat1);
+		if (rune.monsterId != null)
+			document.append("monsterId", rune.monsterId);
 		if (rune.stat1Type != null)
 			document.append("stat1Type", rune.stat1Type);
 		if (rune.statMainType != null)
 			document.append("statMainType", rune.statMainType);
 		if (rune.id != null)
 			document.append("id", rune.id);
-		if (rune.user != null)
-			document.append("user", rune.user);
 		return document;
 	}
 
@@ -142,17 +142,17 @@ public class RuneCollection {
 		document.append("statSub", rune.statSub);
 		document.append("statMain", rune.statMain);
 		document.append("stat4", rune.stat4);
-		document.append("monster", rune.monster);
+		document.append("userId", rune.userId);
 		document.append("stat3Type", rune.stat3Type);
 		document.append("stat2", rune.stat2);
 		document.append("pos", rune.pos);
 		document.append("stat3", rune.stat3);
 		document.append("statSubType", rune.statSubType);
 		document.append("stat1", rune.stat1);
+		document.append("monsterId", rune.monsterId);
 		document.append("stat1Type", rune.stat1Type);
 		document.append("statMainType", rune.statMainType);
 		document.append("id", rune.id);
-		document.append("user", rune.user);
 		return document;
 	}
 

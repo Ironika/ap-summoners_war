@@ -202,17 +202,17 @@ public class UserServlet extends APServletBase {
 				bean.statSub = document.getInteger("statSub");
 				bean.statMain = document.getInteger("statMain");
 				bean.stat4 = document.getInteger("stat4");
-				bean.monster = document.getString("monster");
+				bean.userId = document.getString("userId");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
 				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
+				bean.monsterId = document.getString("monsterId");
 				bean.stat1Type = document.getString("stat1Type");
 				bean.statMainType = document.getString("statMainType");
 				bean.id = document.getString("id");
-				bean.user = document.getString("user");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new RuneBean[beanList.size()])).build();
@@ -242,13 +242,13 @@ public class UserServlet extends APServletBase {
 				bean.spd = document.getInteger("spd");
 				bean.hp = document.getInteger("hp");
 				bean.crate = document.getInteger("crate");
+				bean.userId = document.getString("userId");
 				bean.elemType = document.getString("elemType");
 				bean.cdmg = document.getInteger("cdmg");
 				bean.name = document.getString("name");
 				bean.xp = document.getInteger("xp");
 				bean.atk = document.getInteger("atk");
 				bean.id = document.getString("id");
-				bean.user = document.getString("user");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new MonsterBean[beanList.size()])).build();

@@ -11,16 +11,16 @@ public class RuneBean {
 	public Integer statSub;
 	public Integer statMain;
 	public Integer stat4;
-	public String monster;
+	public String userId;
 	public String stat3Type;
 	public Integer stat2;
 	public String pos;
 	public Integer stat3;
 	public String statSubType;
 	public Integer stat1;
+	public String monsterId;
 	public String stat1Type;
 	public String statMainType;
 	public String id;
-	public String user;
 
 }

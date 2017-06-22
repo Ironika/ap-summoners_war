@@ -31,7 +31,7 @@ public class ImportHelper {
 				JSONObject obj = monsterJson.getJSONObject(i);
 				
 				MonsterData monster = new MonsterData();
-				monster.user = importBean.user;
+				monster.userId = importBean.userId;
 				monster.id = UUIDGenerator.nextId();
 				monster.name = obj.getString("name");
 				monster.elemType = obj.getString("attribute");
@@ -56,7 +56,7 @@ public class ImportHelper {
 				JSONObject obj = runesJson.getJSONObject(i);
 				
 				RuneData rune = new RuneData();
-				rune.user = importBean.user;
+				rune.userId = importBean.userId;
 				rune.id = UUIDGenerator.nextId();
 				rune.set = obj.getString("set");
 				rune.star = obj.getInt("grade");
@@ -64,7 +64,7 @@ public class ImportHelper {
 				rune.pos = String.valueOf(obj.getInt("slot"));
 				int monster = obj.getInt("monster");
 				if (monster != 0)
-					rune.monster = monsterIds.get(monster);
+					rune.monsterId = monsterIds.get(monster);
 				
 				ImportHelper.buildStat(obj, "m", rune);
 				ImportHelper.buildStat(obj, "i", rune);

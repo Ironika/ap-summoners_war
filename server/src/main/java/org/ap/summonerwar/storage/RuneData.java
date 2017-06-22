@@ -11,17 +11,17 @@ public class RuneData {
 	public Integer statSub;
 	public Integer statMain;
 	public Integer stat4;
-	public String monster;
+	public String userId;
 	public String stat3Type;
 	public Integer stat2;
 	public String pos;
 	public Integer stat3;
 	public String statSubType;
 	public Integer stat1;
+	public String monsterId;
 	public String stat1Type;
 	public String statMainType;
 	public String id;
-	public String user;
 
 	public Integer getLvl() {
 		return this.lvl;
@@ -87,12 +87,12 @@ public class RuneData {
 		this.stat4 = stat4;
 	}
 
-	public String getMonster() {
-		return this.monster;
+	public String getUserId() {
+		return this.userId;
 	}
 
-	public void setMonster(String monster) {
-		this.monster = monster;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getStat3Type() {
@@ -143,6 +143,14 @@ public class RuneData {
 		this.stat1 = stat1;
 	}
 
+	public String getMonsterId() {
+		return this.monsterId;
+	}
+
+	public void setMonsterId(String monsterId) {
+		this.monsterId = monsterId;
+	}
+
 	public String getStat1Type() {
 		return this.stat1Type;
 	}
@@ -165,14 +173,6 @@ public class RuneData {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getUser() {
-		return this.user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 }

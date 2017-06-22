@@ -43,13 +43,13 @@ public class MonsterServlet extends APServletBase {
 				bean.spd = document.getInteger("spd");
 				bean.hp = document.getInteger("hp");
 				bean.crate = document.getInteger("crate");
+				bean.userId = document.getString("userId");
 				bean.elemType = document.getString("elemType");
 				bean.cdmg = document.getInteger("cdmg");
 				bean.name = document.getString("name");
 				bean.xp = document.getInteger("xp");
 				bean.atk = document.getInteger("atk");
 				bean.id = document.getString("id");
-				bean.user = document.getString("user");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new MonsterBean[beanList.size()])).build();
@@ -76,12 +76,12 @@ public class MonsterServlet extends APServletBase {
 			data.spd = monsterBean.spd;
 			data.hp = monsterBean.hp;
 			data.crate = monsterBean.crate;
+			data.userId = monsterBean.userId;
 			data.elemType = monsterBean.elemType;
 			data.cdmg = monsterBean.cdmg;
 			data.name = monsterBean.name;
 			data.xp = monsterBean.xp;
 			data.atk = monsterBean.atk;
-			data.user = monsterBean.user;
 			MonsterCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -114,13 +114,13 @@ public class MonsterServlet extends APServletBase {
 			bean.spd = data.getSpd();
 			bean.hp = data.getHp();
 			bean.crate = data.getCrate();
+			bean.userId = data.getUserId();
 			bean.elemType = data.getElemType();
 			bean.cdmg = data.getCdmg();
 			bean.name = data.getName();
 			bean.xp = data.getXp();
 			bean.atk = data.getAtk();
 			bean.id = data.getId();
-			bean.user = data.getUser();
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {
@@ -155,6 +155,8 @@ public class MonsterServlet extends APServletBase {
 				document.append("hp", monsterBean.hp);
 			if(monsterBean.crate != null)
 				document.append("crate", monsterBean.crate);
+			if(monsterBean.userId != null)
+				document.append("userId", monsterBean.userId);
 			if(monsterBean.elemType != null)
 				document.append("elemType", monsterBean.elemType);
 			if(monsterBean.cdmg != null)
@@ -167,8 +169,6 @@ public class MonsterServlet extends APServletBase {
 				document.append("atk", monsterBean.atk);
 			if(monsterBean.id != null)
 				document.append("id", monsterBean.id);
-			if(monsterBean.user != null)
-				document.append("user", monsterBean.user);
 			Document result = Mongo.get().collection("monster").findOneAndUpdate(and(eq("monsterId", monsterId)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();
@@ -211,17 +211,17 @@ public class MonsterServlet extends APServletBase {
 				bean.statSub = document.getInteger("statSub");
 				bean.statMain = document.getInteger("statMain");
 				bean.stat4 = document.getInteger("stat4");
-				bean.monster = document.getString("monster");
+				bean.userId = document.getString("userId");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
 				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
+				bean.monsterId = document.getString("monsterId");
 				bean.stat1Type = document.getString("stat1Type");
 				bean.statMainType = document.getString("statMainType");
 				bean.id = document.getString("id");
-				bean.user = document.getString("user");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new RuneBean[beanList.size()])).build();

@@ -13,13 +13,13 @@ public class MonsterData {
 	public Integer spd;
 	public Integer hp;
 	public Integer crate;
+	public String userId;
 	public String elemType;
 	public Integer cdmg;
 	public String name;
 	public Integer xp;
 	public Integer atk;
 	public String id;
-	public String user;
 
 	public Integer getAcc() {
 		return this.acc;
@@ -101,6 +101,14 @@ public class MonsterData {
 		this.crate = crate;
 	}
 
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public String getElemType() {
 		return this.elemType;
 	}
@@ -147,14 +155,6 @@ public class MonsterData {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getUser() {
-		return this.user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 }

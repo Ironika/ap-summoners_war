@@ -40,17 +40,17 @@ public class RuneServlet extends APServletBase {
 				bean.statSub = document.getInteger("statSub");
 				bean.statMain = document.getInteger("statMain");
 				bean.stat4 = document.getInteger("stat4");
-				bean.monster = document.getString("monster");
+				bean.userId = document.getString("userId");
 				bean.stat3Type = document.getString("stat3Type");
 				bean.stat2 = document.getInteger("stat2");
 				bean.pos = document.getString("pos");
 				bean.stat3 = document.getInteger("stat3");
 				bean.statSubType = document.getString("statSubType");
 				bean.stat1 = document.getInteger("stat1");
+				bean.monsterId = document.getString("monsterId");
 				bean.stat1Type = document.getString("stat1Type");
 				bean.statMainType = document.getString("statMainType");
 				bean.id = document.getString("id");
-				bean.user = document.getString("user");
 				beanList.add(bean);
 			}
 			return Response.status(Status.OK).entity(beanList.toArray(new RuneBean[beanList.size()])).build();
@@ -74,16 +74,16 @@ public class RuneServlet extends APServletBase {
 			data.statSub = runeBean.statSub;
 			data.statMain = runeBean.statMain;
 			data.stat4 = runeBean.stat4;
-			data.monster = runeBean.monster;
+			data.userId = runeBean.userId;
 			data.stat3Type = runeBean.stat3Type;
 			data.stat2 = runeBean.stat2;
 			data.pos = runeBean.pos;
 			data.stat3 = runeBean.stat3;
 			data.statSubType = runeBean.statSubType;
 			data.stat1 = runeBean.stat1;
+			data.monsterId = runeBean.monsterId;
 			data.stat1Type = runeBean.stat1Type;
 			data.statMainType = runeBean.statMainType;
-			data.user = runeBean.user;
 			RuneCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -114,17 +114,17 @@ public class RuneServlet extends APServletBase {
 			bean.statSub = data.getStatSub();
 			bean.statMain = data.getStatMain();
 			bean.stat4 = data.getStat4();
-			bean.monster = data.getMonster();
+			bean.userId = data.getUserId();
 			bean.stat3Type = data.getStat3Type();
 			bean.stat2 = data.getStat2();
 			bean.pos = data.getPos();
 			bean.stat3 = data.getStat3();
 			bean.statSubType = data.getStatSubType();
 			bean.stat1 = data.getStat1();
+			bean.monsterId = data.getMonsterId();
 			bean.stat1Type = data.getStat1Type();
 			bean.statMainType = data.getStatMainType();
 			bean.id = data.getId();
-			bean.user = data.getUser();
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {
@@ -155,8 +155,8 @@ public class RuneServlet extends APServletBase {
 				document.append("statMain", runeBean.statMain);
 			if(runeBean.stat4 != null)
 				document.append("stat4", runeBean.stat4);
-			if(runeBean.monster != null)
-				document.append("monster", runeBean.monster);
+			if(runeBean.userId != null)
+				document.append("userId", runeBean.userId);
 			if(runeBean.stat3Type != null)
 				document.append("stat3Type", runeBean.stat3Type);
 			if(runeBean.stat2 != null)
@@ -169,14 +169,14 @@ public class RuneServlet extends APServletBase {
 				document.append("statSubType", runeBean.statSubType);
 			if(runeBean.stat1 != null)
 				document.append("stat1", runeBean.stat1);
+			if(runeBean.monsterId != null)
+				document.append("monsterId", runeBean.monsterId);
 			if(runeBean.stat1Type != null)
 				document.append("stat1Type", runeBean.stat1Type);
 			if(runeBean.statMainType != null)
 				document.append("statMainType", runeBean.statMainType);
 			if(runeBean.id != null)
 				document.append("id", runeBean.id);
-			if(runeBean.user != null)
-				document.append("user", runeBean.user);
 			Document result = Mongo.get().collection("rune").findOneAndUpdate(and(eq("runeId", runeId)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();

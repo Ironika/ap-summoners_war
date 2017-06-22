@@ -13,12 +13,12 @@ public class MonsterBean {
 	public Integer spd;
 	public Integer hp;
 	public Integer crate;
+	public String userId;
 	public String elemType;
 	public Integer cdmg;
 	public String name;
 	public Integer xp;
 	public Integer atk;
 	public String id;
-	public String user;
 
 }

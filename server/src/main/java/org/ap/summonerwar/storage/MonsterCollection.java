@@ -77,13 +77,13 @@ public class MonsterCollection {
 		data.spd = document.getInteger("spd");
 		data.hp = document.getInteger("hp");
 		data.crate = document.getInteger("crate");
+		data.userId = document.getString("userId");
 		data.elemType = document.getString("elemType");
 		data.cdmg = document.getInteger("cdmg");
 		data.name = document.getString("name");
 		data.xp = document.getInteger("xp");
 		data.atk = document.getInteger("atk");
 		data.id = document.getString("id");
-		data.user = document.getString("user");
 		return data;
 	}
 
@@ -109,6 +109,8 @@ public class MonsterCollection {
 			document.append("hp", monster.hp);
 		if (monster.crate != null)
 			document.append("crate", monster.crate);
+		if (monster.userId != null)
+			document.append("userId", monster.userId);
 		if (monster.elemType != null)
 			document.append("elemType", monster.elemType);
 		if (monster.cdmg != null)
@@ -121,8 +123,6 @@ public class MonsterCollection {
 			document.append("atk", monster.atk);
 		if (monster.id != null)
 			document.append("id", monster.id);
-		if (monster.user != null)
-			document.append("user", monster.user);
 		return document;
 	}
 
@@ -138,13 +138,13 @@ public class MonsterCollection {
 		document.append("spd", monster.spd);
 		document.append("hp", monster.hp);
 		document.append("crate", monster.crate);
+		document.append("userId", monster.userId);
 		document.append("elemType", monster.elemType);
 		document.append("cdmg", monster.cdmg);
 		document.append("name", monster.name);
 		document.append("xp", monster.xp);
 		document.append("atk", monster.atk);
 		document.append("id", monster.id);
-		document.append("user", monster.user);
 		return document;
 	}
 
