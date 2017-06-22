@@ -25,16 +25,16 @@ class Login extends React.Component {
 				</div>
 				<div className="col-xs-12">
 					<div className="sm-content">
-						<label className="sm-label">Mail</label>
-						<input type="text" className="sm-input" value={this.state.mail} onChange={this.state.onChange.bind(this, 'mail')}/>
+						<label className="sm-label">Username or Email</label>
+						<input type="text" className="sm-input" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/>
 						<label className="sm-label sm-login-label-mid">Password</label>
-						<input type="text" className="sm-input" value={this.state.password} onChange={this.state.onChange.bind(this, 'password')}/>
-						<a onClick={this.state.onClick} className="sm-login-register">Create an Account</a>
+						<input type="text" className="sm-input" value={this.state.password} onChange={this.onChange.bind(this, 'password')}/>
+						<a onClick={this.props.onClick} className="sm-login-register">Create an Account</a>
 					</div>
 				</div>
 				<div className="col-xs-12">
 					<div className="sm-login-button">
-						<button className="sm-button" onClick={this.state.onSubmit}>Login</button>
+						<button className="sm-button" onClick={this.onSubmit}>Login</button>
 					</div>
 				</div>
 			</div>
