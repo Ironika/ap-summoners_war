@@ -124,16 +124,18 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getUser(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			Document document = Mongo.get().collection("user").find(and(eq("userId", userId))).first();
-			if(document == null) {
+			UserData data = UserCollection.getById(userId);
+			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
+			ApauthData dataAuth = ApauthCollection.getById(data.authId);
+			if(dataAuth == null) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
+			
 			UserBean bean = new UserBean();
-			bean.lastImport = document.getLong("lastImport");
-			bean.id = document.getString("id");
-			bean.username = document.getString("username");
-			bean.password = document.getString("password");
-			bean.email = document.getString("email");
+			bean.username = dataAuth.getUsername();
+			bean.email = dataAuth.getEmail();
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {

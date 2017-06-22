@@ -98,28 +98,29 @@ public class MonsterServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId) {
 		try {
-			Document document = Mongo.get().collection("monster").find(and(eq("monsterId", monsterId))).first();
-			if(document == null) {
+			MonsterData data = MonsterCollection.getById(monsterId);
+			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
+			
 			MonsterBean bean = new MonsterBean();
-			bean.acc = document.getInteger("acc");
-			bean.res = document.getInteger("res");
-			bean.lvl = document.getInteger("lvl");
-			bean.role = document.getString("role");
-			bean.star = document.getInteger("star");
-			bean.isAwaked = document.getBoolean("isAwaked");
-			bean.def = document.getInteger("def");
-			bean.spd = document.getInteger("spd");
-			bean.hp = document.getInteger("hp");
-			bean.crate = document.getInteger("crate");
-			bean.elemType = document.getString("elemType");
-			bean.cdmg = document.getInteger("cdmg");
-			bean.name = document.getString("name");
-			bean.xp = document.getInteger("xp");
-			bean.atk = document.getInteger("atk");
-			bean.id = document.getString("id");
-			bean.user = document.getString("user");
+			bean.acc = data.getAcc();
+			bean.res = data.getRes();
+			bean.lvl = data.getLvl();
+			bean.role = data.getRole();
+			bean.star = data.getStar();
+			bean.isAwaked = data.getIsAwaked();
+			bean.def = data.getDef();
+			bean.spd = data.getSpd();
+			bean.hp = data.getHp();
+			bean.crate = data.getCrate();
+			bean.elemType = data.getElemType();
+			bean.cdmg = data.getCdmg();
+			bean.name = data.getName();
+			bean.xp = data.getXp();
+			bean.atk = data.getAtk();
+			bean.id = data.getId();
+			bean.user = data.getUser();
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {

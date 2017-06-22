@@ -77,6 +77,7 @@ public class UserCollection {
 			return null;
 		}
 		UserData data = new UserData();
+		data.authId = document.getString("authId");
 		data.lastImport = document.getLong("lastImport");
 		data.id = document.getString("id");
 		return data;

@@ -100,30 +100,31 @@ public class RuneServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response getRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId) {
 		try {
-			Document document = Mongo.get().collection("rune").find(and(eq("runeId", runeId))).first();
-			if(document == null) {
+			RuneData data = RuneCollection.getById(runeId);
+			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
+			
 			RuneBean bean = new RuneBean();
-			bean.lvl = document.getInteger("lvl");
-			bean.set = document.getString("set");
-			bean.stat4Type = document.getString("stat4Type");
-			bean.star = document.getInteger("star");
-			bean.stat2Type = document.getString("stat2Type");
-			bean.statSub = document.getInteger("statSub");
-			bean.statMain = document.getInteger("statMain");
-			bean.stat4 = document.getInteger("stat4");
-			bean.monster = document.getString("monster");
-			bean.stat3Type = document.getString("stat3Type");
-			bean.stat2 = document.getInteger("stat2");
-			bean.pos = document.getString("pos");
-			bean.stat3 = document.getInteger("stat3");
-			bean.statSubType = document.getString("statSubType");
-			bean.stat1 = document.getInteger("stat1");
-			bean.stat1Type = document.getString("stat1Type");
-			bean.statMainType = document.getString("statMainType");
-			bean.id = document.getString("id");
-			bean.user = document.getString("user");
+			bean.lvl = data.getLvl();
+			bean.set = data.getSet();
+			bean.stat4Type = data.getStat4Type();
+			bean.star = data.getStar();
+			bean.stat2Type = data.getStat2Type();
+			bean.statSub = data.getStatSub();
+			bean.statMain = data.getStatMain();
+			bean.stat4 = data.getStat4();
+			bean.monster = data.getMonster();
+			bean.stat3Type = data.getStat3Type();
+			bean.stat2 = data.getStat2();
+			bean.pos = data.getPos();
+			bean.stat3 = data.getStat3();
+			bean.statSubType = data.getStatSubType();
+			bean.stat1 = data.getStat1();
+			bean.stat1Type = data.getStat1Type();
+			bean.statMainType = data.getStatMainType();
+			bean.id = data.getId();
+			bean.user = data.getUser();
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (Exception e) {
