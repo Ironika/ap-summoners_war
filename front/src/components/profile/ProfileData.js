@@ -11,6 +11,10 @@ class ProfileData extends BaseData {
 	register(obj) {
         super.register(obj)
 
+        if(!AuthHelper.getEntityId()) {
+            AppHelper.navigate("/")
+        }
+
         this.obj.onClick = this.onClick.bind(this)
 
         this.setState({

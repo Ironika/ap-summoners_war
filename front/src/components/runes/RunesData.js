@@ -38,6 +38,11 @@ let RUNE_POS = {
 class RunesData {
 
 	register(obj) {
+
+        if(!AuthHelper.getEntityId()) {
+            AppHelper.navigate("/")
+        }
+        
 		this.obj = obj
 
         this.obj.onClickFilterSet = this.onClickFilterSet.bind(this)

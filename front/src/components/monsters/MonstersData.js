@@ -19,6 +19,10 @@ let SORT_ATTRIBUTE = {
 class MonstersData extends BaseData {
 
 	register(obj) {
+		if(!AuthHelper.getEntityId()) {
+            AppHelper.navigate("/")
+        }
+
         super.register(obj)
 
         this.obj.filterMonsters = this.filterMonsters.bind(this)
