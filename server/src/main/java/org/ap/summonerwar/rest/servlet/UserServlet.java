@@ -36,13 +36,14 @@ public class UserServlet extends APServletBase {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("user")
+	@SuppressWarnings("unchecked")
 	public Response getUsers(@Context SecurityContext sc) {
 		try {
 			FindIterable<Document> documents = Mongo.get().collection("user").find();
 			List<UserBean> beanList = new ArrayList<UserBean>();
 			for (Document document: documents){
 				UserBean bean = new UserBean();
-				bean.lastImport = document.getLong("lastImport");
+				bean.lastImport = (List<Integer>)document.get("lastImport");
 				bean.id = document.getString("id");
 				bean.username = document.getString("username");
 				bean.password = document.getString("password");
@@ -134,6 +135,8 @@ public class UserServlet extends APServletBase {
 			}
 			
 			UserBean bean = new UserBean();
+			bean.lastImport = data.getLastImport();
+			bean.id = data.getId();
 			bean.username = dataAuth.getUsername();
 			bean.email = dataAuth.getEmail();
 			return Response.status(Status.OK).entity(bean).build();

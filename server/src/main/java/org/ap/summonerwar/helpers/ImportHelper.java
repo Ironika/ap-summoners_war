@@ -6,11 +6,16 @@ import java.util.Map;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
+import org.ap.common.TimeHelper;
 import org.ap.summonerwar.bean.ImportBean;
+import org.ap.summonerwar.storage.ApauthCollection;
+import org.ap.summonerwar.storage.ApauthData;
 import org.ap.summonerwar.storage.MonsterCollection;
 import org.ap.summonerwar.storage.MonsterData;
 import org.ap.summonerwar.storage.RuneCollection;
 import org.ap.summonerwar.storage.RuneData;
+import org.ap.summonerwar.storage.UserCollection;
+import org.ap.summonerwar.storage.UserData;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
 import org.codehaus.jettison.json.JSONArray;
@@ -23,6 +28,13 @@ public class ImportHelper {
 //		throw new APWebException("500", Status.INTERNAL_SERVER_ERROR);
 		
 		try {
+			ApauthData dataAuth = ApauthCollection.getByUsername(sc.getUserPrincipal().getName());
+			UserData user = UserCollection.getById(dataAuth.getEntityId());
+			
+			if (!user.getId().equals(importBean.userId)) {
+				throw new APWebException("SM_IMPORT_FORBIDDEN", Status.FORBIDDEN);
+			}
+			
 			JSONObject json = new JSONObject(importBean.data);
 			JSONArray monsterJson = json.getJSONArray("mons"); 
 			
@@ -31,20 +43,20 @@ public class ImportHelper {
 				JSONObject obj = monsterJson.getJSONObject(i);
 				
 				MonsterData monster = new MonsterData();
-				monster.userId = importBean.userId;
-				monster.id = UUIDGenerator.nextId();
-				monster.name = obj.getString("name");
-				monster.elemType = obj.getString("attribute");
-				monster.star = obj.getInt("stars");
-				monster.lvl = obj.getInt("level");
-				monster.hp = obj.getInt("b_hp");
-				monster.atk = obj.getInt("b_atk");
-				monster.def = obj.getInt("b_def");
-				monster.spd = obj.getInt("b_spd");
-				monster.crate = obj.getInt("b_crate");
-				monster.cdmg = obj.getInt("b_cdmg");
-				monster.res = obj.getInt("b_res");
-				monster.acc = obj.getInt("b_acc");
+				monster.setUserId(importBean.userId);
+				monster.setId(UUIDGenerator.nextId());
+				monster.setName(obj.getString("name"));
+				monster.setElemType(obj.getString("attribute"));
+				monster.setStar(obj.getInt("stars"));
+				monster.setLvl(obj.getInt("level"));
+				monster.setHp(obj.getInt("b_hp"));
+				monster.setAtk(obj.getInt("b_atk"));
+				monster.setDef(obj.getInt("b_def"));
+				monster.setSpd(obj.getInt("b_spd"));
+				monster.setCrate(obj.getInt("b_crate"));
+				monster.setCdmg(obj.getInt("b_cdmg"));
+				monster.setRes(obj.getInt("b_res"));
+				monster.setAcc(obj.getInt("b_acc"));
 				
 				monsterIds.put(obj.getInt("id"), monster.id);
 				
@@ -56,16 +68,16 @@ public class ImportHelper {
 				JSONObject obj = runesJson.getJSONObject(i);
 				
 				RuneData rune = new RuneData();
-				rune.userId = importBean.userId;
-				rune.id = UUIDGenerator.nextId();
-				rune.set = obj.getString("set");
-				rune.star = obj.getInt("grade");
-				rune.lvl = obj.getInt("level");
-				rune.pos = String.valueOf(obj.getInt("slot"));
+				rune.setUserId(importBean.userId);
+				rune.setId(UUIDGenerator.nextId());
+				rune.setSet(obj.getString("set"));
+				rune.setStar(obj.getInt("grade"));
+				rune.setLvl(obj.getInt("level"));
+				rune.setPos(String.valueOf(obj.getInt("slot")));
 				int monster = obj.getInt("monster");
-				if (monster != 0)
+				if (monster != 0) {
 					rune.monsterId = monsterIds.get(monster);
-				
+				}				
 				ImportHelper.buildStat(obj, "m", rune);
 				ImportHelper.buildStat(obj, "i", rune);
 				ImportHelper.buildStat(obj, "s1", rune);
@@ -76,6 +88,8 @@ public class ImportHelper {
 				RuneCollection.create(rune);
 			};
 			
+			user.setLastImport(TimeHelper.nowDateTimeIntegers());
+			UserCollection.update(user);
 			
 		} catch (JSONException e) {
 			throw new APWebException(e.getMessage(), "500", Status.INTERNAL_SERVER_ERROR);

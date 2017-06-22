@@ -72,13 +72,14 @@ public class UserCollection {
 		return result != null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static UserData fromDocument(Document document) {
 		if(document == null) {
 			return null;
 		}
 		UserData data = new UserData();
 		data.authId = document.getString("authId");
-		data.lastImport = document.getLong("lastImport");
+		data.lastImport = (List<Integer>)document.get("lastImport");
 		data.id = document.getString("id");
 		return data;
 	}

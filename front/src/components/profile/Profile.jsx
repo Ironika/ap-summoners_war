@@ -30,7 +30,7 @@ class Profile extends React.Component {
 										<ul className="sm-profil-user-key">
 											<li>Pseudo : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/></li>
 											<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')}/></li>
-											<li>Last import : <input className="sm-input" value="13/06/2017" disabled={true}/></li>
+											<li>Last import : <input className="sm-input" value={this.state.lastImport} disabled={true}/></li>
 										</ul>
 									</div>
 									<div className="col-xs-12">

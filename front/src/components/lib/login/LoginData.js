@@ -23,11 +23,8 @@ class LoginData {
 	}
 
 	onSubmit() {
-		let values = {username: this.mail, password: this.password}
-		AuthHelper.getAuth(values)
-			.then(function() {
-				AppHelper.navigate("profile")
-			})
+		AuthHelper.getAuth({ username: this.mail, password: this.password }).
+		then(AppHelper.navigate.bind(AppHelper, 'profile'))
 	}
 
 	onChange(id, event) {

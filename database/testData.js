@@ -13,6 +13,5 @@ db.apauth.insert({
 
 db.user.insert({
 	"id":"a",
-	"lastImport": NumberLong("112233"),
 	"authId":"aauth"
 })
