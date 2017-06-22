@@ -106,26 +106,6 @@ class MonstersData extends BaseData {
         let sorts = this.getState('sorts')
         sorts[key] = !sorts[key]
         this.setState({ sorts: sorts })
-        return
-		let datas = []
-
-		this.sorts[key] = !this.sorts[key]
-
-		for (let item in this.obj.state.monsters) {
-			datas.push(this.obj.state.monsters[item])
-		}
-
-		if(this.sorts[key]) {
-			datas.sort(function(a, b) {
-				return b[key] - a[key];
-			})
-		} else {
-			datas.sort(function(a, b) {
-				return a[key] - b[key];
-			})
-		}
-
-		this.obj.setState({monsters: datas, sorts: this.sorts})
 	}
 }
 let MonstersObj = new MonstersData()
