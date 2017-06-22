@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.RuneBean;
+import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 import com.mongodb.client.FindIterable;
@@ -24,6 +25,7 @@ public class RuneServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response getRunes(@Context SecurityContext sc) {
 		try {
 			FindIterable<Document> documents = Mongo.get().collection("rune").find();
@@ -93,11 +95,12 @@ public class RuneServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{runeId}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getRune(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@RolesAllowed("user")
+	public Response getRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId) {
 		try {
-			Document document = Mongo.get().collection("rune").find(and(eq("id", id))).first();
+			Document document = Mongo.get().collection("rune").find(and(eq("runeId", runeId))).first();
 			if(document == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
@@ -129,9 +132,10 @@ public class RuneServlet extends APServletBase {
 	}
 
 	@PUT
-	@Path("/{id}")
+	@Path("/{runeId}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response putRune(@Context SecurityContext sc, @PathParam("id") final String id, RuneBean runeBean) {
+	@RolesAllowed("user")
+	public Response putRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId, RuneBean runeBean) {
 		try {
 			Document document = new Document();
 			if(runeBean.lvl != null)
@@ -172,7 +176,7 @@ public class RuneServlet extends APServletBase {
 				document.append("id", runeBean.id);
 			if(runeBean.user != null)
 				document.append("user", runeBean.user);
-			Document result = Mongo.get().collection("rune").findOneAndUpdate(and(eq("id", id)), new Document("$set", document));
+			Document result = Mongo.get().collection("rune").findOneAndUpdate(and(eq("runeId", runeId)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();
 			return Response.status(Status.OK).build();
@@ -182,13 +186,14 @@ public class RuneServlet extends APServletBase {
 	}
 
 	@DELETE
-	@Path("/{id}")
-	public Response deleteRune(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@Path("/{runeId}")
+	@RolesAllowed("user")
+	public Response deleteRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId) {
 		try {
-			if (RuneCollection.deleteById(id)) {
-			return Response.status(Status.OK).build();
+			if (RuneCollection.deleteById(runeId)) {
+				return Response.status(Status.OK).build();
 			}
-				return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.NOT_FOUND).build();
 			
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();

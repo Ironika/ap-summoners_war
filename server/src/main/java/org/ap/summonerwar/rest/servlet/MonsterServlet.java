@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.MonsterBean;
+import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 import com.mongodb.client.FindIterable;
@@ -25,6 +26,7 @@ public class MonsterServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response getMonsters(@Context SecurityContext sc) {
 		try {
 			FindIterable<Document> documents = Mongo.get().collection("monster").find();
@@ -59,6 +61,7 @@ public class MonsterServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response postMonster(@Context SecurityContext sc, MonsterBean monsterBean) {
 		try {
 			MonsterData data = new MonsterData();
@@ -90,11 +93,12 @@ public class MonsterServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{monsterId}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getMonster(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@RolesAllowed("user")
+	public Response getMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId) {
 		try {
-			Document document = Mongo.get().collection("monster").find(and(eq("id", id))).first();
+			Document document = Mongo.get().collection("monster").find(and(eq("monsterId", monsterId))).first();
 			if(document == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
@@ -124,9 +128,10 @@ public class MonsterServlet extends APServletBase {
 	}
 
 	@PUT
-	@Path("/{id}")
+	@Path("/{monsterId}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response putMonster(@Context SecurityContext sc, @PathParam("id") final String id, MonsterBean monsterBean) {
+	@RolesAllowed("user")
+	public Response putMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId, MonsterBean monsterBean) {
 		try {
 			Document document = new Document();
 			if(monsterBean.acc != null)
@@ -163,7 +168,7 @@ public class MonsterServlet extends APServletBase {
 				document.append("id", monsterBean.id);
 			if(monsterBean.user != null)
 				document.append("user", monsterBean.user);
-			Document result = Mongo.get().collection("monster").findOneAndUpdate(and(eq("id", id)), new Document("$set", document));
+			Document result = Mongo.get().collection("monster").findOneAndUpdate(and(eq("monsterId", monsterId)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();
 			return Response.status(Status.OK).build();
@@ -173,13 +178,14 @@ public class MonsterServlet extends APServletBase {
 	}
 
 	@DELETE
-	@Path("/{id}")
-	public Response deleteMonster(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@Path("/{monsterId}")
+	@RolesAllowed("user")
+	public Response deleteMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId) {
 		try {
-			if (MonsterCollection.deleteById(id)) {
-			return Response.status(Status.OK).build();
+			if (MonsterCollection.deleteById(monsterId)) {
+				return Response.status(Status.OK).build();
 			}
-				return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.NOT_FOUND).build();
 			
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
@@ -187,11 +193,12 @@ public class MonsterServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{monster}/runes")
+	@Path("/{monsterId}/runes")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getMonsterRunes(@Context SecurityContext sc, @PathParam("monster") final String monster) {
+	@RolesAllowed("user")
+	public Response getMonsterRunes(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("monster", monster)));
+			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("monsterId", monsterId)));
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (Document document: documents){
 				RuneBean bean = new RuneBean();

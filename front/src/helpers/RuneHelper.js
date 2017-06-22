@@ -20,24 +20,24 @@ class RuneHelper {
 		return Dispatcher.issue('POST_RUNE', {token: AuthHelper.getToken(), data: data});
 	}
 
-	getRune(id) {
-		return Dispatcher.issue('GET_RUNE', {token: AuthHelper.getToken(), id: id});
+	getRune(runeId) {
+		return Dispatcher.issue('GET_RUNE', {token: AuthHelper.getToken(), runeId: runeId});
 	}
 
 	putRune(data) {
-		return Dispatcher.issue('PUT_RUNE', {token: AuthHelper.getToken(), id: data.id, data: data});
+		return Dispatcher.issue('PUT_RUNE', {token: AuthHelper.getToken(), runeId: data.runeId, data: data});
 	}
 
-	deleteRune(id) {
-		return Dispatcher.issue('DELETE_RUNE', {token: AuthHelper.getToken(), id: id});
+	deleteRune(runeId) {
+		return Dispatcher.issue('DELETE_RUNE', {token: AuthHelper.getToken(), runeId: runeId});
 	}
 
-	getMonsterRunes(monster) {
-		return Dispatcher.issue('GET_MONSTER_RUNES', {token: AuthHelper.getToken(), monster: monster});
+	getMonsterRunes(monsterId) {
+		return Dispatcher.issue('GET_MONSTER_RUNES', {token: AuthHelper.getToken(), monsterId: monsterId});
 	}
 
-	getUserRunes(user) {
-		return Dispatcher.issue('GET_USER_RUNES', {token: AuthHelper.getToken(), user: user});
+	getUserRunes(userId) {
+		return Dispatcher.issue('GET_USER_RUNES', {token: AuthHelper.getToken(), userId: userId});
 	}
 
 	getData(id) {

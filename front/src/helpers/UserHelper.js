@@ -12,8 +12,8 @@ class UserHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getUser(id) {
-		return Dispatcher.issue('GET_USER', {token: AuthHelper.getToken(), id: id});
+	getUser(userId) {
+		return Dispatcher.issue('GET_USER', {token: AuthHelper.getToken(), userId: userId});
 	}
 
 	postUser(data) {
@@ -21,11 +21,11 @@ class UserHelper {
 	}
 
 	putUser(data) {
-		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), id: data.id, data: data});
+		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), userId: data.userId, data: data});
 	}
 
-	deleteUser(id) {
-		return Dispatcher.issue('DELETE_USER', {token: AuthHelper.getToken(), id: id});
+	deleteUser(userId) {
+		return Dispatcher.issue('DELETE_USER', {token: AuthHelper.getToken(), userId: userId});
 	}
 
 	getData(id) {

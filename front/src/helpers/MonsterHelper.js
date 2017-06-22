@@ -20,20 +20,20 @@ class MonsterHelper {
 		return Dispatcher.issue('POST_MONSTER', {token: AuthHelper.getToken(), data: data});
 	}
 
-	getMonster(id) {
-		return Dispatcher.issue('GET_MONSTER', {token: AuthHelper.getToken(), id: id});
+	getMonster(monsterId) {
+		return Dispatcher.issue('GET_MONSTER', {token: AuthHelper.getToken(), monsterId: monsterId});
 	}
 
 	putMonster(data) {
-		return Dispatcher.issue('PUT_MONSTER', {token: AuthHelper.getToken(), id: data.id, data: data});
+		return Dispatcher.issue('PUT_MONSTER', {token: AuthHelper.getToken(), monsterId: data.monsterId, data: data});
 	}
 
-	deleteMonster(id) {
-		return Dispatcher.issue('DELETE_MONSTER', {token: AuthHelper.getToken(), id: id});
+	deleteMonster(monsterId) {
+		return Dispatcher.issue('DELETE_MONSTER', {token: AuthHelper.getToken(), monsterId: monsterId});
 	}
 
-	getUserMonsters(user) {
-		return Dispatcher.issue('GET_USER_MONSTERS', {token: AuthHelper.getToken(), user: user});
+	getUserMonsters(userId) {
+		return Dispatcher.issue('GET_USER_MONSTERS', {token: AuthHelper.getToken(), userId: userId});
 	}
 
 	getData(id) {

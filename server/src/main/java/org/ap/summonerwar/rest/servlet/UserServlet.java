@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.UserBean;
+import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 import com.mongodb.client.FindIterable;
@@ -34,6 +35,7 @@ public class UserServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response getUsers(@Context SecurityContext sc) {
 		try {
 			FindIterable<Document> documents = Mongo.get().collection("user").find();
@@ -117,11 +119,12 @@ public class UserServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{userId}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getUser(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@RolesAllowed("user")
+	public Response getUser(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			Document document = Mongo.get().collection("user").find(and(eq("id", id))).first();
+			Document document = Mongo.get().collection("user").find(and(eq("userId", userId))).first();
 			if(document == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
@@ -139,9 +142,10 @@ public class UserServlet extends APServletBase {
 	}
 
 	@PUT
-	@Path("/{id}")
+	@Path("/{userId}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response putUser(@Context SecurityContext sc, @PathParam("id") final String id, UserBean userBean) {
+	@RolesAllowed("user")
+	public Response putUser(@Context SecurityContext sc, @PathParam("userId") final String userId, UserBean userBean) {
 		try {
 			Document document = new Document();
 			if(userBean.lastImport != null)
@@ -154,7 +158,7 @@ public class UserServlet extends APServletBase {
 				document.append("password", userBean.password);
 			if(userBean.email != null)
 				document.append("email", userBean.email);
-			Document result = Mongo.get().collection("user").findOneAndUpdate(and(eq("id", id)), new Document("$set", document));
+			Document result = Mongo.get().collection("user").findOneAndUpdate(and(eq("userId", userId)), new Document("$set", document));
 			if(result == null)
 				return Response.status(Status.NOT_FOUND).build();
 			return Response.status(Status.OK).build();
@@ -164,13 +168,14 @@ public class UserServlet extends APServletBase {
 	}
 
 	@DELETE
-	@Path("/{id}")
-	public Response deleteUser(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@Path("/{userId}")
+	@RolesAllowed("user")
+	public Response deleteUser(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			if (UserCollection.deleteById(id)) {
-			return Response.status(Status.OK).build();
+			if (UserCollection.deleteById(userId)) {
+				return Response.status(Status.OK).build();
 			}
-				return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.NOT_FOUND).build();
 			
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
@@ -178,11 +183,12 @@ public class UserServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{user}/runes")
+	@Path("/{userId}/runes")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getUserRunes(@Context SecurityContext sc, @PathParam("user") final String user) {
+	@RolesAllowed("user")
+	public Response getUserRunes(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("user", user)));
+			FindIterable<Document> documents = Mongo.get().collection("rune").find(and(eq("userId", userId)));
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (Document document: documents){
 				RuneBean bean = new RuneBean();
@@ -215,11 +221,12 @@ public class UserServlet extends APServletBase {
 	}
 
 	@GET
-	@Path("/{user}/monsters")
+	@Path("/{userId}/monsters")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getUserMonsters(@Context SecurityContext sc, @PathParam("user") final String user) {
+	@RolesAllowed("user")
+	public Response getUserMonsters(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			FindIterable<Document> documents = Mongo.get().collection("monster").find(and(eq("user", user)));
+			FindIterable<Document> documents = Mongo.get().collection("monster").find(and(eq("userId", userId)));
 			List<MonsterBean> beanList = new ArrayList<MonsterBean>();
 			for (Document document: documents){
 				MonsterBean bean = new MonsterBean();
@@ -252,6 +259,7 @@ public class UserServlet extends APServletBase {
 	@POST
 	@Path("/import")
 	@Consumes({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response postUserImport(@Context SecurityContext sc, ImportBean importBean) {
 		try {
 			Object bean = ImportHelper.postImport(sc, importBean);

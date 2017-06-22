@@ -160,20 +160,20 @@ post_rune.do = function(args) {
 }
 
 get_rune.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'runeId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/runes/' + args.id + '',
+		url: '/runes/' + args.runeId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 put_rune.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
+	Utils.checkMembers(args, ['token', 'runeId', 'data']);
 	var reqParam = {
 		method: 'PUT',
-		url: '/runes/' + args.id + '',
+		url: '/runes/' + args.runeId + '',
 		data : args.data,
 		token : args.token,
 	};
@@ -181,10 +181,10 @@ put_rune.do = function(args) {
 }
 
 delete_rune.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'runeId']);
 	var reqParam = {
 		method: 'DELETE',
-		url: '/runes/' + args.id + '',
+		url: '/runes/' + args.runeId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
@@ -212,20 +212,20 @@ post_monster.do = function(args) {
 }
 
 get_monster.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'monsterId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/monsters/' + args.id + '',
+		url: '/monsters/' + args.monsterId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 put_monster.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
+	Utils.checkMembers(args, ['token', 'monsterId', 'data']);
 	var reqParam = {
 		method: 'PUT',
-		url: '/monsters/' + args.id + '',
+		url: '/monsters/' + args.monsterId + '',
 		data : args.data,
 		token : args.token,
 	};
@@ -233,30 +233,30 @@ put_monster.do = function(args) {
 }
 
 delete_monster.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'monsterId']);
 	var reqParam = {
 		method: 'DELETE',
-		url: '/monsters/' + args.id + '',
+		url: '/monsters/' + args.monsterId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 get_monster_runes.do = function(args) {
-	Utils.checkMembers(args, ['token', 'monster']);
+	Utils.checkMembers(args, ['token', 'monsterId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/monsters/' + args.monster + '/runes',
+		url: '/monsters/' + args.monsterId + '/runes',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 get_user.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'userId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/user/' + args.id + '',
+		url: '/user/' + args.userId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
@@ -274,10 +274,10 @@ post_user.do = function(args) {
 }
 
 put_user.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
+	Utils.checkMembers(args, ['token', 'userId', 'data']);
 	var reqParam = {
 		method: 'PUT',
-		url: '/user/' + args.id + '',
+		url: '/user/' + args.userId + '',
 		data : args.data,
 		token : args.token,
 	};
@@ -285,30 +285,30 @@ put_user.do = function(args) {
 }
 
 delete_user.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+	Utils.checkMembers(args, ['token', 'userId']);
 	var reqParam = {
 		method: 'DELETE',
-		url: '/user/' + args.id + '',
+		url: '/user/' + args.userId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 get_user_runes.do = function(args) {
-	Utils.checkMembers(args, ['token', 'user']);
+	Utils.checkMembers(args, ['token', 'userId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/user/' + args.user + '/runes',
+		url: '/user/' + args.userId + '/runes',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
 
 get_user_monsters.do = function(args) {
-	Utils.checkMembers(args, ['token', 'user']);
+	Utils.checkMembers(args, ['token', 'userId']);
 	var reqParam = {
 		method: 'GET',
-		url: '/user/' + args.user + '/monsters',
+		url: '/user/' + args.userId + '/monsters',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
