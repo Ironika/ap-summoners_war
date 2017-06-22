@@ -1,7 +1,8 @@
 @import '../var.scss';
 
 .ap-monsters {
-	.sm-monster-filters-elements {
+	
+    .sm-monster-filters-elements {
 		text-align: center;
 		.sm-monster-filters-element {
 		    display: inline-block;
@@ -20,6 +21,14 @@
 			background-color: $color-text;
 		}
 	}
+
+    .sm-monster-search {
+        margin-top: 20px;
+        .sm-search-input {
+            margin: 5px;
+            width: calc(100% - 10px);    
+        }
+    }
 
 	.sm-monster-list {
         text-align: center;

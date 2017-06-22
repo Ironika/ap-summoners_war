@@ -1,53 +1,112 @@
 import AppHelper from 'helpers/AppHelper'
 import MonsterHelper from 'helpers/MonsterHelper'
 import AuthHelper from 'helpers/AuthHelper'
-import { Utils }  from 'ap-react-bootstrap'
+import { BaseData, Utils }  from 'ap-react-bootstrap'
 
-class MonstersData {
+let FILTER_ELEMENT = {
+    Water: 'Water',
+    Fire: 'Fire',
+    Wind: 'Wind',
+    Light: 'Light',
+    Dark: 'Dark'
+}
+
+let SORT_ATTRIBUTE = {
+    star: 'star',
+    lvl: 'lvl'
+}
+
+class MonstersData extends BaseData {
 
 	register(obj) {
-		this.obj = obj
-		MonsterHelper.register(this, this.buildData.bind(this))
+        super.register(obj)
+
+        this.obj.filterMonsters = this.filterMonsters.bind(this)
+        this.obj.sortMonsters = this.sortMonsters.bind(this)
+
+        this.obj.onSearch = this.onSearch.bind(this)
+        this.obj.onClickMonster = this.onClickMonster.bind(this)
+        this.obj.onClickInfos = this.onClickInfos.bind(this)
+        this.obj.onClickRunes = this.onClickRunes.bind(this)
+		
+        this.obj.onClickElementFilters = this.onClickElementFilters.bind(this)
+        this.obj.onClickSort = this.onClickSort.bind(this)
+
+        this.setState({
+            search: '',
+            currentPage: 'infos',
+            monsters: [],
+            monster: {},
+            elementFilter: null,
+            sorts: {}
+        })
+
+        MonsterHelper.register(this, this.buildMonstersData.bind(this))
 		MonsterHelper.getUserMonsters(AuthHelper.getEntityId())
-		this.init()
 	}
 
 	unregister() {
 		MonsterHelper.unregister(this)
 	}
 
+    buildMonstersData() {
+        let monsters = Utils.map(MonsterHelper.getData())
+        let monster = monsters.length ? monsters[0] : null
+        this.setState({
+            monsters: monsters, 
+            monster: monster
+        })
+    }
+
+    filterMonsters(monster) {
+        if (this.getState('elementFilter') && monster.elemType !== this.getState('elementFilter')) {
+            return false
+        }
+        if (this.getState('search') && monster.name.toUpperCase().indexOf(this.getState('search').toUpperCase()) === -1) {
+            return false
+        }
+        return true        
+    }
+
+    sortMonsters(m1, m2) {
+        let sortAtts = Object.keys(SORT_ATTRIBUTE)
+        let sorts = this.getState('sorts')
+        for (let i = 0; i < sortAtts.length; i++) {
+            let sortAtt = sortAtts[i]
+            if (sorts[sortAtt]) {
+                let s = m2[sortAtt] - m1[sortAtt]
+                if (s) return s    
+            }
+        }
+    }
+
+    onSearch(event) {
+        this.setState({ search: event.target.value ? event.target.value.trimLeft() : '' })
+    }
+
 	onClickMonster(monster) {
-		this.obj.setState({monster: monster});
+		this.setState({ monster: monster })
 	}
 
 	onClickRunes() {
-		this.obj.setState({currentPage: 'runes'})
+		this.setState({ currentPage: 'runes' })
 	}
 
 	onClickInfos() {
-		this.obj.setState({currentPage: 'infos'})
+		this.setState({ currentPage: 'infos' })
 	}
 
-	onClickElementFilters(id) {
-		this.elementFilters[id] = !this.elementFilters[id]
-		let datas = []
-		let count = 0
-
-		for (let filter in this.elementFilters)
-			if(this.elementFilters[filter])
-				for (let monster in this.monsters)
-					if(this.monsters[monster].elemType == filter) {
-						datas.push(this.monsters[monster])
-						count++
-					}
-
-		if (count == 0)
-			datas = this.monsters;
-
-		this.obj.setState({monsters: datas, elementFilters: this.elementFilters})
+	onClickElementFilters(key) {
+        this.setState({
+            elementFilter: (this.getState('elementFilter') === key) ? null : key
+        })
 	}
 
 	onClickSort(key) {
+        let sorts = this.getState('sorts')
+        sorts[key] = !sorts[key]
+        this.setState({ sorts: sorts })
+        return
 		let datas = []
 
 		this.sorts[key] = !this.sorts[key]
@@ -68,43 +127,8 @@ class MonstersData {
 
 		this.obj.setState({monsters: datas, sorts: this.sorts})
 	}
-
-	buildData() {
-		this.monsters = MonsterHelper.getData()
-		this.monster = this.monsters[Object.keys(this.monsters)[0]]
-		this.obj.setState({monsters: this.monsters, monster: this.monster})
-	}
-
-	init() {
-		this.elementFilters = {
-			Water: false,
-			Fire: false,
-			Wind: false,
-			Light: false,
-			Dark: false,
-		}
-		this.sorts = {
-			star: false,
-			lvl: false
-		}
-
-		this.monster = {}
-		this.currentPage = 'infos'
-
-		this.obj.setState({
-			monster: this.monster,
-			currentPage: this.currentPage,
-			elementFilters: this.elementFilters,
-			sorts: this.sorts,
-
-			onClickMonster: this.onClickMonster.bind(this), 
-			onClickInfos: this.onClickInfos.bind(this),
-			onClickRunes: this.onClickRunes.bind(this),
-			onClickElementFilters: this.onClickElementFilters.bind(this),
-			onClickSort: this.onClickSort.bind(this)
-		})
-	}
-
 }
-var MonstersObj = new MonstersData();
-export default MonstersObj;
+let MonstersObj = new MonstersData()
+MonstersObj.FILTER_ELEMENT = FILTER_ELEMENT
+MonstersObj.SORT_ATTRIBUTE = SORT_ATTRIBUTE
+export default MonstersObj

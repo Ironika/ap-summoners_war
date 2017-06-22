@@ -89,14 +89,7 @@ class RunesData {
             }
         }.bind(this))
 
-        console.log('allSet: ' + this.allSet + '  -  allPos:' + this.allPos)
-
-        console.log(this.getState('filterSet'))
-        console.log(this.getState('filterPos'))
-
         let runes = Utils.filter(RuneHelper.getData(), this._filterRune.bind(this))
-
-        //console.log(runes)
 
         this.setState({ runes: runes })
     }
