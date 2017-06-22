@@ -109,7 +109,6 @@ public class MonsterServlet extends APServletBase {
 			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			
 			MonsterBean bean = new MonsterBean();
 			bean.acc = data.getAcc();
 			bean.res = data.getRes();
@@ -128,6 +127,7 @@ public class MonsterServlet extends APServletBase {
 			bean.xp = data.getXp();
 			bean.atk = data.getAtk();
 			bean.id = data.getId();
+			
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {

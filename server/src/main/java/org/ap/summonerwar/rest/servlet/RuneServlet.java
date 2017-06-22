@@ -109,7 +109,6 @@ public class RuneServlet extends APServletBase {
 			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			
 			RuneBean bean = new RuneBean();
 			bean.lvl = data.getLvl();
 			bean.set = data.getSet();
@@ -130,6 +129,7 @@ public class RuneServlet extends APServletBase {
 			bean.stat1Type = data.getStat1Type();
 			bean.statMainType = data.getStatMainType();
 			bean.id = data.getId();
+			
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {

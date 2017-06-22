@@ -11,10 +11,10 @@ import javax.annotation.security.RolesAllowed;
 import org.ap.summonerwar.storage.UserData;
 import org.ap.summonerwar.storage.UserCollection;
 import org.ap.web.internal.APWebException;
-import java.util.List;
-import java.util.ArrayList;
 import org.ap.summonerwar.storage.ApauthCollection;
 import org.ap.summonerwar.storage.ApauthData;
+import java.util.List;
+import java.util.ArrayList;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
 import org.ap.summonerwar.internal.MailSender;
@@ -150,6 +150,7 @@ public class UserServlet extends APServletBase {
 			bean.id = data.getId();
 			bean.username = dataAuth.getUsername();
 			bean.email = dataAuth.getEmail();
+			
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
