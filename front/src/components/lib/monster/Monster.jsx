@@ -22,7 +22,7 @@ class Monster extends React.Component {
 		let name = monster.name
 
 		if(name.search("Unknow") != -1) {
-			return (<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/default-monster.jpg"}/>)
+			return (<img className="sm-monster-image" src={"assets/images/monsters/default-monster.jpg"}/>)
 		}
 
 		if(name.search(storage) != -1) {
@@ -38,15 +38,19 @@ class Monster extends React.Component {
 			name = name.replace(" ", "-")
 
 
-		return (<img className="sm-monster-image sm-monster-active" src={"assets/images/monsters/" + name + ".jpg"}/>)
+		return (<img className="sm-monster-image" src={"assets/images/monsters/" + name + ".jpg"}/>)
 	}
 
 	render() {
 		return (
-			<div className="sm-monster" onClick={this.onClick.bind(this)}>
-				<RaterStar className="sm-monster-star" value={this.props.monster.star} starMax={6}/>
-				<span className="sm-monster-lvl">{(this.props.monster.lvl > 9) ? this.props.monster.lvl : "0" + this.props.monster.lvl}</span>
+			<div className={this.props.active ? "sm-monster sm-monster-active" : "sm-monster"} onClick={this.onClick.bind(this)}>
 				{this.buildImg(this.props.monster)}
+				<div className="sm-monster-stars">
+					<RaterStar value={this.props.monster.star} starMax={6}/>
+				</div>
+				<div className="sm-monster-lvl">
+					{(this.props.monster.lvl > 9) ? this.props.monster.lvl : "0" + this.props.monster.lvl}
+				</div>
 			</div>
 		);
 	}

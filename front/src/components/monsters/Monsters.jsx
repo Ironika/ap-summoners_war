@@ -21,9 +21,13 @@ class Monsters extends React.Component {
 		MonstersData.unregister()
 	}
 
-	buildMonster(monster) {
-		return (<Monster key={monster.id} monster={monster} onClick={this.state.onClickMonster}/>)
-	}
+	buildMonster(monster) { return (
+		<Monster 
+			key={monster.id} 
+			monster={monster} 
+			active={monster.id === (this.state.monster || {}).id} 
+			onClick={this.state.onClickMonster}/>
+	)}
 
 	buildMonsterInfos(id) {
 		if(id == "infos" )
