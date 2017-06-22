@@ -50,12 +50,12 @@ class App extends React.Component {
 
 				<nav className="sm-sidebar">
 					<div className="sm-sidebar-logo-content">
-						<a onClick={this.goHome}>
+						<a onClick={this.home}>
 							<img alt="Summoners War" className="sm-sidebar-logo" src="assets/images/logo.png"/>
 						</a>
 					</div>
 		    		<div className="sm-sidebar-profile">
-		    			<a onClick={this.goProfile}>
+		    			<a onClick={this.profile}>
 		    				<img alt="Summoners War" className="sm-sidebar-profile-img" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
 		    				{this.state.username}
 		    			</a>

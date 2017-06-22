@@ -16,8 +16,8 @@ class AppData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.goHome = this.onClick.bind(this, '/')
-		this.obj.goProfile = this.onClick.bind(this, 'profile')
+		this.obj.home = this.onClick.bind(this, '/')
+		this.obj.profile = this.onClick.bind(this, 'profile')
 
 		Utils.forEach(PAGES, function(page) {
 			this.obj[page] = this.onClick.bind(this, PAGES[page])
