@@ -9,14 +9,6 @@ class MonsterInfos extends React.Component {
 		super(props);
 	}
 
-	componentWillMount() {
-		this.setState({monster: this.props.monster})
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({monster: nextProps.monster})
-	}
-
 	render() {
 		return (
 			<div className="sm-monster-infos">
@@ -24,11 +16,11 @@ class MonsterInfos extends React.Component {
 					<div className="sm-monster-info">
 						<div className="row">
 							<div className="col-xs-12 col-sm-8">
-								<img className="sm-monster-element" src={"assets/images/elements/" + this.state.monster.elemType + ".png"}/>
-								<span className="sm-monster-name">{this.state.monster.name}</span>
+								<img className="sm-monster-element" src={"assets/images/elements/" + this.props.monster.elemType + ".png"}/>
+								<span className="sm-monster-name">{this.props.monster.name}</span>
 							</div>
 							<div className="col-xs-12 col-sm-4">
-								<RaterStar className="sm-monster-star" value={this.state.monster.star} starMax={6}/>
+								<RaterStar className="sm-monster-star" value={this.props.monster.star} starMax={6}/>
 							</div>
 						</div>
 					</div>
@@ -39,7 +31,7 @@ class MonsterInfos extends React.Component {
 							</div>
 							<div className="col-xs-10">
 								<div className="progress sm-monster-progressbar">
-								  	<div className={"progress-bar sm-monster-" + this.state.monster.elemType} style={{width: '100%'}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+								  	<div className={"progress-bar sm-monster-" + this.props.monster.elemType} style={{width: '100%'}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
 									    100%
 								  	</div>
 								</div>
@@ -64,16 +56,16 @@ class MonsterInfos extends React.Component {
 					</div>
 					<div className="col-xs-7">
 						<ul className="sm-monster-values">
-							<li>{this.state.monster.lvl}</li>
-							<li>{this.state.monster.hp}<span>+3128</span></li>
-							<li>{this.state.monster.atk}<span>+312</span></li>
-							<li>{this.state.monster.def}<span>+38</span></li>
-							<li>{this.state.monster.spd}<span>+2</span></li>
+							<li>{this.props.monster.lvl}</li>
+							<li>{this.props.monster.hp}<span>+3128</span></li>
+							<li>{this.props.monster.atk}<span>+312</span></li>
+							<li>{this.props.monster.def}<span>+38</span></li>
+							<li>{this.props.monster.spd}<span>+2</span></li>
 							<li className="sm-monster-separator"></li>
-							<li>{this.state.monster.crate}%</li>
-							<li>{this.state.monster.cdmg}%</li>
-							<li>{this.state.monster.res}</li>
-							<li>{this.state.monster.acc}</li>
+							<li>{this.props.monster.crate}%</li>
+							<li>{this.props.monster.cdmg}%</li>
+							<li>{this.props.monster.res}</li>
+							<li>{this.props.monster.acc}</li>
 						</ul>
 					</div>
 				</div>

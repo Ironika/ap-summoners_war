@@ -9,14 +9,6 @@ class Rune extends React.Component {
 		super(props);
 	}
 
-	componentWillMount() {
-		this.setState({rune: this.props.rune})
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({rune: nextProps.rune})
-	}
-
 	buildStat(statType, stat) {
 		if (statType) {
 			if(statType == "AtkFlat" || statType == "DefFlat" || statType == "HpFlat") 
@@ -29,20 +21,20 @@ class Rune extends React.Component {
 	render() {
 		return (
 			<div className="sm-rune">
-				<RaterStar className="sm-rune-star" value={this.state.rune.star} starMax={6}/>
-				<img className="sm-rune-set" src={"assets/images/runes/Rune-" + this.state.rune.set + ".png"}/>
-				<span className="sm-rune-pos">{this.state.rune.pos}</span>
-				<span className="sm-rune-lvl">+{this.state.rune.lvl}</span>
+				<RaterStar className="sm-rune-star" value={this.props.rune.star} starMax={6}/>
+				<img className="sm-rune-set" src={"assets/images/runes/Rune-" + this.props.rune.set + ".png"}/>
+				<span className="sm-rune-pos">{this.props.rune.pos}</span>
+				<span className="sm-rune-lvl">+{this.props.rune.lvl}</span>
 				<div className="sm-rune-stats">
 					<ul className="sm-rune-stat">
-						{this.buildStat(this.state.rune.statMainType, this.state.rune.statMain)}
-						{this.buildStat(this.state.rune.stat1Type, this.state.rune.stat1)}
-						{this.buildStat(this.state.rune.stat2Type, this.state.rune.stat2)}
+						{this.buildStat(this.props.rune.statMainType, this.props.rune.statMain)}
+						{this.buildStat(this.props.rune.stat1Type, this.props.rune.stat1)}
+						{this.buildStat(this.props.rune.stat2Type, this.props.rune.stat2)}
 					</ul>
 					<ul className="sm-rune-stat sm-rune-stat2">
-						{this.buildStat(this.state.rune.statSubType, this.state.rune.statSub)}
-						{this.buildStat(this.state.rune.stat3Type, this.state.rune.stat3)}
-						{this.buildStat(this.state.rune.stat4Type, this.state.rune.stat4)}
+						{this.buildStat(this.props.rune.statSubType, this.props.rune.statSub)}
+						{this.buildStat(this.props.rune.stat3Type, this.props.rune.stat3)}
+						{this.buildStat(this.props.rune.stat4Type, this.props.rune.stat4)}
 					</ul>
 				</div>
 			</div>

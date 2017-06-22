@@ -9,17 +9,9 @@ class Monster extends React.Component {
 		super(props);
 	}
 
-	componentWillMount() {
-		this.setState({monster: this.props.monster})
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({monster: nextProps.monster})
-	}
-
 	onClick() {
 		if(this.props.onClick) {
-			this.props.onClick(this.state.monster)
+			this.props.onClick(this.props.monster)
 		}
 	}
 
@@ -52,9 +44,9 @@ class Monster extends React.Component {
 	render() {
 		return (
 			<div className="sm-monster" onClick={this.onClick.bind(this)}>
-				<RaterStar className="sm-monster-star" value={this.state.monster.star} starMax={6}/>
-				<span className="sm-monster-lvl">{(this.state.monster.lvl > 9) ? this.state.monster.lvl : "0" + this.state.monster.lvl}</span>
-				{this.buildImg(this.state.monster)}
+				<RaterStar className="sm-monster-star" value={this.props.monster.star} starMax={6}/>
+				<span className="sm-monster-lvl">{(this.props.monster.lvl > 9) ? this.props.monster.lvl : "0" + this.props.monster.lvl}</span>
+				{this.buildImg(this.props.monster)}
 			</div>
 		);
 	}
