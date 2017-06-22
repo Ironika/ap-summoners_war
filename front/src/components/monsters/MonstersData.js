@@ -36,14 +36,14 @@ class MonstersData extends BaseData {
         this.obj.onClickElementFilters = this.onClickElementFilters.bind(this)
         this.obj.onClickSort = this.onClickSort.bind(this)
 
-        this.setState({
+        this.obj.state = {
             search: '',
             currentPage: 'infos',
             monsters: [],
             monster: {},
             elementFilter: null,
             sorts: {}
-        })
+        }
 
         MonsterHelper.register(this, this.buildMonstersData.bind(this))
 		MonsterHelper.getUserMonsters(AuthHelper.getEntityId())

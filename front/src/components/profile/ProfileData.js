@@ -17,14 +17,14 @@ class ProfileData extends BaseData {
 
         this.obj.onClick = this.onClick.bind(this)
 
-        this.setState({
+        this.obj.state = {
             username: '', 
             email: '', 
             lastImport: '',
             monsters: 0,
             runes: 0, 
             builds: 0
-        })
+        }
 
         this.buildDataUser()
         this.buildDataMonster()

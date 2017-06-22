@@ -9,10 +9,10 @@ class LoginData extends BaseData {
 
 		this.obj.onSubmit = this.onSubmit.bind(this)
 
-		this.setState({
+		this.obj.state = {
 			username: '', 
 			password: ''
-		})
+		}
 	}
 
 	onSubmit() {

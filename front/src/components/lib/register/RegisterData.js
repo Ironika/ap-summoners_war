@@ -16,13 +16,13 @@ class RegisterData extends BaseData {
         this.obj.onSubmit = this.onSubmit.bind(this)
         this.obj.onSubmitCheck = this.onSubmitCheck.bind(this)
 
-        this.setState({
+        this.obj.state = {
             status: STATUS.REGISTER_INITIAL,
             username: '',
             password: '',
             email: '',
             token: ''
-        })
+        }
 	}
 
 	onSubmit() {

@@ -13,9 +13,9 @@ class HomeData extends BaseData {
 
 		this.obj.onSwitchMode = this.onSwitchMode.bind(this)
 
-		this.setState({
+		this.obj.state = {
 			status: STATUS.HOME_LOGIN
-		})
+		}
 	}
 
 	onSwitchMode() {
