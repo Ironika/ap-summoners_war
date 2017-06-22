@@ -1,23 +1,30 @@
 import AppHelper from 'helpers/AppHelper'
-import { Dispatcher } from 'ap-flux'
+import { BaseData } from 'ap-react-bootstrap'
 
-class HomeData {
+let STATUS = {
+    HOME_LOGIN: 0,
+    HOME_REGISTER: 1
+}
+
+class HomeData extends BaseData {
 
 	register(obj) {
-		this.obj = obj
-		this.isLoginCompo = true
-		this.onClick = this.onClick.bind(this)
-		this.obj.setState({isLoginCompo: this.isLoginCompo, onClick: this.onClick})
+		super.register(obj)
+
+		this.obj.onSwitchMode = this.onSwitchMode.bind(this)
+
+		this.setState({
+			status: STATUS.HOME_LOGIN
+		})
 	}
 
-	unregister() {
-	}
-
-	onClick() {
-		this.isLoginCompo = !this.isLoginCompo
-		this.obj.setState({isLoginCompo: this.isLoginCompo})
+	onSwitchMode() {
+		this.setState({
+			status: (this.getState('status') + 1) % 2
+		})
 	}
 
 }
-var HomeObj = new HomeData()
+let HomeObj = new HomeData()
+HomeObj.STATUS = STATUS
 export default HomeObj
