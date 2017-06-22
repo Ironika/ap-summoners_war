@@ -6,8 +6,6 @@ class LoginData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
-		//this.obj = obj
-		//this.obj.onChange = this.onChange.bind(this)
 
 		this.obj.onSubmit = this.onSubmit.bind(this)
 
