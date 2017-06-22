@@ -20,7 +20,7 @@ class HomeData extends BaseData {
 
 	onSwitchMode() {
 		this.setState({
-			status: (this.getState('status') + 1) % 2
+			status: (this.getState('status') + 1) % Object.keys(STATUS).length
 		})
 	}
 
