@@ -60,10 +60,7 @@ class Monsters extends React.Component {
                     <div className="sm-sheet sm-monster-filters-elements">
                         {Utils.map(MonstersData.FILTER_ELEMENT, this._buildElementFilters.bind(this))}
                     </div>
-                    <div className="sm-sheet sm-monster-search">
-                        <input className="sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/>
-                    </div>
-                    <div className="sm-sheet sm-monster-list">
+                    <div className="sm-monster-list">
                         {this.state.monsters.filter(this.filterMonsters).sort(this.sortMonsters).map(this._buildMonster.bind(this))}
                     </div>
                 </div>
@@ -75,6 +72,7 @@ class Monsters extends React.Component {
                     </div>
                     <div className="sm-sheet sm-monster-filters-top">
                         <ul className="sm-monster-filters">
+                            <li className="sm-li-search-input"><input className="sm-input sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/></li>
                             {Utils.map(MonstersData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
                         </ul>
                     </div>                    

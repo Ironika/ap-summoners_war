@@ -22,14 +22,6 @@
 		}
 	}
 
-    .sm-monster-search {
-        margin-top: 20px;
-        .sm-search-input {
-            margin: 5px;
-            width: calc(100% - 10px);    
-        }
-    }
-
 	.sm-monster-list {
 		overflow: auto;
 		height: 395px;
@@ -67,6 +59,17 @@
 	}
 	.sm-monster-filters {
 		text-align: center;
+		display: inline-block;
+		margin: auto;
+    	width: 100%;
+    	.sm-li-search-input {
+		    width: 50%;
+    		margin-right: 20px;
+    	}
+		.sm-search-input {
+            width: calc(100% - 10px); 
+            color: $color-text;   
+        }
 		li {
 			display: inline-block;
 			padding: 10px;

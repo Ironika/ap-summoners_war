@@ -31,29 +31,16 @@ class Import extends React.Component {
 							<div className="sm-sheet sm-sheet-mid">
 								<div className="sm-content">
 									<label htmlFor="file-upload" className="sm-label sm-upload-label">
-									    Upload your Json file
+									    {this.state.upload}
 									</label>
-									<input id="file-upload" type="file" ref={(c) => this.fileInput = c}/>
+									<input id="file-upload" type="file" ref={(c) => this.fileInput = c} onChange={this.onChange.bind(this)}/>
 								</div>
 								<div className="sm-upload-button">
-									<button className="sm-button" onClick={this.state.onClickImport}>Import</button>
+									<button className="sm-button" onClick={this.onClickImport}>Import</button>
 								</div>
 							</div>
 							<div className="sm-sheet sm-sheet-mid">
-								<ul className="sm-upload-filters">
-									<li>
-										<label className="sm-label">Filter</label>
-										<input className="sm-checkbox" type="checkbox"/>
-									</li>
-									<li>
-										<label className="sm-label">Filter</label>
-										<input className="sm-checkbox" type="checkbox"/>
-									</li>
-									<li>
-										<label className="sm-label">Filter</label>
-										<input className="sm-checkbox" type="checkbox"/>
-									</li>
-								</ul>
+								<p className="sm-home-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
 							</div>
 						</div>
 					</div>

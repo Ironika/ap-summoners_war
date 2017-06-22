@@ -2,6 +2,8 @@ import React from 'react';
 import AppData from 'components/AppData';
 import AppHelper from 'helpers/AppHelper';
 import { browserHistory } from 'react-router';
+import { Utils } from 'ap-react-bootstrap'
+
 
 import './App.scss';
 
@@ -35,27 +37,31 @@ class App extends React.Component {
 		}
 	}
 
+	buildPage(page, key) {
+		console.log(this[page])
+		return (
+			<li key={key}><a onClick={this[page].bind(this)} className={(key == this.state.currentPage) ? "currentPage" : ""}>{key}</a></li>
+		)
+	}
+
 	render() {
 		return (
 			<div className='ap-app'>
 
 				<nav className="sm-sidebar">
 					<div className="sm-sidebar-logo-content">
-						<a onClick={this.state.home}>
+						<a onClick={this.goHome}>
 							<img alt="Summoners War" className="sm-sidebar-logo" src="assets/images/logo.png"/>
 						</a>
 					</div>
 		    		<div className="sm-sidebar-profile">
-		    			<a onClick={this.state.profile}>
+		    			<a onClick={this.goProfile}>
 		    				<img alt="Summoners War" className="sm-sidebar-profile-img" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-		    				Homunculus
+		    				{this.state.username}
 		    			</a>
 		    		</div>
 					<ul>
-						<li><a onClick={this.state.import}>Import</a></li>
-				        <li><a onClick={this.state.monsters}>Monsters</a></li>
-				        <li><a onClick={this.state.runes}>Runes</a></li>
-				        <li><a onClick={this.state.builds}>Builds</a></li>
+						{Utils.map(AppData.PAGES, this.buildPage.bind(this))}
 			      	</ul>
 				</nav>
 

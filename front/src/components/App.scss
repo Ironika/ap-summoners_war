@@ -79,6 +79,24 @@ html, body, .app, .ap-app {
 	    	color:	$color-text;
 	    }
 	}
+
+	//CHANGE COLOR of PLACEHOLDER INPUT
+	*::-webkit-input-placeholder {
+	    color: $color-text;
+	}
+	*:-moz-placeholder {
+	    /* FF 4-18 */
+	    color: $color-text;
+	}
+	*::-moz-placeholder {
+	    /* FF 19+ */
+	    color: $color-text;
+	}
+	*:-ms-input-placeholder {
+	    /* IE 10+ */
+	    color: $color-text;
+	}
+
 	footer {
 		background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
 		width: 80%;
@@ -99,8 +117,8 @@ html, body, .app, .ap-app {
 
 
 	.sm-sidebar {
-		background-image: radial-gradient(#D2AD65 65%,#8F6630 100%);
-		border-color: #8F6630;
+		background-image: radial-gradient($marroon-light 65%,$marroon-dark 100%);
+		border-color: $marroon-dark;
 		position: absolute;
 		height: 100%;
 		width: 20%;
@@ -109,7 +127,7 @@ html, body, .app, .ap-app {
 			.sm-sidebar-logo {
 				width: 100%;
 			    padding: 10px;
-			    border-bottom: 2px solid #8F6630;
+			    border-bottom: 2px solid $marroon-dark;
 			    margin-bottom: 35px;
 			    cursor: pointer;
 			}
@@ -126,7 +144,7 @@ html, body, .app, .ap-app {
 			}
 			a, a:hover, a:focus {
 				text-decoration: none;
-				color: #261D14;
+				color: $marroon-dark2;
 			    font-size: 18px;
 			}
 		}
@@ -135,20 +153,27 @@ html, body, .app, .ap-app {
     		margin: auto;
     		li {
     			margin-top: 10px;
-				border-bottom: 2px solid #8F6630;
+				border-bottom: 2px solid $marroon-dark;
 				font-family: 'Exo', sans-serif;
 				&:hover {
-					background-image: radial-gradient(#48351F 50%,#261D14 100%);
+					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
 				}
 				a {
-					color: #261D14;
+					color: $marroon-dark2;
 				    font-size: 18px;
 				    width: 100%;
 				    display: block;
 				    padding: 10px;
+				    &:first-letter {
+					    text-transform:capitalize;
+					}
 				    &:hover {
-				    	color: wheat;
+				    	color: $color-text;
 				    }
+				}
+				.currentPage {
+					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
+					color: $color-text;
 				}
     		}
 		}
