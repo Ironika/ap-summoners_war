@@ -1,19 +1,18 @@
 import AppHelper from 'helpers/AppHelper'
 import UserHelper from 'helpers/UserHelper'
 import AuthHelper from 'helpers/AuthHelper'
-import { Dispatcher } from 'ap-flux'
+import { BaseData } from 'ap-react-bootstrap'
 
 let STATUS = {
     REGISTER_INITIAL: 0,
     REGISTER_CHECK: 1
 }
 
-class RegisterData {
+class RegisterData extends BaseData {
 
 	register(obj) {
-		this.obj = obj
+		super.register(obj)
 
-		this.obj.onChange = this.onChange.bind(this)
         this.obj.onSubmit = this.onSubmit.bind(this)
         this.obj.onSubmitCheck = this.onSubmitCheck.bind(this)
 
@@ -25,15 +24,6 @@ class RegisterData {
             token: ''
         })
 	}
-	unregister() {
-
-    }
-    setState(arg) {
-        this.obj.setState(arg || this)
-    }
-    getState(arg) {
-        return arg ? this.obj.state[arg] : this.obj.state
-    }
 
 	onSubmit() {
         this.setState({ error: 'Please wait..' })
@@ -59,12 +49,6 @@ class RegisterData {
         then(AppHelper.navigate.bind(AppHelper, 'profile')).
         catch(this.setState.bind(this, { error: 'Email confirmation failed' }))
     }
-
-	onChange(id, event) {
-        let data = {}
-        data[id] = event.target.value
-        this.setState(data)
-	}
 }
 let RegisterObj = new RegisterData()
 RegisterObj.STATUS = STATUS

@@ -86,6 +86,8 @@ public class UserCollection {
 
 	public static Document toDocument(UserData user) {
 		Document document = new Document();
+		if (user.authId != null)
+			document.append("authId", user.authId);
 		if (user.lastImport != null)
 			document.append("lastImport", user.lastImport);
 		if (user.id != null)
@@ -95,6 +97,7 @@ public class UserCollection {
 
 	public static Document toNullDocument(UserData user) {
 		Document document = new Document();
+		document.append("authId", user.authId);
 		document.append("lastImport", user.lastImport);
 		document.append("id", user.id);
 		return document;
