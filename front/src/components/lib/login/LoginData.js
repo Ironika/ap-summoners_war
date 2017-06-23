@@ -16,8 +16,11 @@ class LoginData extends BaseData {
 	}
 
 	onSubmit() {
-		AuthHelper.getAuth({ username: this.getState('username'), password: this.getState('password') }).
-		then(AppHelper.navigate.bind(AppHelper, 'profile'))
+		AppHelper.setBusy(true).
+		then(AuthHelper.getAuth.bind(AuthHelper, { username: this.getState('username'), password: this.getState('password') })).
+		then(AppHelper.navigate.bind(AppHelper, 'profile')).
+		then(AppHelper.setBusy.bind(AppHelper, false)).
+		catch(AppHelper.setBusy.bind(AppHelper, false))
 	}
 
 }

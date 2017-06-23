@@ -2,7 +2,7 @@ import React from 'react';
 import AppData from 'components/AppData';
 import AppHelper from 'helpers/AppHelper';
 import { browserHistory } from 'react-router';
-import { Utils } from 'ap-react-bootstrap'
+import { Utils, BusyBars } from 'ap-react-bootstrap'
 
 
 import './App.scss';
@@ -17,6 +17,7 @@ class App extends React.Component {
 	componentWillMount() {
 		AppData.register(this)
 		AppHelper.register('/path', this, this.onAppStorePathUpdate.bind(this));
+		AppHelper.register('/app/busy', this, this.onAppBusy.bind(this));
 	}
 
 	componentWillUnmount() {
@@ -37,8 +38,17 @@ class App extends React.Component {
 		}
 	}
 
+	onAppBusy() {
+		let busy = AppHelper.getData('/app/busy')
+		clearTimeout(this._busyTimeout)
+		if (busy) {
+			this.setState({ busy: true })
+		} else {
+			this._busyTimeout = setTimeout(this.setState.bind(this, { busy: false }), 1000)
+		}
+	}
+
 	buildPage(page, key) {
-		console.log(this[page])
 		return (
 			<li key={key}><a onClick={this[page].bind(this)} className={(key == this.state.currentPage) ? "currentPage" : ""}>{key}</a></li>
 		)
@@ -76,6 +86,12 @@ class App extends React.Component {
 					  	<p className={"sm-copyright"}>Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.</p>
 					</div>
 				</footer>
+
+				{this.state.busy ?
+					<div className='sm-busy'>
+						<BusyBars className='sm-busy-indicator'/>
+					</div>
+				: '' }
 			</div>
 		);
 	}
