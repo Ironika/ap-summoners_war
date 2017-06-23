@@ -90,6 +90,9 @@ html, body, .app, .ap-app {
 	    	color:	$color-text;
 	    }
 	}
+	.sm-error {
+		color: $color-text;
+	}
 
 	//CHANGE COLOR of PLACEHOLDER INPUT
 	*::-webkit-input-placeholder {

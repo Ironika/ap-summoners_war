@@ -33,7 +33,8 @@ class Import extends React.Component {
 									<label htmlFor="file-upload" className="sm-label sm-upload-label">
 									    {this.state.upload}
 									</label>
-									<input id="file-upload" type="file" ref={(c) => this.fileInput = c} onChange={this.onChange.bind(this)}/>
+									<input id="file-upload" type="file" ref={(c) => this.state.fileInput = c} onChange={this.onChange.bind(this)}/>
+									<span className="sm-error">{this.state.error}</span>
 								</div>
 								<div className="sm-upload-button">
 									<button className="sm-button" onClick={this.onClickImport}>Import</button>

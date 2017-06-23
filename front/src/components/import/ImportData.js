@@ -12,7 +12,9 @@ class ImportData extends BaseData {
 		this.obj.onClickImport = this.onClickImport.bind(this)
 
 		this.obj.state = {
-			upload: "Upload your file"
+			upload: "Upload your file",
+			fileInput: {},
+			error: ""
 		}
 	}
 
@@ -21,26 +23,26 @@ class ImportData extends BaseData {
 	}
 
 	onChange() {
-		this.setState({upload: this.obj.fileInput.files[0].name})
+		this.setState({upload: this.getState('fileInput').files[0].name, error: ""})
 	}
 
 	onClickImport() {
-		var f = this.obj.fileInput.files[0]; 
+		var f = this.getState('fileInput').files[0]; 
 
 	    if (f) {
-	      var r = new FileReader();
-	      r.onload = function(e) { 
-		    var contents = e.target.result;
-		    DefaultHelper.postUserImport({
-		    	data: contents, 
-		    	userId: AuthHelper.getEntityId()
-		    }).then(
-		    	AppHelper.navigate("/monsters")
-		    )
-	      }
-	      r.readAsText(f);
+	      	var r = new FileReader();
+	      	r.onload = function(e) { 
+			    var contents = e.target.result;
+			    DefaultHelper.postUserImport({
+			    	data: contents, 
+			    	userId: AuthHelper.getEntityId()
+			    }).then(
+			    	// AppHelper.navigate("/monsters")
+			    )
+	      	}
+	      	r.readAsText(f);
 	    } else { 
-	      console.log("Failed to load file");
+	      	this.setState({error: "Failed to load the file"});
 	    }
 	}
 

@@ -16,11 +16,11 @@ class AppData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.home = this.onClick.bind(this, '/')
-		this.obj.profile = this.onClick.bind(this, 'profile')
+		this.obj.onClickHome = this.onClickHome
+		this.obj.onClickProfile = this.onClickProfile
 
 		Utils.forEach(PAGES, function(page) {
-			this.obj[page] = this.onClick.bind(this, PAGES[page])
+			this.obj[page] = this.onClickPage.bind(this, PAGES[page])
 		}.bind(this))
 
 		this.obj.state = {
@@ -42,13 +42,17 @@ class AppData extends BaseData {
         })
 	}
 
-	onClick(id) {
-		if(id == '/')
-			AppHelper.navigate('/');
-		else {
-			this.obj.setState({currentPage: id})
-			AppHelper.navigate('/' + id);
-		}
+	onClickHome() {
+		AppHelper.navigate('/');
+	}
+
+	onClickProfile() {
+		AppHelper.navigate('/profile');
+	}
+
+	onClickPage(page) {
+		this.obj.setState({currentPage: page})
+		AppHelper.navigate('/' + page);
 	}
 
 }
