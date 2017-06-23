@@ -11,7 +11,8 @@ class LoginData extends BaseData {
 
 		this.obj.state = {
 			username: '', 
-			password: ''
+			password: '',
+			error: ''
 		}
 	}
 
@@ -20,7 +21,10 @@ class LoginData extends BaseData {
 		then(AuthHelper.getAuth.bind(AuthHelper, { username: this.getState('username'), password: this.getState('password') })).
 		then(AppHelper.navigate.bind(AppHelper, 'profile')).
 		then(AppHelper.setBusy.bind(AppHelper, false)).
-		catch(AppHelper.setBusy.bind(AppHelper, false))
+		catch(function() {
+			this.setState({error: "An error has occured !"})
+			AppHelper.setBusy(false)
+		}.bind(this))
 	}
 
 }
