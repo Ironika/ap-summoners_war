@@ -67,25 +67,25 @@ public class RuneServlet extends APServletBase {
 	public Response postRune(@Context SecurityContext sc, RuneBean runeBean) {
 		try {
 			RuneData data = new RuneData();
-			data.id = UUIDGenerator.nextId();
-			data.lvl = runeBean.lvl;
-			data.set = runeBean.set;
-			data.stat4Type = runeBean.stat4Type;
-			data.star = runeBean.star;
-			data.stat2Type = runeBean.stat2Type;
-			data.statSub = runeBean.statSub;
-			data.statMain = runeBean.statMain;
-			data.stat4 = runeBean.stat4;
-			data.userId = runeBean.userId;
-			data.stat3Type = runeBean.stat3Type;
-			data.stat2 = runeBean.stat2;
-			data.pos = runeBean.pos;
-			data.stat3 = runeBean.stat3;
-			data.statSubType = runeBean.statSubType;
-			data.stat1 = runeBean.stat1;
-			data.monsterId = runeBean.monsterId;
-			data.stat1Type = runeBean.stat1Type;
-			data.statMainType = runeBean.statMainType;
+			data.setId(UUIDGenerator.nextId());
+			data.setLvl(runeBean.lvl);
+			data.setSet(runeBean.set);
+			data.setStat4Type(runeBean.stat4Type);
+			data.setStar(runeBean.star);
+			data.setStat2Type(runeBean.stat2Type);
+			data.setStatSub(runeBean.statSub);
+			data.setStatMain(runeBean.statMain);
+			data.setStat4(runeBean.stat4);
+			data.setUserId(runeBean.userId);
+			data.setStat3Type(runeBean.stat3Type);
+			data.setStat2(runeBean.stat2);
+			data.setPos(runeBean.pos);
+			data.setStat3(runeBean.stat3);
+			data.setStatSubType(runeBean.statSubType);
+			data.setStat1(runeBean.stat1);
+			data.setMonsterId(runeBean.monsterId);
+			data.setStat1Type(runeBean.stat1Type);
+			data.setStatMainType(runeBean.statMainType);
 			RuneCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			

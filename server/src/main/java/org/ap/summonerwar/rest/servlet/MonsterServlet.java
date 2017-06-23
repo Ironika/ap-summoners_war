@@ -70,23 +70,23 @@ public class MonsterServlet extends APServletBase {
 	public Response postMonster(@Context SecurityContext sc, MonsterBean monsterBean) {
 		try {
 			MonsterData data = new MonsterData();
-			data.id = UUIDGenerator.nextId();
-			data.acc = monsterBean.acc;
-			data.res = monsterBean.res;
-			data.lvl = monsterBean.lvl;
-			data.role = monsterBean.role;
-			data.star = monsterBean.star;
-			data.isAwaked = monsterBean.isAwaked;
-			data.def = monsterBean.def;
-			data.spd = monsterBean.spd;
-			data.hp = monsterBean.hp;
-			data.crate = monsterBean.crate;
-			data.userId = monsterBean.userId;
-			data.elemType = monsterBean.elemType;
-			data.cdmg = monsterBean.cdmg;
-			data.name = monsterBean.name;
-			data.xp = monsterBean.xp;
-			data.atk = monsterBean.atk;
+			data.setId(UUIDGenerator.nextId());
+			data.setAcc(monsterBean.acc);
+			data.setRes(monsterBean.res);
+			data.setLvl(monsterBean.lvl);
+			data.setRole(monsterBean.role);
+			data.setStar(monsterBean.star);
+			data.setIsAwaked(monsterBean.isAwaked);
+			data.setDef(monsterBean.def);
+			data.setSpd(monsterBean.spd);
+			data.setHp(monsterBean.hp);
+			data.setCrate(monsterBean.crate);
+			data.setUserId(monsterBean.userId);
+			data.setElemType(monsterBean.elemType);
+			data.setCdmg(monsterBean.cdmg);
+			data.setName(monsterBean.name);
+			data.setXp(monsterBean.xp);
+			data.setAtk(monsterBean.atk);
 			MonsterCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			

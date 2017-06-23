@@ -43,7 +43,7 @@ public class UserServlet extends APServletBase {
 			
 			List<UserBean> beanList = new ArrayList<UserBean>();
 			for (UserData data : datas) {
-				ApauthData dataAuth = ApauthCollection.getById(data.authId);
+				ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
 				if(dataAuth == null) {
 					return Response.status(Status.NOT_FOUND).build();
 				}
@@ -110,9 +110,9 @@ public class UserServlet extends APServletBase {
 			ApauthCollection.create(dataAuth);
 			
 			dataEntity = new UserData();
-			dataEntity.id = dataAuth.entityId;
-			dataEntity.authId = dataAuth.id;
-			dataEntity.lastImport = userBean.lastImport;
+			dataEntity.setId(dataAuth.getEntityId());
+			dataEntity.setAuthId(dataAuth.getId());
+			dataEntity.setLastImport(userBean.lastImport);
 			UserCollection.create(dataEntity);
 			
 			MailSender.sendRegistrationMail(dataAuth);
@@ -138,7 +138,7 @@ public class UserServlet extends APServletBase {
 			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			ApauthData dataAuth = ApauthCollection.getById(data.authId);
+			ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
 			if(dataAuth == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
