@@ -29,6 +29,7 @@ class AppData extends BaseData {
 		}
 
 		UserHelper.register(this, this.buildDataUser.bind(this))
+		UserHelper.getUser(AuthHelper.getEntityId())
 	}
 
 	unregister() {
@@ -36,7 +37,6 @@ class AppData extends BaseData {
 	}
 
 	buildDataUser() {
-		UserHelper.getUser(AuthHelper.getEntityId())
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
 		this.setState({
             username: username || 'Homunculus',
