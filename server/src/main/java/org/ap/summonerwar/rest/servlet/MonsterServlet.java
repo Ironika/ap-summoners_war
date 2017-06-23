@@ -166,7 +166,7 @@ public class MonsterServlet extends APServletBase {
 			data.setAtk(monsterBean.atk);
 			// Store the updated data object
 			MonsterCollection.updateNull(data);
-		
+			// Send the response
 			return Response.status(Status.OK).build();
 			
 		} catch (APWebException e) {

@@ -174,7 +174,7 @@ public class UserServlet extends APServletBase {
 			data.setLastImport(userBean.lastImport);
 			// Store the updated data object
 			UserCollection.updateNull(data);
-		
+			// Send the response
 			return Response.status(Status.OK).build();
 			
 		} catch (APWebException e) {

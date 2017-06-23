@@ -169,7 +169,7 @@ public class RuneServlet extends APServletBase {
 			data.setStatMainType(runeBean.statMainType);
 			// Store the updated data object
 			RuneCollection.updateNull(data);
-		
+			// Send the response
 			return Response.status(Status.OK).build();
 			
 		} catch (APWebException e) {
