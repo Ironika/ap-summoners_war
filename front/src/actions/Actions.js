@@ -24,10 +24,12 @@ let delete_monster = new ActionBase({ name: 'DELETE_MONSTER' });
 let get_monster_runes = new ActionBase({ name: 'GET_MONSTER_RUNES' });
 let get_user = new ActionBase({ name: 'GET_USER' });
 let post_user = new ActionBase({ name: 'POST_USER' });
-let put_user = new ActionBase({ name: 'PUT_USER' });
 let delete_user = new ActionBase({ name: 'DELETE_USER' });
+let put_user = new ActionBase({ name: 'PUT_USER' });
 let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' });
+let delete_user_rune = new ActionBase({ name: 'DELETE_USER_RUNE' });
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' });
+let delete_user_monster_rune = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNE' });
 let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' });
 
 get_auth.do = function(args) {
@@ -273,22 +275,22 @@ post_user.do = function(args) {
 	return RestService._request(reqParam);
 }
 
+delete_user.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/user/' + args.userId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
 put_user.do = function(args) {
 	Utils.checkMembers(args, ['token', 'userId', 'data']);
 	var reqParam = {
 		method: 'PUT',
 		url: '/user/' + args.userId + '',
 		data : args.data,
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
-delete_user.do = function(args) {
-	Utils.checkMembers(args, ['token', 'userId']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/user/' + args.userId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
@@ -304,11 +306,31 @@ get_user_runes.do = function(args) {
 	return RestService._request(reqParam);
 }
 
+delete_user_rune.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/user/' + args.userId + '/runes',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
 get_user_monsters.do = function(args) {
 	Utils.checkMembers(args, ['token', 'userId']);
 	var reqParam = {
 		method: 'GET',
 		url: '/user/' + args.userId + '/monsters',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_user_monster_rune.do = function(args) {
+	Utils.checkMembers(args, ['token', 'monsterId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/user/{userId}/monsters/' + args.monsterId + '/runes',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

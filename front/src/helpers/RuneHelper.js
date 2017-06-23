@@ -40,6 +40,14 @@ class RuneHelper {
 		return Dispatcher.issue('GET_USER_RUNES', {token: AuthHelper.getToken(), userId: userId});
 	}
 
+	deleteUserRune(userId) {
+		return Dispatcher.issue('DELETE_USER_RUNE', {token: AuthHelper.getToken(), userId: userId});
+	}
+
+	deleteUserMonsterRune(monsterId) {
+		return Dispatcher.issue('DELETE_USER_MONSTER_RUNE', {token: AuthHelper.getToken(), monsterId: monsterId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/rune' + (id ? '/' + id : ''));
 	}

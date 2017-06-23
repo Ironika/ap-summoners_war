@@ -184,9 +184,11 @@ public class RuneServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response deleteRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId) {
 		try {
+			// Try to delete the entity
 			if (!RuneCollection.deleteById(runeId)) {
 				throw new APWebException("rune not found", "AP_RUNE_NOTFOUND", Status.BAD_REQUEST);
 			}
+			// Send the response
 			return Response.status(Status.OK).build();
 			
 		} catch (APWebException e) {

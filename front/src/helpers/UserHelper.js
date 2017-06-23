@@ -20,12 +20,12 @@ class UserHelper {
 		return Dispatcher.issue('POST_USER', {token: AuthHelper.getToken(), data: data});
 	}
 
-	putUser(data) {
-		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), userId: data.userId, data: data});
-	}
-
 	deleteUser(userId) {
 		return Dispatcher.issue('DELETE_USER', {token: AuthHelper.getToken(), userId: userId});
+	}
+
+	putUser(data) {
+		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), userId: data.userId, data: data});
 	}
 
 	getData(id) {

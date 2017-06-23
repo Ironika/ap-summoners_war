@@ -128,6 +128,22 @@ public class UserServlet extends APServletBase {
 		}
 	}
 
+	@DELETE
+	@RolesAllowed("user")
+	public Response deleteUsers(@Context SecurityContext sc) {
+		try {
+			// Delete from database
+			long deletedCount = UserCollection.drop();
+			// Send response
+			return Response.status(Status.OK).entity("{\"deletedCount\": " + deletedCount + "}").build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
 	@GET
 	@Path("/{userId}")
 	@Produces({MediaType.APPLICATION_JSON})
@@ -189,9 +205,11 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response deleteUser(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
+			// Try to delete the entity
 			if (!UserCollection.deleteById(userId)) {
 				throw new APWebException("user not found", "AP_USER_NOTFOUND", Status.BAD_REQUEST);
 			}
+			// Send the response
 			return Response.status(Status.OK).build();
 			
 		} catch (APWebException e) {
@@ -244,6 +262,23 @@ public class UserServlet extends APServletBase {
 		}
 	}
 
+	@DELETE
+	@Path("/{userId}/runes")
+	@RolesAllowed("user")
+	public Response deleteUserRunes(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			// Delete from database
+			long deletedCount = RuneCollection.deleteMany(and(eq("userId", userId)));
+			// Send response
+			return Response.status(Status.OK).entity("{\"deletedCount\": " + deletedCount + "}").build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
 	@GET
 	@Path("/{userId}/monsters")
 	@Produces({MediaType.APPLICATION_JSON})
@@ -277,6 +312,23 @@ public class UserServlet extends APServletBase {
 			}
 			
 			return Response.status(Status.OK).entity(beanList.toArray(new MonsterBean[beanList.size()])).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@DELETE
+	@Path("/{userId}/monsters/{monsterId}/runes")
+	@RolesAllowed("user")
+	public Response deleteUserMonsterRunes(@Context SecurityContext sc, @PathParam("userId") final String userId, @PathParam("monsterId") final String monsterId) {
+		try {
+			// Delete from database
+			long deletedCount = RuneCollection.deleteMany(and(eq("userId", userId),eq("monsterId", monsterId)));
+			// Send response
+			return Response.status(Status.OK).entity("{\"deletedCount\": " + deletedCount + "}").build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

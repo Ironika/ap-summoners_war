@@ -136,16 +136,6 @@ ErrorStore.handlePostUserError = function(error, params) {
 	ErrorStore.notifyPath('/POST_USER');
 }
 
-ErrorStore.handlePutUserSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_USER;
-	ErrorStore.notifyPath('/PUT_USER');
-}
-
-ErrorStore.handlePutUserError = function(error, params) {
-	ErrorStore._content.PUT_USER = error;
-	ErrorStore.notifyPath('/PUT_USER');
-}
-
 ErrorStore.handleDeleteUserSuccess = function(results, params) {
 	delete ErrorStore._content.DELETE_USER;
 	ErrorStore.notifyPath('/DELETE_USER');
@@ -154,6 +144,16 @@ ErrorStore.handleDeleteUserSuccess = function(results, params) {
 ErrorStore.handleDeleteUserError = function(error, params) {
 	ErrorStore._content.DELETE_USER = error;
 	ErrorStore.notifyPath('/DELETE_USER');
+}
+
+ErrorStore.handlePutUserSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_USER;
+	ErrorStore.notifyPath('/PUT_USER');
+}
+
+ErrorStore.handlePutUserError = function(error, params) {
+	ErrorStore._content.PUT_USER = error;
+	ErrorStore.notifyPath('/PUT_USER');
 }
 
 ErrorStore.handleGetUserRunesSuccess = function(results, params) {
@@ -166,6 +166,16 @@ ErrorStore.handleGetUserRunesError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_RUNES');
 }
 
+ErrorStore.handleDeleteUserRuneSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_USER_RUNE;
+	ErrorStore.notifyPath('/DELETE_USER_RUNE');
+}
+
+ErrorStore.handleDeleteUserRuneError = function(error, params) {
+	ErrorStore._content.DELETE_USER_RUNE = error;
+	ErrorStore.notifyPath('/DELETE_USER_RUNE');
+}
+
 ErrorStore.handleGetUserMonstersSuccess = function(results, params) {
 	delete ErrorStore._content.GET_USER_MONSTERS;
 	ErrorStore.notifyPath('/GET_USER_MONSTERS');
@@ -174,6 +184,16 @@ ErrorStore.handleGetUserMonstersSuccess = function(results, params) {
 ErrorStore.handleGetUserMonstersError = function(error, params) {
 	ErrorStore._content.GET_USER_MONSTERS = error;
 	ErrorStore.notifyPath('/GET_USER_MONSTERS');
+}
+
+ErrorStore.handleDeleteUserMonsterRuneSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_USER_MONSTER_RUNE;
+	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNE');
+}
+
+ErrorStore.handleDeleteUserMonsterRuneError = function(error, params) {
+	ErrorStore._content.DELETE_USER_MONSTER_RUNE = error;
+	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNE');
 }
 
 ErrorStore.handlePostUserImportSuccess = function(results, params) {
@@ -300,10 +320,12 @@ Dispatcher.register('DELETE_MONSTER', ErrorStore.handleDeleteMonsterSuccess, Err
 Dispatcher.register('GET_MONSTER_RUNES', ErrorStore.handleGetMonsterRunesSuccess, ErrorStore.handleGetMonsterRunesError);
 Dispatcher.register('GET_USER', ErrorStore.handleGetUserSuccess, ErrorStore.handleGetUserError);
 Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.handlePostUserError);
-Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError);
 Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError);
+Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError);
 Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError);
+Dispatcher.register('DELETE_USER_RUNE', ErrorStore.handleDeleteUserRuneSuccess, ErrorStore.handleDeleteUserRuneError);
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError);
+Dispatcher.register('DELETE_USER_MONSTER_RUNE', ErrorStore.handleDeleteUserMonsterRuneSuccess, ErrorStore.handleDeleteUserMonsterRuneError);
 Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError);
 Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError);
 Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError);
