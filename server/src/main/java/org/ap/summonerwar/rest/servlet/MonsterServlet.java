@@ -181,11 +181,13 @@ public class MonsterServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response deleteMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId) {
 		try {
-			if (MonsterCollection.deleteById(monsterId)) {
-				return Response.status(Status.OK).build();
+			if (!MonsterCollection.deleteById(monsterId)) {
+				throw new APWebException("monster not found", "AP_MONSTER_NOTFOUND", Status.BAD_REQUEST);
 			}
-			return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.OK).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}

@@ -189,11 +189,13 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response deleteUser(@Context SecurityContext sc, @PathParam("userId") final String userId) {
 		try {
-			if (UserCollection.deleteById(userId)) {
-				return Response.status(Status.OK).build();
+			if (!UserCollection.deleteById(userId)) {
+				throw new APWebException("user not found", "AP_USER_NOTFOUND", Status.BAD_REQUEST);
 			}
-			return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.OK).build();
 			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
