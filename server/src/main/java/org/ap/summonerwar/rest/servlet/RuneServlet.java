@@ -2,9 +2,7 @@ package org.ap.summonerwar.rest.servlet;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import org.bson.Document;
 import javax.ws.rs.core.Response.*;
-import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.RuneBean;
 import javax.annotation.security.RolesAllowed;
@@ -145,49 +143,38 @@ public class RuneServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response putRune(@Context SecurityContext sc, @PathParam("runeId") final String runeId, RuneBean runeBean) {
 		try {
-			Document document = new Document();
-			if(runeBean.lvl != null)
-				document.append("lvl", runeBean.lvl);
-			if(runeBean.set != null)
-				document.append("set", runeBean.set);
-			if(runeBean.stat4Type != null)
-				document.append("stat4Type", runeBean.stat4Type);
-			if(runeBean.star != null)
-				document.append("star", runeBean.star);
-			if(runeBean.stat2Type != null)
-				document.append("stat2Type", runeBean.stat2Type);
-			if(runeBean.statSub != null)
-				document.append("statSub", runeBean.statSub);
-			if(runeBean.statMain != null)
-				document.append("statMain", runeBean.statMain);
-			if(runeBean.stat4 != null)
-				document.append("stat4", runeBean.stat4);
-			if(runeBean.userId != null)
-				document.append("userId", runeBean.userId);
-			if(runeBean.stat3Type != null)
-				document.append("stat3Type", runeBean.stat3Type);
-			if(runeBean.stat2 != null)
-				document.append("stat2", runeBean.stat2);
-			if(runeBean.pos != null)
-				document.append("pos", runeBean.pos);
-			if(runeBean.stat3 != null)
-				document.append("stat3", runeBean.stat3);
-			if(runeBean.statSubType != null)
-				document.append("statSubType", runeBean.statSubType);
-			if(runeBean.stat1 != null)
-				document.append("stat1", runeBean.stat1);
-			if(runeBean.monsterId != null)
-				document.append("monsterId", runeBean.monsterId);
-			if(runeBean.stat1Type != null)
-				document.append("stat1Type", runeBean.stat1Type);
-			if(runeBean.statMainType != null)
-				document.append("statMainType", runeBean.statMainType);
-			if(runeBean.id != null)
-				document.append("id", runeBean.id);
-			Document result = Mongo.get().collection("rune").findOneAndUpdate(and(eq("runeId", runeId)), new Document("$set", document));
-			if(result == null)
-				return Response.status(Status.NOT_FOUND).build();
+			// Get actual data object
+			RuneData data = RuneCollection.getById(runeId);
+			// Check data exists
+			if (data == null) {
+				throw new APWebException("rune not found", "AP_RUNE_NOTFOUND", Status.BAD_REQUEST);
+			}
+			// Update the data object
+			data.setLvl(runeBean.lvl);
+			data.setSet(runeBean.set);
+			data.setStat4Type(runeBean.stat4Type);
+			data.setStar(runeBean.star);
+			data.setStat2Type(runeBean.stat2Type);
+			data.setStatSub(runeBean.statSub);
+			data.setStatMain(runeBean.statMain);
+			data.setStat4(runeBean.stat4);
+			data.setUserId(runeBean.userId);
+			data.setStat3Type(runeBean.stat3Type);
+			data.setStat2(runeBean.stat2);
+			data.setPos(runeBean.pos);
+			data.setStat3(runeBean.stat3);
+			data.setStatSubType(runeBean.statSubType);
+			data.setStat1(runeBean.stat1);
+			data.setMonsterId(runeBean.monsterId);
+			data.setStat1Type(runeBean.stat1Type);
+			data.setStatMainType(runeBean.statMainType);
+			// Store the updated data object
+			RuneCollection.updateNull(data);
+		
 			return Response.status(Status.OK).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}

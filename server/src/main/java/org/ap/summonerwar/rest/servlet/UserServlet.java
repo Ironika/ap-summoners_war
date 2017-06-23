@@ -2,19 +2,17 @@ package org.ap.summonerwar.rest.servlet;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import org.bson.Document;
 import javax.ws.rs.core.Response.*;
-import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.UserBean;
 import javax.annotation.security.RolesAllowed;
 import org.ap.summonerwar.storage.UserData;
 import org.ap.summonerwar.storage.UserCollection;
 import org.ap.web.internal.APWebException;
-import org.ap.summonerwar.storage.ApauthCollection;
-import org.ap.summonerwar.storage.ApauthData;
 import java.util.List;
 import java.util.ArrayList;
+import org.ap.summonerwar.storage.ApauthCollection;
+import org.ap.summonerwar.storage.ApauthData;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
 import org.ap.summonerwar.internal.MailSender;
@@ -166,21 +164,21 @@ public class UserServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response putUser(@Context SecurityContext sc, @PathParam("userId") final String userId, UserBean userBean) {
 		try {
-			Document document = new Document();
-			if(userBean.lastImport != null)
-				document.append("lastImport", userBean.lastImport);
-			if(userBean.id != null)
-				document.append("id", userBean.id);
-			if(userBean.username != null)
-				document.append("username", userBean.username);
-			if(userBean.password != null)
-				document.append("password", userBean.password);
-			if(userBean.email != null)
-				document.append("email", userBean.email);
-			Document result = Mongo.get().collection("user").findOneAndUpdate(and(eq("userId", userId)), new Document("$set", document));
-			if(result == null)
-				return Response.status(Status.NOT_FOUND).build();
+			// Get actual data object
+			UserData data = UserCollection.getById(userId);
+			// Check data exists
+			if (data == null) {
+				throw new APWebException("user not found", "AP_USER_NOTFOUND", Status.BAD_REQUEST);
+			}
+			// Update the data object
+			data.setLastImport(userBean.lastImport);
+			// Store the updated data object
+			UserCollection.updateNull(data);
+		
 			return Response.status(Status.OK).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}

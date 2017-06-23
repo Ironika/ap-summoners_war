@@ -2,9 +2,7 @@ package org.ap.summonerwar.rest.servlet;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import org.bson.Document;
 import javax.ws.rs.core.Response.*;
-import org.ap.web.storage.Mongo;
 import org.ap.web.rest.servlet.APServletBase;
 import org.ap.summonerwar.bean.MonsterBean;
 import javax.annotation.security.RolesAllowed;
@@ -143,45 +141,36 @@ public class MonsterServlet extends APServletBase {
 	@RolesAllowed("user")
 	public Response putMonster(@Context SecurityContext sc, @PathParam("monsterId") final String monsterId, MonsterBean monsterBean) {
 		try {
-			Document document = new Document();
-			if(monsterBean.acc != null)
-				document.append("acc", monsterBean.acc);
-			if(monsterBean.res != null)
-				document.append("res", monsterBean.res);
-			if(monsterBean.lvl != null)
-				document.append("lvl", monsterBean.lvl);
-			if(monsterBean.role != null)
-				document.append("role", monsterBean.role);
-			if(monsterBean.star != null)
-				document.append("star", monsterBean.star);
-			if(monsterBean.isAwaked != null)
-				document.append("isAwaked", monsterBean.isAwaked);
-			if(monsterBean.def != null)
-				document.append("def", monsterBean.def);
-			if(monsterBean.spd != null)
-				document.append("spd", monsterBean.spd);
-			if(monsterBean.hp != null)
-				document.append("hp", monsterBean.hp);
-			if(monsterBean.crate != null)
-				document.append("crate", monsterBean.crate);
-			if(monsterBean.userId != null)
-				document.append("userId", monsterBean.userId);
-			if(monsterBean.elemType != null)
-				document.append("elemType", monsterBean.elemType);
-			if(monsterBean.cdmg != null)
-				document.append("cdmg", monsterBean.cdmg);
-			if(monsterBean.name != null)
-				document.append("name", monsterBean.name);
-			if(monsterBean.xp != null)
-				document.append("xp", monsterBean.xp);
-			if(monsterBean.atk != null)
-				document.append("atk", monsterBean.atk);
-			if(monsterBean.id != null)
-				document.append("id", monsterBean.id);
-			Document result = Mongo.get().collection("monster").findOneAndUpdate(and(eq("monsterId", monsterId)), new Document("$set", document));
-			if(result == null)
-				return Response.status(Status.NOT_FOUND).build();
+			// Get actual data object
+			MonsterData data = MonsterCollection.getById(monsterId);
+			// Check data exists
+			if (data == null) {
+				throw new APWebException("monster not found", "AP_MONSTER_NOTFOUND", Status.BAD_REQUEST);
+			}
+			// Update the data object
+			data.setAcc(monsterBean.acc);
+			data.setRes(monsterBean.res);
+			data.setLvl(monsterBean.lvl);
+			data.setRole(monsterBean.role);
+			data.setStar(monsterBean.star);
+			data.setIsAwaked(monsterBean.isAwaked);
+			data.setDef(monsterBean.def);
+			data.setSpd(monsterBean.spd);
+			data.setHp(monsterBean.hp);
+			data.setCrate(monsterBean.crate);
+			data.setUserId(monsterBean.userId);
+			data.setElemType(monsterBean.elemType);
+			data.setCdmg(monsterBean.cdmg);
+			data.setName(monsterBean.name);
+			data.setXp(monsterBean.xp);
+			data.setAtk(monsterBean.atk);
+			// Store the updated data object
+			MonsterCollection.updateNull(data);
+		
 			return Response.status(Status.OK).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
