@@ -37,6 +37,27 @@ html, body, .app, .ap-app {
 		display: flex;
     	align-items: center;
     	justify-content: center;
+    	@keyframes busy-bars {
+		    0% {
+		        transform: scaleY(1) scaleX(1);
+		        background-color: $color-text;
+		    }
+		    30% {
+		        transform: scaleY(1.5) scaleX(1.1);
+		        background-color: $color-text;
+		    }
+		    60% {
+		        transform: scaleY(1) scaleX(1);
+		        background-color: $color-text;
+		    }
+		    100% {
+		        transform: scaleY(1) scaleX(1);
+		        background-color: $color-text;
+		    }
+		}
+    	.ap-busy-bar {
+    		background: $color-text;
+    	}
 	}
 	.sm-section {
 		height: 100%;
@@ -185,10 +206,13 @@ html, body, .app, .ap-app {
 				    	color: $color-text;
 				    }
 				}
-				.currentPage {
+				.activePage {
 					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
 					color: $color-text;
 				}
+    		}
+    		.hidePage {
+    			display: none;
     		}
 		}
 	}

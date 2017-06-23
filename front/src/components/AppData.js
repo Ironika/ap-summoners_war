@@ -24,7 +24,8 @@ class AppData extends BaseData {
 		}.bind(this))
 
 		this.obj.state = {
-			username: 'Homunculus'
+			username: 'Homunculus',
+			isLogged: false
 		}
 
 		UserHelper.register(this, this.buildDataUser.bind(this))
@@ -39,6 +40,7 @@ class AppData extends BaseData {
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
 		this.setState({
             username: username || 'Homunculus',
+            isLogged: true
         })
 	}
 
@@ -51,7 +53,7 @@ class AppData extends BaseData {
 	}
 
 	onClickPage(page) {
-		this.obj.setState({currentPage: page})
+		this.obj.setState({activePage: page})
 		AppHelper.navigate('/' + page);
 	}
 

@@ -19,17 +19,26 @@ class Runes extends React.Component {
 		RunesData.unregister()
 	}
 
-	buildRune(rune, key) {
+	_buildRune(rune, key) {
 		return (<Rune key={rune.id} rune={rune}/>)
 	}
 
-	buildType(type, key) {
+	_buildType(type, key) {
 		return (
 			<div key={key} onClick={this.onClickFilterSet.bind(this, key)} className={(this.state.filterSet[type]) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
 				<img src={"assets/images/runes/Rune-" + key + ".png"}/>
 			</div>
 		)
 	}
+
+	_buildSorts(sort, key) {
+        return (
+            <li key={key}>
+                <label className="sm-label">{key}</label>
+                <input className="sm-checkbox" type="checkbox" onClick={this.onClickSort.bind(this, key)}/>
+            </li>
+        )
+    }
 
 	render() {
 		return (
@@ -38,13 +47,13 @@ class Runes extends React.Component {
 					<div className="col-xs-12">
 						<div className="sm-sheet">
 							<div className="sm-runes-types">
-								{Utils.map(RunesData.RUNE_SET, this.buildType.bind(this))}
+								{Utils.map(RunesData.RUNE_SET, this._buildType.bind(this))}
 							</div>
 						</div>
 					</div>
 					<div className="col-xs-12 col-md-8">
 						<div className="sm-runes sm-sheet-mid">
-							{Utils.map(this.state.runes, this.buildRune)}
+							{Utils.map(this.state.runes, this._buildRune)}
 						</div>
 					</div>
 					<div className="col-xs-12 col-md-4">
@@ -58,14 +67,7 @@ class Runes extends React.Component {
 								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.onClickFilterPos.bind(this, 5)}/>
 								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.onClickFilterPos.bind(this, 6)}/>
 								<ul className="sm-runes-filters">
-									<li>
-										<label className="sm-label">Star</label>
-										<input className="sm-checkbox" type="checkbox"/>
-									</li>
-									<li>
-										<label className="sm-label">Lvl</label>
-										<input className="sm-checkbox" type="checkbox"/>
-									</li>
+									{Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
 								</ul>
 							</div>
 						</div>
