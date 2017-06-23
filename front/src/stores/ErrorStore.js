@@ -166,14 +166,14 @@ ErrorStore.handleGetUserRunesError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_RUNES');
 }
 
-ErrorStore.handleDeleteUserRuneSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_USER_RUNE;
-	ErrorStore.notifyPath('/DELETE_USER_RUNE');
+ErrorStore.handleDeleteUserRunesSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_USER_RUNES;
+	ErrorStore.notifyPath('/DELETE_USER_RUNES');
 }
 
-ErrorStore.handleDeleteUserRuneError = function(error, params) {
-	ErrorStore._content.DELETE_USER_RUNE = error;
-	ErrorStore.notifyPath('/DELETE_USER_RUNE');
+ErrorStore.handleDeleteUserRunesError = function(error, params) {
+	ErrorStore._content.DELETE_USER_RUNES = error;
+	ErrorStore.notifyPath('/DELETE_USER_RUNES');
 }
 
 ErrorStore.handleGetUserMonstersSuccess = function(results, params) {
@@ -186,14 +186,14 @@ ErrorStore.handleGetUserMonstersError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_MONSTERS');
 }
 
-ErrorStore.handleDeleteUserMonsterRuneSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_USER_MONSTER_RUNE;
-	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNE');
+ErrorStore.handleDeleteUserMonsterRunesSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_USER_MONSTER_RUNES;
+	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNES');
 }
 
-ErrorStore.handleDeleteUserMonsterRuneError = function(error, params) {
-	ErrorStore._content.DELETE_USER_MONSTER_RUNE = error;
-	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNE');
+ErrorStore.handleDeleteUserMonsterRunesError = function(error, params) {
+	ErrorStore._content.DELETE_USER_MONSTER_RUNES = error;
+	ErrorStore.notifyPath('/DELETE_USER_MONSTER_RUNES');
 }
 
 ErrorStore.handlePostUserImportSuccess = function(results, params) {
@@ -323,9 +323,9 @@ Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.ha
 Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError);
 Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError);
 Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError);
-Dispatcher.register('DELETE_USER_RUNE', ErrorStore.handleDeleteUserRuneSuccess, ErrorStore.handleDeleteUserRuneError);
+Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess, ErrorStore.handleDeleteUserRunesError);
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError);
-Dispatcher.register('DELETE_USER_MONSTER_RUNE', ErrorStore.handleDeleteUserMonsterRuneSuccess, ErrorStore.handleDeleteUserMonsterRuneError);
+Dispatcher.register('DELETE_USER_MONSTER_RUNES', ErrorStore.handleDeleteUserMonsterRunesSuccess, ErrorStore.handleDeleteUserMonsterRunesError);
 Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError);
 Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError);
 Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError);

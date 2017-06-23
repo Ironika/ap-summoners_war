@@ -40,12 +40,12 @@ class RuneHelper {
 		return Dispatcher.issue('GET_USER_RUNES', {token: AuthHelper.getToken(), userId: userId});
 	}
 
-	deleteUserRune(userId) {
-		return Dispatcher.issue('DELETE_USER_RUNE', {token: AuthHelper.getToken(), userId: userId});
+	deleteUserRunes(userId) {
+		return Dispatcher.issue('DELETE_USER_RUNES', {token: AuthHelper.getToken(), userId: userId});
 	}
 
-	deleteUserMonsterRune(monsterId) {
-		return Dispatcher.issue('DELETE_USER_MONSTER_RUNE', {token: AuthHelper.getToken(), monsterId: monsterId});
+	deleteUserMonsterRunes(monsterId) {
+		return Dispatcher.issue('DELETE_USER_MONSTER_RUNES', {token: AuthHelper.getToken(), monsterId: monsterId});
 	}
 
 	getData(id) {
