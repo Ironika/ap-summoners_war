@@ -27,18 +27,22 @@ class ImportData extends BaseData {
 	}
 
 	onClickImport() {
-		var f = this.getState('fileInput').files[0]; 
+		let f = this.getState('fileInput').files[0]; 
 
 	    if (f) {
-	      	var r = new FileReader();
+	      	let r = new FileReader();
 	      	r.onload = function(e) { 
-			    var contents = e.target.result;
-			    DefaultHelper.postUserImport({
-			    	data: contents, 
-			    	userId: AuthHelper.getEntityId()
-			    }).then(
-			    	// AppHelper.navigate("/monsters")
-			    )
+			    let contents = e.target.result;
+			    AppHelper.setBusy(true).then(
+				    DefaultHelper.postUserImport({
+				    	data: contents, 
+				    	userId: AuthHelper.getEntityId()
+				    }).then(
+				    	AppHelper.navigate("profile").then(
+				    		AppHelper.setBusy.bind(AppHelper, false)
+				    	)
+				    )
+				).catch(AppHelper.setBusy.bind(AppHelper, false))
 	      	}
 	      	r.readAsText(f);
 	    } else { 

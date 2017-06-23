@@ -46,7 +46,11 @@ class MonstersData extends BaseData {
         }
 
         MonsterHelper.register(this, this.buildMonstersData.bind(this))
-		MonsterHelper.getUserMonsters(AuthHelper.getEntityId())
+        AppHelper.setBusy(true).then(
+		    MonsterHelper.getUserMonsters(AuthHelper.getEntityId()).then(
+                AppHelper.setBusy.bind(AppHelper, false)
+            )
+        ).catch(AppHelper.setBusy.bind(AppHelper, false))
 	}
 
 	unregister() {
