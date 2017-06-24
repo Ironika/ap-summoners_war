@@ -1,36 +1,36 @@
-import { ActionBase } from 'ap-flux';
-import { Utils, RestService } from 'ap-react-bootstrap';
+import { ActionBase } from 'ap-flux'
+import { Utils, RestService } from 'ap-react-bootstrap'
 
-let get_auth = new ActionBase({ name: 'GET_AUTH' });
-let put_auth_password = new ActionBase({ name: 'PUT_AUTH_PASSWORD' });
-let post_auth_register = new ActionBase({ name: 'POST_AUTH_REGISTER' });
-let post_auth_recover = new ActionBase({ name: 'POST_AUTH_RECOVER' });
-let post_auth_recover_check = new ActionBase({ name: 'POST_AUTH_RECOVER_CHECK' });
-let put_auth_recover = new ActionBase({ name: 'PUT_AUTH_RECOVER' });
-let post_auth_changemail = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL' });
-let post_auth_changemail_check = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CHECK' });
-let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' });
-let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' });
-let get_runes = new ActionBase({ name: 'GET_RUNES' });
-let post_rune = new ActionBase({ name: 'POST_RUNE' });
-let get_rune = new ActionBase({ name: 'GET_RUNE' });
-let put_rune = new ActionBase({ name: 'PUT_RUNE' });
-let delete_rune = new ActionBase({ name: 'DELETE_RUNE' });
-let get_monsters = new ActionBase({ name: 'GET_MONSTERS' });
-let post_monster = new ActionBase({ name: 'POST_MONSTER' });
-let get_monster = new ActionBase({ name: 'GET_MONSTER' });
-let put_monster = new ActionBase({ name: 'PUT_MONSTER' });
-let delete_monster = new ActionBase({ name: 'DELETE_MONSTER' });
-let get_monster_runes = new ActionBase({ name: 'GET_MONSTER_RUNES' });
-let get_user = new ActionBase({ name: 'GET_USER' });
-let post_user = new ActionBase({ name: 'POST_USER' });
-let delete_user = new ActionBase({ name: 'DELETE_USER' });
-let put_user = new ActionBase({ name: 'PUT_USER' });
-let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' });
-let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' });
-let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' });
-let delete_user_monster_runes = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNES' });
-let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' });
+let get_auth = new ActionBase({ name: 'GET_AUTH' })
+let put_auth_password = new ActionBase({ name: 'PUT_AUTH_PASSWORD' })
+let post_auth_register = new ActionBase({ name: 'POST_AUTH_REGISTER' })
+let post_auth_recover = new ActionBase({ name: 'POST_AUTH_RECOVER' })
+let post_auth_recover_check = new ActionBase({ name: 'POST_AUTH_RECOVER_CHECK' })
+let put_auth_recover = new ActionBase({ name: 'PUT_AUTH_RECOVER' })
+let post_auth_changemail = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL' })
+let post_auth_changemail_check = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CHECK' })
+let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' })
+let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' })
+let get_runes = new ActionBase({ name: 'GET_RUNES' })
+let post_rune = new ActionBase({ name: 'POST_RUNE' })
+let get_rune = new ActionBase({ name: 'GET_RUNE' })
+let put_rune = new ActionBase({ name: 'PUT_RUNE' })
+let delete_rune = new ActionBase({ name: 'DELETE_RUNE' })
+let get_monsters = new ActionBase({ name: 'GET_MONSTERS' })
+let post_monster = new ActionBase({ name: 'POST_MONSTER' })
+let get_monster = new ActionBase({ name: 'GET_MONSTER' })
+let put_monster = new ActionBase({ name: 'PUT_MONSTER' })
+let delete_monster = new ActionBase({ name: 'DELETE_MONSTER' })
+let get_monster_runes = new ActionBase({ name: 'GET_MONSTER_RUNES' })
+let get_user = new ActionBase({ name: 'GET_USER' })
+let post_user = new ActionBase({ name: 'POST_USER' })
+let delete_user = new ActionBase({ name: 'DELETE_USER' })
+let put_user = new ActionBase({ name: 'PUT_USER' })
+let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' })
+let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' })
+let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' })
+let delete_user_monster_runes = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNES' })
+let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' })
 
 get_auth.do = function(args) {
 	Utils.checkMembers(args, ['username', 'password']);

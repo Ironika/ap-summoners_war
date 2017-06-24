@@ -1,8 +1,8 @@
-import { Dispatcher, StoreBase } from 'ap-flux';
-import { Utils } from 'ap-react-bootstrap';
+import { Dispatcher, StoreBase } from 'ap-flux'
+import { Utils } from 'ap-react-bootstrap'
 
-var AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} });
-var RestStore = new StoreBase ({ name: 'REST_STORE', content: {} });
+var AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} })
+var RestStore = new StoreBase ({ name: 'REST_STORE', content: {} })
 
 AuthStore.handleGetAuth = function(result, params) {
 	let content = AuthStore.getContent()
@@ -101,15 +101,15 @@ RestStore.handleGetUserMonsters = function(result, params) {
 	RestStore.notifyPath('/monster')
 }
 
-Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth);
-Dispatcher.register('LOGOUT', AuthStore.handleLogout);
-Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword);
-Dispatcher.register('LOGOUT', RestStore.handleLogout);
-Dispatcher.register('GET_RUNES', RestStore.handleGetRunes);
-Dispatcher.register('GET_RUNE', RestStore.handleGetRune);
-Dispatcher.register('GET_MONSTERS', RestStore.handleGetMonsters);
-Dispatcher.register('GET_MONSTER', RestStore.handleGetMonster);
-Dispatcher.register('GET_MONSTER_RUNES', RestStore.handleGetMonsterRunes);
-Dispatcher.register('GET_USER', RestStore.handleGetUser);
-Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes);
-Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters);
+Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)
+Dispatcher.register('LOGOUT', AuthStore.handleLogout)
+Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
+Dispatcher.register('LOGOUT', RestStore.handleLogout)
+Dispatcher.register('GET_RUNES', RestStore.handleGetRunes)
+Dispatcher.register('GET_RUNE', RestStore.handleGetRune)
+Dispatcher.register('GET_MONSTERS', RestStore.handleGetMonsters)
+Dispatcher.register('GET_MONSTER', RestStore.handleGetMonster)
+Dispatcher.register('GET_MONSTER_RUNES', RestStore.handleGetMonsterRunes)
+Dispatcher.register('GET_USER', RestStore.handleGetUser)
+Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes)
+Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters)

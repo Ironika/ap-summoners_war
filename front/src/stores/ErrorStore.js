@@ -1,6 +1,6 @@
-import { Dispatcher, StoreBase } from 'ap-flux';
+import { Dispatcher, StoreBase } from 'ap-flux'
 
-var ErrorStore = new StoreBase ({ name: 'ERROR_STORE', content: {} });
+var ErrorStore = new StoreBase ({ name: 'ERROR_STORE', content: {} })
 
 ErrorStore.handleLogout = function(results, params) {
 	ErrorStore.setContent({});
@@ -306,34 +306,34 @@ ErrorStore.handlePostAuthChangemailConfirmError = function(error, params) {
 	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CONFIRM');
 }
 
-Dispatcher.register('LOGOUT', ErrorStore.handleLogout);
-Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError);
-Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError);
-Dispatcher.register('GET_RUNE', ErrorStore.handleGetRuneSuccess, ErrorStore.handleGetRuneError);
-Dispatcher.register('PUT_RUNE', ErrorStore.handlePutRuneSuccess, ErrorStore.handlePutRuneError);
-Dispatcher.register('DELETE_RUNE', ErrorStore.handleDeleteRuneSuccess, ErrorStore.handleDeleteRuneError);
-Dispatcher.register('GET_MONSTERS', ErrorStore.handleGetMonstersSuccess, ErrorStore.handleGetMonstersError);
-Dispatcher.register('POST_MONSTER', ErrorStore.handlePostMonsterSuccess, ErrorStore.handlePostMonsterError);
-Dispatcher.register('GET_MONSTER', ErrorStore.handleGetMonsterSuccess, ErrorStore.handleGetMonsterError);
-Dispatcher.register('PUT_MONSTER', ErrorStore.handlePutMonsterSuccess, ErrorStore.handlePutMonsterError);
-Dispatcher.register('DELETE_MONSTER', ErrorStore.handleDeleteMonsterSuccess, ErrorStore.handleDeleteMonsterError);
-Dispatcher.register('GET_MONSTER_RUNES', ErrorStore.handleGetMonsterRunesSuccess, ErrorStore.handleGetMonsterRunesError);
-Dispatcher.register('GET_USER', ErrorStore.handleGetUserSuccess, ErrorStore.handleGetUserError);
-Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.handlePostUserError);
-Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError);
-Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError);
-Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError);
-Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess, ErrorStore.handleDeleteUserRunesError);
-Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError);
-Dispatcher.register('DELETE_USER_MONSTER_RUNES', ErrorStore.handleDeleteUserMonsterRunesSuccess, ErrorStore.handleDeleteUserMonsterRunesError);
-Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError);
-Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError);
-Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError);
-Dispatcher.register('POST_AUTH_REGISTER', ErrorStore.handlePostAuthRegisterSuccess, ErrorStore.handlePostAuthRegisterError);
-Dispatcher.register('POST_AUTH_RECOVER', ErrorStore.handlePostAuthRecoverSuccess, ErrorStore.handlePostAuthRecoverError);
-Dispatcher.register('POST_AUTH_RECOVER_CHECK', ErrorStore.handlePostAuthRecoverCheckSuccess, ErrorStore.handlePostAuthRecoverCheckError);
-Dispatcher.register('PUT_AUTH_RECOVER', ErrorStore.handlePutAuthRecoverSuccess, ErrorStore.handlePutAuthRecoverError);
-Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError);
-Dispatcher.register('POST_AUTH_CHANGEMAIL_CHECK', ErrorStore.handlePostAuthChangemailCheckSuccess, ErrorStore.handlePostAuthChangemailCheckError);
-Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError);
-Dispatcher.register('POST_AUTH_CHANGEMAIL_CONFIRM', ErrorStore.handlePostAuthChangemailConfirmSuccess, ErrorStore.handlePostAuthChangemailConfirmError);
+Dispatcher.register('LOGOUT', ErrorStore.handleLogout)
+Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError)
+Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError)
+Dispatcher.register('GET_RUNE', ErrorStore.handleGetRuneSuccess, ErrorStore.handleGetRuneError)
+Dispatcher.register('PUT_RUNE', ErrorStore.handlePutRuneSuccess, ErrorStore.handlePutRuneError)
+Dispatcher.register('DELETE_RUNE', ErrorStore.handleDeleteRuneSuccess, ErrorStore.handleDeleteRuneError)
+Dispatcher.register('GET_MONSTERS', ErrorStore.handleGetMonstersSuccess, ErrorStore.handleGetMonstersError)
+Dispatcher.register('POST_MONSTER', ErrorStore.handlePostMonsterSuccess, ErrorStore.handlePostMonsterError)
+Dispatcher.register('GET_MONSTER', ErrorStore.handleGetMonsterSuccess, ErrorStore.handleGetMonsterError)
+Dispatcher.register('PUT_MONSTER', ErrorStore.handlePutMonsterSuccess, ErrorStore.handlePutMonsterError)
+Dispatcher.register('DELETE_MONSTER', ErrorStore.handleDeleteMonsterSuccess, ErrorStore.handleDeleteMonsterError)
+Dispatcher.register('GET_MONSTER_RUNES', ErrorStore.handleGetMonsterRunesSuccess, ErrorStore.handleGetMonsterRunesError)
+Dispatcher.register('GET_USER', ErrorStore.handleGetUserSuccess, ErrorStore.handleGetUserError)
+Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.handlePostUserError)
+Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError)
+Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError)
+Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError)
+Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess, ErrorStore.handleDeleteUserRunesError)
+Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError)
+Dispatcher.register('DELETE_USER_MONSTER_RUNES', ErrorStore.handleDeleteUserMonsterRunesSuccess, ErrorStore.handleDeleteUserMonsterRunesError)
+Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError)
+Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError)
+Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError)
+Dispatcher.register('POST_AUTH_REGISTER', ErrorStore.handlePostAuthRegisterSuccess, ErrorStore.handlePostAuthRegisterError)
+Dispatcher.register('POST_AUTH_RECOVER', ErrorStore.handlePostAuthRecoverSuccess, ErrorStore.handlePostAuthRecoverError)
+Dispatcher.register('POST_AUTH_RECOVER_CHECK', ErrorStore.handlePostAuthRecoverCheckSuccess, ErrorStore.handlePostAuthRecoverCheckError)
+Dispatcher.register('PUT_AUTH_RECOVER', ErrorStore.handlePutAuthRecoverSuccess, ErrorStore.handlePutAuthRecoverError)
+Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError)
+Dispatcher.register('POST_AUTH_CHANGEMAIL_CHECK', ErrorStore.handlePostAuthChangemailCheckSuccess, ErrorStore.handlePostAuthChangemailCheckError)
+Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError)
+Dispatcher.register('POST_AUTH_CHANGEMAIL_CONFIRM', ErrorStore.handlePostAuthChangemailConfirmSuccess, ErrorStore.handlePostAuthChangemailConfirmError)

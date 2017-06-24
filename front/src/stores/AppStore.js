@@ -1,7 +1,7 @@
-import { Dispatcher, StoreBase } from 'ap-flux';
+import { Dispatcher, StoreBase } from 'ap-flux'
 
-var AppStore = new StoreBase ({ name: 'APP_STORE', content: {} });
-let DEFAULT_APP_CONTENT = { path: '/' };
+var AppStore = new StoreBase ({ name: 'APP_STORE', content: {} })
+let DEFAULT_APP_CONTENT = { path: '/' }
 
 AppStore.setBusy = function(busy) {
 	AppStore.busy = busy
@@ -29,7 +29,7 @@ AppStore.set_app_display = function(result, param) {
 	AppStore.notifyPath(path + result.path)
 }
 
-Dispatcher.register('LOGOUT', AppStore.onLogout);
-Dispatcher.register('NAVIGATE', AppStore.navigate);
-Dispatcher.register('NAVIGATE_BACK', AppStore.navigate_back);
-Dispatcher.register('SET_APP_DISPLAY', AppStore.set_app_display);
+Dispatcher.register('LOGOUT', AppStore.onLogout)
+Dispatcher.register('NAVIGATE', AppStore.navigate)
+Dispatcher.register('NAVIGATE_BACK', AppStore.navigate_back)
+Dispatcher.register('SET_APP_DISPLAY', AppStore.set_app_display)

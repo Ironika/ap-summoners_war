@@ -1,10 +1,10 @@
-import { ActionBase } from 'ap-flux';
-import { Utils } from 'ap-react-bootstrap';
+import { ActionBase } from 'ap-flux'
+import { Utils } from 'ap-react-bootstrap'
 
-var logout = new ActionBase({ name: 'LOGOUT' });
-var navigate = new ActionBase({ name: 'NAVIGATE' });
-var navigate_back = new ActionBase({ name: 'NAVIGATE_BACK' });
-var set_app_display = new ActionBase({ name: 'SET_APP_DISPLAY' });
+var logout = new ActionBase({ name: 'LOGOUT' })
+var navigate = new ActionBase({ name: 'NAVIGATE' })
+var navigate_back = new ActionBase({ name: 'NAVIGATE_BACK' })
+var set_app_display = new ActionBase({ name: 'SET_APP_DISPLAY' })
 
 logout.do = function() {
 	return new Promise(function (resolve, reject) {
