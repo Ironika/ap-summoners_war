@@ -1,0 +1,11 @@
+@import './var.scss';
+
+.ap-home {
+    .sm-home-text {
+        color: $color-text;
+    }
+    .sm-home-img {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
