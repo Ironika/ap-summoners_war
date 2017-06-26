@@ -3,14 +3,6 @@ import MonsterHelper from 'helpers/MonsterHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import { BaseData, Utils }  from 'ap-react-bootstrap'
 
-let FILTER_ELEMENT = {
-    Water: 'Water',
-    Fire: 'Fire',
-    Wind: 'Wind',
-    Light: 'Light',
-    Dark: 'Dark'
-}
-
 let SORT_ATTRIBUTE = {
     star: 'star',
     lvl: 'lvl'
@@ -103,6 +95,5 @@ class MonstersListData extends BaseData {
 	}
 }
 let MonstersListObj = new MonstersListData()
-MonstersListObj.FILTER_ELEMENT = FILTER_ELEMENT
 MonstersListObj.SORT_ATTRIBUTE = SORT_ATTRIBUTE
 export default MonstersListObj

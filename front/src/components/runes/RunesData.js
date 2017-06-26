@@ -1,38 +1,12 @@
-import AppHelper from 'helpers/AppHelper';
-import RuneHelper from 'helpers/RuneHelper';
-import AuthHelper from 'helpers/AuthHelper';
-import {Utils, BaseData}  from 'ap-react-bootstrap';
+import AppHelper from 'helpers/AppHelper'
+import RuneHelper from 'helpers/RuneHelper'
+import AuthHelper from 'helpers/AuthHelper'
 
-let RUNE_SET = {
-    Energy: 'Energy',
-    Swift: 'Swift',
-    Fatal: 'Fatal',
-    Rage: 'Rage',
-    Vampire: 'Vampire',
-    Focus: 'Focus',
-    Guard: 'Guard',
-    Shield: 'Shield',
-    Revenge: 'Revenge',
-    Will: 'Will',
-    Nemesis: 'Nemesis',
-    Destroy: 'Destroy',
-    Despair: 'Despair',
-    Violent: 'Violent',
-    Fight: 'Fight',
-    Endure: 'Endure',
-    Determination: 'Determination',
-    Enhance: 'Enhance',
-    Accuracy: 'Accuracy',
-    Tolerance: 'Tolerance'
-}
-let RUNE_POS = {
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
-    6: 6
-}
+import PosType from 'utils/constants/PosType'
+import SetType from 'utils/constants/SetType'
+
+import {Utils, BaseData}  from 'ap-react-bootstrap'
+
 let SORT_ATTRIBUTE = {
     star: 'star',
     lvl: 'lvl'
@@ -86,15 +60,15 @@ class RunesData extends BaseData {
 
     buildDataRunes() {
         this.allSet = true
-        Utils.forEach(RUNE_SET, function(type) {
-            if (this.getState('filterSet')[type]) {
+        SetType.VALUES.forEach(function(type) {
+            if (this.getState('filterSet')[type.key]) {
                 this.allSet = false
             }
         }.bind(this))
 
         this.allPos = true
-        Utils.forEach(RUNE_POS, function(type) {
-            if (this.getState('filterPos')[type]) {
+        PosType.VALUES.forEach(function(type) {
+            if (this.getState('filterPos')[type.key]) {
                 this.allPos = false
             }
         }.bind(this))
@@ -138,7 +112,6 @@ class RunesData extends BaseData {
 
 }
 var RunesObj = new RunesData()
-RunesObj.RUNE_SET = RUNE_SET
 RunesObj.SORT_ATTRIBUTE = SORT_ATTRIBUTE
 export default RunesObj
 
