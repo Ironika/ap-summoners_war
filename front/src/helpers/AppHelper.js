@@ -31,6 +31,10 @@ class AppHelper {
 		return Dispatcher.issue('LOGOUT', {});
 	}
 
+	put(path, value) {
+		return Dispatcher.issue('PUT', { path: path, value: value });
+	}
+
 }
 var AppHelperObj = new AppHelper()
 export default AppHelperObj
