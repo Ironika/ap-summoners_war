@@ -30,6 +30,8 @@ public class RuneServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
+				bean.userId = data.getUserId();
+				bean.monsterId = data.getMonsterId();
 				bean.lvl = data.getLvl();
 				bean.set = data.getSet();
 				bean.stat4Type = data.getStat4Type();
@@ -38,14 +40,12 @@ public class RuneServlet extends APServletBase {
 				bean.statSub = data.getStatSub();
 				bean.statMain = data.getStatMain();
 				bean.stat4 = data.getStat4();
-				bean.userId = data.getUserId();
 				bean.stat3Type = data.getStat3Type();
 				bean.stat2 = data.getStat2();
 				bean.pos = data.getPos();
 				bean.stat3 = data.getStat3();
 				bean.statSubType = data.getStatSubType();
 				bean.stat1 = data.getStat1();
-				bean.monsterId = data.getMonsterId();
 				bean.stat1Type = data.getStat1Type();
 				bean.statMainType = data.getStatMainType();
 				bean.id = data.getId();
@@ -68,6 +68,8 @@ public class RuneServlet extends APServletBase {
 		try {
 			RuneData data = new RuneData();
 			data.setId(UUIDGenerator.nextId());
+			data.setUserId(runeBean.userId);
+			data.setMonsterId(runeBean.monsterId);
 			data.setLvl(runeBean.lvl);
 			data.setSet(runeBean.set);
 			data.setStat4Type(runeBean.stat4Type);
@@ -76,14 +78,12 @@ public class RuneServlet extends APServletBase {
 			data.setStatSub(runeBean.statSub);
 			data.setStatMain(runeBean.statMain);
 			data.setStat4(runeBean.stat4);
-			data.setUserId(runeBean.userId);
 			data.setStat3Type(runeBean.stat3Type);
 			data.setStat2(runeBean.stat2);
 			data.setPos(runeBean.pos);
 			data.setStat3(runeBean.stat3);
 			data.setStatSubType(runeBean.statSubType);
 			data.setStat1(runeBean.stat1);
-			data.setMonsterId(runeBean.monsterId);
 			data.setStat1Type(runeBean.stat1Type);
 			data.setStatMainType(runeBean.statMainType);
 			RuneCollection.create(data);
@@ -107,6 +107,8 @@ public class RuneServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			RuneBean bean = new RuneBean();
+			bean.userId = data.getUserId();
+			bean.monsterId = data.getMonsterId();
 			bean.lvl = data.getLvl();
 			bean.set = data.getSet();
 			bean.stat4Type = data.getStat4Type();
@@ -115,14 +117,12 @@ public class RuneServlet extends APServletBase {
 			bean.statSub = data.getStatSub();
 			bean.statMain = data.getStatMain();
 			bean.stat4 = data.getStat4();
-			bean.userId = data.getUserId();
 			bean.stat3Type = data.getStat3Type();
 			bean.stat2 = data.getStat2();
 			bean.pos = data.getPos();
 			bean.stat3 = data.getStat3();
 			bean.statSubType = data.getStatSubType();
 			bean.stat1 = data.getStat1();
-			bean.monsterId = data.getMonsterId();
 			bean.stat1Type = data.getStat1Type();
 			bean.statMainType = data.getStatMainType();
 			bean.id = data.getId();
@@ -149,6 +149,8 @@ public class RuneServlet extends APServletBase {
 				throw new APWebException("rune not found", "AP_RUNE_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
+			data.setUserId(runeBean.userId);
+			data.setMonsterId(runeBean.monsterId);
 			data.setLvl(runeBean.lvl);
 			data.setSet(runeBean.set);
 			data.setStat4Type(runeBean.stat4Type);
@@ -157,14 +159,12 @@ public class RuneServlet extends APServletBase {
 			data.setStatSub(runeBean.statSub);
 			data.setStatMain(runeBean.statMain);
 			data.setStat4(runeBean.stat4);
-			data.setUserId(runeBean.userId);
 			data.setStat3Type(runeBean.stat3Type);
 			data.setStat2(runeBean.stat2);
 			data.setPos(runeBean.pos);
 			data.setStat3(runeBean.stat3);
 			data.setStatSubType(runeBean.statSubType);
 			data.setStat1(runeBean.stat1);
-			data.setMonsterId(runeBean.monsterId);
 			data.setStat1Type(runeBean.stat1Type);
 			data.setStatMainType(runeBean.statMainType);
 			// Store the updated data object

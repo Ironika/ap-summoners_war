@@ -17,8 +17,8 @@ public class RuneData {
 	public String pos;
 	public Integer stat3;
 	public String statSubType;
-	public Integer stat1;
 	public String monsterId;
+	public Integer stat1;
 	public String stat1Type;
 	public String statMainType;
 	public String id;
@@ -135,20 +135,20 @@ public class RuneData {
 		this.statSubType = statSubType;
 	}
 
-	public Integer getStat1() {
-		return this.stat1;
-	}
-
-	public void setStat1(Integer stat1) {
-		this.stat1 = stat1;
-	}
-
 	public String getMonsterId() {
 		return this.monsterId;
 	}
 
 	public void setMonsterId(String monsterId) {
 		this.monsterId = monsterId;
+	}
+
+	public Integer getStat1() {
+		return this.stat1;
+	}
+
+	public void setStat1(Integer stat1) {
+		this.stat1 = stat1;
 	}
 
 	public String getStat1Type() {

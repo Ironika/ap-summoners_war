@@ -98,8 +98,8 @@ public class RuneCollection {
 		data.pos = document.getString("pos");
 		data.stat3 = document.getInteger("stat3");
 		data.statSubType = document.getString("statSubType");
-		data.stat1 = document.getInteger("stat1");
 		data.monsterId = document.getString("monsterId");
+		data.stat1 = document.getInteger("stat1");
 		data.stat1Type = document.getString("stat1Type");
 		data.statMainType = document.getString("statMainType");
 		data.id = document.getString("id");
@@ -136,10 +136,10 @@ public class RuneCollection {
 			document.append("stat3", rune.stat3);
 		if (rune.statSubType != null)
 			document.append("statSubType", rune.statSubType);
-		if (rune.stat1 != null)
-			document.append("stat1", rune.stat1);
 		if (rune.monsterId != null)
 			document.append("monsterId", rune.monsterId);
+		if (rune.stat1 != null)
+			document.append("stat1", rune.stat1);
 		if (rune.stat1Type != null)
 			document.append("stat1Type", rune.stat1Type);
 		if (rune.statMainType != null)
@@ -165,8 +165,8 @@ public class RuneCollection {
 		document.append("pos", rune.pos);
 		document.append("stat3", rune.stat3);
 		document.append("statSubType", rune.statSubType);
-		document.append("stat1", rune.stat1);
 		document.append("monsterId", rune.monsterId);
+		document.append("stat1", rune.stat1);
 		document.append("stat1Type", rune.stat1Type);
 		document.append("statMainType", rune.statMainType);
 		document.append("id", rune.id);

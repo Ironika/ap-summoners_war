@@ -230,6 +230,8 @@ public class UserServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
+				bean.userId = data.getUserId();
+				bean.monsterId = data.getMonsterId();
 				bean.lvl = data.getLvl();
 				bean.set = data.getSet();
 				bean.stat4Type = data.getStat4Type();
@@ -238,14 +240,12 @@ public class UserServlet extends APServletBase {
 				bean.statSub = data.getStatSub();
 				bean.statMain = data.getStatMain();
 				bean.stat4 = data.getStat4();
-				bean.userId = data.getUserId();
 				bean.stat3Type = data.getStat3Type();
 				bean.stat2 = data.getStat2();
 				bean.pos = data.getPos();
 				bean.stat3 = data.getStat3();
 				bean.statSubType = data.getStatSubType();
 				bean.stat1 = data.getStat1();
-				bean.monsterId = data.getMonsterId();
 				bean.stat1Type = data.getStat1Type();
 				bean.statMainType = data.getStatMainType();
 				bean.id = data.getId();
@@ -290,6 +290,7 @@ public class UserServlet extends APServletBase {
 			List<MonsterBean> beanList = new ArrayList<MonsterBean>();
 			for (MonsterData data : datas) {
 				MonsterBean bean = new MonsterBean();
+				bean.userId = data.getUserId();
 				bean.acc = data.getAcc();
 				bean.res = data.getRes();
 				bean.lvl = data.getLvl();
@@ -300,7 +301,6 @@ public class UserServlet extends APServletBase {
 				bean.spd = data.getSpd();
 				bean.hp = data.getHp();
 				bean.crate = data.getCrate();
-				bean.userId = data.getUserId();
 				bean.elemType = data.getElemType();
 				bean.cdmg = data.getCdmg();
 				bean.name = data.getName();
