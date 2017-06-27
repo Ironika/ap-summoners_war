@@ -1,6 +1,6 @@
 import React from 'react'
 import {RaterStar, Utils} from 'ap-react-bootstrap'
-import Rune from 'components/lib/rune/Rune'
+import Rune from 'components-lib/rune/Rune'
 
 import MonsterRunesData from './MonsterRunesData'
 

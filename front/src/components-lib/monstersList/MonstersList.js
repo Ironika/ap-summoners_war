@@ -1,9 +1,9 @@
 import React from 'react';
 import {Utils}  from 'ap-react-bootstrap';
-import MonstersListData from 'components/lib/monstersList/MonstersListData';
-import Monster from 'components/lib/monster/Monster';
-import MonsterInfos from 'components/lib/monsterInfos/MonsterInfos';
-import MonsterRunes from 'components/lib/monsterRunes/MonsterRunes';
+import MonstersListData from 'components-lib/monstersList/MonstersListData';
+import Monster from 'components-lib/monster/Monster';
+import MonsterInfos from 'components-lib/monsterInfos/MonsterInfos';
+import MonsterRunes from 'components-lib/monsterRunes/MonsterRunes';
 
 import ElemType from 'utils/constants/ElemType'
 import './MonstersList.scss';

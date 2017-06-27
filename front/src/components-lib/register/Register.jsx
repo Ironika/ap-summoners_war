@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterData from 'components/lib/register/RegisterData'
+import RegisterData from 'components-lib/register/RegisterData'
 
 import './Register.scss'
 

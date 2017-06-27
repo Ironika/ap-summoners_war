@@ -1,6 +1,6 @@
 import React from 'react'
 import RunesData from 'components/runes/RunesData'
-import Rune from 'components/lib/rune/Rune'
+import Rune from 'components-lib/rune/Rune'
 import {Utils}  from 'ap-react-bootstrap'
 
 import PosType from 'utils/constants/PosType'
