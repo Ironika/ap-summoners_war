@@ -46,14 +46,7 @@ class RunesData extends BaseData {
             statTypeValues: this.statTypeValues 
         }
 
-		RuneHelper.register(this, this.buildDataRunes.bind(this))
-
-        AppHelper.setBusy(true).then(
-            RuneHelper.getUserRunes(AuthHelper.getEntityId()).then(
-                AppHelper.setBusy.bind(AppHelper, false)
-            )
-        ).catch(AppHelper.setBusy.bind(AppHelper, false))
-		
+        this.buildDataRunes()		
 	}
 	unregister() {
 		RuneHelper.unregister(this)

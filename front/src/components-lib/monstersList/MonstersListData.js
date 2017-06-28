@@ -23,30 +23,19 @@ class MonstersListData extends BaseData {
         this.elementFilter = null
         this.sorts = {}
 
-        this.obj.state = {
-            monsters: [],
-            monster: {}
-        }
+        this.obj.state = {  monsters: [] }
 
-        MonsterHelper.register(this, this.buildMonstersData.bind(this))
-        AppHelper.setBusy(true).then(
-		    MonsterHelper.getUserMonsters(AuthHelper.getEntityId()).then(
-                AppHelper.setBusy.bind(AppHelper, false)
-            )
-        ).catch(AppHelper.setBusy.bind(AppHelper, false))
+        this.buildMonstersData()
 	}
 
 	unregister() {
-		MonsterHelper.unregister(this)
 	}
 
     buildMonstersData() {
         let monsters = Utils.map(MonsterHelper.getData())
         let monster = monsters.length ? monsters[0] : null
-        this.setState({
-            monsters: monsters, 
-            monster: monster
-        })
+        AppHelper.put('/monster', monster)
+        this.setState({ monsters: monsters })
     }
 
     filterMonsters(monster) {

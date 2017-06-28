@@ -1,5 +1,8 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import UserHelper from 'helpers/UserHelper'
+import MonsterHelper from 'helpers/MonsterHelper'
+import RuneHelper from 'helpers/RuneHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
 class LoginData extends BaseData {
@@ -19,6 +22,13 @@ class LoginData extends BaseData {
 	onSubmit() {
 		AppHelper.setBusy(true).
 		then(AuthHelper.getAuth.bind(AuthHelper, { username: this.getState('username'), password: this.getState('password') })).
+		then(function () {
+			let promises = []
+			promises.push(UserHelper.getUser(AuthHelper.getEntityId()))
+			promises.push(MonsterHelper.getUserMonsters(AuthHelper.getEntityId()))
+			promises.push(RuneHelper.getUserRunes(AuthHelper.getEntityId()))
+			return Promise.all(promises)
+		}).
 		then(AppHelper.navigate.bind(AppHelper, 'profile')).
 		then(AppHelper.setBusy.bind(AppHelper, false)).
 		catch(function() {

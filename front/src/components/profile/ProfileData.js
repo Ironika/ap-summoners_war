@@ -29,19 +29,8 @@ class ProfileData extends BaseData {
         this.buildDataUser()
         this.buildDataMonster()
         this.buildDataRune()
-
-		UserHelper.register(this, this.buildDataUser.bind(this))
-		MonsterHelper.register(this, this.buildDataMonster.bind(this))
-		RuneHelper.register(this, this.buildDataRune.bind(this))
-
-		UserHelper.getUser(AuthHelper.getEntityId())
-		MonsterHelper.getUserMonsters(AuthHelper.getEntityId())
-		RuneHelper.getUserRunes(AuthHelper.getEntityId())
 	}
 	unregister() {
-		UserHelper.unregister(this)
-		MonsterHelper.unregister(this)
-		RuneHelper.unregister(this)
 	}
 
 	buildDataUser() {

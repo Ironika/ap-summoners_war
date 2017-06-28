@@ -21,7 +21,6 @@ class Monster extends React.Component {
 
     onMonsterChange() {
         let monster = AppHelper.getData('/monster')
-        console.log(monster)
         if (monster.id == this.props.monster.id)
         	this.setState({	active: true })
      	else

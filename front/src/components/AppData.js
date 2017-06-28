@@ -29,8 +29,8 @@ class AppData extends BaseData {
 		}
 
 		UserHelper.register(this, this.buildDataUser.bind(this))
-		if(AuthHelper.getEntityId())
-			UserHelper.getUser(AuthHelper.getEntityId())
+		/*if(AuthHelper.getEntityId())
+			UserHelper.getUser(AuthHelper.getEntityId())*/
 	}
 
 	unregister() {

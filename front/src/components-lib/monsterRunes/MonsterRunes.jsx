@@ -2,7 +2,7 @@ import React from 'react'
 import {RaterStar, Utils} from 'ap-react-bootstrap'
 import Rune from 'components-lib/rune/Rune'
 
-import MonsterRunesData from './MonsterRunesData'
+import RuneHelper from 'helpers/RuneHelper'
 
 import './MonsterRunes.scss'
 
@@ -13,14 +13,20 @@ class MonsterRunes extends React.Component {
 	}
 
 	componentWillMount() {
-		MonsterRunesData.register(this, this.props.monster)
+		this.state = this.buildCurrentRunes()
 	}
 	componentWillReceiveProps(props) {
-		MonsterRunesData.unregister()
-		MonsterRunesData.register(this, props.monster)
+		this.setState(this.buildCurrentRunes())
 	}
-	componentWillUnmount() {
-		MonsterRunesData.unregister()
+
+	buildCurrentRunes() {
+		let allRunes = RuneHelper.getData()
+		let monsterRunes = []
+		for (let key in allRunes) {
+			if (allRunes[key].monsterId == this.props.monster.id)
+				monsterRunes.push(allRunes[key])
+		}
+		return { runes: monsterRunes }
 	}
 
 	buildRune(rune) {
