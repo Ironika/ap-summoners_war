@@ -1,33 +1,6 @@
 @import '../../components/var.scss';
 
-.ap-monsters {
-	
-    .sm-monster-filters-elements {
-		text-align: center;
-		.sm-monster-filters-element {
-		    display: inline-block;
-		    margin-right: 15px;
-		    padding: 10px;
-		    border-radius: 1000px;
-		    cursor: pointer;
-			img {
-				width: 35px;
-			}
-			&:hover {
-				background-color: $color-text;
-			}
-		}
-		.sm-monster-filters-element-active { 
-			background-color: $color-text;
-		}
-	}
-
-	.sm-monster-list {
-		overflow: auto;
-		height: 395px;
-		margin-top: 20px;
-	}
-
+.sm-monsterprofil {
 	.sm-monster-tab {
 		background-color: $marron2;
 		color: $color-text;
@@ -52,27 +25,5 @@
 	}
 	.sm-monster-mid {
 		top: 210px;
-	}
-
-	.sm-monster-filters-top {
-		margin-top: 10px;
-	}
-	.sm-monster-filters {
-		text-align: center;
-		display: inline-block;
-		margin: auto;
-    	width: 100%;
-    	.sm-li-search-input {
-		    width: 50%;
-    		margin-right: 20px;
-    	}
-		.sm-search-input {
-            width: calc(100% - 10px); 
-            color: $color-text;   
-        }
-		li {
-			display: inline-block;
-			padding: 10px;
-		}
 	}
 }

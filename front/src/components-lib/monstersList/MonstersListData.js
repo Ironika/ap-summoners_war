@@ -78,8 +78,7 @@ class MonstersListData extends BaseData {
 
 	onClickMonster(monster) {
         AppHelper.put('/monster', monster)
-		//this.setState({ monster: monster })
-	}
+    }
 
 	onClickElementFilters(key) {
         this.elementFilter = (this.elementFilter === key) ? null : key

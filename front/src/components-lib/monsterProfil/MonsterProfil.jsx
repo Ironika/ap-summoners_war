@@ -28,7 +28,7 @@ class MonsterProfil extends React.Component {
 
     render() { 
         return (
-        <div>
+        <div className="sm-monsterprofil">
            <div className="sm-sheet">
                 <div className={"sm-monster-tab " + (this.state.currentPage === 'infos' ? 'sm-monster-tab-active' : "")} onClick={this.onClickInfos}>Infos</div>
                 <div className={"sm-monster-tab sm-monster-mid "+ (this.state.currentPage === 'runes' ? 'sm-monster-tab-active' : "")} onClick={this.onClickRunes}>Runes</div>
@@ -36,10 +36,6 @@ class MonsterProfil extends React.Component {
             </div> 
         </div>
     )}
-    /*
-        
-                
-    */
 
 }
 export default MonsterProfil;

@@ -31,36 +31,5 @@ class Monsters extends React.Component {
             </div>
         </div>
     )}
-    /*
-        
-                
-    */
-
 }
 export default Monsters;
-
- // <div className='ap-monsters'>
- //            <div className="row">
- //                <div className="col-md-6">
- //                    <div className="sm-sheet sm-monster-filters-elements">
- //                        {Utils.map(MonstersData.FILTER_ELEMENT, this._buildElementFilters.bind(this))}
- //                    </div>
- //                    <div className="sm-monster-list">
- //                        {this.state.monsters.map(this._buildMonster.bind(this))}
- //                    </div>
- //                </div>
- //                <div className="col-md-6">
- //                    <div className="sm-sheet">
- //                        <div className={"sm-monster-tab " + (this.state.currentPage === 'infos' ? 'sm-monster-tab-active' : "")} onClick={this.onClickInfos}>Infos</div>
- //                        <div className={"sm-monster-tab sm-monster-mid "+ (this.state.currentPage === 'runes' ? 'sm-monster-tab-active' : "")} onClick={this.onClickRunes}>Runes</div>
- //                        { this._buildMonsterInfos(this.state.currentPage) }
- //                    </div>
- //                    <div className="sm-sheet sm-monster-filters-top">
- //                        <ul className="sm-monster-filters">
- //                            <li className="sm-li-search-input"><input className="sm-input sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/></li>
- //                            {Utils.map(MonstersData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
- //                        </ul>
- //                    </div>                    
- //                </div>
- //            </div>
- //        </div>

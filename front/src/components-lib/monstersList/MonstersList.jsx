@@ -49,7 +49,7 @@ class MonsterList extends React.Component {
 
     render() { 
         return (
-        <div>
+        <div className="sm-monsterslist">
             <div className="sm-sheet sm-monster-filters-elements">
                 {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
             </div>
@@ -64,10 +64,6 @@ class MonsterList extends React.Component {
             </div>
         </div>
     )}
-    /*
-        
-                
-    */
 
 }
 export default MonsterList;

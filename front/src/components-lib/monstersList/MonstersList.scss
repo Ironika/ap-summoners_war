@@ -1,6 +1,6 @@
 @import '../../components/var.scss';
 
-.ap-monsters {
+.sm-monsterslist {
 	
     .sm-monster-filters-elements {
 		text-align: center;
@@ -26,32 +26,6 @@
 		overflow: auto;
 		height: 395px;
 		margin-top: 20px;
-	}
-
-	.sm-monster-tab {
-		background-color: $marron2;
-		color: $color-text;
-	    text-align: center;
-	    display: inline-block;
-	    position: absolute;
-        left: -60px;
-    	top: 130px;
-	    padding: 20px;
-	    border-radius: 10px;
-	    width: 150px;
-	    font-size: 20px;
-	    cursor: pointer;
-	    &:hover {
-	    	color: $yellow;
-			background-color: $yellow-dark;
-	    }
-	}
-	.sm-monster-tab-active {
-		color: $yellow;
-		background-color: $yellow-dark;
-	}
-	.sm-monster-mid {
-		top: 210px;
 	}
 
 	.sm-monster-filters-top {
