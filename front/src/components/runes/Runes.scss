@@ -9,14 +9,28 @@
 		}
 	}
 
-	.sm-runes-filters-main {
+	.sm-runes-main-filters {
+		h4 {
+			color: $color-text;
+			text-align: center;
+		}
+		.sm-runes-main-select {
+			width: 60% !important;
+			margin: auto;
+		}
+	}
+
+	.sm-runes-sub-filters {
 		h4 {
 			color: $color-text;
 			text-align: center;
 		}
 		li {
 			display: inline-block;
-			padding: 5px;
+			label {
+				width: 40px;
+				margin-left: 10px;
+			}
 		}
 	}
 
@@ -90,6 +104,7 @@
 			background-color: $color-text;
 		}
 	}
+
 	.sm-sheet-mid {
 		margin-top: 10px;
 	}

@@ -30,8 +30,10 @@ class Login extends React.Component {
 						<label className="sm-label sm-login-label-mid">Password</label>
 						<input type="text" className="sm-input" value={this.state.password} onChange={this.onChange.bind(this, 'password')}/>
 						<a onClick={this.props.onClick} className="sm-login-register">Create an Account</a>
-						<span className="sm-error">{this.state.error}</span>
 					</div>
+				</div>
+				<div className="col-xs-12">
+					<p className="sm-error sm-login-error">{this.state.error}</p>
 				</div>
 				<div className="col-xs-12">
 					<div className="sm-login-button">

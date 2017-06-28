@@ -4,6 +4,8 @@ import AuthHelper from 'helpers/AuthHelper'
 
 import PosType from 'utils/constants/PosType'
 import SetType from 'utils/constants/SetType'
+import StatType from 'utils/constants/StatType'
+
 
 import {Utils, BaseData}  from 'ap-react-bootstrap'
 
@@ -23,16 +25,25 @@ class RunesData extends BaseData {
         
 		super.register(obj)
 
-        this.obj.onClickFilterSet = this.onClickFilterSet.bind(this)
-        this.obj.onClickFilterPos = this.onClickFilterPos.bind(this)
+        this.obj.onClickSetFilter = this.onClickSetFilter.bind(this)
+        this.obj.onClickPosFilter = this.onClickPosFilter.bind(this)
         this.obj.onClickSort = this.onClickSort.bind(this)
-        this.obj.sortRunes = this.sortRunes.bind(this)
+        this.obj.onChangeMainStatFilter = this.onChangeMainStatFilter.bind(this)
+        this.obj.onClickSubStatFilter = this.onClickSubStatFilter.bind(this)
+
+        this.sorts = {}
+        this.setFilter = null
+        this.posFilter = null
+        this.mainStatFilter = null
+
+        this.statTypeValues = []
+        for(var i = 0; i < StatType.VALUES.length; i++) {
+            this.statTypeValues.push(StatType.VALUES[i].key)
+        }
 
         this.obj.state = {
-            runes: {},
-            filterSet: {},           
-            filterPos: {},
-            sorts: {}
+            runes: [],
+            statTypeValues: this.statTypeValues 
         }
 
 		RuneHelper.register(this, this.buildDataRunes.bind(this))
@@ -48,64 +59,80 @@ class RunesData extends BaseData {
 		RuneHelper.unregister(this)
 	}
 
-	onClickFilterSet(filterId) {
-		this.getState('filterSet')[filterId] = !this.getState('filterSet')[filterId] 
-        this.buildDataRunes()
-	}
-
-    onClickFilterPos(filterId) {
-        this.getState('filterPos')[filterId] = !this.getState('filterPos')[filterId] 
-        this.buildDataRunes()
+    buildDataRunes() {
+        let runes = Utils.map(RuneHelper.getData())
+        this.setState({runes: runes})
     }
 
-    buildDataRunes() {
-        this.allSet = true
-        SetType.VALUES.forEach(function(type) {
-            if (this.getState('filterSet')[type.key]) {
-                this.allSet = false
-            }
-        }.bind(this))
+	onClickSetFilter(key) {
+        this.setFilter = (this.setFilter === key) ? null : key
+        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+		this.setState({runes: runes, setFilter: this.setFilter}) 
+	}
 
-        this.allPos = true
-        PosType.VALUES.forEach(function(type) {
-            if (this.getState('filterPos')[type.key]) {
-                this.allPos = false
-            }
-        }.bind(this))
+    onClickPosFilter(key) {
+        this.posFilter = (this.posFilter === key) ? null : key
+        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        this.setState({runes: runes, posFilter: this.posFilter})
+    }
 
-        let runes = Utils.filter(RuneHelper.getData(), this._filterRune.bind(this))
+    onChangeMainStatFilter(event) {
+        this.mainStatFilter = (this.mainStatFilter === event.target.value) ? null : event.target.value
+        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        this.setState({runes: runes, mainStatFilter: this.mainStatFilter})
+    }
 
-        this.setState({ runes: runes })
+    onClickSubStatFilter(key) {
+        this.subStatFilter = (this.subStatFilter === key) ? null : key
+        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        this.setState({runes: runes, subStatFilter: this.subStatFilter})
     }
 
     onClickSort(key) {
-        let sorts = this.getState('sorts')
+        let sorts = this.sorts
         sorts[key] = !sorts[key]
-        this.setState({ sorts: sorts })
+        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this));
+        this.setState({runes: runes})
     }
 
-    sortRunes(r1, r2) {
+    _sortRunes(r1, r2) {
         let sortAtts = Object.keys(SORT_ATTRIBUTE)
-        let sorts = this.getState('sorts')
         for (let i = 0; i < sortAtts.length; i++) {
             let sortAtt = sortAtts[i]
-            if (sorts[sortAtt]) {
+            if (this.sorts[sortAtt]) {
                 let s = r2[sortAtt] - r1[sortAtt]
-                if (s) return s
+                if (s) return s    
             }
         }
     }
 
-    _filterRune(rune, index) {
-        if (!this.allSet) {
-            if (!this.getState('filterSet')[rune.set]) {
-                return false
-            }
+    _runeHaveStatType(rune, statType) {
+        if(rune.subStatType == statType)
+            return true
+        else if(rune.stat1Type == statType)
+            return true
+        else if(rune.stat2Type == statType)
+            return true
+        else if(rune.stat3Type == statType)
+            return true
+        else if(rune.stat4Type == statType)
+            return true 
+        else
+            return false
+    }
+
+    _filterRunes(rune) {
+        if (this.setFilter && rune.set !== this.setFilter) {
+            return false
         }
-        if (!this.allPos) {
-            if (!this.getState('filterPos')[rune.pos]) {
-                return false
-            }   
+        if (this.posFilter && rune.pos !== this.posFilter) {
+            return false
+        }
+        if (this.mainStatFilter && rune.statMainType !== this.mainStatFilter) {
+            return false
+        }
+        if (this.subStatFilter && !this._runeHaveStatType(rune, this.subStatFilter)) {
+            return false
         }
         return true
     }
