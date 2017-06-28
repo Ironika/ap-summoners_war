@@ -53,15 +53,15 @@ class MonsterList extends React.Component {
             <div className="sm-sheet sm-monster-filters-elements">
                 {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
             </div>
+            <div className="sm-monster-list">
+                {this.state.monsters.map(this._buildMonster.bind(this))}
+            </div>
             <div className="sm-sheet sm-monster-filters-top">
                 <ul className="sm-monster-filters">
                     <li className="sm-li-search-input"><input className="sm-input sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/></li>
                     {Utils.map(MonstersListData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
                 </ul>
             </div> 
-            <div className="sm-monster-list">
-                {this.state.monsters.map(this._buildMonster.bind(this))}
-            </div>
         </div>
     )}
 
