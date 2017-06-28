@@ -12,19 +12,21 @@ class Monster extends React.Component {
 	}
 
 	componentWillMount() {
-        AppHelper.register('/monster', this, this.onMonsterChange.bind(this));
+        AppHelper.register('/monster/' + this.props.monster.id, this, this.onMonsterActive.bind(this));
+        AppHelper.register('/oldmonster/' + this.props.monster.id, this, this.onMonsterChangeDesactive.bind(this));
     }
 
     omponentWillUnmount() {
         AppHelper.unregister(this)
     }
 
-    onMonsterChange() {
-        let monster = AppHelper.getData('/monster')
-        if (monster.id == this.props.monster.id)
-        	this.setState({	active: true })
-     	else
-     		this.setState({	active: false })
+	onMonsterChangeDesactive() {
+        this.setState({	active: false })
+    }
+
+    onMonsterActive() {
+    	console.log("MONSTER CHANGE MONSTER CHANGE MONSTER onMonsterChangeMONSTER CHANGE MONSTER CHANGE")
+        this.setState({	active: true })
     }
 
 	onClick() {

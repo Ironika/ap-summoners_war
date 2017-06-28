@@ -33,8 +33,11 @@ class MonstersListData extends BaseData {
 
     buildMonstersData() {
         let monsters = Utils.map(MonsterHelper.getData())
-        let monster = monsters.length ? monsters[0] : null
-        AppHelper.put('/monster', monster)
+        this.monster = monsters.length ? monsters[0] : null
+        if (this.monster) {
+            AppHelper.put('/monster/' + this.monster.id, this.monster)
+            AppHelper.put('/monster', this.monster)
+        }
         this.setState({ monsters: monsters })
     }
 
@@ -66,6 +69,9 @@ class MonstersListData extends BaseData {
     }
 
 	onClickMonster(monster) {
+        AppHelper.put('/oldmonster/' + this.monster.id, true)
+        this.monster = monster
+        AppHelper.put('/monster/' + monster.id, true)
         AppHelper.put('/monster', monster)
     }
 
