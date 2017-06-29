@@ -15,7 +15,7 @@ class Monster extends React.Component {
         AppHelper.register('/monster/' + this.props.monster.id, this, this.onMonsterChange.bind(this));
     }
 
-    omponentWillUnmount() {
+    componentWillUnmount() {
         AppHelper.unregister(this)
     }
 
