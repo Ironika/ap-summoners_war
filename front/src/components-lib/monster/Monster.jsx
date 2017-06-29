@@ -25,7 +25,6 @@ class Monster extends React.Component {
     }
 
     onMonsterActive() {
-    	console.log("MONSTER CHANGE MONSTER CHANGE MONSTER onMonsterChangeMONSTER CHANGE MONSTER CHANGE")
         this.setState({	active: true })
     }
 

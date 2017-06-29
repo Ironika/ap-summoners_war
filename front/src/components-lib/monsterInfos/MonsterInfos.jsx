@@ -57,10 +57,10 @@ class MonsterInfos extends React.Component {
 					<div className="col-xs-7">
 						<ul className="sm-monster-values">
 							<li>{this.props.monster.lvl}</li>
-							<li>{this.props.monster.hp}<span>+3128</span></li>
-							<li>{this.props.monster.atk}<span>+312</span></li>
-							<li>{this.props.monster.def}<span>+38</span></li>
-							<li>{this.props.monster.spd}<span>+2</span></li>
+							<li>{this.props.monster.hp}</li>
+							<li>{this.props.monster.atk}</li>
+							<li>{this.props.monster.def}</li>
+							<li>{this.props.monster.spd}</li>
 							<li className="sm-monster-separator"></li>
 							<li>{this.props.monster.crate}%</li>
 							<li>{this.props.monster.cdmg}%</li>

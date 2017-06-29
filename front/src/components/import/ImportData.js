@@ -14,7 +14,8 @@ class ImportData extends BaseData {
 		this.obj.state = {
 			upload: "Upload your file",
 			fileInput: {},
-			error: ""
+			error: "",
+			success: ""
 		}
 	}
 
@@ -27,23 +28,20 @@ class ImportData extends BaseData {
 	}
 
 	onClickImport() {
+		this.setState({success: "Please wait..."});
 		let f = this.getState('fileInput').files[0]; 
 
 	    if (f) {
 	      	let r = new FileReader();
 	      	r.onload = function(e) { 
 			    let contents = e.target.result;
-			    AppHelper.setBusy(true).then(
-				    DefaultHelper.postUserImport({
-				    	data: contents, 
-				    	userId: AuthHelper.getEntityId()
-				    }).then(
-				    	AppHelper.navigate("profile").then(
-				    		AppHelper.setBusy.bind(AppHelper, false)
-				    	)
-				    )
-				).catch(AppHelper.setBusy.bind(AppHelper, false))
-	      	}
+			   	DefaultHelper.postUserImport({
+			    	data: contents, 
+			    	userId: AuthHelper.getEntityId()
+			    }).then(
+			    	this.setState({success: "The file has been loaded !"})
+			    )
+	      	}.bind(this)
 	      	r.readAsText(f);
 	    } else { 
 	      	this.setState({error: "Failed to load the file"});
