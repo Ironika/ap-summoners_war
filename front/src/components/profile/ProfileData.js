@@ -3,6 +3,7 @@ import UserHelper from 'helpers/UserHelper'
 import MonsterHelper from 'helpers/MonsterHelper'
 import RuneHelper from 'helpers/RuneHelper'
 import AuthHelper from 'helpers/AuthHelper'
+ // import ImageHelper from 'helpers/ImageHelper'
 
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
 
@@ -16,8 +17,11 @@ class ProfileData extends BaseData {
         }
 
         this.obj.onClick = this.onClick.bind(this)
+        this.obj.onChangeUpload = this.onChangeUpload.bind(this)
 
         this.obj.state = {
+            upload: "Upload your picture",
+            fileInput: {},
             username: '', 
             email: '', 
             lastImport: '',
@@ -40,7 +44,7 @@ class ProfileData extends BaseData {
 		this.setState({
             username: username || '',
             email: email || '',
-            lastImport: lastImport ? MomentHelper.localDateToHumanDate(lastImport) : ''
+            lastImport: lastImport ? MomentHelper.localDateToHumanDate(lastImport) : '',
         })
 	}
     buildDataMonster(id) {
@@ -60,6 +64,18 @@ class ProfileData extends BaseData {
             email: this.getState('email')
         })
 	}
+
+    onChangeUpload() {
+        this.setState({upload: this.getState('fileInput').files[0].name})
+
+        // let data = {
+        //     file: this.getState('fileInput').files[0],
+        //     name: this.getState('fileInput').files[0].name
+        // }
+        // ImageHelper.postImage(data).then(
+        //     UserHelper.put({profileImage: })
+        // )
+    }
 }
 let ProfileObj = new ProfileData()
 export default ProfileObj

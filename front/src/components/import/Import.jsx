@@ -29,7 +29,7 @@ class Import extends React.Component {
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-upload">
 							<div className="sm-sheet sm-sheet-mid">
-								<div className="sm-content">
+								<div className="sm-content sm-upload">
 									<label htmlFor="file-upload" className="sm-label sm-upload-label">
 									    {this.state.upload}
 									</label>

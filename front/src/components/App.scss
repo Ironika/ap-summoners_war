@@ -94,6 +94,24 @@ html, body, .app, .ap-app {
 	    color: $color-text;
 	    border-color: $color-text;
 	}
+	.sm-upload {
+		.sm-upload-label {
+			display: block;
+		    padding: 10px;
+		    background-color: rgba(46, 29, 16, 0.80);
+		}
+		input[type="file"] {
+		    display: none !important;
+		}
+		.sm-upload-button {
+			margin-top: 15px;
+			margin-bottom: 5px;
+			text-align: center;
+		}
+		.sm-home-text {
+			color: $color-text;
+		}
+	}
 	.sm-checkbox {
 		margin-left: 10px;
 		font-size: 20px;

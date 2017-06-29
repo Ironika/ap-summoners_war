@@ -2,37 +2,18 @@
 
 .ap-profile {
 	.sm-profile-user {
-		.sm-profile-img {
-			max-width: 130px;
-		    width: 100%;
-		    margin: auto;
-		    display: block;
-		    cursor: pointer;
-		}
-		.sm-sheet-profil-top {
-			margin-top: 20px;
-		}
 		li {
 			font-size: 17px;
 		    padding: 5px;
-		}
-		.sm-profil-user-key {
-			li {
-			    color: $color-text;
-			}
-		}
-		.sm-profil-user-values {
-			li {
-				color: white;
-			}
-		}
-		.sm-profl-user-update {
-			text-align: center;
-			margin-top: 10px;
+		    color: $color-text;
 		}
 	}
+	.sm-upload-profile {
+		text-align: center;
+    	padding: 20px;
+	}
 
-	.sm-sheet-profil-mid {
+	.sm-sheet-mid {
 		margin-top: 20px;
 	}
 	.sm-profil-stat {
@@ -50,4 +31,5 @@
 			}
 		}
 	}
+
 }

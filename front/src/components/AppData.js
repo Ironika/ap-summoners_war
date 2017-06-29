@@ -25,6 +25,7 @@ class AppData extends BaseData {
 
 		this.obj.state = {
 			username: 'Homunculus',
+			profileImage: 'assets/images/monsters/Homunculus-Awakened_Fire.jpg',
 			isLogged: false
 		}
 
@@ -39,8 +40,11 @@ class AppData extends BaseData {
 
 	buildDataUser() {
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
+        let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
+
 		this.setState({
             username: username || 'Homunculus',
+            profileImage: profileImage || 'assets/images/monsters/Homunculus-Awakened_Fire.jpg',
             isLogged: true
         })
 	}

@@ -9,24 +9,6 @@
 	.sm-sheet-mid {
 		margin-top: 25px;
 	}
-	.sm-upload {
-		.sm-upload-label {
-			display: block;
-		    padding: 10px;
-		    background-color: rgba(46, 29, 16, 0.80);
-		}
-		input[type="file"] {
-		    display: none !important;
-		}
-		.sm-upload-button {
-			margin-top: 15px;
-			margin-bottom: 5px;
-			text-align: center;
-		}
-		.sm-home-text {
-			color: $color-text;
-		}
-	}
 	.sm-import-img-content {
 		text-align: center;
 		.sm-import-img {

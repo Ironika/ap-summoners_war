@@ -23,21 +23,19 @@ class Profile extends React.Component {
 				<div className="row">
 					<div className="col-xs-12 col-sm-6">
 						<div className="sm-profile-user">
-							<img alt="Summoners War" className="sm-profile-img" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-							<div className="sm-sheet sm-sheet-profil-top">
-								<div className="row">
-									<div className="col-xs-12">
-										<ul className="sm-profil-user-key">
-											<li>Pseudo : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/></li>
-											<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')}/></li>
-											<li>Last import : <input className="sm-input" value={this.state.lastImport} disabled={true}/></li>
-										</ul>
-									</div>
-									<div className="col-xs-12">
-										<div className="sm-profl-user-update">
-											<button className="sm-button" onClick={this.onClick}>Update</button>
-										</div>
-									</div>
+							<div className="sm-sheet">
+								<div className="sm-content">
+									<ul className="sm-profil-user-key">
+										<li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/></li>
+										<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')}/></li>
+										<li>Last import : <input className="sm-input" value={this.state.lastImport} disabled={true}/></li>
+									</ul>
+								</div>
+								<div className="sm-upload sm-upload-profile">
+									<label htmlFor="file-upload" className="sm-button">
+									    {this.state.upload}
+									</label>
+									<input id="file-upload" type="file" ref={(c) => this.state.fileInput = c} onChange={this.onChangeUpload.bind(this, 'file')}/>
 								</div>
 							</div>
 						</div>
@@ -49,13 +47,13 @@ class Profile extends React.Component {
 								<p>Monsters : <span>{this.state.monsters}</span></p>
 							</div>
 						</div>
-						<div className="sm-sheet sm-sheet-profil-mid">
+						<div className="sm-sheet sm-sheet-mid">
 							<div className="sm-profil-stat">
 								<img alt="Summoners War" src="assets/images/runes.png"/>
 								<p>Runes : <span>{this.state.runes}</span></p>
 							</div>
 						</div>
-						<div className="sm-sheet sm-sheet-profil-mid">
+						<div className="sm-sheet sm-sheet-mid">
 							<div className="sm-profil-stat">
 								<img alt="Summoners War" src="assets/images/runes.png"/>
 								<p>Builds : <span>{this.state.builds}</span></p>
