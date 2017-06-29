@@ -14,15 +14,15 @@ class MonsterProfilData extends BaseData {
             monster: {}
         }
 
-        AppHelper.register('/monster', this, this.onMonsterChange.bind(this));
+        AppHelper.register('/currentMonster', this, this.onMonsterChange.bind(this));
     }
 
     unregister() {
-        
+        AppHelper.unregister(this)
     }
 
     onMonsterChange() {
-        let monster = AppHelper.getData('/monster')
+        let monster = AppHelper.getData('/currentMonster')
         this.setState({ monster: monster })
     }
 

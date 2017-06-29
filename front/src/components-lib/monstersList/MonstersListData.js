@@ -35,8 +35,8 @@ class MonstersListData extends BaseData {
         let monsters = Utils.map(MonsterHelper.getData())
         this.monster = monsters.length ? monsters[0] : null
         if (this.monster) {
-            AppHelper.put('/monster/' + this.monster.id, this.monster)
-            AppHelper.put('/monster', this.monster)
+            AppHelper.put('/monster/' + this.monster.id, true)
+            AppHelper.put('/currentMonster', this.monster)
         }
         this.setState({ monsters: monsters })
     }
@@ -69,10 +69,10 @@ class MonstersListData extends BaseData {
     }
 
 	onClickMonster(monster) {
-        AppHelper.put('/oldmonster/' + this.monster.id, true)
+        AppHelper.put('/monster/' + this.monster.id, false)
         this.monster = monster
         AppHelper.put('/monster/' + monster.id, true)
-        AppHelper.put('/monster', monster)
+        AppHelper.put('/currentMonster', monster)
     }
 
 	onClickElementFilters(key) {
