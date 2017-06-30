@@ -1,5 +1,6 @@
 import { BaseData }  from 'ap-react-bootstrap'
 import AppHelper from 'helpers/AppHelper'
+import RuneHelper from 'helpers/RuneHelper'
 
 class MonsterProfilData extends BaseData {
 
@@ -11,6 +12,7 @@ class MonsterProfilData extends BaseData {
 
         this.obj.state = {
             currentPage: 'infos',
+            monsterHaveRunes: false,
             monster: {}
         }
 
@@ -23,7 +25,19 @@ class MonsterProfilData extends BaseData {
 
     onMonsterChange() {
         let monster = AppHelper.getData('/currentMonster')
-        this.setState({ monster: monster })
+
+        let allRunes = RuneHelper.getData()
+        let monsterHaveRunes = false
+        for (let key in allRunes) {
+            if (allRunes[key].monsterId == monster.id) {
+                monsterHaveRunes = true
+            }
+        }
+
+        if(monsterHaveRunes)
+            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes})
+        else 
+            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, currentPage: 'infos'})
     }
 
     onClickRunes() {

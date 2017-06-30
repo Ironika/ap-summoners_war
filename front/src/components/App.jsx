@@ -51,7 +51,7 @@ class App extends React.Component {
 
 	buildPage(page, key) {
 		return (
-			<li key={key} className={(key == 'monsters' | key == 'runes' && !this.state.isLogged) ? " hidePage" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
+			<li key={key} className={(key == 'monsters' | key == 'runes' | key == 'builds' && !this.state.isLogged) ? " hidePage" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
 		)
 	}
 

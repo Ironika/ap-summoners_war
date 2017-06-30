@@ -9,6 +9,16 @@ class MonsterInfos extends React.Component {
 		super(props);
 	}
 
+	_parseName(monster) {
+		if(monster.name) {
+			let element = "(" + monster.elemType + ")"
+			let name = monster.name
+			if(name.search(element) != -1) 
+				name = name.slice(0 , name.search(element) - 2)
+			return (name)
+		}
+	}
+
 	render() {
 		return (
 			<div className="sm-monster-infos">
@@ -17,7 +27,7 @@ class MonsterInfos extends React.Component {
 						<div className="row">
 							<div className="col-xs-12 col-sm-8">
 								<img className="sm-monster-element" src={"assets/images/elements/" + this.props.monster.elemType + ".png"}/>
-								<span className="sm-monster-name">{this.props.monster.name}</span>
+								<span className="sm-monster-name">{this._parseName(this.props.monster)}</span>
 							</div>
 							<div className="col-xs-12 col-sm-4">
 								<RaterStar className="sm-monster-star" value={this.props.monster.star} starMax={6}/>

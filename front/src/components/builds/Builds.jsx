@@ -50,7 +50,12 @@ class Builds extends React.Component {
 					</div>
 					<div className="col-xs-10">
 						<div className="sm-sheet sm-builds-monsters">
-							MonstersConfig
+							<div className="sm-content sm-builds-monsterconfig">
+								<div className="sm-builds-monster-name">
+									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
+									<span>Monster Name</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

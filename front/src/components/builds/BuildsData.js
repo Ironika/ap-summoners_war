@@ -1,4 +1,5 @@
 import AppHelper from 'helpers/AppHelper';
+import AuthHelper from 'helpers/AuthHelper';
 import BuildHelper from 'helpers/BuildHelper';
 import {Utils, BaseData}  from 'ap-react-bootstrap'
 
@@ -7,6 +8,9 @@ import {Utils, BaseData}  from 'ap-react-bootstrap'
 class BuildsData extends BaseData {
 
 	register(obj) {
+		if(!AuthHelper.getEntityId()) {
+            AppHelper.navigate("/")
+        }
 		super.register(obj)
 
 		this.obj.state = {

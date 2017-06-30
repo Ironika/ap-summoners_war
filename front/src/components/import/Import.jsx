@@ -34,7 +34,6 @@ class Import extends React.Component {
 									    {this.state.upload}
 									</label>
 									<input id="file-upload" type="file" ref={(c) => this.state.fileInput = c} onChange={this.onChange.bind(this)}/>
-									<span className={'sm-home-text'}>{this.state.success}</span>
 								</div>
 								<div className="col-xs-12">
 									<p className="sm-error sm-import-error">{this.state.error}</p>

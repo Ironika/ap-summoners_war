@@ -6,6 +6,17 @@ import RuneHelper from 'helpers/RuneHelper'
 
 import './MonsterRunes.scss'
 
+let SETS = {
+    Energy: 2,
+    Swift: 4,
+    Despair: 4,
+    Blade: 2,
+    Focus: 2,
+    Fatal: 4,
+    Revenge: 2,
+    Vampire: 4
+}
+
 class MonsterRunes extends React.Component {
 
 	constructor(props) {
@@ -13,63 +24,75 @@ class MonsterRunes extends React.Component {
 	}
 
 	componentWillMount() {
-		this.state = this.__buildCurrentRunes()
+		this.state = this.__buildCurrentRunes(this.props)
 	}
 	componentWillReceiveProps(props) {
-		this.setState(this.__buildCurrentRunes())
+		this.setState(this.__buildCurrentRunes(props))
 	}
 
-	__buildCurrentRunes() {
+	__buildCurrentRunes(props) {
 		let allRunes = RuneHelper.getData()
 		let monsterRunes = []
-		this.mainSet = ""
-		this.subSet = ""
+		let sets = {}
 
 		for (let key in allRunes) {
-			if (allRunes[key].monsterId == this.props.monster.id) {
+			if (allRunes[key].monsterId == props.monster.id) {
 				monsterRunes.push(allRunes[key])
 			}
 		}
 
-		this.__getSetsRunes(monsterRunes)
+		sets = this.__getSetsRunes(monsterRunes)
 
-		return { runes: monsterRunes, mainSet: this.mainSet, subSet: this.subSet}
+		return { runes: monsterRunes, sets: sets}
 	}
 
 	__getSetsRunes(runes) {
-		let runeSets = []
+		let runeSets = {}
 		let count = 0
 
+		let sets = {}
+
 		for(let rune in runes)
-			runeSets.push(runes[rune].set)
+			if (runes[rune].set in runeSets)
+				runeSets[runes[rune].set]++ 
+			else 
+				runeSets[runes[rune].set] = 1
 
-		for(let set in SetType.VALUES) {
-			count = 0;
+		for(let set in runeSets)
+			if(runeSets[set] >= SETS[set])
+				if (set in sets)
+					sets[set]++ 
+				else 
+					sets[set] = 1
 
-			for(let runeSet in runeSets) 
-				if(runeSets[runeSet] == SetType.VALUES[set].key)
-					count++
-
-			if(count > 3) 
-				this.mainSet = SetType.VALUES[set].key
-			else if(count > 1)
-				this.subSet = SetType.VALUES[set].key
-		}
+		return sets
 	}
 
 	_buildRunes(rune) {
 		return (<Rune key={rune.id} rune={rune}/>)
 	}
 
-	_buildSets(set) {
-		if(set) {
-			return (
-				<li key={"set-" + set}>
-					<img src={"assets/images/runes/Rune-" + set + ".png"}/>
-					<p className="">{set}</p>
-				</li>
-			)
+	_buildSets(sets) {
+		let setJsx = []
+		for (let key in sets) {
+			setJsx.push(this.__buildSet(key , sets[key]))
 		}
+		return setJsx
+	}
+
+	__buildSet(set, count) {
+		let setJsx;
+		if (count > 1)
+			setJsx = (<p className="">{set + ' x ' + count}</p>)
+		else
+			setJsx = (<p className="">{set}</p>)
+
+		return (
+			<li key={"set-" + set}>
+				<img src={"assets/images/runes/Rune-" + set + ".png"}/>
+				{setJsx}
+			</li>
+		)
 	}
 
 	render() {
@@ -84,8 +107,7 @@ class MonsterRunes extends React.Component {
 							<div className="sm-monster-rune-set">
 								<h4>Set Effect</h4>
 								<ul>
-									{this._buildSets(this.state.mainSet)}
-									{this._buildSets(this.state.subSet)}
+									{this._buildSets(this.state.sets)}
 								</ul>
 							</div>
 						</div>

@@ -2,7 +2,7 @@
 
 .ap-builds {
 	.sm-builds-list {
-		max-height: 430px;
+		max-height: 395px;
 		overflow: auto;
 		li {
 			cursor: pointer;
@@ -11,7 +11,7 @@
 				height: 120px;
 				margin-bottom: 15px;
 				background-image: radial-gradient($marroon-light 40%, $marroon-dark 70%);
-				border-color: $marroon-light;
+				border: 1px solid $marroon-light;
 				border-radius: 1000px;
 				i {
 				    position: relative;
@@ -40,9 +40,38 @@
 					}
 				}
 			}
+			.sm-buil-active {
+				background-image: radial-gradient($marroon-light2 40%, $marroon-dark2 70%);
+				span {
+					background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
+					color: white;
+				}
+				i {
+					color: $color-text;
+				}
+			}
 		}
 	}
 	.sm-builds-monsters {
-
+		padding: 25px;
+		overflow: auto;
+		.sm-builds-monsterconfig {
+			display: inline-block;
+		    height: 455px;
+		    width: 50%;
+		    .sm-builds-monster-name {
+		    	img {
+			    	height: 60px;
+				    width: 60px;
+				    cursor: pointer;
+				    display: inline-block;
+			    }
+			    span {
+			    	color: $color-text;
+			    	margin-left: 10px;
+			    	font-size: 18px;
+			    }
+		    }
+		}
 	}
 }

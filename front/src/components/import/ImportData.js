@@ -1,5 +1,7 @@
 import AppHelper from 'helpers/AppHelper';
 import AuthHelper from 'helpers/AuthHelper';
+import MonsterHelper from 'helpers/MonsterHelper';
+import RuneHelper from 'helpers/RuneHelper';
 import DefaultHelper from 'helpers/DefaultHelper';
 import { BaseData }  from 'ap-react-bootstrap'
 
@@ -15,7 +17,6 @@ class ImportData extends BaseData {
 			upload: "Upload your file",
 			fileInput: {},
 			error: "",
-			success: ""
 		}
 	}
 
@@ -28,23 +29,32 @@ class ImportData extends BaseData {
 	}
 
 	onClickImport() {
-		this.setState({success: "Please wait..."});
 		let f = this.getState('fileInput').files[0]; 
 
 	    if (f) {
 	      	let r = new FileReader();
 	      	r.onload = function(e) { 
 			    let contents = e.target.result;
-			   	DefaultHelper.postUserImport({
-			    	data: contents, 
-			    	userId: AuthHelper.getEntityId()
-			    }).then(
-			    	this.setState({success: "The file has been loaded !"})
-			    )
-	      	}.bind(this)
+			    
+			    AppHelper.setBusy(true).
+			    then(DefaultHelper.postUserImport.bind(DefaultHelper, {data: contents, userId: AuthHelper.getEntityId()})).
+				then(function() {
+				    	let promises = []
+				    	promises.push(MonsterHelper.getUserMonsters(AuthHelper.getEntityId()))
+						promises.push(RuneHelper.getUserRunes(AuthHelper.getEntityId()))
+						return Promise.all(promises)
+				}).
+				then(AppHelper.navigate.bind(AppHelper, 'profile')).
+				then(AppHelper.setBusy.bind(AppHelper, false)).
+				catch(function() {
+					this.setState({error: "An error has occured !"})
+					AppHelper.setBusy(false)
+				}.bind(this))
+
+	      	}
 	      	r.readAsText(f);
 	    } else { 
-	      	this.setState({error: "Failed to load the file"});
+	      	this.setState({error: "Choose your file !"})
 	    }
 	}
 

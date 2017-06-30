@@ -31,7 +31,7 @@ class MonsterProfil extends React.Component {
         <div className="sm-monsterprofil">
            <div className="sm-sheet">
                 <div className={"sm-monster-tab " + (this.state.currentPage === 'infos' ? 'sm-monster-tab-active' : "")} onClick={this.onClickInfos}>Infos</div>
-                <div className={"sm-monster-tab sm-monster-mid "+ (this.state.currentPage === 'runes' ? 'sm-monster-tab-active' : "")} onClick={this.onClickRunes}>Runes</div>
+                <div className={"sm-monster-tab sm-monster-mid " + (this.state.currentPage === 'runes' ? 'sm-monster-tab-active' : "") + (!this.state.monsterHaveRunes ? "sm-monster-tab-hide" : "")} onClick={this.onClickRunes}>Runes</div>
                 { this._buildMonsterProfil(this.state.currentPage) }
             </div> 
         </div>
