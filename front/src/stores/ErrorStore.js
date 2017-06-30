@@ -6,6 +6,56 @@ ErrorStore.handleLogout = function(results, params) {
 	ErrorStore.setContent({});
 }
 
+ErrorStore.handleGetBuildsSuccess = function(results, params) {
+	delete ErrorStore._content.GET_BUILDS;
+	ErrorStore.notifyPath('/GET_BUILDS');
+}
+
+ErrorStore.handleGetBuildsError = function(error, params) {
+	ErrorStore._content.GET_BUILDS = error;
+	ErrorStore.notifyPath('/GET_BUILDS');
+}
+
+ErrorStore.handlePostBuildSuccess = function(results, params) {
+	delete ErrorStore._content.POST_BUILD;
+	ErrorStore.notifyPath('/POST_BUILD');
+}
+
+ErrorStore.handlePostBuildError = function(error, params) {
+	ErrorStore._content.POST_BUILD = error;
+	ErrorStore.notifyPath('/POST_BUILD');
+}
+
+ErrorStore.handleGetBuildSuccess = function(results, params) {
+	delete ErrorStore._content.GET_BUILD;
+	ErrorStore.notifyPath('/GET_BUILD');
+}
+
+ErrorStore.handleGetBuildError = function(error, params) {
+	ErrorStore._content.GET_BUILD = error;
+	ErrorStore.notifyPath('/GET_BUILD');
+}
+
+ErrorStore.handlePutBuildSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_BUILD;
+	ErrorStore.notifyPath('/PUT_BUILD');
+}
+
+ErrorStore.handlePutBuildError = function(error, params) {
+	ErrorStore._content.PUT_BUILD = error;
+	ErrorStore.notifyPath('/PUT_BUILD');
+}
+
+ErrorStore.handleDeleteBuildSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_BUILD;
+	ErrorStore.notifyPath('/DELETE_BUILD');
+}
+
+ErrorStore.handleDeleteBuildError = function(error, params) {
+	ErrorStore._content.DELETE_BUILD = error;
+	ErrorStore.notifyPath('/DELETE_BUILD');
+}
+
 ErrorStore.handleGetRunesSuccess = function(results, params) {
 	delete ErrorStore._content.GET_RUNES;
 	ErrorStore.notifyPath('/GET_RUNES');
@@ -154,6 +204,26 @@ ErrorStore.handlePutUserSuccess = function(results, params) {
 ErrorStore.handlePutUserError = function(error, params) {
 	ErrorStore._content.PUT_USER = error;
 	ErrorStore.notifyPath('/PUT_USER');
+}
+
+ErrorStore.handleGetUserBuildsSuccess = function(results, params) {
+	delete ErrorStore._content.GET_USER_BUILDS;
+	ErrorStore.notifyPath('/GET_USER_BUILDS');
+}
+
+ErrorStore.handleGetUserBuildsError = function(error, params) {
+	ErrorStore._content.GET_USER_BUILDS = error;
+	ErrorStore.notifyPath('/GET_USER_BUILDS');
+}
+
+ErrorStore.handleDeleteUserBuildsSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_USER_BUILDS;
+	ErrorStore.notifyPath('/DELETE_USER_BUILDS');
+}
+
+ErrorStore.handleDeleteUserBuildsError = function(error, params) {
+	ErrorStore._content.DELETE_USER_BUILDS = error;
+	ErrorStore.notifyPath('/DELETE_USER_BUILDS');
 }
 
 ErrorStore.handleGetUserRunesSuccess = function(results, params) {
@@ -307,6 +377,11 @@ ErrorStore.handlePostAuthChangemailConfirmError = function(error, params) {
 }
 
 Dispatcher.register('LOGOUT', ErrorStore.handleLogout)
+Dispatcher.register('GET_BUILDS', ErrorStore.handleGetBuildsSuccess, ErrorStore.handleGetBuildsError)
+Dispatcher.register('POST_BUILD', ErrorStore.handlePostBuildSuccess, ErrorStore.handlePostBuildError)
+Dispatcher.register('GET_BUILD', ErrorStore.handleGetBuildSuccess, ErrorStore.handleGetBuildError)
+Dispatcher.register('PUT_BUILD', ErrorStore.handlePutBuildSuccess, ErrorStore.handlePutBuildError)
+Dispatcher.register('DELETE_BUILD', ErrorStore.handleDeleteBuildSuccess, ErrorStore.handleDeleteBuildError)
 Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError)
 Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError)
 Dispatcher.register('GET_RUNE', ErrorStore.handleGetRuneSuccess, ErrorStore.handleGetRuneError)
@@ -322,6 +397,8 @@ Dispatcher.register('GET_USER', ErrorStore.handleGetUserSuccess, ErrorStore.hand
 Dispatcher.register('POST_USER', ErrorStore.handlePostUserSuccess, ErrorStore.handlePostUserError)
 Dispatcher.register('DELETE_USER', ErrorStore.handleDeleteUserSuccess, ErrorStore.handleDeleteUserError)
 Dispatcher.register('PUT_USER', ErrorStore.handlePutUserSuccess, ErrorStore.handlePutUserError)
+Dispatcher.register('GET_USER_BUILDS', ErrorStore.handleGetUserBuildsSuccess, ErrorStore.handleGetUserBuildsError)
+Dispatcher.register('DELETE_USER_BUILDS', ErrorStore.handleDeleteUserBuildsSuccess, ErrorStore.handleDeleteUserBuildsError)
 Dispatcher.register('GET_USER_RUNES', ErrorStore.handleGetUserRunesSuccess, ErrorStore.handleGetUserRunesError)
 Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess, ErrorStore.handleDeleteUserRunesError)
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError)

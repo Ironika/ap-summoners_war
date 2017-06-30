@@ -30,8 +30,8 @@ public class RuneServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
-				bean.userId = data.getUserId();
 				bean.monsterId = data.getMonsterId();
+				bean.userId = data.getUserId();
 				bean.lvl = data.getLvl();
 				bean.set = data.getSet();
 				bean.stat4Type = data.getStat4Type();
@@ -68,8 +68,8 @@ public class RuneServlet extends APServletBase {
 		try {
 			RuneData data = new RuneData();
 			data.setId(UUIDGenerator.nextId());
-			data.setUserId(runeBean.userId);
 			data.setMonsterId(runeBean.monsterId);
+			data.setUserId(runeBean.userId);
 			data.setLvl(runeBean.lvl);
 			data.setSet(runeBean.set);
 			data.setStat4Type(runeBean.stat4Type);
@@ -107,8 +107,8 @@ public class RuneServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			RuneBean bean = new RuneBean();
-			bean.userId = data.getUserId();
 			bean.monsterId = data.getMonsterId();
+			bean.userId = data.getUserId();
 			bean.lvl = data.getLvl();
 			bean.set = data.getSet();
 			bean.stat4Type = data.getStat4Type();
@@ -149,8 +149,8 @@ public class RuneServlet extends APServletBase {
 				throw new APWebException("rune not found", "AP_RUNE_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
-			data.setUserId(runeBean.userId);
 			data.setMonsterId(runeBean.monsterId);
+			data.setUserId(runeBean.userId);
 			data.setLvl(runeBean.lvl);
 			data.setSet(runeBean.set);
 			data.setStat4Type(runeBean.stat4Type);

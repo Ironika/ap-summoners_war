@@ -32,6 +32,23 @@ RestStore.handleLogout = function(results, params) {
 	RestStore.setContent({});
 }
 
+RestStore.handleGetBuilds = function(result, params) {
+	let content = RestStore.getContent()
+	content.build = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.build[result[i].id] = result[i];
+	RestStore.notifyPath('/build')
+}
+
+RestStore.handleGetBuild = function(result, params) {
+	let content = RestStore.getContent()
+	if (!content.build)
+		content.build = {};
+	content.build[result.id] = result;
+	RestStore.notifyPath('/build')
+}
+
 RestStore.handleGetRunes = function(result, params) {
 	let content = RestStore.getContent()
 	content.rune = {};
@@ -83,6 +100,15 @@ RestStore.handleGetUser = function(result, params) {
 	RestStore.notifyPath('/user')
 }
 
+RestStore.handleGetUserBuilds = function(result, params) {
+	let content = RestStore.getContent()
+	content.build = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.build[result[i].id] = result[i];
+	RestStore.notifyPath('/build')
+}
+
 RestStore.handleGetUserRunes = function(result, params) {
 	let content = RestStore.getContent()
 	content.rune = {};
@@ -105,11 +131,14 @@ Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)
 Dispatcher.register('LOGOUT', AuthStore.handleLogout)
 Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
 Dispatcher.register('LOGOUT', RestStore.handleLogout)
+Dispatcher.register('GET_BUILDS', RestStore.handleGetBuilds)
+Dispatcher.register('GET_BUILD', RestStore.handleGetBuild)
 Dispatcher.register('GET_RUNES', RestStore.handleGetRunes)
 Dispatcher.register('GET_RUNE', RestStore.handleGetRune)
 Dispatcher.register('GET_MONSTERS', RestStore.handleGetMonsters)
 Dispatcher.register('GET_MONSTER', RestStore.handleGetMonster)
 Dispatcher.register('GET_MONSTER_RUNES', RestStore.handleGetMonsterRunes)
 Dispatcher.register('GET_USER', RestStore.handleGetUser)
+Dispatcher.register('GET_USER_BUILDS', RestStore.handleGetUserBuilds)
 Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes)
 Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters)

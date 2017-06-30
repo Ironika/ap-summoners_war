@@ -18,10 +18,13 @@ import com.mongodb.MongoWriteException;
 import org.ap.summonerwar.internal.MailSender;
 import org.ap.summonerwar.internal.ETokenType;
 import org.ap.common.TimeHelper;
+import org.ap.summonerwar.bean.BuildBean;
+import org.ap.summonerwar.storage.BuildData;
+import org.ap.summonerwar.storage.BuildCollection;
+import static com.mongodb.client.model.Filters.*;
 import org.ap.summonerwar.bean.RuneBean;
 import org.ap.summonerwar.storage.RuneData;
 import org.ap.summonerwar.storage.RuneCollection;
-import static com.mongodb.client.model.Filters.*;
 import org.ap.summonerwar.bean.MonsterBean;
 import org.ap.summonerwar.storage.MonsterData;
 import org.ap.summonerwar.storage.MonsterCollection;
@@ -50,6 +53,7 @@ public class UserServlet extends APServletBase {
 				
 				UserBean bean = new UserBean();
 				bean.lastImport = data.getLastImport();
+				bean.profileImage = data.getProfileImage();
 				bean.id = data.getId();
 				bean.username = dataAuth.getUsername();
 				bean.email = dataAuth.getEmail();
@@ -113,6 +117,7 @@ public class UserServlet extends APServletBase {
 			dataEntity.setId(dataAuth.getEntityId());
 			dataEntity.setAuthId(dataAuth.getId());
 			dataEntity.setLastImport(userBean.lastImport);
+			dataEntity.setProfileImage(userBean.profileImage);
 			UserCollection.create(dataEntity);
 			
 			MailSender.sendRegistrationMail(dataAuth);
@@ -161,6 +166,7 @@ public class UserServlet extends APServletBase {
 			
 			UserBean bean = new UserBean();
 			bean.lastImport = data.getLastImport();
+			bean.profileImage = data.getProfileImage();
 			bean.id = data.getId();
 			bean.username = dataAuth.getUsername();
 			bean.email = dataAuth.getEmail();
@@ -188,6 +194,7 @@ public class UserServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastImport(userBean.lastImport);
+			data.setProfileImage(userBean.profileImage);
 			// Store the updated data object
 			UserCollection.updateNull(data);
 			// Send the response
@@ -220,6 +227,50 @@ public class UserServlet extends APServletBase {
 	}
 
 	@GET
+	@Path("/{userId}/builds")
+	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
+	public Response getUserBuilds(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			List<BuildData> datas = BuildCollection.get(and(eq("userId", userId)));
+			
+			List<BuildBean> beanList = new ArrayList<BuildBean>();
+			for (BuildData data : datas) {
+				BuildBean bean = new BuildBean();
+				bean.userId = data.getUserId();
+				bean.name = data.getName();
+				bean.id = data.getId();
+				
+				beanList.add(bean);
+			}
+			
+			return Response.status(Status.OK).entity(beanList.toArray(new BuildBean[beanList.size()])).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@DELETE
+	@Path("/{userId}/builds")
+	@RolesAllowed("user")
+	public Response deleteUserBuilds(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			// Delete from database
+			long deletedCount = BuildCollection.deleteMany(and(eq("userId", userId)));
+			// Send response
+			return Response.status(Status.OK).entity("{\"deletedCount\": " + deletedCount + "}").build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@GET
 	@Path("/{userId}/runes")
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("user")
@@ -230,8 +281,8 @@ public class UserServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
-				bean.userId = data.getUserId();
 				bean.monsterId = data.getMonsterId();
+				bean.userId = data.getUserId();
 				bean.lvl = data.getLvl();
 				bean.set = data.getSet();
 				bean.stat4Type = data.getStat4Type();

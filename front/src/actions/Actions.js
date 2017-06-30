@@ -11,6 +11,11 @@ let post_auth_changemail = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL' })
 let post_auth_changemail_check = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CHECK' })
 let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' })
 let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' })
+let get_builds = new ActionBase({ name: 'GET_BUILDS' })
+let post_build = new ActionBase({ name: 'POST_BUILD' })
+let get_build = new ActionBase({ name: 'GET_BUILD' })
+let put_build = new ActionBase({ name: 'PUT_BUILD' })
+let delete_build = new ActionBase({ name: 'DELETE_BUILD' })
 let get_runes = new ActionBase({ name: 'GET_RUNES' })
 let post_rune = new ActionBase({ name: 'POST_RUNE' })
 let get_rune = new ActionBase({ name: 'GET_RUNE' })
@@ -26,6 +31,8 @@ let get_user = new ActionBase({ name: 'GET_USER' })
 let post_user = new ActionBase({ name: 'POST_USER' })
 let delete_user = new ActionBase({ name: 'DELETE_USER' })
 let put_user = new ActionBase({ name: 'PUT_USER' })
+let get_user_builds = new ActionBase({ name: 'GET_USER_BUILDS' })
+let delete_user_builds = new ActionBase({ name: 'DELETE_USER_BUILDS' })
 let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' })
 let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' })
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' })
@@ -136,6 +143,58 @@ post_auth_changemail_confirm.do = function(args) {
 		url: '/auth/changemail/confirm',
 		token : args.token,
 		data: args.data
+	};
+	return RestService._request(reqParam);
+}
+
+get_builds.do = function(args) {
+	Utils.checkMembers(args, ['token']);
+	var reqParam = {
+		method: 'GET',
+		url: '/builds',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_build.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/builds',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_build.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/builds/' + args.buildId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_build.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildId', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/builds/' + args.buildId + '',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_build.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/builds/' + args.buildId + '',
+		token : args.token,
 	};
 	return RestService._request(reqParam);
 }
@@ -291,6 +350,26 @@ put_user.do = function(args) {
 		method: 'PUT',
 		url: '/user/' + args.userId + '',
 		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_user_builds.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/user/' + args.userId + '/builds',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_user_builds.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/user/' + args.userId + '/builds',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

@@ -7,6 +7,7 @@ public class UserData {
 
 	public String authId;
 	public List<Integer> lastImport;
+	public String profileImage;
 	public String id;
 
 	public String getAuthId() {
@@ -23,6 +24,14 @@ public class UserData {
 
 	public void setLastImport(List<Integer> lastImport) {
 		this.lastImport = lastImport;
+	}
+
+	public String getProfileImage() {
+		return this.profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 
 	public String getId() {

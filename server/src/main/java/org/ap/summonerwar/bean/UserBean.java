@@ -6,6 +6,7 @@ import java.util.List;
 public class UserBean {
 
 	public List<Integer> lastImport;
+	public String profileImage;
 	public String id;
 	public String username;
 	public String password;

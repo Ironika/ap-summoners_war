@@ -2,6 +2,7 @@ import AppHelper from 'helpers/AppHelper'
 import UserHelper from 'helpers/UserHelper'
 import MonsterHelper from 'helpers/MonsterHelper'
 import RuneHelper from 'helpers/RuneHelper'
+import BuildHelper from 'helpers/BuildHelper'
 import AuthHelper from 'helpers/AuthHelper'
  // import ImageHelper from 'helpers/ImageHelper'
 
@@ -33,6 +34,7 @@ class ProfileData extends BaseData {
         this.buildDataUser()
         this.buildDataMonster()
         this.buildDataRune()
+        this.buildDataBuild()
 	}
 	unregister() {
 	}
@@ -55,6 +57,11 @@ class ProfileData extends BaseData {
     buildDataRune(id) {
         this.setState({
             runes: (Object.keys(RuneHelper.getData() || {})).length
+        })
+    }
+    buildDataBuild(id) {
+        this.setState({
+            builds: (Object.keys(BuildHelper.getData() || {})).length
         })
     }
 

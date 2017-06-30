@@ -49,7 +49,6 @@ class RunesData extends BaseData {
         this.buildDataRunes()		
 	}
 	unregister() {
-		RuneHelper.unregister(this)
 	}
 
     buildDataRunes() {

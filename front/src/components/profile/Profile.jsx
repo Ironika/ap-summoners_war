@@ -26,8 +26,8 @@ class Profile extends React.Component {
 							<div className="sm-sheet">
 								<div className="sm-content">
 									<ul className="sm-profil-user-key">
-										<li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}/></li>
-										<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')}/></li>
+										<li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}disabled={true} /></li>
+										<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')} disabled={true}/></li>
 										<li>Last import : <input className="sm-input" value={this.state.lastImport} disabled={true}/></li>
 									</ul>
 								</div>

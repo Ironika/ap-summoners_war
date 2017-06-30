@@ -206,8 +206,8 @@ public class MonsterServlet extends APServletBase {
 			List<RuneBean> beanList = new ArrayList<RuneBean>();
 			for (RuneData data : datas) {
 				RuneBean bean = new RuneBean();
-				bean.userId = data.getUserId();
 				bean.monsterId = data.getMonsterId();
+				bean.userId = data.getUserId();
 				bean.lvl = data.getLvl();
 				bean.set = data.getSet();
 				bean.stat4Type = data.getStat4Type();

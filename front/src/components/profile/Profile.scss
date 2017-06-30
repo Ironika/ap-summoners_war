@@ -11,6 +11,9 @@
 	.sm-upload-profile {
 		text-align: center;
     	padding: 20px;
+    	.sm-button {
+    		border: 1px solid $marroon-light !important;
+    	}
 	}
 
 	.sm-sheet-mid {

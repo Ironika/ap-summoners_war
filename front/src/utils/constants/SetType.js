@@ -131,5 +131,5 @@ let _DETERMINATION = { key: 'Determination' }
 let _ENHANCE = { key: 'Enhance' }
 let _ACCURACY = { key: 'Accuracy' }
 let _TOLERANCE = { key: 'Tolerance' }
-let _BLADE = { key: 'Blade'}
+let _BLADE = { key: 'Blade' }
 export default SetType
