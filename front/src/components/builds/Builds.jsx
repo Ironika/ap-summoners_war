@@ -1,5 +1,6 @@
-import React from 'react';
-import BuildsData from 'components/builds/BuildsData';
+import React from 'react'
+import BuildsData from 'components/builds/BuildsData'
+import BuildMonsterConfig from 'components-lib/buildMonsterConfig/BuildMonsterConfig'
 
 import {Utils, FormSelect}  from 'ap-react-bootstrap'
 
@@ -38,7 +39,7 @@ class Builds extends React.Component {
 						 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
 						 		<li>
 									<div className="sm-build">
-										<i className="glyphicon glyphicon-plus-sign sm-build-add"></i>
+										<i className="glyphicon glyphicon-plus-sign sm-build-add" onClick={this.onClickAddBuild.bind(this)}></i>
 									</div>
 								</li>
 						 	</ul>
@@ -47,117 +48,13 @@ class Builds extends React.Component {
 					<div className="col-xs-10">
 						<div className="sm-sheet sm-builds-monsters">
 
-							<div className="sm-content sm-builds-monster">
-								<div className="sm-builds-monster-name">
-									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-									<span>Monster Name</span>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Required Stats</label>
-									<div className="sm-builds-monster-stats-box sm-hide">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Notations Stats</label>
-									<div className="sm-builds-monster-stats-box sm-hide">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Sets</label>
-								</div>
-								<hr/>
-							</div>
+							<BuildMonsterConfig />
 
-							<div className="sm-content sm-builds-monster">
-								<div className="sm-builds-monster-name">
-									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-									<span>Monster Name</span>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Required Stats</label>
-									<div className="sm-builds-monster-stats-box">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Notations Stats</label>
-									<div className="sm-builds-monster-stats-box">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Sets</label>
-								</div>
-								<hr/>
-							</div>
-
-							<div className="sm-content sm-builds-monster">
-								<div className="sm-builds-monster-name">
-									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-									<span>Monster Name</span>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Required Stats</label>
-									<div className="sm-builds-monster-stats-box">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Notations Stats</label>
-									<div className="sm-builds-monster-stats-box">
-										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-										<input type="text" className="sm-input" />
-										<button className="sm-button">Ok</button>
-										<div className="sm-stats-content">
-											Hp > 15 000
-										</div>
-									</div>
-								</div>
-								<hr/>
-								<div className="sm-builds-monster-stats">
-									<label className="sm-label">Sets</label>
-								</div>
-								<hr/>
-							</div>
+							<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
 
 						</div>
 						<div className="sm-sheet sm-sheet-top sm-builds-infos">
-							<label className="sm-label">Name</label>
+							<label className="sm-label">Build Name</label>
 							<input className="sm-input" type="text"/>
 							<label className="sm-label">Status</label>
 							<input className="sm-input" type="text" value="Optimized" disabled={true}/>

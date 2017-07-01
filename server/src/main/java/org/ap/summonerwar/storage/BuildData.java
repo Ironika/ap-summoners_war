@@ -4,6 +4,7 @@ package org.ap.summonerwar.storage;
 public class BuildData {
 
 	public String name;
+	public String state;
 	public String id;
 	public String userId;
 
@@ -13,6 +14,14 @@ public class BuildData {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getId() {

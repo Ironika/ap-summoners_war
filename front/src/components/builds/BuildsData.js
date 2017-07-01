@@ -14,17 +14,22 @@ class BuildsData extends BaseData {
         }
 		super.register(obj)
 
-		this.statTypeValues = []
-        for(var i = 0; i < StatType.VALUES.length; i++) {
-            this.statTypeValues.push(StatType.VALUES[i].key)
-        }
+		this.obj.onClickAddBuild = this.onClickAddBuild.bind(this)
+		this.obj.onClickAddMonsterConfig = this.onClickAddMonsterConfig.bind(this)
 
 		this.obj.state = {
-            builds: [],
-            statTypeValues: this.statTypeValues 
+            builds: []
         }
 
         this.buildDataBuilds()
+	}
+
+	onClickAddBuild() {
+		console.log("ADD")
+	}
+
+	onClickAddMonsterConfig() {
+		console.log("ADD")
 	}
 
 	unregister() {

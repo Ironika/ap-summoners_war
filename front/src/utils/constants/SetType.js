@@ -82,6 +82,10 @@ class SetType {
 		return _BLADE
 	}
 
+	static get ENDURE() {
+		return _ENDURE
+	}
+
 	static get VALUES() {
 		return [
 			_ENERGY,
@@ -104,6 +108,7 @@ class SetType {
 			_ACCURACY,
 			_TOLERANCE,
 			_BLADE,
+			_ENDURE,
 		]
 	}
 
@@ -132,4 +137,5 @@ let _ENHANCE = { key: 'Enhance' }
 let _ACCURACY = { key: 'Accuracy' }
 let _TOLERANCE = { key: 'Tolerance' }
 let _BLADE = { key: 'Blade' }
+let _ENDURE = { key: 'Endure' }
 export default SetType

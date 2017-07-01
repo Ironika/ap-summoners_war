@@ -18,6 +18,9 @@ db.monster.createIndex({"id": 1}, {"unique": true})
 db.build.drop()
 db.build.createIndex({"id": 1}, {"unique": true})
 
+db.monsterConfig.drop()
+db.monsterConfig.createIndex({"id": 1}, {"unique": true})
+
 db.rune.drop()
 db.rune.createIndex({"id": 1}, {"unique": true})
 

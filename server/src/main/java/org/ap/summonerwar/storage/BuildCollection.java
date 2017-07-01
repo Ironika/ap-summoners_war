@@ -85,6 +85,7 @@ public class BuildCollection {
 		}
 		BuildData data = new BuildData();
 		data.name = document.getString("name");
+		data.state = document.getString("state");
 		data.id = document.getString("id");
 		data.userId = document.getString("userId");
 		return data;
@@ -94,6 +95,8 @@ public class BuildCollection {
 		Document document = new Document();
 		if (build.name != null)
 			document.append("name", build.name);
+		if (build.state != null)
+			document.append("state", build.state);
 		if (build.id != null)
 			document.append("id", build.id);
 		if (build.userId != null)
@@ -104,6 +107,7 @@ public class BuildCollection {
 	public static Document toNullDocument(BuildData build) {
 		Document document = new Document();
 		document.append("name", build.name);
+		document.append("state", build.state);
 		document.append("id", build.id);
 		document.append("userId", build.userId);
 		return document;

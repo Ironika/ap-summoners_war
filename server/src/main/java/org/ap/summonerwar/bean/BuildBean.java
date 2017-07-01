@@ -5,6 +5,7 @@ public class BuildBean {
 
 	public String userId;
 	public String name;
+	public String state;
 	public String id;
 
 }

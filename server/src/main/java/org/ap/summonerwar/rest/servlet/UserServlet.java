@@ -239,6 +239,7 @@ public class UserServlet extends APServletBase {
 				BuildBean bean = new BuildBean();
 				bean.userId = data.getUserId();
 				bean.name = data.getName();
+				bean.state = data.getState();
 				bean.id = data.getId();
 				
 				beanList.add(bean);

@@ -1,0 +1,57 @@
+@import '../../components/var.scss';
+
+.sm-buildBuildMonsterConfig {
+	display: inline-block;
+    width: 45%;
+    overflow: auto;
+    margin-right: 20px;
+    max-height: 345px;
+    hr {
+    	border-color: $color-text;
+    }
+    .sm-builds-monster-name {
+    	img {
+	    	height: 60px;
+		    width: 60px;
+		    cursor: pointer;
+		    display: inline-block;
+	    }
+	    input {
+    	    display: inline-block;
+			width: 75%;
+			margin-left: 5%;
+	    }
+    }
+    .sm-builds-monster-stats {
+    	margin-top: 20px;
+    	label {
+    		display: block;
+    		cursor: pointer;
+    	}
+    	.sm-builds-monster-stats-box {
+    		input {
+	    		display: inline-block;
+				width: 50%;
+				margin-left: 2%;
+	    	}
+	    	button {
+	    		display: inline-block;
+			    height: 43px;
+			    width: 16%;
+			    margin-left: 2%;
+			    padding: 0;
+	    	}
+	    	.sm-builds-select {
+	    		display: inline-block;
+	    		width: 30%;
+	    		height: 43px;
+	    	}
+	    	.sm-stats-content {
+	    		background-color: rgba(46, 29, 16, 0.80);
+	    		padding: 15px;
+	    		margin-top: 10px;
+	    		color: $color-text;
+	    	}
+    	}
+    }
+}

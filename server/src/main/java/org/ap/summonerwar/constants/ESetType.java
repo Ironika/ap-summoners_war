@@ -23,6 +23,7 @@ public enum ESetType {
 	_ACCURACY ("Accuracy"),
 	_TOLERANCE ("Tolerance"),
 	_BLADE ("Blade"),
+	_ENDURE ("Endure"),
 	;
 
 	private String _name;
