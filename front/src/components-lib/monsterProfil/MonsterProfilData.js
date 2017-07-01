@@ -13,7 +13,8 @@ class MonsterProfilData extends BaseData {
         this.obj.state = {
             currentPage: 'infos',
             monsterHaveRunes: false,
-            monster: {}
+            monster: {},
+            runes: []
         }
 
         AppHelper.register('/currentMonster', this, this.onMonsterChange.bind(this));
@@ -25,19 +26,21 @@ class MonsterProfilData extends BaseData {
 
     onMonsterChange() {
         let monster = AppHelper.getData('/currentMonster')
+        let runes = []
 
         let allRunes = RuneHelper.getData()
         let monsterHaveRunes = false
         for (let key in allRunes) {
             if (allRunes[key].monsterId == monster.id) {
+                runes.push(allRunes[key])
                 monsterHaveRunes = true
             }
         }
 
         if(monsterHaveRunes)
-            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes})
+            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, runes: runes})
         else 
-            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, currentPage: 'infos'})
+            this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, currentPage: 'infos', runes: runes})
     }
 
     onClickRunes() {

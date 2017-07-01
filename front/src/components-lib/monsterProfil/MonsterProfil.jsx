@@ -23,7 +23,7 @@ class MonsterProfil extends React.Component {
         if(id === "infos" )
             return (<MonsterInfos monster={this.state.monster}/>)
         else
-            return (<MonsterRunes monster={this.state.monster}/>)
+            return (<MonsterRunes runes={this.state.runes}/>)
     }
 
     render() { 

@@ -24,39 +24,23 @@ class MonsterRunes extends React.Component {
 	}
 
 	componentWillMount() {
-		this.state = this.__buildCurrentRunes(this.props)
+		this.state = this._buildSetsRunes(this.props)
 	}
 	componentWillReceiveProps(props) {
-		this.setState(this.__buildCurrentRunes(props))
+		this.setState(this._buildSetsRunes(props))
 	}
 
-	__buildCurrentRunes(props) {
-		let allRunes = RuneHelper.getData()
-		let monsterRunes = []
-		let sets = {}
-
-		for (let key in allRunes) {
-			if (allRunes[key].monsterId == props.monster.id) {
-				monsterRunes.push(allRunes[key])
-			}
-		}
-
-		sets = this.__getSetsRunes(monsterRunes)
-
-		return { runes: monsterRunes, sets: sets}
-	}
-
-	__getSetsRunes(runes) {
+	_buildSetsRunes(props) {
 		let runeSets = {}
 		let count = 0
 
 		let sets = {}
 
-		for(let rune in runes)
-			if (runes[rune].set in runeSets)
-				runeSets[runes[rune].set]++ 
+		for(let rune in props.runes)
+			if (props.runes[rune].set in runeSets)
+				runeSets[props.runes[rune].set]++ 
 			else 
-				runeSets[runes[rune].set] = 1
+				runeSets[props.runes[rune].set] = 1
 
 		for(let set in runeSets)
 			if(runeSets[set] >= SETS[set])
@@ -65,7 +49,7 @@ class MonsterRunes extends React.Component {
 				else 
 					sets[set] = 1
 
-		return sets
+		return { runes: props.runes, sets: sets}
 	}
 
 	_buildRunes(rune) {
