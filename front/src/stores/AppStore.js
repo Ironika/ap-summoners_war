@@ -23,6 +23,12 @@ AppStore.navigate_back = function(result, param) {
 	AppStore.notifyPath('/path')
 }
 
+AppStore.set_app_display = function(result, param) {
+	let path = '/app' + result.path
+	AppStore.setData(path, result.value)
+	AppStore.notifyPath(path + result.path)
+}
+
 AppStore.put = function(result, param) {
 	AppStore.setData(result.path, result.value)
 	AppStore.notifyPath(result.path)
@@ -31,4 +37,5 @@ AppStore.put = function(result, param) {
 Dispatcher.register('LOGOUT', AppStore.onLogout)
 Dispatcher.register('NAVIGATE', AppStore.navigate)
 Dispatcher.register('NAVIGATE_BACK', AppStore.navigate_back)
+Dispatcher.register('SET_APP_DISPLAY', AppStore.set_app_display)
 Dispatcher.register('PUT', AppStore.put)
