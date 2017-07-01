@@ -49,6 +49,23 @@ RestStore.handleGetBuild = function(result, params) {
 	RestStore.notifyPath('/build')
 }
 
+RestStore.handleGetMonstersconfig = function(result, params) {
+	let content = RestStore.getContent()
+	if (!content.monsterConfig)
+		content.monsterConfig = {};
+	content.monsterConfig[result.id] = result;
+	RestStore.notifyPath('/monsterConfig')
+}
+
+RestStore.handleGetMonstersconfigBuilds = function(result, params) {
+	let content = RestStore.getContent()
+	content.build = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.build[result[i].id] = result[i];
+	RestStore.notifyPath('/build')
+}
+
 RestStore.handleGetRunes = function(result, params) {
 	let content = RestStore.getContent()
 	content.rune = {};
@@ -133,6 +150,8 @@ Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
 Dispatcher.register('LOGOUT', RestStore.handleLogout)
 Dispatcher.register('GET_BUILDS', RestStore.handleGetBuilds)
 Dispatcher.register('GET_BUILD', RestStore.handleGetBuild)
+Dispatcher.register('GET_MONSTERSCONFIG', RestStore.handleGetMonstersconfig)
+Dispatcher.register('GET_MONSTERSCONFIG_BUILDS', RestStore.handleGetMonstersconfigBuilds)
 Dispatcher.register('GET_RUNES', RestStore.handleGetRunes)
 Dispatcher.register('GET_RUNE', RestStore.handleGetRune)
 Dispatcher.register('GET_MONSTERS', RestStore.handleGetMonsters)

@@ -4,57 +4,6 @@
 	.sm-hide {
 		display:none;
 	}
-	.sm-builds-list {
-		max-height: 500px;
-		overflow: auto;
-		li {
-			cursor: pointer;
-			text-align: center;
-			.sm-build {
-				height: 120px;
-				margin-bottom: 15px;
-				background-image: radial-gradient($marroon-light 40%, $marroon-dark 70%);
-				border: 1px solid $marroon-light;
-				border-radius: 1000px;
-				i {
-				    position: relative;
-				    background-color: inherit;
-				    font-size: 40px;
-				    color: $marron;
-				    top: 35%;
-				}
-				span {
-					position: relative;
-					top: 42%;
-					color: $color-text;
-					font-family: $font;
-					font-size: 18px;
-					background-color: $marron;
-				    padding: 10px;
-				}
-				&:hover {
-					background-image: radial-gradient($marroon-light2 40%, $marroon-dark2 70%);
-					span {
-						background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
-						color: white;
-					}
-					i {
-						color: $color-text;
-					}
-				}
-			}
-			.sm-buil-active {
-				background-image: radial-gradient($marroon-light2 40%, $marroon-dark2 70%);
-				span {
-					background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
-					color: white;
-				}
-				i {
-					color: $color-text;
-				}
-			}
-		}
-	}
 	.sm-builds-monsters {
 		padding: 25px;
 		overflow: auto;

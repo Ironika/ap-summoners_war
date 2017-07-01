@@ -14,32 +14,28 @@ class BuildsData extends BaseData {
         }
 		super.register(obj)
 
-		this.obj.onClickAddBuild = this.onClickAddBuild.bind(this)
 		this.obj.onClickAddMonsterConfig = this.onClickAddMonsterConfig.bind(this)
 
 		this.obj.state = {
-            builds: []
+            build: {}
         }
 
-        this.buildDataBuilds()
+        AppHelper.register('/currentBuild', this, this.onBuildChange.bind(this));
 	}
 
-	onClickAddBuild() {
-		console.log("ADD")
-	}
+	onBuildChange() {
+        let build = AppHelper.getData('/currentBuild')
+        this.setState({ build: build})
+    }
+
 
 	onClickAddMonsterConfig() {
 		console.log("ADD")
 	}
 
 	unregister() {
+		AppHelper.unregister(this)
 	}
-
-	buildDataBuilds() {
-        let builds = Utils.map(BuildHelper.getData())
-        this.setState({builds: builds})
-    }
-
 }
 var BuildsObj = new BuildsData();
 export default BuildsObj;

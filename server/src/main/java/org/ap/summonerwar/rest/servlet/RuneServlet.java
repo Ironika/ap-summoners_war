@@ -64,6 +64,7 @@ public class RuneServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response postRune(@Context SecurityContext sc, RuneBean runeBean) {
 		try {
 			RuneData data = new RuneData();

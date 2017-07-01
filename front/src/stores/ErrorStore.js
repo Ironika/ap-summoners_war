@@ -56,6 +56,56 @@ ErrorStore.handleDeleteBuildError = function(error, params) {
 	ErrorStore.notifyPath('/DELETE_BUILD');
 }
 
+ErrorStore.handleGetMonstersconfigSuccess = function(results, params) {
+	delete ErrorStore._content.GET_MONSTERSCONFIG;
+	ErrorStore.notifyPath('/GET_MONSTERSCONFIG');
+}
+
+ErrorStore.handleGetMonstersconfigError = function(error, params) {
+	ErrorStore._content.GET_MONSTERSCONFIG = error;
+	ErrorStore.notifyPath('/GET_MONSTERSCONFIG');
+}
+
+ErrorStore.handlePostMonstersconfigSuccess = function(results, params) {
+	delete ErrorStore._content.POST_MONSTERSCONFIG;
+	ErrorStore.notifyPath('/POST_MONSTERSCONFIG');
+}
+
+ErrorStore.handlePostMonstersconfigError = function(error, params) {
+	ErrorStore._content.POST_MONSTERSCONFIG = error;
+	ErrorStore.notifyPath('/POST_MONSTERSCONFIG');
+}
+
+ErrorStore.handlePutMonstersconfigSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_MONSTERSCONFIG;
+	ErrorStore.notifyPath('/PUT_MONSTERSCONFIG');
+}
+
+ErrorStore.handlePutMonstersconfigError = function(error, params) {
+	ErrorStore._content.PUT_MONSTERSCONFIG = error;
+	ErrorStore.notifyPath('/PUT_MONSTERSCONFIG');
+}
+
+ErrorStore.handleDeleteMonstersconfigSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_MONSTERSCONFIG;
+	ErrorStore.notifyPath('/DELETE_MONSTERSCONFIG');
+}
+
+ErrorStore.handleDeleteMonstersconfigError = function(error, params) {
+	ErrorStore._content.DELETE_MONSTERSCONFIG = error;
+	ErrorStore.notifyPath('/DELETE_MONSTERSCONFIG');
+}
+
+ErrorStore.handleGetMonstersconfigBuildsSuccess = function(results, params) {
+	delete ErrorStore._content.GET_MONSTERSCONFIG_BUILDS;
+	ErrorStore.notifyPath('/GET_MONSTERSCONFIG_BUILDS');
+}
+
+ErrorStore.handleGetMonstersconfigBuildsError = function(error, params) {
+	ErrorStore._content.GET_MONSTERSCONFIG_BUILDS = error;
+	ErrorStore.notifyPath('/GET_MONSTERSCONFIG_BUILDS');
+}
+
 ErrorStore.handleGetRunesSuccess = function(results, params) {
 	delete ErrorStore._content.GET_RUNES;
 	ErrorStore.notifyPath('/GET_RUNES');
@@ -382,6 +432,11 @@ Dispatcher.register('POST_BUILD', ErrorStore.handlePostBuildSuccess, ErrorStore.
 Dispatcher.register('GET_BUILD', ErrorStore.handleGetBuildSuccess, ErrorStore.handleGetBuildError)
 Dispatcher.register('PUT_BUILD', ErrorStore.handlePutBuildSuccess, ErrorStore.handlePutBuildError)
 Dispatcher.register('DELETE_BUILD', ErrorStore.handleDeleteBuildSuccess, ErrorStore.handleDeleteBuildError)
+Dispatcher.register('GET_MONSTERSCONFIG', ErrorStore.handleGetMonstersconfigSuccess, ErrorStore.handleGetMonstersconfigError)
+Dispatcher.register('POST_MONSTERSCONFIG', ErrorStore.handlePostMonstersconfigSuccess, ErrorStore.handlePostMonstersconfigError)
+Dispatcher.register('PUT_MONSTERSCONFIG', ErrorStore.handlePutMonstersconfigSuccess, ErrorStore.handlePutMonstersconfigError)
+Dispatcher.register('DELETE_MONSTERSCONFIG', ErrorStore.handleDeleteMonstersconfigSuccess, ErrorStore.handleDeleteMonstersconfigError)
+Dispatcher.register('GET_MONSTERSCONFIG_BUILDS', ErrorStore.handleGetMonstersconfigBuildsSuccess, ErrorStore.handleGetMonstersconfigBuildsError)
 Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError)
 Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError)
 Dispatcher.register('GET_RUNE', ErrorStore.handleGetRuneSuccess, ErrorStore.handleGetRuneError)

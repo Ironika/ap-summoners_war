@@ -20,22 +20,31 @@ class BuildMonsterConfig extends React.Component {
 		BuildMonsterConfigData.unregister()
 	}
 
+	_buildStat(id, stat, key) {
+		if(id == "requiredStat" | id == "notationStat")
+			return (<li key={key}>{key + " : " + stat}</li>)
+		else 
+			return (<li key={key}>{stat}</li>)
+	}
+
 	render() {
 		return (
 			<div className="sm-buildBuildMonsterConfig sm-content">
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-					<input className="sm-input" type="text" value="Monster Name"/>
+					<input className="sm-input" type="text" onChange={this.onChangeInput.bind(this, 'monsterName')}/>
 				</div>
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'requiredStat')}>Required Stats</label>
 					<div className={"sm-builds-monster-stats-box " + (this.state.requiredStatIsOpen ? "" : "sm-hide")}>
-						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-						<input type="text" className="sm-input" />
-						<button className="sm-button">Ok</button>
+						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'requiredStat')}/>
+						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'requiredStat')}/>
+						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'requiredStat')}>Ok</button>
 						<div className="sm-stats-content">
-							Hp > 15 000
+							<ul>
+								{Utils.map(this.state.requiredStats, this._buildStat.bind(this, 'requiredStat'))}
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -43,17 +52,28 @@ class BuildMonsterConfig extends React.Component {
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStat')}>Notations Stats</label>
 					<div className={"sm-builds-monster-stats-box " + (this.state.notationStatIsOpen ? "" : "sm-hide")}>
-						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
-						<input type="text" className="sm-input" />
-						<button className="sm-button">Ok</button>
+						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'notationStat')}/>
+						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'notationStat')}/>
+						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'notationStat')}>Ok</button>
 						<div className="sm-stats-content">
-							Hp > 15 000
+							<ul>
+								{Utils.map(this.state.notationStats, this._buildStat.bind(this, 'notationStat'))}
+							</ul>
 						</div>
 					</div>
 				</div>
 				<hr/>
 				<div className="sm-builds-monster-stats">
-					<label className="sm-label">Sets</label>
+					<label className="sm-label" onClick={this.onClickShow.bind(this, 'sets')}>Sets</label>
+					<div className={"sm-builds-monster-stats-box " + (this.state.setsIsOpen ? "" : "sm-hide")}>
+						<FormSelect values={this.state.setTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'sets')}/>
+						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'sets')}>Ok</button>
+						<div className="sm-stats-content">
+							<ul>
+								{Utils.map(this.state.sets, this._buildStat.bind(this, 'sets'))}
+							</ul>
+						</div>
+					</div>
 				</div>
 				<hr/>
 			</div>

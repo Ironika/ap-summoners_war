@@ -12,6 +12,22 @@ class MonsterConfigHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
+	getMonstersconfig(monsterConfigId) {
+		return Dispatcher.issue('GET_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: monsterConfigId});
+	}
+
+	postMonstersconfig(data) {
+		return Dispatcher.issue('POST_MONSTERSCONFIG', {token: AuthHelper.getToken(), data: data});
+	}
+
+	putMonstersconfig(data) {
+		return Dispatcher.issue('PUT_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: data.monsterConfigId, data: data});
+	}
+
+	deleteMonstersconfig(monsterConfigId) {
+		return Dispatcher.issue('DELETE_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: monsterConfigId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/monsterConfig' + (id ? '/' + id : ''));
 	}

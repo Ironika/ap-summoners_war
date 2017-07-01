@@ -84,104 +84,104 @@ public class MonsterConfigCollection {
 			return null;
 		}
 		MonsterConfigData data = new MonsterConfigData();
-		data.RequiredHp = document.getInteger("RequiredHp");
+		data.requiredDef = document.getInteger("requiredDef");
+		data.notationDef = document.getInteger("notationDef");
 		data.set3 = document.getString("set3");
+		data.requiredRes = document.getInteger("requiredRes");
+		data.notationSpd = document.getInteger("notationSpd");
 		data.set2 = document.getString("set2");
-		data.RequiredSpd = document.getInteger("RequiredSpd");
+		data.requiredAcc = document.getInteger("requiredAcc");
+		data.notationHp = document.getInteger("notationHp");
 		data.buildId = document.getString("buildId");
-		data.NotationDef = document.getInteger("NotationDef");
-		data.RequiredDef = document.getInteger("RequiredDef");
-		data.RequiredCrate = document.getInteger("RequiredCrate");
-		data.NotationSpd = document.getInteger("NotationSpd");
-		data.RequiredRes = document.getInteger("RequiredRes");
-		data.RequiredAcc = document.getInteger("RequiredAcc");
-		data.NotationCdmg = document.getInteger("NotationCdmg");
-		data.NotationCrate = document.getInteger("NotationCrate");
-		data.RequiredAtk = document.getInteger("RequiredAtk");
-		data.RequiredCdmg = document.getInteger("RequiredCdmg");
-		data.NotationHp = document.getInteger("NotationHp");
-		data.NotationAcc = document.getInteger("NotationAcc");
+		data.requiredSpd = document.getInteger("requiredSpd");
+		data.requiredCrate = document.getInteger("requiredCrate");
+		data.requiredHp = document.getInteger("requiredHp");
+		data.notationCrate = document.getInteger("notationCrate");
+		data.notationAtk = document.getInteger("notationAtk");
 		data.monsterId = document.getString("monsterId");
-		data.NotationRes = document.getInteger("NotationRes");
 		data.set1 = document.getString("set1");
 		data.id = document.getString("id");
-		data.NotationAtk = document.getInteger("NotationAtk");
+		data.requiredAtk = document.getInteger("requiredAtk");
+		data.requiredCdmg = document.getInteger("requiredCdmg");
+		data.notationRes = document.getInteger("notationRes");
+		data.notationCdmg = document.getInteger("notationCdmg");
+		data.notationAcc = document.getInteger("notationAcc");
 		return data;
 	}
 
 	public static Document toDocument(MonsterConfigData monsterConfig) {
 		Document document = new Document();
-		if (monsterConfig.RequiredHp != null)
-			document.append("RequiredHp", monsterConfig.RequiredHp);
+		if (monsterConfig.requiredDef != null)
+			document.append("requiredDef", monsterConfig.requiredDef);
+		if (monsterConfig.notationDef != null)
+			document.append("notationDef", monsterConfig.notationDef);
 		if (monsterConfig.set3 != null)
 			document.append("set3", monsterConfig.set3);
+		if (monsterConfig.requiredRes != null)
+			document.append("requiredRes", monsterConfig.requiredRes);
+		if (monsterConfig.notationSpd != null)
+			document.append("notationSpd", monsterConfig.notationSpd);
 		if (monsterConfig.set2 != null)
 			document.append("set2", monsterConfig.set2);
-		if (monsterConfig.RequiredSpd != null)
-			document.append("RequiredSpd", monsterConfig.RequiredSpd);
+		if (monsterConfig.requiredAcc != null)
+			document.append("requiredAcc", monsterConfig.requiredAcc);
+		if (monsterConfig.notationHp != null)
+			document.append("notationHp", monsterConfig.notationHp);
 		if (monsterConfig.buildId != null)
 			document.append("buildId", monsterConfig.buildId);
-		if (monsterConfig.NotationDef != null)
-			document.append("NotationDef", monsterConfig.NotationDef);
-		if (monsterConfig.RequiredDef != null)
-			document.append("RequiredDef", monsterConfig.RequiredDef);
-		if (monsterConfig.RequiredCrate != null)
-			document.append("RequiredCrate", monsterConfig.RequiredCrate);
-		if (monsterConfig.NotationSpd != null)
-			document.append("NotationSpd", monsterConfig.NotationSpd);
-		if (monsterConfig.RequiredRes != null)
-			document.append("RequiredRes", monsterConfig.RequiredRes);
-		if (monsterConfig.RequiredAcc != null)
-			document.append("RequiredAcc", monsterConfig.RequiredAcc);
-		if (monsterConfig.NotationCdmg != null)
-			document.append("NotationCdmg", monsterConfig.NotationCdmg);
-		if (monsterConfig.NotationCrate != null)
-			document.append("NotationCrate", monsterConfig.NotationCrate);
-		if (monsterConfig.RequiredAtk != null)
-			document.append("RequiredAtk", monsterConfig.RequiredAtk);
-		if (monsterConfig.RequiredCdmg != null)
-			document.append("RequiredCdmg", monsterConfig.RequiredCdmg);
-		if (monsterConfig.NotationHp != null)
-			document.append("NotationHp", monsterConfig.NotationHp);
-		if (monsterConfig.NotationAcc != null)
-			document.append("NotationAcc", monsterConfig.NotationAcc);
+		if (monsterConfig.requiredSpd != null)
+			document.append("requiredSpd", monsterConfig.requiredSpd);
+		if (monsterConfig.requiredCrate != null)
+			document.append("requiredCrate", monsterConfig.requiredCrate);
+		if (monsterConfig.requiredHp != null)
+			document.append("requiredHp", monsterConfig.requiredHp);
+		if (monsterConfig.notationCrate != null)
+			document.append("notationCrate", monsterConfig.notationCrate);
+		if (monsterConfig.notationAtk != null)
+			document.append("notationAtk", monsterConfig.notationAtk);
 		if (monsterConfig.monsterId != null)
 			document.append("monsterId", monsterConfig.monsterId);
-		if (monsterConfig.NotationRes != null)
-			document.append("NotationRes", monsterConfig.NotationRes);
 		if (monsterConfig.set1 != null)
 			document.append("set1", monsterConfig.set1);
 		if (monsterConfig.id != null)
 			document.append("id", monsterConfig.id);
-		if (monsterConfig.NotationAtk != null)
-			document.append("NotationAtk", monsterConfig.NotationAtk);
+		if (monsterConfig.requiredAtk != null)
+			document.append("requiredAtk", monsterConfig.requiredAtk);
+		if (monsterConfig.requiredCdmg != null)
+			document.append("requiredCdmg", monsterConfig.requiredCdmg);
+		if (monsterConfig.notationRes != null)
+			document.append("notationRes", monsterConfig.notationRes);
+		if (monsterConfig.notationCdmg != null)
+			document.append("notationCdmg", monsterConfig.notationCdmg);
+		if (monsterConfig.notationAcc != null)
+			document.append("notationAcc", monsterConfig.notationAcc);
 		return document;
 	}
 
 	public static Document toNullDocument(MonsterConfigData monsterConfig) {
 		Document document = new Document();
-		document.append("RequiredHp", monsterConfig.RequiredHp);
+		document.append("requiredDef", monsterConfig.requiredDef);
+		document.append("notationDef", monsterConfig.notationDef);
 		document.append("set3", monsterConfig.set3);
+		document.append("requiredRes", monsterConfig.requiredRes);
+		document.append("notationSpd", monsterConfig.notationSpd);
 		document.append("set2", monsterConfig.set2);
-		document.append("RequiredSpd", monsterConfig.RequiredSpd);
+		document.append("requiredAcc", monsterConfig.requiredAcc);
+		document.append("notationHp", monsterConfig.notationHp);
 		document.append("buildId", monsterConfig.buildId);
-		document.append("NotationDef", monsterConfig.NotationDef);
-		document.append("RequiredDef", monsterConfig.RequiredDef);
-		document.append("RequiredCrate", monsterConfig.RequiredCrate);
-		document.append("NotationSpd", monsterConfig.NotationSpd);
-		document.append("RequiredRes", monsterConfig.RequiredRes);
-		document.append("RequiredAcc", monsterConfig.RequiredAcc);
-		document.append("NotationCdmg", monsterConfig.NotationCdmg);
-		document.append("NotationCrate", monsterConfig.NotationCrate);
-		document.append("RequiredAtk", monsterConfig.RequiredAtk);
-		document.append("RequiredCdmg", monsterConfig.RequiredCdmg);
-		document.append("NotationHp", monsterConfig.NotationHp);
-		document.append("NotationAcc", monsterConfig.NotationAcc);
+		document.append("requiredSpd", monsterConfig.requiredSpd);
+		document.append("requiredCrate", monsterConfig.requiredCrate);
+		document.append("requiredHp", monsterConfig.requiredHp);
+		document.append("notationCrate", monsterConfig.notationCrate);
+		document.append("notationAtk", monsterConfig.notationAtk);
 		document.append("monsterId", monsterConfig.monsterId);
-		document.append("NotationRes", monsterConfig.NotationRes);
 		document.append("set1", monsterConfig.set1);
 		document.append("id", monsterConfig.id);
-		document.append("NotationAtk", monsterConfig.NotationAtk);
+		document.append("requiredAtk", monsterConfig.requiredAtk);
+		document.append("requiredCdmg", monsterConfig.requiredCdmg);
+		document.append("notationRes", monsterConfig.notationRes);
+		document.append("notationCdmg", monsterConfig.notationCdmg);
+		document.append("notationAcc", monsterConfig.notationAcc);
 		return document;
 	}
 

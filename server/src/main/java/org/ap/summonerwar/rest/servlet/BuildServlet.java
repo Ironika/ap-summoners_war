@@ -49,6 +49,7 @@ public class BuildServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
 	public Response postBuild(@Context SecurityContext sc, BuildBean buildBean) {
 		try {
 			BuildData data = new BuildData();

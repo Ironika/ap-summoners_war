@@ -1,7 +1,7 @@
 import React from 'react'
 import BuildsData from 'components/builds/BuildsData'
 import BuildMonsterConfig from 'components-lib/buildMonsterConfig/BuildMonsterConfig'
-
+import BuildsList from 'components-lib/buildsList/BuildsList'
 import {Utils, FormSelect}  from 'ap-react-bootstrap'
 
 import './Builds.scss';
@@ -21,31 +21,14 @@ class Builds extends React.Component {
 		BuildsData.unregister()
 	}
 
-	_buildBuild(build) {
-		return (
-			<li key={build.id}>
-				<div className="sm-build"><span>{build.name}</span></div>
-			</li>
-		)
-	}
-
 	render() {
 		return (
 			<div className='ap-builds'>
 				<div className="row">
-					<div className="col-xs-2">
-						 <div className="sm-sheet sm-builds-list">
-						 	<ul>
-						 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
-						 		<li>
-									<div className="sm-build">
-										<i className="glyphicon glyphicon-plus-sign sm-build-add" onClick={this.onClickAddBuild.bind(this)}></i>
-									</div>
-								</li>
-						 	</ul>
-						 </div>
+					<div className="col-xs-12 col-sm-2">
+						 <BuildsList builds={this.state.builds} onClickBuild={this.state.onClickBuild}/>
 					</div>
-					<div className="col-xs-10">
+					<div className="col-xs-10 col-sm-10">
 						<div className="sm-sheet sm-builds-monsters">
 
 							<BuildMonsterConfig />

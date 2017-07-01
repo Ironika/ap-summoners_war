@@ -17,37 +17,44 @@ db.user.insert({
 })
 
 db.build.insert({
-	"id":"aaaa",
+	"id":"build-aa",
 	"name":"Nuckers",
-	"userId": "a"
+	"userId": "a",
+	"state": "Save"
 })
 
 db.build.insert({
-	"id":"bbbb",
+	"id":"build-bb",
 	"name":"Speeds",
-	"userId": "a"
+	"userId": "a",
+	"state": "Save"
 })
 
 db.build.insert({
-	"id":"cccc",
+	"id":"build-cc",
 	"name":"Build3",
-	"userId": "a"
+	"userId": "a",
+	"state": "Save"
 })
 
 db.build.insert({
-	"id":"dddd",
+	"id":"build-dd",
 	"name":"Build4",
-	"userId": "a"
+	"userId": "a",
+	"state": "Save"
 })
 
-db.build.insert({
-	"id":"eeee",
-	"name":"Build5",
-	"userId": "a"
+db.monsterConfig.insert({
+	"id": "monsterConfig-aa",
+	"buildId": "build-aa",
 })
 
-db.build.insert({
-	"id":"ffff",
-	"name":"Build6",
-	"userId": "a"
+db.monsterConfig.insert({
+	"id": "monsterConfig-bb",
+	"buildId": "build-aa"
+})
+
+db.monsterConfig.insert({
+	"id": "monsterConfig-cc",
+	"buildId": "build-aa"
 })

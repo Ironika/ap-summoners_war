@@ -5,25 +5,25 @@ public class MonsterConfigBean {
 
 	public String monsterId;
 	public String buildId;
-	public Integer RequiredHp;
+	public Integer requiredDef;
+	public Integer notationDef;
 	public String set3;
+	public Integer requiredRes;
+	public Integer notationSpd;
 	public String set2;
-	public Integer RequiredSpd;
-	public Integer NotationDef;
-	public Integer RequiredDef;
-	public Integer RequiredCrate;
-	public Integer NotationSpd;
-	public Integer RequiredRes;
-	public Integer RequiredAcc;
-	public Integer NotationCdmg;
-	public Integer NotationCrate;
-	public Integer RequiredAtk;
-	public Integer RequiredCdmg;
-	public Integer NotationHp;
-	public Integer NotationAcc;
-	public Integer NotationRes;
+	public Integer requiredAcc;
+	public Integer notationHp;
+	public Integer requiredSpd;
+	public Integer requiredCrate;
+	public Integer requiredHp;
+	public Integer notationCrate;
+	public Integer notationAtk;
 	public String set1;
 	public String id;
-	public Integer NotationAtk;
+	public Integer requiredAtk;
+	public Integer requiredCdmg;
+	public Integer notationRes;
+	public Integer notationCdmg;
+	public Integer notationAcc;
 
 }
