@@ -1,8 +1,11 @@
 @import '../var.scss';
 
 .ap-builds {
+	.sm-hide {
+		display:none;
+	}
 	.sm-builds-list {
-		max-height: 395px;
+		max-height: 500px;
 		overflow: auto;
 		li {
 			cursor: pointer;
@@ -55,10 +58,18 @@
 	.sm-builds-monsters {
 		padding: 25px;
 		overflow: auto;
-		.sm-builds-monsterconfig {
+		overflow-y: hidden;
+		height: 405px;
+		white-space:nowrap;
+		.sm-builds-monster {
 			display: inline-block;
-		    height: 455px;
-		    width: 50%;
+		    width: 45%;
+		    overflow: auto;
+		    margin-right: 20px;
+		    max-height: 345px;
+		    hr {
+		    	border-color: $color-text;
+		    }
 		    .sm-builds-monster-name {
 		    	img {
 			    	height: 60px;
@@ -72,6 +83,51 @@
 			    	font-size: 18px;
 			    }
 		    }
+		    .sm-builds-monster-stats {
+		    	margin-top: 20px;
+		    	label {
+		    		display: block;
+		    		cursor: pointer;
+		    	}
+		    	.sm-builds-monster-stats-box {
+		    		input {
+			    		display: inline-block;
+						width: 50%;
+						margin-left: 2%;
+			    	}
+			    	button {
+			    		display: inline-block;
+					    height: 43px;
+					    width: 16%;
+					    margin-left: 2%;
+					    padding: 0;
+			    	}
+			    	.sm-builds-select {
+			    		display: inline-block;
+			    		width: 30%;
+			    		height: 43px;
+			    	}
+			    	.sm-stats-content {
+			    		background-color: rgba(46, 29, 16, 0.80);
+			    		padding: 15px;
+			    		margin-top: 10px;
+			    		color: $color-text;
+			    	}
+		    	}
+		    }
+		}
+	}
+	.sm-builds-infos {
+		label {
+			margin-right: 10px;
+		}
+		input {
+			width: 20%;
+			display: inline-block;
+			margin-right: 20px;
+		}
+		.sm-builds-infos-build {
+			float:right;
 		}
 	}
 }

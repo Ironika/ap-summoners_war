@@ -6,7 +6,7 @@ import RuneHelper from 'helpers/RuneHelper'
 
 import './MonsterRunes.scss'
 
-let SETS = {
+let SETS_BONUS = {
     Energy: 2,
     Swift: 4,
     Despair: 4,
@@ -14,7 +14,21 @@ let SETS = {
     Focus: 2,
     Fatal: 4,
     Revenge: 2,
-    Vampire: 4
+    Vampire: 4,
+	Rage: 4,
+	Guard: 2,
+	Shield: 2,
+	Revenge: 2,
+	Will: 2,
+	Nemesis: 2,
+	Violent: 4,
+	Destroy: 2,
+	Fight: 0,
+	Determination: 0,
+	Enhance: 0,
+	Accuracy: 0,
+	Tolerance: 0,
+	Endure: 0,
 }
 
 class MonsterRunes extends React.Component {
@@ -32,8 +46,6 @@ class MonsterRunes extends React.Component {
 
 	_buildSetsRunes(props) {
 		let runeSets = {}
-		let count = 0
-
 		let sets = {}
 
 		for(let rune in props.runes)
@@ -43,7 +55,7 @@ class MonsterRunes extends React.Component {
 				runeSets[props.runes[rune].set] = 1
 
 		for(let set in runeSets)
-			if(runeSets[set] >= SETS[set])
+			if(runeSets[set] >= SETS_BONUS[set])
 				if (set in sets)
 					sets[set]++ 
 				else 

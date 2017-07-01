@@ -1,7 +1,7 @@
 import React from 'react';
 import BuildsData from 'components/builds/BuildsData';
 
-import {Utils}  from 'ap-react-bootstrap'
+import {Utils, FormSelect}  from 'ap-react-bootstrap'
 
 import './Builds.scss';
 
@@ -43,19 +43,126 @@ class Builds extends React.Component {
 								</li>
 						 	</ul>
 						 </div>
-						 <div className="sm-sheet sm-sheet-top sm-builds-infos">
-							 <label className="sm-label">Status</label>
-							 <input className="sm-input" type="text" value="Optimized" disabled={true}/>
-						 </div>
 					</div>
 					<div className="col-xs-10">
 						<div className="sm-sheet sm-builds-monsters">
-							<div className="sm-content sm-builds-monsterconfig">
+
+							<div className="sm-content sm-builds-monster">
 								<div className="sm-builds-monster-name">
 									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
 									<span>Monster Name</span>
 								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Required Stats</label>
+									<div className="sm-builds-monster-stats-box sm-hide">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Notations Stats</label>
+									<div className="sm-builds-monster-stats-box sm-hide">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Sets</label>
+								</div>
+								<hr/>
 							</div>
+
+							<div className="sm-content sm-builds-monster">
+								<div className="sm-builds-monster-name">
+									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
+									<span>Monster Name</span>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Required Stats</label>
+									<div className="sm-builds-monster-stats-box">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Notations Stats</label>
+									<div className="sm-builds-monster-stats-box">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Sets</label>
+								</div>
+								<hr/>
+							</div>
+
+							<div className="sm-content sm-builds-monster">
+								<div className="sm-builds-monster-name">
+									<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
+									<span>Monster Name</span>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Required Stats</label>
+									<div className="sm-builds-monster-stats-box">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Notations Stats</label>
+									<div className="sm-builds-monster-stats-box">
+										<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChange.bind(this)}/>
+										<input type="text" className="sm-input" />
+										<button className="sm-button">Ok</button>
+										<div className="sm-stats-content">
+											Hp > 15 000
+										</div>
+									</div>
+								</div>
+								<hr/>
+								<div className="sm-builds-monster-stats">
+									<label className="sm-label">Sets</label>
+								</div>
+								<hr/>
+							</div>
+
+						</div>
+						<div className="sm-sheet sm-sheet-top sm-builds-infos">
+							<label className="sm-label">Name</label>
+							<input className="sm-input" type="text"/>
+							<label className="sm-label">Status</label>
+							<input className="sm-input" type="text" value="Optimized" disabled={true}/>
+							<button className="sm-button">Save</button>
+							<button className="sm-button sm-builds-infos-build">Build</button>
 						</div>
 					</div>
 				</div>

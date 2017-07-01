@@ -1,6 +1,7 @@
 import AppHelper from 'helpers/AppHelper';
 import AuthHelper from 'helpers/AuthHelper';
 import BuildHelper from 'helpers/BuildHelper';
+import StatType from 'utils/constants/StatType'
 import {Utils, BaseData}  from 'ap-react-bootstrap'
 
 
@@ -13,8 +14,14 @@ class BuildsData extends BaseData {
         }
 		super.register(obj)
 
+		this.statTypeValues = []
+        for(var i = 0; i < StatType.VALUES.length; i++) {
+            this.statTypeValues.push(StatType.VALUES[i].key)
+        }
+
 		this.obj.state = {
-            builds: []
+            builds: [],
+            statTypeValues: this.statTypeValues 
         }
 
         this.buildDataBuilds()
