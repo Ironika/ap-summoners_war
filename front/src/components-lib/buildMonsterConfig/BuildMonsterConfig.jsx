@@ -29,7 +29,7 @@ class BuildMonsterConfig extends React.Component {
 
 	render() {
 		return (
-			<div className="sm-buildBuildMonsterConfig sm-content">
+			<div className="sm-build-buildmonsterconfig sm-content">
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
 					<input className="sm-input" type="text" onChange={this.onChangeInput.bind(this, 'monsterName')}/>

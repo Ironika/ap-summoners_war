@@ -1,6 +1,6 @@
 import AppHelper from 'helpers/AppHelper';
 import AuthHelper from 'helpers/AuthHelper';
-import BuildHelper from 'helpers/BuildHelper';
+import MonsterConfigHelper from 'helpers/MonsterConfigHelper';
 import StatType from 'utils/constants/StatType'
 import {Utils, BaseData}  from 'ap-react-bootstrap'
 
@@ -17,7 +17,8 @@ class BuildsData extends BaseData {
 		this.obj.onClickAddMonsterConfig = this.onClickAddMonsterConfig.bind(this)
 
 		this.obj.state = {
-            build: {}
+            build: {},
+            monstersConfig: []
         }
 
         AppHelper.register('/currentBuild', this, this.onBuildChange.bind(this));
@@ -25,7 +26,10 @@ class BuildsData extends BaseData {
 
 	onBuildChange() {
         let build = AppHelper.getData('/currentBuild')
-        this.setState({ build: build})
+        MonsterConfigHelper.getBuildMonstersconfig(build.id).then(function() {
+        	let monstersConfig = MonsterConfigHelper.getData()
+        	this.setState({ build: build, monstersConfig: monstersConfig})
+        }.bind(this))
     }
 
 

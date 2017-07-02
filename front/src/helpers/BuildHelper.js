@@ -32,10 +32,6 @@ class BuildHelper {
 		return Dispatcher.issue('DELETE_BUILD', {token: AuthHelper.getToken(), buildId: buildId});
 	}
 
-	getMonstersconfigBuilds(monsterConfigId) {
-		return Dispatcher.issue('GET_MONSTERSCONFIG_BUILDS', {token: AuthHelper.getToken(), monsterConfigId: monsterConfigId});
-	}
-
 	getUserBuilds(userId) {
 		return Dispatcher.issue('GET_USER_BUILDS', {token: AuthHelper.getToken(), userId: userId});
 	}

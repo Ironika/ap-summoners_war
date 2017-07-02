@@ -10,14 +10,15 @@
 		overflow-y: hidden;
 		height: 405px;
 		white-space:nowrap;
-		.sm-builds-monster-add {
-		    margin-right: 20px;
-		    font-size: 120px;
-		    position: relative;
-		    top: -100px;
-    		color: $color-text;
-    		cursor: pointer;
-	    }
+		.sm-builds-monster-add1 {
+			display: inline-block;
+			.sm-builds-monster-add {
+			    margin-right: 20px;
+			    font-size: 120px;
+	    		color: $color-text;
+	    		cursor: pointer;
+		    }
+		}
 	}
 	
 	.sm-builds-infos {

@@ -2,7 +2,7 @@ import React from 'react'
 import BuildsData from 'components/builds/BuildsData'
 import BuildMonsterConfig from 'components-lib/buildMonsterConfig/BuildMonsterConfig'
 import BuildsList from 'components-lib/buildsList/BuildsList'
-import {Utils, FormSelect}  from 'ap-react-bootstrap'
+import {Utils}  from 'ap-react-bootstrap'
 
 import './Builds.scss';
 
@@ -21,6 +21,11 @@ class Builds extends React.Component {
 		BuildsData.unregister()
 	}
 
+	_buildMonstersConfig(monsterConfig) {
+		if(monsterConfig)
+			return (<BuildMonsterConfig key={monsterConfig.id} monsterConfig={monsterConfig}/>)
+	}
+
 	render() {
 		return (
 			<div className='ap-builds'>
@@ -30,17 +35,16 @@ class Builds extends React.Component {
 					</div>
 					<div className="col-xs-10 col-sm-10">
 						<div className="sm-sheet sm-builds-monsters">
-
-							<BuildMonsterConfig />
-
-							<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
-
+							{Utils.map(this.state.monstersConfig, this._buildMonstersConfig)}
+							<div className="sm-builds-monster-add1">
+								<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
+							</div>
 						</div>
 						<div className="sm-sheet sm-sheet-top sm-builds-infos">
 							<label className="sm-label">Build Name</label>
-							<input className="sm-input" type="text"/>
+							<input className="sm-input" type="text" value={this.state.build.name}/>
 							<label className="sm-label">Status</label>
-							<input className="sm-input" type="text" value="Optimized" disabled={true}/>
+							<input className="sm-input" type="text" value={this.state.build.state} disabled={true}/>
 							<button className="sm-button">Save</button>
 							<button className="sm-button sm-builds-infos-build">Build</button>
 						</div>

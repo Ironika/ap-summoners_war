@@ -28,6 +28,10 @@ class MonsterConfigHelper {
 		return Dispatcher.issue('DELETE_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: monsterConfigId});
 	}
 
+	getBuildMonstersconfig(buildId) {
+		return Dispatcher.issue('GET_BUILD_MONSTERSCONFIG', {token: AuthHelper.getToken(), buildId: buildId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/monsterConfig' + (id ? '/' + id : ''));
 	}
