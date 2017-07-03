@@ -68,6 +68,7 @@ class BuildMonsterConfigData extends BaseData {
 	}
 
 	onClickShow(id) {
+		console.log("SSSHHHOOOOWWWW")
 		if(id == 'requiredStat')
 			this.setState({requiredStatIsOpen: !this.getState('requiredStatIsOpen')})
 		else if( id == 'notationStat')
@@ -95,5 +96,4 @@ class BuildMonsterConfigData extends BaseData {
 
 }
 
-var BuildMonsterConfigDataObj = new BuildMonsterConfigData();
-export default BuildMonsterConfigDataObj;
+export default BuildMonsterConfigData;

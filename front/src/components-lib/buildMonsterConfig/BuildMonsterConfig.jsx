@@ -10,14 +10,15 @@ class BuildMonsterConfig extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.BuildMonsterConfigDataObj = new BuildMonsterConfigData();
 	}
 
 	componentWillMount() {
-		BuildMonsterConfigData.register(this)
+		this.BuildMonsterConfigDataObj.register(this)
 	}
 
 	componentWillUnmount() {
-		BuildMonsterConfigData.unregister()
+		this.BuildMonsterConfigDataObj.unregister()
 	}
 
 	_buildStat(id, stat, key) {

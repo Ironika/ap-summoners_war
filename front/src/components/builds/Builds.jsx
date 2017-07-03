@@ -22,8 +22,7 @@ class Builds extends React.Component {
 	}
 
 	_buildMonstersConfig(monsterConfig) {
-		if(monsterConfig)
-			return (<BuildMonsterConfig key={monsterConfig.id} monsterConfig={monsterConfig}/>)
+		return (<BuildMonsterConfig key={monsterConfig.id} monsterConfig={monsterConfig}/>)
 	}
 
 	render() {
