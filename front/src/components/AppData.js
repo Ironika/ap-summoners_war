@@ -31,7 +31,6 @@ class AppData extends BaseData {
 		}
 
 		UserHelper.register(this, this.buildDataUser.bind(this))
-        ImageHelper.register(this, this.buildDataAvatar.bind(this))
 	}
 
 	unregister() {
@@ -40,30 +39,27 @@ class AppData extends BaseData {
 
 	buildDataUser() {
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
+        let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
         
-        let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
         let img = ImageHelper.getData(profileImage)
-        if (profileImage && !img) {
-            ImageHelper.getImage(profileImage)
-        }
-
-		this.setState({
-            username: username || 'Homunculus',
-            isLogged: true
-        })
-	}
-
-    buildDataAvatar() {
-        let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
-        if (profileImage) {
-            let img = ImageHelper.getData(profileImage)
-            if (img) {
+        if (!img) {
+            ImageHelper.getImage(profileImage).
+            then(function () {
+                let img = ImageHelper.getData(profileImage)
                 this.setState({
-                    profileImage: img.src,
-                })    
-            }
+                    username: username || 'Homunculus',
+                    profileImage: img,
+                    isLogged: true
+                })
+            }.bind(this))
+        } else {
+            this.setState({
+                username: username || 'Homunculus',
+                profileImage: img,
+                isLogged: true
+            })
         }
-    }
+	}
 
 	onClickHome() {
 		AppHelper.navigate('/');

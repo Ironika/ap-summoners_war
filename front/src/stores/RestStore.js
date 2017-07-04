@@ -30,21 +30,17 @@ AuthStore.handlePutPassword = function(result, params) {
 }
 
 ImageStore.handleGetImage = function(result, params) {
-	var uarr = new Uint8Array(result.content);
-	var strings = [], chunksize = 0xffff;
-	var len = uarr.length;
+	let uarr = new Uint8Array(result.content);
+	let strings = [], chunksize = 0xffff;
+	let len = uarr.length;
 	for (var i = 0; i * chunksize < len; i++){
 		strings.push(String.fromCharCode.apply(null, uarr.subarray(i * chunksize, (i + 1) * chunksize)));
 	}
-	var btoaResult = btoa(strings.join(''))
-	var source = 'data:' + result.type + ';base64,' + btoaResult
-	let img = new Image();
-	img.onload = function () {
-		let content = ImageStore.getContent()
-		content[params.id] = img
-		ImageStore.notify();
-	}
-	img.src = source;
+	let btoaResult = btoa(strings.join(''))
+	let source = 'data:' + result.type + ';base64,' + btoaResult
+    let content = ImageStore.getContent()
+    content[params.id] = source
+    ImageStore.notify();
 }
 
 RestStore.handleLogout = function(results, params) {
