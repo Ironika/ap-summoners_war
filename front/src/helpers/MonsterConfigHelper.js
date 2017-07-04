@@ -21,7 +21,7 @@ class MonsterConfigHelper {
 	}
 
 	putMonstersconfig(data) {
-		return Dispatcher.issue('PUT_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: data.monsterConfigId, data: data});
+		return Dispatcher.issue('PUT_MONSTERSCONFIG', {token: AuthHelper.getToken(), monsterConfigId: data.id, data: data});
 	}
 
 	deleteMonstersconfig(monsterConfigId) {

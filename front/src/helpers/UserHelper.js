@@ -25,7 +25,7 @@ class UserHelper {
 	}
 
 	putUser(data) {
-		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), userId: data.userId, data: data});
+		return Dispatcher.issue('PUT_USER', {token: AuthHelper.getToken(), userId: data.id, data: data});
 	}
 
 	getData(id) {

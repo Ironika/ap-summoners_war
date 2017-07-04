@@ -26,7 +26,7 @@ class Profile extends React.Component {
 							<div className="sm-sheet">
 								<div className="sm-content">
 									<ul className="sm-profil-user-key">
-										<li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}disabled={true} /></li>
+                                        <li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}disabled={true} /></li>
 										<li>Mail : <input className="sm-input" type="text" value={this.state.email} onChange={this.onChange.bind(this, 'email')} disabled={true}/></li>
 										<li>Last import : <input className="sm-input" value={this.state.lastImport} disabled={true}/></li>
 									</ul>
@@ -36,6 +36,9 @@ class Profile extends React.Component {
 									    {this.state.upload}
 									</label>
 									<input id="file-upload" type="file" ref={(c) => this.state.fileInput = c} onChange={this.onChangeUpload.bind(this, 'file')}/>
+                                    {this.state.fileInput.files ? 
+                                        <button className='sm-button' onClick={this.onSendImage}>Send</button>
+                                    : '' }
 								</div>
 							</div>
 						</div>

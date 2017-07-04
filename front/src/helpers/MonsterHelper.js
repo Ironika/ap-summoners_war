@@ -25,7 +25,7 @@ class MonsterHelper {
 	}
 
 	putMonster(data) {
-		return Dispatcher.issue('PUT_MONSTER', {token: AuthHelper.getToken(), monsterId: data.monsterId, data: data});
+		return Dispatcher.issue('PUT_MONSTER', {token: AuthHelper.getToken(), monsterId: data.id, data: data});
 	}
 
 	deleteMonster(monsterId) {

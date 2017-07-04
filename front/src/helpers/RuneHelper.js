@@ -25,7 +25,7 @@ class RuneHelper {
 	}
 
 	putRune(data) {
-		return Dispatcher.issue('PUT_RUNE', {token: AuthHelper.getToken(), runeId: data.runeId, data: data});
+		return Dispatcher.issue('PUT_RUNE', {token: AuthHelper.getToken(), runeId: data.id, data: data});
 	}
 
 	deleteRune(runeId) {

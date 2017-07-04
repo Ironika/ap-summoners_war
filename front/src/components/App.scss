@@ -106,6 +106,9 @@ html, body, .app, .ap-app {
 		}
 		input[type="file"] {
 		    display: none !important;
+            &+.sm-button {
+                margin-left: 15px;
+            }
 		}
 		.sm-upload-button {
 			margin-top: 15px;

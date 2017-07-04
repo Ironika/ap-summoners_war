@@ -1,10 +1,10 @@
 import AppHelper from 'helpers/AppHelper'
-import UserHelper from 'helpers/UserHelper'
+import AuthHelper from 'helpers/AuthHelper'
+import BuildHelper from 'helpers/BuildHelper'
+import ImageHelper from 'helpers/ImageHelper'
 import MonsterHelper from 'helpers/MonsterHelper'
 import RuneHelper from 'helpers/RuneHelper'
-import BuildHelper from 'helpers/BuildHelper'
-import AuthHelper from 'helpers/AuthHelper'
- // import ImageHelper from 'helpers/ImageHelper'
+import UserHelper from 'helpers/UserHelper'
 
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
 
@@ -19,6 +19,7 @@ class ProfileData extends BaseData {
 
         this.obj.onClick = this.onClick.bind(this)
         this.obj.onChangeUpload = this.onChangeUpload.bind(this)
+        this.obj.onSendImage = this.onSendImage.bind(this)
 
         this.obj.state = {
             upload: "Upload your picture",
@@ -83,6 +84,26 @@ class ProfileData extends BaseData {
         //     UserHelper.put({profileImage: })
         // )
     }
+
+    onSendImage() {
+        let file = this.getState('fileInput').files[0]
+        ImageHelper.postImage({
+            name: file.name,
+            file: file
+        }).
+        then(this._handleImageSent).
+        then(UserHelper.getUser.bind(UserHelper, AuthHelper.getEntityId())).
+        catch(function(error) {
+            console.error(error)
+        })
+    }
+
+    _handleImageSent(result) {
+        let user = UserHelper.getData(AuthHelper.getEntityId())
+        user.profileImage = result.id
+        return UserHelper.putUser(user)
+    }
+
 }
 let ProfileObj = new ProfileData()
 export default ProfileObj

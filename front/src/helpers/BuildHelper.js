@@ -25,7 +25,7 @@ class BuildHelper {
 	}
 
 	putBuild(data) {
-		return Dispatcher.issue('PUT_BUILD', {token: AuthHelper.getToken(), buildId: data.buildId, data: data});
+		return Dispatcher.issue('PUT_BUILD', {token: AuthHelper.getToken(), buildId: data.id, data: data});
 	}
 
 	deleteBuild(buildId) {
