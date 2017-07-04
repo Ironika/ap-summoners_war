@@ -12,6 +12,7 @@ public enum EConfigProperties {
 	SERV_URL    ("serv_url", "http://localhost:8090/rest"),
 	SERV_ORIGIN ("serv_origin", "*"),
 	SERV_LOGIN  ("serv_login", "true"),
+	FILES_ROOT  ("files_root", "./files"),
 	SMTP_HOST ("smtp_host", "smtp.gmail.com"),
 	SMTP_PORT ("smtp_port", "587"),
 	SMTP_USER ("smtp_user", "ash.devmail@gmail.com"),

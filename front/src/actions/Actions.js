@@ -11,6 +11,8 @@ let post_auth_changemail = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL' })
 let post_auth_changemail_check = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CHECK' })
 let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' })
 let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' })
+let get_image = new ActionBase({ name: 'GET_IMAGE' })
+let post_image = new ActionBase({ name: 'POST_IMAGE' })
 let get_monstersconfig = new ActionBase({ name: 'GET_MONSTERSCONFIG' })
 let post_monstersconfig = new ActionBase({ name: 'POST_MONSTERSCONFIG' })
 let put_monstersconfig = new ActionBase({ name: 'PUT_MONSTERSCONFIG' })
@@ -150,6 +152,28 @@ post_auth_changemail_confirm.do = function(args) {
 		data: args.data
 	};
 	return RestService._request(reqParam);
+}
+
+get_image.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id']);
+	var reqParam = {
+		method: 'GET',
+		token : args.token,
+		url: '/image/' + args.id,
+		type  : 'arraybuffer'
+	};
+	return RestService._request(reqParam);
+}
+
+post_image.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		token : args.token,
+		url: '/image',
+		data  : args.data
+	};
+	return RestService._sendData(reqParam);
 }
 
 get_monstersconfig.do = function(args) {

@@ -426,6 +426,26 @@ ErrorStore.handlePostAuthChangemailConfirmError = function(error, params) {
 	ErrorStore.notifyPath('/POST_AUTH_CHANGEMAIL_CONFIRM');
 }
 
+ErrorStore.handleGetImageSuccess = function(results, params) {
+	delete ErrorStore._content.GET_IMAGE;
+	ErrorStore.notifyPath('/GET_IMAGE');
+}
+
+ErrorStore.handleGetImageError = function(error, params) {
+	ErrorStore._content.GET_IMAGE = error;
+	ErrorStore.notifyPath('/GET_IMAGE');
+}
+
+ErrorStore.handlePostImageSuccess = function(results, params) {
+	delete ErrorStore._content.POST_IMAGE;
+	ErrorStore.notifyPath('/POST_IMAGE');
+}
+
+ErrorStore.handlePostImageError = function(error, params) {
+	ErrorStore._content.POST_IMAGE = error;
+	ErrorStore.notifyPath('/POST_IMAGE');
+}
+
 Dispatcher.register('LOGOUT', ErrorStore.handleLogout)
 Dispatcher.register('GET_MONSTERSCONFIG', ErrorStore.handleGetMonstersconfigSuccess, ErrorStore.handleGetMonstersconfigError)
 Dispatcher.register('POST_MONSTERSCONFIG', ErrorStore.handlePostMonstersconfigSuccess, ErrorStore.handlePostMonstersconfigError)
@@ -469,3 +489,5 @@ Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailS
 Dispatcher.register('POST_AUTH_CHANGEMAIL_CHECK', ErrorStore.handlePostAuthChangemailCheckSuccess, ErrorStore.handlePostAuthChangemailCheckError)
 Dispatcher.register('POST_AUTH_CHANGEMAIL', ErrorStore.handlePostAuthChangemailSuccess, ErrorStore.handlePostAuthChangemailError)
 Dispatcher.register('POST_AUTH_CHANGEMAIL_CONFIRM', ErrorStore.handlePostAuthChangemailConfirmSuccess, ErrorStore.handlePostAuthChangemailConfirmError)
+Dispatcher.register('GET_IMAGE', ErrorStore.handleGetImageSuccess, ErrorStore.handleGetImageError)
+Dispatcher.register('POST_IMAGE', ErrorStore.handlePostImageSuccess, ErrorStore.handlePostImageError)

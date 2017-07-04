@@ -2,6 +2,7 @@ import { Dispatcher, StoreBase } from 'ap-flux'
 import { Utils } from 'ap-react-bootstrap'
 
 var AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} })
+var ImageStore = new StoreBase ({ name: 'IMAGE_STORE', content: {} })
 var RestStore = new StoreBase ({ name: 'REST_STORE', content: {} })
 
 AuthStore.handleGetAuth = function(result, params) {
@@ -26,6 +27,24 @@ AuthStore.handlePutPassword = function(result, params) {
 	content.token = Utils.encode(content.username, params.data.password)
 	AuthStore.storeToLocalStorage()
 	AuthStore.notify()
+}
+
+ImageStore.handleGetImage = function(result, params) {
+	var uarr = new Uint8Array(result.content);
+	var strings = [], chunksize = 0xffff;
+	var len = uarr.length;
+	for (var i = 0; i * chunksize < len; i++){
+		strings.push(String.fromCharCode.apply(null, uarr.subarray(i * chunksize, (i + 1) * chunksize)));
+	}
+	var btoaResult = btoa(strings.join(''))
+	var source = 'data:' + result.type + ';base64,' + btoaResult
+	let img = new Image();
+	img.onload = function () {
+		let content = ImageStore.getContent()
+		content[params.id] = img
+		ImageStore.notify();
+	}
+	img.src = source;
 }
 
 RestStore.handleLogout = function(results, params) {
@@ -147,6 +166,7 @@ RestStore.handleGetUserMonsters = function(result, params) {
 Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)
 Dispatcher.register('LOGOUT', AuthStore.handleLogout)
 Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
+Dispatcher.register('GET_IMAGE', ImageStore.handleGetImage)
 Dispatcher.register('LOGOUT', RestStore.handleLogout)
 Dispatcher.register('GET_MONSTERSCONFIG', RestStore.handleGetMonstersconfig)
 Dispatcher.register('GET_BUILDS', RestStore.handleGetBuilds)
