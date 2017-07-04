@@ -42,7 +42,8 @@ class AppData extends BaseData {
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
         
         let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
-        if (profileImage) {
+        let img = ImageHelper.getData(profileImage)
+        if (profileImage && !img) {
             ImageHelper.getImage(profileImage)
         }
 
@@ -55,7 +56,7 @@ class AppData extends BaseData {
     buildDataAvatar() {
         let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
         if (profileImage) {
-            let img = ImageHelper.getData('/' + profileImage)
+            let img = ImageHelper.getData(profileImage)
             if (img) {
                 this.setState({
                     profileImage: img.src,
