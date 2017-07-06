@@ -36,6 +36,7 @@ class Builds extends React.Component {
 							<label className="sm-label">Status</label>
 							<input className="sm-input" value={this.state.build.state} disabled={true}/>
 							<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>
+							<button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button>
 							<button className="sm-button">Build</button>
 							<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
 						</div>

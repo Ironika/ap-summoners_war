@@ -19,6 +19,7 @@ class BuildsData extends BaseData {
 
 		this.obj.onChangeBuildName = this.onChangeBuildName.bind(this)
 		this.obj.onClickSave = this.onClickSave.bind(this)
+		this.obj.onClickEdit = this.onClickEdit.bind(this)
 		this.obj.onClickDelete = this.onClickDelete.bind(this)
 
 		this.obj.state = {
@@ -53,6 +54,21 @@ class BuildsData extends BaseData {
 	onChangeBuildName(event) {
 		this.getState('build').name = event.target.value
 		this.setState({build: this.getState('build')})
+	}
+
+	onClickEdit(){
+		let build = AppHelper.getData('/currentBuild')
+		build.state = BuildState.SAVE.key
+		BuildHelper.putBuild(build).
+		then(function(result) {
+			let promises = []
+			let monstersConfig = AppHelper.getData('/currentMonstersConfig')
+			for (let key in monstersConfig) {
+				promises.push(MonsterConfigHelper.putMonstersconfig(monstersConfig[key]))
+			}
+			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+			return Promise.all(promises)
+		}.bind(this))
 	}
 
 	onClickSave() {
