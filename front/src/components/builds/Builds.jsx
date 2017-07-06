@@ -26,7 +26,7 @@ class Builds extends React.Component {
 			<div className='ap-builds'>
 				<div className="row">
 					<div className="col-xs-12 col-sm-2">
-						 <BuildsList onClickBuild={this.state.onClickBuild}/>
+						 <BuildsList/>
 					</div>
 					<div className="col-xs-10 col-sm-10">
 						<MonsterConfigList/>
