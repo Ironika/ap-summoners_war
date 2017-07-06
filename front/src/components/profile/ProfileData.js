@@ -17,7 +17,6 @@ class ProfileData extends BaseData {
             AppHelper.navigate("/")
         }
 
-        this.obj.onClick = this.onClick.bind(this)
         this.obj.onChangeUpload = this.onChangeUpload.bind(this)
         this.obj.onSendImage = this.onSendImage.bind(this)
 
@@ -66,23 +65,8 @@ class ProfileData extends BaseData {
         })
     }
 
-	onClick() {
-		UserHelper.putUser({
-            username: this.getState('username'),
-            email: this.getState('email')
-        })
-	}
-
     onChangeUpload() {
         this.setState({upload: this.getState('fileInput').files[0].name})
-
-        // let data = {
-        //     file: this.getState('fileInput').files[0],
-        //     name: this.getState('fileInput').files[0].name
-        // }
-        // ImageHelper.postImage(data).then(
-        //     UserHelper.put({profileImage: })
-        // )
     }
 
     onSendImage() {

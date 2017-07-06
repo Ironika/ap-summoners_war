@@ -40,8 +40,8 @@ class MonsterConfig extends React.Component {
 			<div className="sm-build-buildmonsterconfig sm-content">
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
 				<div className="sm-builds-monster-name">
-					<img alt="Summoners War" src="assets/images/monsters/Homunculus-Awakened_Fire.jpg"/>
-					<input className="sm-input" type="text" value={this.state.monsterName} onChange={this.onChangeInput.bind(this, 'monsterName')}/>
+					<img alt="Summoners War" src={"assets/images/monsters/" + this.state.monsterImage + ".jpg"}/>
+					<input className="sm-input" type="text" value={this.state.monsterName} onChange={this.onChangeMonsterName.bind(this)}/>
 				</div>
 				<hr/>
 				<div className="sm-builds-monster-stats">

@@ -17,7 +17,16 @@ class MonsterConfigData extends BaseData {
 
 		let monsterConfig = monstersConfig[this.obj.props.monsterConfigId]
 
-		// let monster = MonsterHelper.getData(monsterConfig.monsterId)
+		let monsters = {}
+		for(let key in MonsterHelper.getData())
+			monsters[key] = MonsterHelper.getData()[key].name.split(" ")[0]
+
+		let monster = ""
+		let monsterImage = "default-monster"
+		if(monsterConfig.monsterId) {
+			monster = monsters[monsterConfig.monsterId]
+			monsterImage = monsters[monsterConfig.monsterId]
+		}
 
 		let statTypeValues = []
         for(let i = 0; i < StatType.VALUES.length; i++)
@@ -47,6 +56,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onChangeInput = this.onChangeInput.bind(this)
         this.obj.onChangeSelect = this.onChangeSelect.bind(this)
         this.obj.onClickDeleteStat = this.onClickDeleteStat.bind(this)
+        this.obj.onChangeMonsterName = this.onChangeMonsterName.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -58,7 +68,9 @@ class MonsterConfigData extends BaseData {
 
             monsterConfig: monsterConfig,
 
-            monsterName: "monster name",
+            monsters: monsters,
+            monsterName: monster,
+            monsterImage: monsterImage,
 
             requiredStatsSelect: "",
             requiredStatsInput: "",
@@ -71,6 +83,24 @@ class MonsterConfigData extends BaseData {
             setsSelect: "",
             sets: sets
         }
+	}
+
+	onChangeMonsterName(event) {
+		for(let key in this.getState('monsters')) {
+			if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
+				let monsterConfig = this.getState('monsterConfig')
+				monsterConfig.monsterId = key
+				AppHelper.put("currentMonstersConfig/" + monsterConfig.id, monsterConfig)
+				this.setState({
+					monsterName: event.target.value, 
+					monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
+					monsterConfig: monsterConfig
+				})
+				break
+			} else 
+				this.setState({monsterName: event.target.value, monsterImage: "default-monster"})
+			
+		}
 	}
 
 	onClickDeleteStat(id, stat) {
