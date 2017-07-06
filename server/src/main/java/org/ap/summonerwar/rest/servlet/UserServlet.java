@@ -28,6 +28,9 @@ import org.ap.summonerwar.storage.RuneCollection;
 import org.ap.summonerwar.bean.MonsterBean;
 import org.ap.summonerwar.storage.MonsterData;
 import org.ap.summonerwar.storage.MonsterCollection;
+import org.ap.summonerwar.bean.MonsterConfigBean;
+import org.ap.summonerwar.storage.MonsterConfigData;
+import org.ap.summonerwar.storage.MonsterConfigCollection;
 import org.ap.summonerwar.bean.ImportBean;
 import org.ap.summonerwar.helpers.ImportHelper;
 
@@ -381,6 +384,59 @@ public class UserServlet extends APServletBase {
 			long deletedCount = RuneCollection.deleteMany(and(eq("userId", userId),eq("monsterId", monsterId)));
 			// Send response
 			return Response.status(Status.OK).entity("{\"deletedCount\": " + deletedCount + "}").build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@GET
+	@Path("/{userId}/monstersconfig")
+	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
+	public Response getUserMonstersconfigs(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			List<MonsterConfigData> datas = MonsterConfigCollection.get(and(eq("userId", userId)));
+			
+			List<MonsterConfigBean> beanList = new ArrayList<MonsterConfigBean>();
+			for (MonsterConfigData data : datas) {
+				MonsterConfigBean bean = new MonsterConfigBean();
+				bean.monsterId = data.getMonsterId();
+				bean.buildId = data.getBuildId();
+				bean.userId = data.getUserId();
+				bean.requiredDef = data.getRequiredDef();
+				bean.notationSpd = data.getNotationSpd();
+				bean.requiredAcc = data.getRequiredAcc();
+				bean.notationHp = data.getNotationHp();
+				bean.requiredHpFlat = data.getRequiredHpFlat();
+				bean.requiredDefFlat = data.getRequiredDefFlat();
+				bean.requiredAtkFlat = data.getRequiredAtkFlat();
+				bean.requiredCrate = data.getRequiredCrate();
+				bean.notationHpFlat = data.getNotationHpFlat();
+				bean.id = data.getId();
+				bean.requiredAtk = data.getRequiredAtk();
+				bean.requiredCdmg = data.getRequiredCdmg();
+				bean.notationCdmg = data.getNotationCdmg();
+				bean.notationAcc = data.getNotationAcc();
+				bean.notationDef = data.getNotationDef();
+				bean.set3 = data.getSet3();
+				bean.requiredRes = data.getRequiredRes();
+				bean.set2 = data.getSet2();
+				bean.requiredSpd = data.getRequiredSpd();
+				bean.notationDefFlat = data.getNotationDefFlat();
+				bean.requiredHp = data.getRequiredHp();
+				bean.notationAtkFlat = data.getNotationAtkFlat();
+				bean.notationCrate = data.getNotationCrate();
+				bean.notationAtk = data.getNotationAtk();
+				bean.set1 = data.getSet1();
+				bean.notationRes = data.getNotationRes();
+				
+				beanList.add(bean);
+			}
+			
+			return Response.status(Status.OK).entity(beanList.toArray(new MonsterConfigBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

@@ -159,6 +159,15 @@ RestStore.handleGetUserMonsters = function(result, params) {
 	RestStore.notifyPath('/monster')
 }
 
+RestStore.handleGetUserMonstersconfig = function(result, params) {
+	let content = RestStore.getContent()
+	content.monsterConfig = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.monsterConfig[result[i].id] = result[i];
+	RestStore.notifyPath('/monsterConfig')
+}
+
 Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)
 Dispatcher.register('LOGOUT', AuthStore.handleLogout)
 Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
@@ -177,3 +186,4 @@ Dispatcher.register('GET_USER', RestStore.handleGetUser)
 Dispatcher.register('GET_USER_BUILDS', RestStore.handleGetUserBuilds)
 Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes)
 Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters)
+Dispatcher.register('GET_USER_MONSTERSCONFIG', RestStore.handleGetUserMonstersconfig)

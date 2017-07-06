@@ -32,6 +32,10 @@ class MonsterConfigHelper {
 		return Dispatcher.issue('GET_BUILD_MONSTERSCONFIG', {token: AuthHelper.getToken(), buildId: buildId});
 	}
 
+	getUserMonstersconfig(userId) {
+		return Dispatcher.issue('GET_USER_MONSTERSCONFIG', {token: AuthHelper.getToken(), userId: userId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/monsterConfig' + (id ? '/' + id : ''));
 	}

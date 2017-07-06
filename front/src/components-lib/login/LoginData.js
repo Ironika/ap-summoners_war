@@ -4,6 +4,7 @@ import UserHelper from 'helpers/UserHelper'
 import MonsterHelper from 'helpers/MonsterHelper'
 import RuneHelper from 'helpers/RuneHelper'
 import BuildHelper from 'helpers/BuildHelper'
+import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
 class LoginData extends BaseData {
@@ -29,6 +30,7 @@ class LoginData extends BaseData {
 			promises.push(MonsterHelper.getUserMonsters(AuthHelper.getEntityId()))
 			promises.push(RuneHelper.getUserRunes(AuthHelper.getEntityId()))
 			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+			promises.push(MonsterConfigHelper.getUserMonstersconfig(AuthHelper.getEntityId()))
 			return Promise.all(promises)
 		}).
 		then(AppHelper.navigate.bind(AppHelper, 'profile')).

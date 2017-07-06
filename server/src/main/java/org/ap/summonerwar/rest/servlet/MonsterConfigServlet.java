@@ -32,6 +32,7 @@ public class MonsterConfigServlet extends APServletBase {
 				MonsterConfigBean bean = new MonsterConfigBean();
 				bean.monsterId = data.getMonsterId();
 				bean.buildId = data.getBuildId();
+				bean.userId = data.getUserId();
 				bean.requiredDef = data.getRequiredDef();
 				bean.notationSpd = data.getNotationSpd();
 				bean.requiredAcc = data.getRequiredAcc();
@@ -80,6 +81,7 @@ public class MonsterConfigServlet extends APServletBase {
 			data.setId(UUIDGenerator.nextId());
 			data.setMonsterId(monsterConfigBean.monsterId);
 			data.setBuildId(monsterConfigBean.buildId);
+			data.setUserId(monsterConfigBean.userId);
 			data.setRequiredDef(monsterConfigBean.requiredDef);
 			data.setNotationSpd(monsterConfigBean.notationSpd);
 			data.setRequiredAcc(monsterConfigBean.requiredAcc);
@@ -128,6 +130,7 @@ public class MonsterConfigServlet extends APServletBase {
 			MonsterConfigBean bean = new MonsterConfigBean();
 			bean.monsterId = data.getMonsterId();
 			bean.buildId = data.getBuildId();
+			bean.userId = data.getUserId();
 			bean.requiredDef = data.getRequiredDef();
 			bean.notationSpd = data.getNotationSpd();
 			bean.requiredAcc = data.getRequiredAcc();
@@ -179,6 +182,7 @@ public class MonsterConfigServlet extends APServletBase {
 			// Update the data object
 			data.setMonsterId(monsterConfigBean.monsterId);
 			data.setBuildId(monsterConfigBean.buildId);
+			data.setUserId(monsterConfigBean.userId);
 			data.setRequiredDef(monsterConfigBean.requiredDef);
 			data.setNotationSpd(monsterConfigBean.notationSpd);
 			data.setRequiredAcc(monsterConfigBean.requiredAcc);

@@ -47,6 +47,7 @@ db.build.insert({
 db.monsterConfig.insert({
 	"id": "monsterConfig-aa",
 	"buildId": "build-aa",
+	"userId": "a",
 	"monsterId": "b6fb477a-3bbb-4f98-b56b-8d5d9899ae5b",
 	"notationAcc": NumberInt(20),
 	"notationAtk": null,
@@ -75,6 +76,7 @@ db.monsterConfig.insert({
 db.monsterConfig.insert({
 	"id": "monsterConfig-bb",
 	"buildId": "build-aa",
+	"userId": "a",
 	"monsterId": "2a9c5e1a-fca4-42a2-a1c4-5edae8473561",
 	"notationAcc": null,
 	"notationAtk": NumberInt(80),
@@ -106,6 +108,7 @@ db.monsterConfig.insert({
 db.monsterConfig.insert({
 	"id": "monsterConfig-cc",
 	"buildId": "build-aa",
+	"userId": "a",
 	"monsterId": "e39aeea9-ef0a-4b75-bf5a-2536fba865d6",
 	"notationAcc": NumberInt(100),
 	"notationAtk": null,

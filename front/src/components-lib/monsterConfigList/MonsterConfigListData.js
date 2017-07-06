@@ -25,24 +25,22 @@ class MonsterConfigListData extends BaseData {
 
 	_onBuildChange() {
 		let build = AppHelper.getData('/currentBuild')
+       	this.monstersConfig = {}
+    	let storeMonstersConfig = MonsterConfigHelper.getData()
+    	for(let key in storeMonstersConfig)
+    		if (build.id == storeMonstersConfig[key].buildId)
+    			this.monstersConfig[key] = Utils.clone(storeMonstersConfig[key])
+		AppHelper.put('/currentMonstersConfig', this.monstersConfig).
+		then( function() {
+			this.setState({monstersConfig: this.monstersConfig})
+		}.bind(this))
 
-        MonsterConfigHelper.getBuildMonstersconfig(build.id).
-        then(function() {
-        	this.monstersConfig = {}
-        	let storeMonstersConfig = MonsterConfigHelper.getData()
-        	for(let key in storeMonstersConfig)
-        		this.monstersConfig[key] = Utils.clone(storeMonstersConfig[key])
-			AppHelper.put('/currentMonstersConfig', this.monstersConfig).
-			then( function() {
-				this.setState({monstersConfig: this.monstersConfig})
-			}.bind(this))
-        }.bind(this))
 	}
 
 	onClickAddMonsterConfig() {
+		let build = AppHelper.getData('/currentBuild')
 		let monstersConfig = this.getState('monstersConfig')
-		let monsterConfig = {id: String(new Date().getTime())}
-
+		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId}
 		monstersConfig[monsterConfig.id] = monsterConfig
 		AppHelper.put('/currentMonstersConfig', monstersConfig).
 		then( function() {

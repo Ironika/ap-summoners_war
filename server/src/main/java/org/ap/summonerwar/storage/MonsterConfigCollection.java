@@ -105,6 +105,7 @@ public class MonsterConfigCollection {
 		data.set2 = document.getString("set2");
 		data.buildId = document.getString("buildId");
 		data.requiredSpd = document.getInteger("requiredSpd");
+		data.userId = document.getString("userId");
 		data.notationDefFlat = document.getInteger("notationDefFlat");
 		data.requiredHp = document.getInteger("requiredHp");
 		data.notationAtkFlat = document.getInteger("notationAtkFlat");
@@ -159,6 +160,8 @@ public class MonsterConfigCollection {
 			document.append("buildId", monsterConfig.buildId);
 		if (monsterConfig.requiredSpd != null)
 			document.append("requiredSpd", monsterConfig.requiredSpd);
+		if (monsterConfig.userId != null)
+			document.append("userId", monsterConfig.userId);
 		if (monsterConfig.notationDefFlat != null)
 			document.append("notationDefFlat", monsterConfig.notationDefFlat);
 		if (monsterConfig.requiredHp != null)
@@ -199,6 +202,7 @@ public class MonsterConfigCollection {
 		document.append("set2", monsterConfig.set2);
 		document.append("buildId", monsterConfig.buildId);
 		document.append("requiredSpd", monsterConfig.requiredSpd);
+		document.append("userId", monsterConfig.userId);
 		document.append("notationDefFlat", monsterConfig.notationDefFlat);
 		document.append("requiredHp", monsterConfig.requiredHp);
 		document.append("notationAtkFlat", monsterConfig.notationAtkFlat);

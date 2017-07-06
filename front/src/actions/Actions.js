@@ -44,6 +44,7 @@ let get_user_runes = new ActionBase({ name: 'GET_USER_RUNES' })
 let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' })
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' })
 let delete_user_monster_runes = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNES' })
+let get_user_monstersconfig = new ActionBase({ name: 'GET_USER_MONSTERSCONFIG' })
 let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' })
 
 get_auth.do = function(args) {
@@ -491,6 +492,16 @@ delete_user_monster_runes.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/user/' + args.userId + '/monsters/' + args.monsterId + '/runes',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_user_monstersconfig.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/user/' + args.userId + '/monstersconfig',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

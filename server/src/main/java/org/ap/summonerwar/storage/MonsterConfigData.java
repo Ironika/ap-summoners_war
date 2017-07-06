@@ -24,6 +24,7 @@ public class MonsterConfigData {
 	public String set2;
 	public String buildId;
 	public Integer requiredSpd;
+	public String userId;
 	public Integer notationDefFlat;
 	public Integer requiredHp;
 	public Integer notationAtkFlat;
@@ -198,6 +199,14 @@ public class MonsterConfigData {
 
 	public void setRequiredSpd(Integer requiredSpd) {
 		this.requiredSpd = requiredSpd;
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Integer getNotationDefFlat() {

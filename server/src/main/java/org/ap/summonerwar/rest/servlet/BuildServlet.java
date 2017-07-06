@@ -156,6 +156,7 @@ public class BuildServlet extends APServletBase {
 				MonsterConfigBean bean = new MonsterConfigBean();
 				bean.monsterId = data.getMonsterId();
 				bean.buildId = data.getBuildId();
+				bean.userId = data.getUserId();
 				bean.requiredDef = data.getRequiredDef();
 				bean.notationSpd = data.getNotationSpd();
 				bean.requiredAcc = data.getRequiredAcc();

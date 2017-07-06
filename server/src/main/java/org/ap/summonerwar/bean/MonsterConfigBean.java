@@ -5,6 +5,7 @@ public class MonsterConfigBean {
 
 	public String monsterId;
 	public String buildId;
+	public String userId;
 	public Integer requiredDef;
 	public Integer notationSpd;
 	public Integer requiredAcc;
