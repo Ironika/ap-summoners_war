@@ -4,22 +4,6 @@
 	.sm-hide {
 		display:none;
 	}
-	.sm-builds-monsters {
-		padding: 25px;
-		overflow: auto;
-		overflow-y: hidden;
-		height: 405px;
-		white-space:nowrap;
-		.sm-builds-monster-add1 {
-			display: inline-block;
-			.sm-builds-monster-add {
-			    margin-right: 20px;
-			    font-size: 120px;
-	    		color: $color-text;
-	    		cursor: pointer;
-		    }
-		}
-	}
 	
 	.sm-builds-infos {
 		label {
@@ -30,8 +14,15 @@
 			display: inline-block;
 			margin-right: 20px;
 		}
-		.sm-builds-infos-build {
+		button {
+			margin-left: 20px;
+		}
+		.sm-builds-infos-delete {
 			float:right;
+			background-image: radial-gradient(#DD4333 50%, #ee1010 100%);
+			&:hover {
+				color: white;
+			}
 		}
 	}
 }

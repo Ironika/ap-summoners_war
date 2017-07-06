@@ -1,4 +1,5 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 import BuildHelper from 'helpers/BuildHelper'
 
 import {Utils, BaseData}  from 'ap-react-bootstrap'
@@ -17,15 +18,11 @@ class BuildsListData extends BaseData {
 		}
 
         this._buildBuildsData()
-
+        BuildHelper.register(this, this._buildBuildsData.bind(this))
 	}
 
-	onClickBuild(build) {
-        AppHelper.put('/build/' + this.build.id, false)
-        this.build = build
-        AppHelper.put('/build/' + build.id, true)
-        AppHelper.put('/currentBuild', build)
-        this.setState({	build: build })
+    unregister() {
+        BuildHelper.unregister(this)
     }
 
     _buildBuildsData() {
@@ -38,10 +35,22 @@ class BuildsListData extends BaseData {
         this.setState({ builds: builds, build: this.build })
     }
 
-	unregister() {}
+    onClickBuild(build) {
+        if(this.build) {
+            AppHelper.put('/build/' + this.build.id, false)
+            this.build = build
+        }
+        AppHelper.put('/build/' + build.id, true)
+        AppHelper.put('/currentBuild', build)
+        this.setState({ build: build })
+    }
 
 	onClickAddBuild() {
-		console.log("ADD")
+        AppHelper.put("/isNewBuild", true)
+        let build = {name: "New Build", id: String(new Date().getTime()), userId: AuthHelper.getEntityId()}
+        this.getState('builds').push(build)
+        this.setState({builds : this.getState('builds')})
+        this.onClickBuild(build)
 	}
 
 }

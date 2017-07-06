@@ -4,9 +4,17 @@
 	display: inline-block;
     overflow: auto;
     margin-right: 20px;
-    max-height: 345px;
+    max-height: 365px;
+    width: 40%;
     hr {
     	border-color: $color-text;
+    }
+    .sm-build-buildmonsterconfig-delete {
+    	color: $color-text-error;
+	    top: -16px;
+		left: 97%;
+    	font-size: 25px;
+    	cursor: pointer;
     }
     .sm-builds-monster-name {
     	img {
@@ -52,6 +60,11 @@
 	    		color: $color-text;
 	    		li {
 	    			padding: 10px;
+	    			i {
+	    				color: $color-text-error;
+	    				margin-left: 2%;
+	    				cursor: pointer;
+	    			}
 	    		}
 	    	}
     	}

@@ -4,27 +4,33 @@ package org.ap.summonerwar.storage;
 public class MonsterConfigData {
 
 	public Integer requiredDef;
-	public Integer notationDef;
-	public String set3;
-	public Integer requiredRes;
 	public Integer notationSpd;
-	public String set2;
 	public Integer requiredAcc;
 	public Integer notationHp;
-	public String buildId;
-	public Integer requiredSpd;
+	public Integer requiredHpFlat;
+	public Integer requiredDefFlat;
+	public Integer requiredAtkFlat;
 	public Integer requiredCrate;
-	public Integer requiredHp;
-	public Integer notationCrate;
-	public Integer notationAtk;
 	public String monsterId;
-	public String set1;
+	public Integer notationHpFlat;
 	public String id;
 	public Integer requiredAtk;
 	public Integer requiredCdmg;
-	public Integer notationRes;
 	public Integer notationCdmg;
 	public Integer notationAcc;
+	public Integer notationDef;
+	public String set3;
+	public Integer requiredRes;
+	public String set2;
+	public String buildId;
+	public Integer requiredSpd;
+	public Integer notationDefFlat;
+	public Integer requiredHp;
+	public Integer notationAtkFlat;
+	public Integer notationCrate;
+	public Integer notationAtk;
+	public String set1;
+	public Integer notationRes;
 
 	public Integer getRequiredDef() {
 		return this.requiredDef;
@@ -34,44 +40,12 @@ public class MonsterConfigData {
 		this.requiredDef = requiredDef;
 	}
 
-	public Integer getNotationDef() {
-		return this.notationDef;
-	}
-
-	public void setNotationDef(Integer notationDef) {
-		this.notationDef = notationDef;
-	}
-
-	public String getSet3() {
-		return this.set3;
-	}
-
-	public void setSet3(String set3) {
-		this.set3 = set3;
-	}
-
-	public Integer getRequiredRes() {
-		return this.requiredRes;
-	}
-
-	public void setRequiredRes(Integer requiredRes) {
-		this.requiredRes = requiredRes;
-	}
-
 	public Integer getNotationSpd() {
 		return this.notationSpd;
 	}
 
 	public void setNotationSpd(Integer notationSpd) {
 		this.notationSpd = notationSpd;
-	}
-
-	public String getSet2() {
-		return this.set2;
-	}
-
-	public void setSet2(String set2) {
-		this.set2 = set2;
 	}
 
 	public Integer getRequiredAcc() {
@@ -90,20 +64,28 @@ public class MonsterConfigData {
 		this.notationHp = notationHp;
 	}
 
-	public String getBuildId() {
-		return this.buildId;
+	public Integer getRequiredHpFlat() {
+		return this.requiredHpFlat;
 	}
 
-	public void setBuildId(String buildId) {
-		this.buildId = buildId;
+	public void setRequiredHpFlat(Integer requiredHpFlat) {
+		this.requiredHpFlat = requiredHpFlat;
 	}
 
-	public Integer getRequiredSpd() {
-		return this.requiredSpd;
+	public Integer getRequiredDefFlat() {
+		return this.requiredDefFlat;
 	}
 
-	public void setRequiredSpd(Integer requiredSpd) {
-		this.requiredSpd = requiredSpd;
+	public void setRequiredDefFlat(Integer requiredDefFlat) {
+		this.requiredDefFlat = requiredDefFlat;
+	}
+
+	public Integer getRequiredAtkFlat() {
+		return this.requiredAtkFlat;
+	}
+
+	public void setRequiredAtkFlat(Integer requiredAtkFlat) {
+		this.requiredAtkFlat = requiredAtkFlat;
 	}
 
 	public Integer getRequiredCrate() {
@@ -114,30 +96,6 @@ public class MonsterConfigData {
 		this.requiredCrate = requiredCrate;
 	}
 
-	public Integer getRequiredHp() {
-		return this.requiredHp;
-	}
-
-	public void setRequiredHp(Integer requiredHp) {
-		this.requiredHp = requiredHp;
-	}
-
-	public Integer getNotationCrate() {
-		return this.notationCrate;
-	}
-
-	public void setNotationCrate(Integer notationCrate) {
-		this.notationCrate = notationCrate;
-	}
-
-	public Integer getNotationAtk() {
-		return this.notationAtk;
-	}
-
-	public void setNotationAtk(Integer notationAtk) {
-		this.notationAtk = notationAtk;
-	}
-
 	public String getMonsterId() {
 		return this.monsterId;
 	}
@@ -146,12 +104,12 @@ public class MonsterConfigData {
 		this.monsterId = monsterId;
 	}
 
-	public String getSet1() {
-		return this.set1;
+	public Integer getNotationHpFlat() {
+		return this.notationHpFlat;
 	}
 
-	public void setSet1(String set1) {
-		this.set1 = set1;
+	public void setNotationHpFlat(Integer notationHpFlat) {
+		this.notationHpFlat = notationHpFlat;
 	}
 
 	public String getId() {
@@ -178,14 +136,6 @@ public class MonsterConfigData {
 		this.requiredCdmg = requiredCdmg;
 	}
 
-	public Integer getNotationRes() {
-		return this.notationRes;
-	}
-
-	public void setNotationRes(Integer notationRes) {
-		this.notationRes = notationRes;
-	}
-
 	public Integer getNotationCdmg() {
 		return this.notationCdmg;
 	}
@@ -200,6 +150,110 @@ public class MonsterConfigData {
 
 	public void setNotationAcc(Integer notationAcc) {
 		this.notationAcc = notationAcc;
+	}
+
+	public Integer getNotationDef() {
+		return this.notationDef;
+	}
+
+	public void setNotationDef(Integer notationDef) {
+		this.notationDef = notationDef;
+	}
+
+	public String getSet3() {
+		return this.set3;
+	}
+
+	public void setSet3(String set3) {
+		this.set3 = set3;
+	}
+
+	public Integer getRequiredRes() {
+		return this.requiredRes;
+	}
+
+	public void setRequiredRes(Integer requiredRes) {
+		this.requiredRes = requiredRes;
+	}
+
+	public String getSet2() {
+		return this.set2;
+	}
+
+	public void setSet2(String set2) {
+		this.set2 = set2;
+	}
+
+	public String getBuildId() {
+		return this.buildId;
+	}
+
+	public void setBuildId(String buildId) {
+		this.buildId = buildId;
+	}
+
+	public Integer getRequiredSpd() {
+		return this.requiredSpd;
+	}
+
+	public void setRequiredSpd(Integer requiredSpd) {
+		this.requiredSpd = requiredSpd;
+	}
+
+	public Integer getNotationDefFlat() {
+		return this.notationDefFlat;
+	}
+
+	public void setNotationDefFlat(Integer notationDefFlat) {
+		this.notationDefFlat = notationDefFlat;
+	}
+
+	public Integer getRequiredHp() {
+		return this.requiredHp;
+	}
+
+	public void setRequiredHp(Integer requiredHp) {
+		this.requiredHp = requiredHp;
+	}
+
+	public Integer getNotationAtkFlat() {
+		return this.notationAtkFlat;
+	}
+
+	public void setNotationAtkFlat(Integer notationAtkFlat) {
+		this.notationAtkFlat = notationAtkFlat;
+	}
+
+	public Integer getNotationCrate() {
+		return this.notationCrate;
+	}
+
+	public void setNotationCrate(Integer notationCrate) {
+		this.notationCrate = notationCrate;
+	}
+
+	public Integer getNotationAtk() {
+		return this.notationAtk;
+	}
+
+	public void setNotationAtk(Integer notationAtk) {
+		this.notationAtk = notationAtk;
+	}
+
+	public String getSet1() {
+		return this.set1;
+	}
+
+	public void setSet1(String set1) {
+		this.set1 = set1;
+	}
+
+	public Integer getNotationRes() {
+		return this.notationRes;
+	}
+
+	public void setNotationRes(Integer notationRes) {
+		this.notationRes = notationRes;
 	}
 
 }

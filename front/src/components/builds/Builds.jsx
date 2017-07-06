@@ -1,6 +1,6 @@
 import React from 'react'
 import BuildsData from 'components/builds/BuildsData'
-import BuildMonsterConfig from 'components-lib/buildMonsterConfig/BuildMonsterConfig'
+import MonsterConfigList from 'components-lib/monsterConfigList/MonsterConfigList'
 import BuildsList from 'components-lib/buildsList/BuildsList'
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -21,31 +21,23 @@ class Builds extends React.Component {
 		BuildsData.unregister()
 	}
 
-	_buildMonstersConfig(monsterConfig) {
-		return (<BuildMonsterConfig key={monsterConfig.id} monsterConfig={monsterConfig}/>)
-	}
-
 	render() {
 		return (
 			<div className='ap-builds'>
 				<div className="row">
 					<div className="col-xs-12 col-sm-2">
-						 <BuildsList builds={this.state.builds} onClickBuild={this.state.onClickBuild}/>
+						 <BuildsList onClickBuild={this.state.onClickBuild}/>
 					</div>
 					<div className="col-xs-10 col-sm-10">
-						<div className="sm-sheet sm-builds-monsters">
-							{Utils.map(this.state.monstersConfig, this._buildMonstersConfig)}
-							<div className="sm-builds-monster-add1">
-								<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
-							</div>
-						</div>
+						<MonsterConfigList/>
 						<div className="sm-sheet sm-sheet-top sm-builds-infos">
 							<label className="sm-label">Build Name</label>
-							<input className="sm-input" type="text" value={this.state.build.name}/>
+							<input className="sm-input" type="text" value={this.state.build.name} onChange={this.onChangeBuildName.bind(this)}/>
 							<label className="sm-label">Status</label>
-							<input className="sm-input" type="text" value={this.state.build.state} disabled={true}/>
-							<button className="sm-button">Save</button>
-							<button className="sm-button sm-builds-infos-build">Build</button>
+							<input className="sm-input" value={this.state.build.state} disabled={true}/>
+							<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>
+							<button className="sm-button">Build</button>
+							<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,10 @@
-import AppHelper from 'helpers/AppHelper';
-import AuthHelper from 'helpers/AuthHelper';
-import MonsterConfigHelper from 'helpers/MonsterConfigHelper';
+import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
+import BuildHelper from 'helpers/BuildHelper'
+import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
+
 import StatType from 'utils/constants/StatType'
+import BuildState from 'utils/constants/BuildState'
 import {Utils, BaseData}  from 'ap-react-bootstrap'
 
 
@@ -14,31 +17,59 @@ class BuildsData extends BaseData {
         }
 		super.register(obj)
 
-		this.obj.onClickAddMonsterConfig = this.onClickAddMonsterConfig.bind(this)
+		this.obj.onChangeBuildName = this.onChangeBuildName.bind(this)
+		this.obj.onClickSave = this.onClickSave.bind(this)
+		this.obj.onClickDelete = this.onClickDelete.bind(this)
 
 		this.obj.state = {
             build: {},
-            monstersConfig: []
+            isNewBuild: false
         }
 
-        AppHelper.register('/currentBuild', this, this.onBuildChange.bind(this));
-	}
+        AppHelper.register('/isNewBuild', this, this._isNewBuild.bind(this));
 
-	onBuildChange() {
-        let build = AppHelper.getData('/currentBuild')
-        MonsterConfigHelper.getBuildMonstersconfig(build.id).then(function() {
-        	let monstersConfig = MonsterConfigHelper.getData()
-        	this.setState({ build: build, monstersConfig: monstersConfig})
-        }.bind(this))
-    }
-
-
-	onClickAddMonsterConfig() {
-		console.log("ADD")
+        AppHelper.register('/currentBuild', this, this._onBuildChange.bind(this));
 	}
 
 	unregister() {
 		AppHelper.unregister(this)
+	}
+
+	_isNewBuild() {
+		let isNewBuild = AppHelper.getData('/isNewBuild')
+        this.setState({ isNewBuild: isNewBuild })
+	}
+
+	_onBuildChange() {
+        let build = AppHelper.getData('/currentBuild')
+        this.setState({ build: build })
+    }
+
+	onClickDelete(buildId) {
+		BuildHelper.deleteBuild(buildId).
+		then(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+	}
+
+	onChangeBuildName(event) {
+		this.getState('build').name = event.target.value
+		this.setState({build: this.getState('build')})
+	}
+
+	onClickSave() {
+		AppHelper.put('/isNewBuild', false)
+		let build = AppHelper.getData('/currentBuild')
+		build.state = BuildState.SAVE.key
+		BuildHelper.postBuild(build).
+		then(function(result) {
+			let promises = []
+			let monstersConfig = AppHelper.getData('/currentMonstersConfig')
+			for (let key in monstersConfig) {
+				monstersConfig[key].buildId = result.id
+				promises.push(MonsterConfigHelper.postMonstersconfig(monstersConfig[key]))
+			}
+			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+			return Promise.all(promises)
+		}.bind(this))
 	}
 }
 var BuildsObj = new BuildsData();
