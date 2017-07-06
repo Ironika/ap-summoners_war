@@ -63,9 +63,8 @@ class BuildsData extends BaseData {
 		then(function(result) {
 			let promises = []
 			let monstersConfig = AppHelper.getData('/currentMonstersConfig')
-			for (let key in monstersConfig) {
+			for (let key in monstersConfig)
 				promises.push(MonsterConfigHelper.putMonstersconfig(monstersConfig[key]))
-			}
 			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
 			return Promise.all(promises)
 		}.bind(this))

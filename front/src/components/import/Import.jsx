@@ -43,7 +43,15 @@ class Import extends React.Component {
 								</div>
 							</div>
 							<div className="sm-sheet sm-sheet-mid">
-								<p className="sm-home-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+								<p className="sm-import-text">
+									Import your file and create your optimised builds for your team !
+									<br/>
+									<br/>
+									Take a look of all your monsters and runes like in game !
+									<br/>
+									<br/>
+									<a className="sm-button" href="https://github.com/kakaroto/SWProxy" target="_blank">How to get your Json File ?</a>
+								</p>
 							</div>
 						</div>
 					</div>

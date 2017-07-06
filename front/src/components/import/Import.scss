@@ -6,6 +6,16 @@
 		font-size: 25px;
 		text-align: center;
 	}
+	.sm-import-text {
+		text-align: center;
+		color: $color-text;
+		font-size: 16px;
+		font-family: $font;
+		a {
+			margin-left: 10px;
+			font-size: 12px;
+		}
+	}
 	.sm-sheet-mid {
 		margin-top: 25px;
 	}
