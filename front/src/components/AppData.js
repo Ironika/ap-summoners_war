@@ -17,8 +17,9 @@ class AppData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.onClickHome = this.onClickHome
-		this.obj.onClickProfile = this.onClickProfile
+		this.obj.onClickHome = this.onClickHome.bind(this)
+		this.obj.onClickProfile = this.onClickProfile.bind(this)
+		this.obj.onClickShowMobileMenu = this.onClickShowMobileMenu.bind(this)
 
 		Utils.forEach(PAGES, function(page) {
 			this.obj[page] = this.onClickPage.bind(this, PAGES[page])
@@ -27,7 +28,8 @@ class AppData extends BaseData {
 		this.obj.state = {
 			username: 'Homunculus',
 			profileImage: 'assets/images/monsters/Homunculus-Awakened_Fire.jpg',
-			isLogged: false
+			isLogged: false,
+			showMobileMenu: false
 		}
 
 		UserHelper.register(this, this.buildDataUser.bind(this))
@@ -61,15 +63,22 @@ class AppData extends BaseData {
         }
 	}
 
+	onClickShowMobileMenu(){
+		this.setState({showMobileMenu: !this.getState('showMobileMenu')})
+	}
+
 	onClickHome() {
+		this.setState({showMobileMenu: false})
 		AppHelper.navigate('/');
 	}
 
 	onClickProfile() {
+		this.setState({showMobileMenu: false})
 		AppHelper.navigate('/profile');
 	}
 
 	onClickPage(page) {
+		this.setState({showMobileMenu: false})
 		this.obj.setState({activePage: page})
 		AppHelper.navigate('/' + page);
 	}

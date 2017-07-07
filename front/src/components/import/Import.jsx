@@ -19,16 +19,14 @@ class Import extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-import'>
+			<div className='sm-import'>
 				<div className="row">
 					<div className="col-xs-12">
 						<h3 className="sm-import-title">Import your Json File</h3>
 					</div>
-				</div>
-				<div className="row">
-					<div className="col-xs-12 col-sm-6">
+					<div className="col-xs-12 col-md-6">
 						<div className="sm-upload">
-							<div className="sm-sheet sm-sheet-mid">
+							<div className="sm-sheet sm-sheet-top">
 								<div className="sm-content sm-upload">
 									<label htmlFor="file-upload" className="sm-label sm-upload-label">
 									    {this.state.upload}
@@ -42,7 +40,7 @@ class Import extends React.Component {
 									<button className="sm-button" onClick={this.onClickImport}>Import</button>
 								</div>
 							</div>
-							<div className="sm-sheet sm-sheet-mid">
+							<div className="sm-sheet sm-sheet-top">
 								<p className="sm-import-text">
 									Import your file and create your optimised builds for your team !
 									<br/>
@@ -55,7 +53,7 @@ class Import extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div className="col-xs-12 col-sm-6">
+					<div className="col-xs-12 col-md-6">
 						<div className="sm-import-img-content">
 							<img src="assets/images/upload.png" alt="Summoners War Homunculus" className="sm-import-img" />
 						</div>

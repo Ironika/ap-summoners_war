@@ -24,21 +24,15 @@
 				color: $yellow;
 				font-size: 10px;
 				font-weight: bold;
-				span {
-					color: white;
-				}
+				span {color: white;}
 			}
 		}
-		.sm-rune-stat2 { 
-			padding-left: 2px; 
-		}
+		.sm-rune-stat2 { padding-left: 2px; }
 	}
 	.sm-rune-star {
 		position: absolute;
 		left: 19px;
-		span {
-			z-index: 10;
-		}
+		span { z-index: 10; }
 	}
 	.sm-rune-lvl {
 		color: white;

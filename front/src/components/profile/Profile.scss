@@ -1,7 +1,9 @@
 @import '../var.scss';
 
-.ap-profile {
+.sm-profile {
+	padding-top: 20px;
 	.sm-profile-user {
+		margin-bottom: 20px !important;
 		li {
 			font-size: 17px;
 		    padding: 5px;
@@ -16,13 +18,8 @@
     	}
 	}
 
-	.sm-sheet-mid {
-		margin-top: 20px;
-	}
 	.sm-profil-stat {
-		img {
-			width: 45px;
-		}
+		img { width: 45px; }
 		p {
 			display: inline;
 		    margin-left: 20px;
@@ -34,5 +31,5 @@
 			}
 		}
 	}
-
+	.sm-profil-stat-last { margin-bottom: 20px;}
 }

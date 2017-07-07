@@ -94,8 +94,8 @@ class MonsterRunes extends React.Component {
 	render() {
 		return (
 			<div className="sm-monster-runes">
-				<div className="row sm-monster-rune-row">
-					<div className="col-xs-12">
+				<div className="sm-monster-runes-infos">
+					<div className="row">
 						<div className="col-xs-3">
 							<img className="sm-monster-runes-img" src="assets/images/runes.png" />
 						</div>
@@ -108,11 +108,9 @@ class MonsterRunes extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div className="col-xs-12">
-						<div className="sm-monster-runes-list">
-							{Utils.map(this.state.runes, this._buildRunes)}
-						</div>
-					</div>
+				</div>
+				<div className="sm-monster-runes-list">
+					{Utils.map(this.state.runes, this._buildRunes)}
 				</div>
 			</div>
 		)

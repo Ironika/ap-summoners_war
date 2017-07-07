@@ -1,18 +1,21 @@
 @import '../../components/var.scss';
 
 .sm-monster-infos {
+    height: 100%;
+    @media screen and (max-width: $screen-md) {
+		padding-top: 40px;
+	}
+	@media screen and (min-width: $screen-md) {
+		margin-left: 15%;
+	}
 	.sm-monster-content {
 		background-color: $marron;
-		width: 75%;
-		margin-left: 20%;
-		margin-top: 15px;
 		border-radius: 5px;
 		padding: 5px;
+		height: 20%;
 		.sm-monster-info {
 			padding: 5px 10px;
-			.sm-monster-element {
-				width: 10%;
-			}
+			.sm-monster-element { width: 10%; }
 			.sm-monster-name {
 				font-size: 13px;
 				color: white;
@@ -28,18 +31,24 @@
 				color: white;
 				font-size: 18px;
 				display: inline-block;
+				@media screen and (min-width: $screen-md) {
+					margin-top: 15px;
+				}
 			}
 			.sm-monster-progressbar {
 				background-color: rgba(46, 29, 16, 0.80) !important;
 				margin-bottom: 0px;
+				@media screen and (min-width: $screen-md) {
+					margin-top: 15px;
+				}
 				.sm-monster-Water {
 					background-color: blue !important;
 				}
 				.sm-monster-Fire {
-					background-color: red !important;
+					background-color: $color-text-error !important;
 				}
 				.sm-monster-Wind {
-					background-color: yellow !important;
+					background-color: $yellow !important;
 				}
 				.sm-monster-Light {
 					background-color: wheat !important;
@@ -52,11 +61,8 @@
 	}
 	.sm-monster-stats {
 		background-color: rgba(46, 29, 16, 0.80);
-		width: 75%;
-	    height: 270px;
-	    margin-left: 20%;
+	    height: calc(80% - 20px);
 	    margin-top: 15px;
-	    overflow:auto;
 	    border-radius: 5px;
 	    padding: 10px;
 	    .sm-monster-keys {
@@ -69,13 +75,9 @@
 	    	li {
 	    		color:	white;
 				font-size: 17px;
-				span {
-					color: green;
-				}
+				span { color: green; }
 	    	}
 	    }
-	    .sm-monster-separator {
-    		padding: 15px;
-    	}
+	    .sm-monster-separator { padding: 15px; }
 	}
 }

@@ -1,17 +1,21 @@
 @import '../../components/var.scss';
 
 .sm-login {
+	margin-bottom: 20px !important;
 	.sm-login-title {
 		color: $color-text;
 		text-align: center;
-		padding: 10px;
+		padding: 10px;    
+		margin-top: 0;
 	}
-	.sm-login-label-mid {
-		margin-top: 20px;
+	.sm-content {
+	    width: 95%;
+    	margin: auto;
 	}
+	.sm-login-label-mid { margin-top: 20px;}
 	.sm-login-button {
 		text-align: center;
-		margin: 20px 0;
+		margin: 5px 0;
 	}
 	.sm-login-register {
 		text-align: center;

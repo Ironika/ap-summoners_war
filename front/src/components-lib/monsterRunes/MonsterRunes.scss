@@ -1,8 +1,15 @@
 @import '../../components/var.scss';
 
 .sm-monster-runes {
-	.sm-monster-rune-row {
-		margin-left: 12%;
+	height: 100%;
+    @media screen and (max-width: $screen-md) {
+		padding-top: 40px;
+	}
+	@media screen and (min-width: $screen-md) {
+		margin-left: 15%;
+	}
+
+	.sm-monster-runes-infos {
 		.sm-monster-runes-img {
 			width: 100%;
 		}
@@ -18,7 +25,7 @@
 			}
 			img {
 				width: 25px;
-    			margin-right: 5px;
+				margin-right: 5px;
 			}
 			ul {
 				text-align: center;
@@ -34,8 +41,12 @@
 				font-size: 18px;
 			}
 		}
-		.sm-monster-runes-list {
-			padding-left: 15px;
+	}
+	.sm-monster-runes-list {
+		// padding-left: 15px;
+		overflow: auto;
+		@media screen and (max-width: $screen-md) {
+			padding-left: 15%;
 		}
 	}
 }

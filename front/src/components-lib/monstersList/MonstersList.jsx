@@ -23,12 +23,9 @@ class MonsterList extends React.Component {
         MonstersListData.unregister()
     }
 
-    _buildMonster(monster) { return (
-        <Monster 
-            key={monster.id} 
-            monster={monster} 
-            onClick={this.onClickMonster}/>
-    )}
+    _buildMonster(monster) { 
+        return ( <Monster key={monster.id} monster={monster} onClick={this.onClickMonster}/>)
+    }
 
     _buildElementFilters(elemType) {
         return (
@@ -49,21 +46,24 @@ class MonsterList extends React.Component {
 
     render() { 
         return (
-        <div className="sm-monsterslist">
-            <div className="sm-sheet sm-monster-filters-elements">
-                {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
+            <div className="sm-monsterslist">
+                <div className="sm-sheet sm-monster-filters-elements">
+                    {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
+                </div>
+                <div className="sm-monster-list">
+                    {this.state.monsters.map(this._buildMonster.bind(this))}
+                </div>
+                <div className="sm-sheet sm-sheet-top sm-monster-filters">
+                    <ul>
+                        <li className="sm-li-search-input">
+                            <input className="sm-input sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/>
+                        </li>
+                        {Utils.map(MonstersListData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
+                    </ul>
+                </div> 
             </div>
-            <div className="sm-monster-list">
-                {this.state.monsters.map(this._buildMonster.bind(this))}
-            </div>
-            <div className="sm-sheet sm-monster-filters-top">
-                <ul className="sm-monster-filters">
-                    <li className="sm-li-search-input"><input className="sm-input sm-search-input" placeholder='Search' value={this.state.search} onChange={this.onSearch}/></li>
-                    {Utils.map(MonstersListData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
-                </ul>
-            </div> 
-        </div>
-    )}
+        )
+    }
 
 }
 export default MonsterList;

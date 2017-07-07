@@ -19,10 +19,9 @@ class Register extends React.Component {
 
 
     _buildHeader() { return (
-        <div className="col-xs-12">
-            <h3 className="sm-register-title">Register</h3>
-        </div>
+        <h3 className="sm-register-title">Register</h3>
     )}
+
     _buildInputGroup(label, stateField, isFirst) { return (
         <div>
             <label className={isFirst ? "sm-label" : "sm-label sm-register-label-mid"}>{label}</label>
@@ -30,7 +29,7 @@ class Register extends React.Component {
         </div>
     )}
     _buildFooter(label, callback) { return (
-        <div className="col-xs-12">
+        <div>
             <div className="sm-register-error">
                 {this.state.error}
             </div>
@@ -48,30 +47,26 @@ class Register extends React.Component {
     }
 
     renderInitial() {return (
-        <div className="sm-register">
+        <div className="sm-sheet sm-register">
             {this._buildHeader()}
-            <div className="col-xs-12">
-                <div className="sm-content">
-                    {this._buildInputGroup('Name', 'username', true)}
-                    {this._buildInputGroup('Email', 'email')}
-                    {this._buildInputGroup('Password', 'password')}
-                    <a onClick={this.props.onClick} className="sm-register-login">Back to Login</a>
-                </div>
+            <div className="sm-content">
+                {this._buildInputGroup('Name', 'username', true)}
+                {this._buildInputGroup('Email', 'email')}
+                {this._buildInputGroup('Password', 'password')}
+                <a onClick={this.props.onClick} className="sm-register-login">Back to Login</a>
             </div>
             {this._buildFooter('Register', this.onSubmit)}
         </div>
     )}
 
     renderCheck() {return (
-        <div className="sm-register">
+        <div className="sm-sheet sm-register">
             {this._buildHeader()}
-            <div className="col-xs-12">
-                <div className="sm-content">
-                    <div className="sm-register-message">
-                        A confirmation mail has been sent. Please enter the confirmation code below.
-                    </div>
-                    {this._buildInputGroup('Confirmation code', 'token')}
+            <div className="sm-content">
+                <div className="sm-register-message">
+                    A confirmation mail has been sent. Please enter the confirmation code below.
                 </div>
+                {this._buildInputGroup('Confirmation code', 'token')}
             </div>
             {this._buildFooter('Confirm email', this.onSubmitCheck)}
         </div>

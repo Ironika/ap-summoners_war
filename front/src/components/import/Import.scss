@@ -1,10 +1,12 @@
 @import '../var.scss';
 
-.ap-import {
+.sm-import {
+	padding-top: 20px;
 	.sm-import-title {
 		color: $color-text;
 		font-size: 25px;
 		text-align: center;
+		margin-top: 0
 	}
 	.sm-import-text {
 		text-align: center;
@@ -16,16 +18,12 @@
 			font-size: 12px;
 		}
 	}
-	.sm-sheet-mid {
-		margin-top: 25px;
-	}
 	.sm-import-img-content {
 		text-align: center;
 		.sm-import-img {
 			width: 100%;
 		    margin: auto;
-		    margin-top: 25px;
-		    height: 375px;
+		    margin: 25px 0;
 		    object-fit: cover;
 		}
 	}

@@ -50,7 +50,7 @@ class App extends React.Component {
 
 	buildPage(page, key) {
 		return (
-			<li key={key} className={(key == 'monsters' | key == 'runes' | key == 'builds' && !this.state.isLogged) ? " hidePage" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
+			<li key={key} className={(key == 'monsters' | key == 'runes' | key == 'builds' && !this.state.isLogged) ? " sm-hide" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
 		)
 	}
 
@@ -75,17 +75,32 @@ class App extends React.Component {
 			      	</ul>
 				</nav>
 
-				<header></header>
+				<nav className={"sm-sidebar-mobile " + (this.state.showMobileMenu ? "" : "sm-hide")}>
+		    		<div className="sm-sidebar-profile">
+		    			<a onClick={this.onClickProfile}>
+		    				<img alt="Summoners War" className="sm-sidebar-profile-img" src={this.state.profileImage}/>
+		    				{this.state.username}
+		    			</a>
+		    		</div>
+					<ul>
+						{Utils.map(AppData.PAGES, this.buildPage.bind(this))}
+			      	</ul>
+				</nav>
+
 				<section className={"sm-section"}>
+					<header>
+						<img alt="Summoners War" src="assets/images/logo.png" onClick={this.onClickHome}/>
+						<i className="glyphicon glyphicon-menu-hamburger" onClick={this.onClickShowMobileMenu.bind(this)}></i>
+					</header>
 					<div className={"container sm-container"}>
 						{this.props.children}
 					</div>
+					<footer>
+						<div className={"sm-footer"}>
+						  	<p className={"sm-copyright"}>Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.</p>
+						</div>
+					</footer>
 				</section>
-				<footer>
-					<div className={"sm-footer"}>
-					  	<p className={"sm-copyright"}>Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.</p>
-					</div>
-				</footer>
 
 				{this.state.busy ?
 					<div className='sm-busy'>

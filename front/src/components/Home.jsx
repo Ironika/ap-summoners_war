@@ -32,11 +32,7 @@ class Home extends React.Component {
             <div className='ap-home'>
                 <div className="row">
                     <div className="col-xs-12 col-md-6">
-                        <div className="sm-sheet">
-                            <div className="row">
-                                {this.buildData()}
-                            </div>
-                        </div>
+                        {this.buildData()}
                     </div>
                     <div className="col-xs-12 col-md-6">
                         <div className="sm-sheet">

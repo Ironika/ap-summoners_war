@@ -1,19 +1,37 @@
 @import '../../components/var.scss';
 
 .sm-monsterprofil {
+	height: calc(100% - 20px);
+	@media screen and (max-width: $screen-md) {
+		margin: 10% 0 !important;
+	}
+	@media screen and (min-width: $screen-md) {
+		margin-left: 10% !important;
+    	width: 90% !important;
+	}
 	.sm-monster-tab {
 		background-color: $marron2;
 		color: $color-text;
 	    text-align: center;
 	    display: inline-block;
 	    position: absolute;
-        left: -60px;
-    	top: 130px;
 	    padding: 20px;
 	    border-radius: 10px;
-	    width: 150px;
+	    width: 115px;
 	    font-size: 20px;
 	    cursor: pointer;
+	    @media screen and (max-width: $screen-md) {
+			top: 0;
+			left: 15%;
+		}
+	    @media screen and (min-width: $screen-md) {
+			left: -2%;
+    		top: 130px;
+		}
+		@media screen and (min-width: $screen-lg) {
+			left: 2%;
+    		top: 130px;
+		}
 	    &:hover {
 	    	color: $yellow;
 			background-color: $yellow-dark;
@@ -26,7 +44,12 @@
 	.sm-monster-tab-hide {
 		display:none;
 	}
-	.sm-monster-mid {
-		top: 210px;
+	.sm-monster-tab2 {
+		@media screen and (max-width: $screen-md) {
+			left: 55%
+		}
+		@media screen and (min-width: $screen-md) {
+			top: 210px;
+		}
 	}
 }

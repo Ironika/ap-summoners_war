@@ -20,12 +20,12 @@ class Monsters extends React.Component {
     }
 
     render() { return (
-        <div className='ap-monsters'>
+        <div className='sm-monsters'>
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-xs-12 col-md-6">
                     <MonstersList/>
                 </div>
-                <div className="col-md-6">
+                <div className="col-xs-12 col-md-6">
                     <MonsterProfil/>                
                 </div>
             </div>

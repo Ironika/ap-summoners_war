@@ -5,27 +5,17 @@ html, body, .app, .ap-app {
 }
 
 .ap-app {
+	.sm-hide { display: none; }
 	a {
 		color: $color-text;
 		text-decoration: none;
 		cursor: pointer;
-		&:hover, &:focus {
-			color: $color-text;
-		}
+		&:hover, &:focus { color: $color-text; }
 	}
 	ul {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
-	}
-	header {
-		background-image: radial-gradient($marroon-light 30%,$marroon-dark 70%);
-	    border-color: $marroon-dark;
-	    padding: 10px;
-	    position: absolute;
-	    top: 0px;
-	    width: 80%;
-	    margin-left: 20%;
 	}
 	.sm-busy {
 		position: fixed;
@@ -55,19 +45,7 @@ html, body, .app, .ap-app {
 		        background-color: $color-text;
 		    }
 		}
-    	.ap-busy-bar {
-    		background: $color-text;
-    	}
-	}
-	.sm-section {
-		height: 100%;
-		background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
-		margin-left: 20%;
-		overflow: auto;
-		.sm-container {
-			width: 95% !important;
-			margin-top: 50px;
-		}
+    	.ap-busy-bar { background: $color-text; }
 	}
 	.sm-sheet {
 		background-image: radial-gradient($marroon-light2 50%, $marroon-dark2 100%);
@@ -77,9 +55,7 @@ html, body, .app, .ap-app {
 	    padding: 10px;
 	    border-radius: 5px;
 	}
-	.sm-sheet-top {
-		margin-top: 20px;
-	}
+	.sm-sheet-top { margin-top: 20px; }
 	.sm-content {
 		background-color: $marron;
 		border-radius: 5px;
@@ -106,18 +82,14 @@ html, body, .app, .ap-app {
 		}
 		input[type="file"] {
 		    display: none !important;
-            &+.sm-button {
-                margin-left: 15px;
-            }
+            &+.sm-button { margin-left: 15px; }
 		}
 		.sm-upload-button {
 			margin-top: 15px;
 			margin-bottom: 5px;
 			text-align: center;
 		}
-		.sm-home-text {
-			color: $color-text;
-		}
+		.sm-home-text { color: $color-text; }
 	}
 	.sm-checkbox {
 		margin-left: 10px;
@@ -136,9 +108,7 @@ html, body, .app, .ap-app {
 	    	color:	$color-text;
 	    }
 	}
-	.sm-error {
-		color: $color-text-error;
-	}
+	.sm-error { color: $color-text-error; }
 
 	//CHANGE COLOR of PLACEHOLDER INPUT
 	*::-webkit-input-placeholder {
@@ -157,24 +127,64 @@ html, body, .app, .ap-app {
 	    color: $color-text;
 	}
 
-	footer {
+	.sm-section {
+		height: 100%;
 		background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
-		width: 80%;
-	    margin-left: 20%;
-	    position: absolute;
-	    bottom: 0;
-	    .sm-footer {
-			background-color: rgba(46, 29, 16, 0.80);
-			border-top: 2px solid $marroon-light;
-			padding: 30px;
-			.sm-copyright {
-				text-align: center;
-				color: $color-text;
-				font-family: $font;
+		@media screen and (min-width: $screen-md) {
+			margin-left: 20%;
+		}
+		header {
+			background-image: radial-gradient($marroon-light 30%,$marroon-dark 70%);
+		    border-color: $marroon-dark;
+		    height: 10%;
+		    @media screen and (min-width: $screen-md) {
+				height: 3%;
+			}
+		    img {
+		    	width: 45%;
+		    	display: block;
+		    	margin: auto;
+		    	@media screen and (min-width: $screen-md) {
+					display: none;
+				}
+		    }
+		    i {
+		    	position: absolute;
+			    top: 2.5%;
+			    right: 4%;
+			    cursor: pointer;
+			    color: $color-text;
+			    background-color: rgba(46, 29, 16, 0.8);
+			    padding: 10px;
+			    @media screen and (min-width: $screen-md) {
+					display: none;
+				}
+		    }
+		}
+		.sm-container {
+			width: 100% !important;
+			height:80%;
+   			overflow: auto;
+   			@media screen and (min-width: $screen-md) {
+				height:87%;
+			}
+		}
+		footer {
+			background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
+			height: 10%;
+		    .sm-footer {
+				background-color: rgba(46, 29, 16, 0.80);
+				border-top: 2px solid $marroon-light;
+				padding: 2%;
+				height: 100%;
+				.sm-copyright {
+					text-align: center;
+					color: $color-text;
+					font-family: $font;
+				}
 			}
 		}
 	}
-
 
 	.sm-sidebar {
 		background-image: radial-gradient($marroon-light 65%,$marroon-dark 100%);
@@ -182,6 +192,10 @@ html, body, .app, .ap-app {
 		position: absolute;
 		height: 100%;
 		width: 20%;
+		display:none;
+		@media screen and (min-width: $screen-md) {
+			display: initial;
+		}
 		.sm-sidebar-logo-content { 
 			text-align: center;
 			.sm-sidebar-logo {
@@ -224,20 +238,75 @@ html, body, .app, .ap-app {
 				    width: 100%;
 				    display: block;
 				    padding: 10px;
-				    &:first-letter {
-					    text-transform:capitalize;
-					}
-				    &:hover {
-				    	color: $color-text;
-				    }
+				    &:first-letter { text-transform:capitalize; }
+				    &:hover { color: $color-text; }
 				}
 				.activePage {
 					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
 					color: $color-text;
 				}
     		}
-    		.hidePage {
-    			display: none;
+		}
+	}
+
+	.sm-sidebar-mobile {
+		background-image: radial-gradient($marroon-light 65%,$marroon-dark 100%);
+		border-color: $marroon-dark;
+		position: absolute;
+		height: 100%;
+		width: 50%;
+		z-index: 5;
+		@media screen and (min-width: $screen-md) {
+			display: none;
+		}
+		.sm-sidebar-logo-content { 
+			text-align: center;
+			.sm-sidebar-logo {
+				width: 100%;
+			    padding: 10px;
+			    border-bottom: 2px solid $marroon-dark;
+			    margin-bottom: 35px;
+			    cursor: pointer;
+			}
+		}
+		.sm-sidebar-profile {
+			margin-top: 20px;
+			margin-bottom: 35px;
+			text-align: center; 
+			.sm-sidebar-profile-img {
+				max-width: 130px;
+			    width: 100%;
+			    margin: auto;
+			    display: block;
+			    cursor: pointer;
+			}
+			a, a:hover, a:focus {
+				text-decoration: none;
+				color: $marroon-dark2;
+			    font-size: 18px;
+			}
+		}
+		ul {
+			width: 60%;
+    		margin: auto;
+    		li {
+    			margin-top: 10px;
+				border-bottom: 2px solid $marroon-dark;
+				font-family: 'Exo', sans-serif;
+				&:hover { background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%); }
+				a {
+					color: $marroon-dark2;
+				    font-size: 18px;
+				    width: 100%;
+				    display: block;
+				    padding: 10px;
+				    &:first-letter { text-transform:capitalize; }
+				    &:hover { color: $color-text; }
+				}
+				.activePage {
+					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
+					color: $color-text;
+				}
     		}
 		}
 	}

@@ -1,6 +1,7 @@
 @import '../../components/var.scss';
 
 .sm-register {
+	margin-bottom: 20px !important;
 	.sm-register-title {
 		color: $color-text;
 		text-align: center;
@@ -8,19 +9,19 @@
 		margin: 0;
 		margin-bottom: 10px;
 	}
-	.sm-register-label-mid {
-		margin-top: 15px;
+	.sm-content {
+	    width: 95%;
+    	margin: auto;
 	}
-    .sm-register-message {
-        color: $color-text;
-    }
+	.sm-register-label-mid { margin-top: 15px; }
+    .sm-register-message { color: $color-text; }
     .sm-register-error {
         color: $color-text;
         padding: 10px;
     }
 	.sm-register-button {
 		text-align: center;
-		margin: 20px 0;
+		margin: 5px 0;
 	}
 	.sm-register-login {
 		text-align: center;
