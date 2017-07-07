@@ -94,20 +94,11 @@ class MonsterRunes extends React.Component {
 	render() {
 		return (
 			<div className="sm-monster-runes">
-				<div className="sm-monster-runes-infos">
-					<div className="row">
-						<div className="col-xs-3">
-							<img className="sm-monster-runes-img" src="assets/images/runes.png" />
-						</div>
-						<div className="col-xs-9">
-							<div className="sm-monster-rune-set">
-								<h4>Set Effect</h4>
-								<ul>
-									{this._buildSets(this.state.sets)}
-								</ul>
-							</div>
-						</div>
-					</div>
+				<div className="sm-monster-rune-set">
+					<h4>Set Effect</h4>
+					<ul>
+						{this._buildSets(this.state.sets)}
+					</ul>
 				</div>
 				<div className="sm-monster-runes-list">
 					{Utils.map(this.state.runes, this._buildRunes)}

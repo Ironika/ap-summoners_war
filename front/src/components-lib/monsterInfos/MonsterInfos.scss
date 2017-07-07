@@ -15,7 +15,23 @@
 		height: 20%;
 		.sm-monster-info {
 			padding: 5px 10px;
-			.sm-monster-element { width: 10%; }
+			.sm-monster-element { 
+				@media screen and (max-width: $screen-xs) {
+					width: 10%;
+				}
+		    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+					width: 5%;
+				}
+		    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+					width: 4%;
+				}
+		    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
+					width: 10%; 
+				}
+				@media screen and (min-width: $screen-lg) {
+					width: 8%; 
+				}
+			}
 			.sm-monster-name {
 				font-size: 13px;
 				color: white;

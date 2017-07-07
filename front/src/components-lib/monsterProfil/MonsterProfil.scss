@@ -20,17 +20,25 @@
 	    width: 115px;
 	    font-size: 20px;
 	    cursor: pointer;
-	    @media screen and (max-width: $screen-md) {
+    	@media screen and (max-width: $screen-xs) {
 			top: 0;
 			left: 15%;
 		}
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+			top: 5%;
+			left: 25%;
+		}
+    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+			top: 10%;
+    		left: 35%;
+		}
 	    @media screen and (min-width: $screen-md) {
 			left: -2%;
-    		top: 130px;
+    		top: 25%;
 		}
 		@media screen and (min-width: $screen-lg) {
 			left: 2%;
-    		top: 130px;
+    		top: 25%;
 		}
 	    &:hover {
 	    	color: $yellow;
@@ -45,11 +53,14 @@
 		display:none;
 	}
 	.sm-monster-tab2 {
-		@media screen and (max-width: $screen-md) {
-			left: 55%
+		@media screen and (max-width: $screen-xs) {
+			left: 55%;
 		}
-		@media screen and (min-width: $screen-md) {
-			top: 210px;
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+			left: 55%;
+		}
+	    @media screen and (min-width: $screen-md) {
+			top: 40%;
 		}
 	}
 }

@@ -9,44 +9,51 @@
 		margin-left: 15%;
 	}
 
-	.sm-monster-runes-infos {
-		.sm-monster-runes-img {
-			width: 100%;
+	.sm-monster-runes-list {
+		overflow: auto;
+		height: 75%;
+		margin-top: 20px;
+		@media screen and (max-width: $screen-xs) {
+			padding: 0 12%;
 		}
-		.sm-monster-rune-set {
-			h4 {
-				background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
-				border-top: 1px solid $color-text;
-				border-bottom: 1px solid $color-text;
-				color: $color-text;
-				padding: 10px;
-				font-family: $font;
-				text-align: center;
-			}
-			img {
-				width: 25px;
-				margin-right: 5px;
-			}
-			ul {
-				text-align: center;
-				li {
-					display: inline-block;
-					margin-right: 20px;
-				}
-			}
-			p {
-				display: inline-block;
-				color: green;
-				font-family: $font;
-				font-size: 18px;
-			}
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+			padding-left: 4%;
+		}
+    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+			padding-left: 6%;
+		}
+    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+			padding-left: 2%;
 		}
 	}
-	.sm-monster-runes-list {
-		// padding-left: 15px;
-		overflow: auto;
-		@media screen and (max-width: $screen-md) {
-			padding-left: 15%;
+
+	.sm-monster-rune-set {
+		height: 20%;
+		h4 {
+			background-image: linear-gradient(-90deg, $marroon-light2, $marroon-dark2);
+			border-top: 1px solid $color-text;
+			border-bottom: 1px solid $color-text;
+			color: $color-text;
+			padding: 10px;
+			font-family: $font;
+			text-align: center;
+		}
+		img {
+			width: 25px;
+			margin-right: 5px;
+		}
+		ul {
+			text-align: center;
+			li {
+				display: inline-block;
+				margin-right: 20px;
+			}
+		}
+		p {
+			display: inline-block;
+			color: green;
+			font-family: $font;
+			font-size: 18px;
 		}
 	}
 }
