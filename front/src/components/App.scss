@@ -141,9 +141,17 @@ html, body, .app, .ap-app {
 				height: 3%;
 			}
 		    img {
-		    	width: 45%;
 		    	display: block;
 		    	margin: auto;
+		    	@media screen and (max-width: $screen-xs) {
+					width: 45%;
+				}
+		    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+					width: 25%;
+				}
+		    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+					width: 20%;
+				}
 		    	@media screen and (min-width: $screen-md) {
 					display: none;
 				}
@@ -256,7 +264,16 @@ html, body, .app, .ap-app {
 		height: 100%;
 		width: 50%;
 		z-index: 5;
-		@media screen and (min-width: $screen-md) {
+		@media screen and (max-width: $screen-xs) {
+			width: 50%;
+		}
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+			width: 40%;
+		}
+    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+			width: 30%;
+		}
+    	@media screen and (min-width: $screen-md) {
 			display: none;
 		}
 		.sm-sidebar-logo-content { 
