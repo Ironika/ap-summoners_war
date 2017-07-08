@@ -10,7 +10,7 @@
 		height: calc(100% - 20px);
 	    overflow: auto;
 		@media screen and (max-width: $screen-xs) {
-			padding: 0 15%;
+			padding: 0 12%;
 		}
     	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
 			padding: 0 6%;
