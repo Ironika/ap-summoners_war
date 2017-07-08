@@ -3,17 +3,4 @@
 .sm-builds {
 	height: 100%;
 	padding-top: 20px;	
-	.sm-builds-infos {
-		label { margin-right: 10px; }
-		input {
-			width: 20%;
-			display: inline-block;
-			margin-right: 20px;
-		}
-		button { margin-left: 20px; }
-		.sm-builds-infos-delete {
-			background-image: radial-gradient(#DD4333 50%, #ee1010 100%);
-			&:hover { color: white; }
-		}
-	}
 }
