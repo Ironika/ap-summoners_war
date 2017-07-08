@@ -34,6 +34,7 @@ class RunesData extends BaseData {
         this.sorts = {}
         this.setFilter = null
         this.posFilter = {}
+        this.hasPosFilter = false
         this.mainStatFilter = null
         this.subStatFilter = null
 
@@ -65,6 +66,17 @@ class RunesData extends BaseData {
 
     onClickRuneStar(data) {
         this.posFilter = Object.assign(this.posFilter, data)
+
+        this.hasPosFilter = false
+        for (let key in this.posFilter) {
+            if (this.posFilter.hasOwnProperty(key)) {
+                if (this.posFilter[key]) {
+                    this.hasPosFilter = true
+                    break;
+                }
+            }
+        }
+
         let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
         this.setState({runes: runes, posFilter: this.posFilter})
     }
@@ -118,16 +130,7 @@ class RunesData extends BaseData {
         if (this.setFilter && rune.set !== this.setFilter) {
             return false
         }
-        let hasPosFilter = false
-        for (let key in this.posFilter) {
-            if (this.posFilter.hasOwnProperty(key)) {
-                if (this.posFilter[key]) {
-                    hasPosFilter = true
-                    break;
-                }
-            }
-        }
-        if (hasPosFilter && !this.posFilter[rune.pos]) {
+        if (this.hasPosFilter && !this.posFilter[rune.pos]) {
             return false
         }
         if (this.mainStatFilter && rune.statMainType !== this.mainStatFilter) {

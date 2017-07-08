@@ -26,18 +26,6 @@
             border-color: transparent;
         }
 
-        &.sm-runestar-selected:before {
-            content:url(/assets/images/runes_star/rune_active.png);
-            position: absolute;
-            transform: translateX(-50%) translateY(0px); 
-        } 
-
-        &:hover:before {
-            content:url(/assets/images/runes_star/rune_hover.png);
-            position: absolute;
-            transform: translateX(-50%) translateY(0px); 
-        } 
-
         &.sm-runestar-pos-top {
             transform: translateX(80px) translateY(18px);
             &:hover:before {
