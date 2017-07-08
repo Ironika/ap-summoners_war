@@ -263,7 +263,7 @@ html, body, .app, .ap-app {
 		position: absolute;
 		height: 100%;
 		width: 50%;
-		z-index: 5;
+		z-index: 15;
 		@media screen and (max-width: $screen-xs) {
 			width: 50%;
 		}
