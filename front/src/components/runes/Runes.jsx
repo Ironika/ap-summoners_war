@@ -1,6 +1,7 @@
 import React from 'react'
 import RunesData from 'components/runes/RunesData'
 import Rune from 'components-lib/rune/Rune'
+import RuneStar from 'components-lib/runeStar/RuneStar'
 import {Utils, FormSelect}  from 'ap-react-bootstrap'
 
 import PosType from 'utils/constants/PosType'
@@ -70,20 +71,12 @@ class Runes extends React.Component {
 								{StatType.VALUES.map(this._buildSubStat.bind(this))}
 							</ul>
 						</div>
-						<div className="sm-sheet sm-sheet-top sm-runes-positions">
-							<div className="sm-runes-pos-filters">
-								<img src="assets/images/runes.png" className="sm-runes-pos-img"/>
-								<input className="sm-checkbox sm-checkbox-1" type="checkbox" onClick={this.onClickPosFilter.bind(this, '1')}/>
-								<input className="sm-checkbox sm-checkbox-2" type="checkbox" onClick={this.onClickPosFilter.bind(this, '2')}/>
-								<input className="sm-checkbox sm-checkbox-3" type="checkbox" onClick={this.onClickPosFilter.bind(this, '3')}/>
-								<input className="sm-checkbox sm-checkbox-4" type="checkbox" onClick={this.onClickPosFilter.bind(this, '4')}/>
-								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.onClickPosFilter.bind(this, '5')}/>
-								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.onClickPosFilter.bind(this, '6')}/>
-							</div>
-							<ul>
-								{Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
-							</ul>
-						</div>
+                        <div className="sm-sheet sm-sheet-top sm-runes-positions">
+                            <RuneStar onChange={this.onClickRuneStar}/>
+                            <ul>
+                                {Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
+                            </ul>
+                        </div>
 					</div>
 					<div className="col-xs-12 col-md-8">
 						<div className="sm-runes-list">

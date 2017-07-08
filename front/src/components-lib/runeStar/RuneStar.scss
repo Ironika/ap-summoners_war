@@ -1,0 +1,150 @@
+.sm-runestar { 
+    text-align: center;
+    user-select: none;
+    .sm-runestar-container {
+        position: relative;
+        display: inline-block;
+    }
+    .sm-runestar-pos {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 29px solid transparent;
+        border-bottom: 45px solid transparent;
+        border-top: 0;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: -30px;
+            width: 59px;
+            height: 0;
+            border-style: solid;
+            border-width: 27px 17px 0 17px;
+            border-color: transparent;
+        }
+
+        &.sm-runestar-selected:before {
+            content:url(/assets/images/runes_star/rune_active.png);
+            position: absolute;
+            transform: translateX(-50%) translateY(0px); 
+        } 
+
+        &:hover:before {
+            content:url(/assets/images/runes_star/rune_hover.png);
+            position: absolute;
+            transform: translateX(-50%) translateY(0px); 
+        } 
+
+        &.sm-runestar-pos-top {
+            transform: translateX(80px) translateY(18px);
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_1_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_1_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_1_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+        &.sm-runestar-pos-top-right {
+            transform: translateX(152px) translateY(60px) rotate(60deg);
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_2_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_2_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_2_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+        &.sm-runestar-pos-bottom-right {
+            transform: translateX(151px) translateY(143px) rotate(120deg);
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_3_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_3_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_3_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+        &.sm-runestar-pos-bottom {
+            transform: translateX(80px) translateY(184px) rotate(180deg);    
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_4_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_4_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_4_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+        &.sm-runestar-pos-bottom-left {
+            transform: translateX(9px) translateY(142px) rotate(-120deg);    
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_5_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_5_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_5_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+        &.sm-runestar-pos-top-left {
+            transform: translateX(10px) translateY(59px) rotate(-60deg);
+            &:hover:before {
+                content:url(/assets/images/runes_star/rune_6_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:before {
+                content:url(/assets/images/runes_star/rune_6_selected.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+            &.sm-runestar-selected:hover:before {
+                content:url(/assets/images/runes_star/rune_6_selected_hover.png);
+                position: absolute;
+                transform: translateX(-50%) translateY(0px); 
+            }
+        }
+    }
+}

@@ -82,11 +82,11 @@
 	}
 
 	.sm-runes-positions {
-		height: 25%;
 		margin-bottom: 20px !important;
 		ul {
-			padding-left: 40%;
+            text-align: center;
 			li { 
+                margin: 10px;
     			display: inline-block;
     			label {
     				font-size: 18px;
@@ -95,60 +95,21 @@
 				  transform: scale(1.2);
 				}
     			@media screen and (max-width: $screen-xs) {
-					padding: 15% 10%;
+					padding2: 15% 10%;
 				}
 		    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-					padding: 10% 10%;
+					padding2: 10% 10%;
 				}
 		    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-					padding: 8% 15%;
+					padding2: 8% 15%;
 				}
 		    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
-					padding: 7% 20%;
+					padding2: 7% 20%;
 				}
 				@media screen and (min-width: $screen-lg) {
-					padding: 7% 25%;
+					padding2: 7% 25%;
 				}
 		    }
-		}
-		.sm-runes-pos-filters {
-			position: relative;
-			input[type=checkbox] {
-			  transform: scale(1.2);
-			}
-			.sm-runes-pos-img {
-				width: 80px;
-			    position: absolute;
-			    top: 0;
-			    left: 10px;
-			}
-			.sm-checkbox {
-				position: absolute;
-			}
-			.sm-checkbox-1 {
-		        top: 10px;
-	    		left: 33px;
-			}
-			.sm-checkbox-2 {
-	            top: 21px;
-	    		left: 51px;
-			}
-			.sm-checkbox-3 {
-	   	        top: 43px;
-	    		left: 51px;
-			}
-			.sm-checkbox-4 {
-		        top: 54px;
-	    		left: 33px;
-			}
-			.sm-checkbox-5 {
-	            top: 43px;
-	    		left: 14px;
-			}
-			.sm-checkbox-6 {
-			    top: 21px;
-	    		left: 14px;
-			}
 		}
 	}
 }
