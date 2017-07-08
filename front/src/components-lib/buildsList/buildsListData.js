@@ -28,19 +28,12 @@ class BuildsListData extends BaseData {
     _buildBuildsData() {
         let builds = Utils.map(BuildHelper.getData())
         this.build = builds.length ? builds[0] : null
-        if (this.build) {
-            AppHelper.put('/build/' + this.build.id, true)
+        if (this.build)
             AppHelper.put('/currentBuild', this.build)
-        }
         this.setState({ builds: builds, build: this.build })
     }
 
     onClickBuild(build) {
-        if(this.build) {
-            AppHelper.put('/build/' + this.build.id, false)
-            this.build = build
-        }
-        AppHelper.put('/build/' + build.id, true)
         AppHelper.put('/currentBuild', build)
         this.setState({ build: build })
     }

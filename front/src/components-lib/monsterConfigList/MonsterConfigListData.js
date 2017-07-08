@@ -51,7 +51,10 @@ class MonsterConfigListData extends BaseData {
 	onClickDeleteMonsterConfig(monsterConfig) {
 		let monstersConfig = this.getState('monstersConfig')
 		delete(monstersConfig[monsterConfig.id])
-		this.setState({monstersConfig: monstersConfig})
+		AppHelper.put('/currentMonstersConfig', monstersConfig).
+		then( function() {
+			this.setState({monstersConfig: monstersConfig})
+		}.bind(this))
 	}
 
 	unregister() {
