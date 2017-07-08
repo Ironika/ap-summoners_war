@@ -2,7 +2,7 @@ import React from 'react'
 import RunesData from 'components/runes/RunesData'
 import Rune from 'components-lib/rune/Rune'
 import RuneStar from 'components-lib/runeStar/RuneStar'
-import {Utils, FormSelect}  from 'ap-react-bootstrap'
+import { Utils, FormSelect, BusyBars }  from 'ap-react-bootstrap'
 
 import PosType from 'utils/constants/PosType'
 import SetType from 'utils/constants/SetType'
@@ -54,6 +54,9 @@ class Runes extends React.Component {
     }
 
 	render() {
+        if (this.refs.list && this.state.threshold === 50) {
+            this.refs.list.scrollTop = 0;
+        }
 		return (
 			<div className='sm-runes'>
 				<div className="row">
@@ -79,8 +82,13 @@ class Runes extends React.Component {
                         </div>
 					</div>
 					<div className="col-xs-12 col-md-8">
-						<div className="sm-runes-list">
-							{Utils.map(this.state.runes, this._buildRune)}
+						<div className='sm-runes-list' onScroll={this.onScroll} ref='list'>
+							{this.state.runes.slice(0, this.state.threshold).map(this._buildRune)}
+                            {this.state.runes.length > this.state.threshold ?
+                                <div className='sm-runes-busy'>
+                                    <BusyBars className='sm-busy-indicator'/>
+                                </div>
+                            : '' }
 						</div>
 					</div>
 				</div>
