@@ -27,7 +27,7 @@ class RuneStar extends React.Component {
         let data = {}
         data[rune] = !this.state[rune]
         if (this.props.onChange) {
-            this.props.onChange(data)
+            this.props.onChange(rune, data[rune])
         }
         this.setState(data)
     }

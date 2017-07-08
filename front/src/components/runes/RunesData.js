@@ -73,8 +73,8 @@ class RunesData extends BaseData {
         }) 
 	}
 
-    onClickRuneStar(data) {
-        this.posFilter = Object.assign(this.posFilter, data)
+    onClickRuneStar(key, value) {
+        this.posFilter[key] = value
 
         this.hasPosFilter = false
         for (let key in this.posFilter) {
