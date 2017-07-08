@@ -1,18 +1,48 @@
 @import '../var.scss';
 
-.ap-runes {
-	.sm-runes {
-		height: 400px;
+.sm-runes {
+	height: 100%;
+	padding-top: 20px;
+	.row, .col-md-8, .col-md-4 {
+		height: 100%;
+	}
+	.sm-runes-list {
+		height: calc(100% - 20px);
 	    overflow: auto;
-		.sm-rune-active {
-			border: 3px solid $yellow-dark;
+		@media screen and (max-width: $screen-xs) {
+			padding: 0 15%;
+		}
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+			padding: 0 6%;
 		}
 	}
 
+	.sm-runes-types {
+	    width: 100%;
+	    text-align: center;
+	    overflow:scroll;
+    	white-space: nowrap;
+    	height: 15%;
+	    .sm-rune-type {
+		   	display: inline-block;
+		    padding: 10px;
+		    border-radius: 1000px;
+		    cursor: pointer;
+		    margin-right: 5px;
+			img { width: 20px; }
+			&:hover { background-color: $color-text; }
+		}
+		.sm-rune-type-active { background-color: $color-text; }
+	}
+
 	.sm-runes-main-filters {
+		height: 22%;
 		h4 {
 			color: $color-text;
 			text-align: center;
+		}
+		@media screen and (max-width: $screen-xs) {
+			select { padding:5px !important; }
 		}
 		.sm-runes-main-select {
 			width: 60% !important;
@@ -21,91 +51,104 @@
 	}
 
 	.sm-runes-sub-filters {
+		height: 23%;
 		h4 {
 			color: $color-text;
 			text-align: center;
 		}
-		li {
-			display: inline-block;
-			label {
-				width: 40px;
-				margin-left: 10px;
+		ul {
+			overflow:scroll;
+    		white-space: nowrap;
+    		li {
+				display: inline-block;
+				padding: 10px;
+				border-radius: 100%; 
+				margin-bottom: 10px;
+				cursor: pointer;
+				span {
+					color: $color-text;
+					font-size: 18px;
+				}
+				&:hover {
+					background-color: $black;
+					border: 1px solid $color-text;
+				}
+			}
+			.sm-runes-sub-active {
+				background-color: $black;
+				border: 1px solid $color-text;
 			}
 		}
 	}
 
-	.sm-runes-pos-filters {
-		position: relative;
-		text-align: center;
+	.sm-runes-positions {
+		height: 25%;
+		margin-bottom: 20px !important;
 		ul {
-			display: inline-block;
-	        position: relative;
-    		top: 0;
-    		left: 25px;
-		    li {
-		    	padding: 10px;
+			padding-left: 40%;
+			li { 
+    			display: inline-block;
+    			label {
+    				font-size: 18px;
+    			}
+    			input[type=checkbox] {
+				  transform: scale(1.2);
+				}
+    			@media screen and (max-width: $screen-xs) {
+					padding: 15% 10%;
+				}
+		    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+					padding: 10% 10%;
+				}
+		    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+					padding: 8% 15%;
+				}
+		    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
+					padding: 7% 20%;
+				}
+				@media screen and (min-width: $screen-lg) {
+					padding: 7% 25%;
+				}
 		    }
 		}
-		input[type=checkbox] {
-		  transform: scale(1.2);
-		}
-		.sm-runes-pos-img {
-			width: 80px;
-		    position: absolute;
-		    top: 0;
-		    left: 10px;
-		}
-		.sm-checkbox {
-			position: absolute;
-		}
-		.sm-checkbox-1 {
-	        top: 10px;
-    		left: 33px;
-		}
-		.sm-checkbox-2 {
-            top: 21px;
-    		left: 51px;
-		}
-		.sm-checkbox-3 {
-   	        top: 43px;
-    		left: 51px;
-		}
-		.sm-checkbox-4 {
-	        top: 54px;
-    		left: 33px;
-		}
-		.sm-checkbox-5 {
-            top: 43px;
-    		left: 14px;
-		}
-		.sm-checkbox-6 {
-		    top: 21px;
-    		left: 14px;
-		}
-	}
-
-	.sm-runes-types {
-	    width: 100%;
-	    text-align: center;
-	    .sm-rune-type {
-		   	display: inline-block;
-		    padding: 10px;
-		    border-radius: 1000px;
-		    cursor: pointer;
-		    margin-right: 5px;
-			img {
-				width: 20px;
+		.sm-runes-pos-filters {
+			position: relative;
+			input[type=checkbox] {
+			  transform: scale(1.2);
 			}
-			&:hover {
-				background-color: $color-text;
+			.sm-runes-pos-img {
+				width: 80px;
+			    position: absolute;
+			    top: 0;
+			    left: 10px;
+			}
+			.sm-checkbox {
+				position: absolute;
+			}
+			.sm-checkbox-1 {
+		        top: 10px;
+	    		left: 33px;
+			}
+			.sm-checkbox-2 {
+	            top: 21px;
+	    		left: 51px;
+			}
+			.sm-checkbox-3 {
+	   	        top: 43px;
+	    		left: 51px;
+			}
+			.sm-checkbox-4 {
+		        top: 54px;
+	    		left: 33px;
+			}
+			.sm-checkbox-5 {
+	            top: 43px;
+	    		left: 14px;
+			}
+			.sm-checkbox-6 {
+			    top: 21px;
+	    		left: 14px;
 			}
 		}
-		.sm-rune-type-active { 
-			background-color: $color-text;
-		}
-	}
-
-	.sm-sheet-mid {
-		margin-top: 10px;
 	}
 }

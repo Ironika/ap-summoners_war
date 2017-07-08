@@ -19,11 +19,12 @@
 
 	.sm-monster-list {
 		overflow: auto;
-		height: calc(70% - 40px);
+		height: calc(73% - 40px);
 		margin-top: 20px;
 	}
 
 	.sm-monster-filters {
+		height: 15%;
 		margin-bottom: 20px !important;
 		@media screen and (min-width: $screen-md) {
 			margin-bottom: 0 !important;

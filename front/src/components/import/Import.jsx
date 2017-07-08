@@ -21,9 +21,6 @@ class Import extends React.Component {
 		return (
 			<div className='sm-import'>
 				<div className="row">
-					<div className="col-xs-12">
-						<h3 className="sm-import-title">Import your Json File</h3>
-					</div>
 					<div className="col-xs-12 col-md-6">
 						<div className="sm-upload">
 							<div className="sm-sheet sm-sheet-top">
@@ -42,7 +39,7 @@ class Import extends React.Component {
 							</div>
 							<div className="sm-sheet sm-sheet-top">
 								<p className="sm-import-text">
-									Import your file and create your optimised builds for your team !
+									Import your Json file and create your optimised builds for your team !
 									<br/>
 									<br/>
 									Take a look of all your monsters and runes like in game !

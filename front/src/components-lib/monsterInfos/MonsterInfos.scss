@@ -52,7 +52,7 @@
 				}
 			}
 			.sm-monster-progressbar {
-				background-color: rgba(46, 29, 16, 0.80) !important;
+				background-color: $black !important;
 				margin-bottom: 0px;
 				@media screen and (min-width: $screen-md) {
 					margin-top: 15px;
@@ -64,7 +64,7 @@
 					background-color: $color-text-error !important;
 				}
 				.sm-monster-Wind {
-					background-color: $yellow !important;
+					background-color: $yellow-dark !important;
 				}
 				.sm-monster-Light {
 					background-color: wheat !important;
@@ -76,11 +76,11 @@
 		}
 	}
 	.sm-monster-stats {
-		background-color: rgba(46, 29, 16, 0.80);
+		background-color: $black;
 	    height: calc(80% - 20px);
 	    margin-top: 15px;
 	    border-radius: 5px;
-	    padding: 10px;
+	    padding: 25px;
 	    .sm-monster-keys {
 	    	li {
 	    		color: $yellow;

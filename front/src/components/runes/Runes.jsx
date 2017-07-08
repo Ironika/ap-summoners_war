@@ -37,9 +37,8 @@ class Runes extends React.Component {
 
 	_buildSubStat(substat) {
 		return (
-			<li key={substat.key}>
-				<label className="sm-label">{substat.key}</label>
-				<input className="sm-checkbox" type="checkbox" onClick={this.onClickSubStatFilter.bind(this, substat.key)}/>
+			<li key={substat.key} className={(this.state.subStatFilter === substat.key) ? "sm-runes-sub-active" : ""}>
+				<span className="sm-label" onClick={this.onClickSubStatFilter.bind(this, substat.key)}>{substat.key}</span>
 			</li>
 		)
 	}
@@ -55,22 +54,23 @@ class Runes extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-runes'>
+			<div className='sm-runes'>
 				<div className="row">
-					<div className="col-xs-12">
-						<div className="sm-sheet">
-							<div className="sm-runes-types">
-								{SetType.VALUES.map(this._buildType.bind(this))}
-							</div>
-						</div>
-					</div>
-					<div className="col-xs-12 col-md-8">
-						<div className="sm-runes sm-sheet-mid">
-							{Utils.map(this.state.runes, this._buildRune)}
-						</div>
-					</div>
 					<div className="col-xs-12 col-md-4">
-						<div className="sm-sheet sm-sheet-mid">
+						<div className="sm-sheet sm-runes-types">
+							{SetType.VALUES.map(this._buildType.bind(this))}
+						</div>
+						<div className="sm-sheet sm-sheet-top sm-runes-main-filters"> 
+							<h4>Main Stat</h4>
+							<FormSelect values={this.state.statTypeValues} className={'sm-input sm-runes-main-select'} onChange={this.onChangeMainStatFilter.bind(this)}/>
+						</div>
+						<div className="sm-sheet sm-sheet-top sm-runes-sub-filters">
+							<h4>Sub Stat</h4>
+							<ul>
+								{StatType.VALUES.map(this._buildSubStat.bind(this))}
+							</ul>
+						</div>
+						<div className="sm-sheet sm-sheet-top sm-runes-positions">
 							<div className="sm-runes-pos-filters">
 								<img src="assets/images/runes.png" className="sm-runes-pos-img"/>
 								<input className="sm-checkbox sm-checkbox-1" type="checkbox" onClick={this.onClickPosFilter.bind(this, '1')}/>
@@ -79,28 +79,16 @@ class Runes extends React.Component {
 								<input className="sm-checkbox sm-checkbox-4" type="checkbox" onClick={this.onClickPosFilter.bind(this, '4')}/>
 								<input className="sm-checkbox sm-checkbox-5" type="checkbox" onClick={this.onClickPosFilter.bind(this, '5')}/>
 								<input className="sm-checkbox sm-checkbox-6" type="checkbox" onClick={this.onClickPosFilter.bind(this, '6')}/>
-								<ul className="sm-runes-filters" >
-									{Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
-								</ul>
 							</div>
+							<ul>
+								{Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
+							</ul>
 						</div>
-						<div className="sm-sheet sm-sheet-mid">
-							<div className="sm-runes-main-filters"> 
-								<h4>Main Stat</h4>
-								<FormSelect values={this.state.statTypeValues} className={'sm-input sm-runes-main-select'} onChange={this.onChangeMainStatFilter.bind(this)}/>
-							</div>
+					</div>
+					<div className="col-xs-12 col-md-8">
+						<div className="sm-runes-list">
+							{Utils.map(this.state.runes, this._buildRune)}
 						</div>
-
-
-						<div className="sm-sheet sm-sheet-mid">
-							<div className="sm-runes-sub-filters"> 
-								<h4>Sub Stat</h4>
-								<ul>
-									{StatType.VALUES.map(this._buildSubStat.bind(this))}
-								</ul>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
