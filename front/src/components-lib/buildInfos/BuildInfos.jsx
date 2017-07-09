@@ -112,7 +112,7 @@ class BuildInfos extends React.Component {
 	onClickDelete(buildId) {
 		BuildHelper.deleteBuild(buildId).
 		then(function(result) {
-			let promises = []-
+			let promises = []
 			let storeMonstersConfig = AppHelper.getData('/monstersConfig')
 	    	for(let key in storeMonstersConfig)
 	    		if (buildId == storeMonstersConfig[key].buildId) {
