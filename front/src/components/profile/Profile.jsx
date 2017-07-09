@@ -1,4 +1,5 @@
 import React from 'react';
+import SWPanel from 'components-lib/ui/SWPanel'
 import ProfileData from 'components/profile/ProfileData';
 import './Profile.scss';
 
@@ -36,7 +37,7 @@ class Profile extends React.Component {
 						</div>
 					</div>
 					<div className="col-xs-12 col-md-6">
-						<div className="sm-sheet sm-profile-user">
+                        <SWPanel className='sm-profile-user' size='lg'>
 							<div className="sm-content">
 								<ul className="sm-profil-user-key">
                                     <li>Username : <input className="sm-input" type="text" value={this.state.username} onChange={this.onChange.bind(this, 'username')}disabled={true} /></li>
@@ -53,7 +54,7 @@ class Profile extends React.Component {
                                     <button className='sm-button' onClick={this.onSendImage}>Send</button>
                                 : '' }
 							</div>
-						</div>
+						</SWPanel>
 					</div>
 				</div>
 			</div>

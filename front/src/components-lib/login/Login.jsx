@@ -19,7 +19,7 @@ class Login extends React.Component {
 	}
 
 	render() { return (
-        <SWPanel className='sm-login' size='sm'>
+        <SWPanel className='sm-login'>
 			<h3 className="sm-login-title">Login</h3>
 			<div className="sm-content">
 				<label className="sm-label">Username or Email</label>

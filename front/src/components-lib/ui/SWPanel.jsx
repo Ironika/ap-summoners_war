@@ -9,7 +9,7 @@ class SWPanel extends React.Component {
     }
 
     render() { return (
-        <div className={'sm-panel ' + (this.props.size ? ' sm-panel-' + this.props.size : 'sm-panel-sm') +  (this.props.className ? ' ' + this.props.className : '')}>
+        <div className={'sm-panel' + (this.props.size ? ' sm-panel-' + this.props.size : ' sm-panel-sm') +  (this.props.className ? ' ' + this.props.className : '')}>
             <div className='sm-panel-border sm-panel-border-top' />
             <div className='sm-panel-border sm-panel-border-right' />
             <div className='sm-panel-border sm-panel-border-bottom' />

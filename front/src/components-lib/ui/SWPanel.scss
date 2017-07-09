@@ -69,24 +69,65 @@
     &.sm-panel-lg {
 
         .sm-panel-border {
-            &.sm-panel-border-top {    
+            position: absolute;
+            &.sm-panel-border-top {  
+                top: -6px;
+                height: 6px;
+                left: 0px;
+                right: 0px;  
+                background-image: url(/assets/images/ui/border_large_top_small.png);
+                background-repeat: repeat-x;
             }
             &.sm-panel-border-right {
+                left: -6px;
+                width: 6px;
+                top: 0px;
+                bottom: 0px;
+                background-image: url(/assets/images/ui/border_large_right_small.png);
+                background-repeat: repeat-y;
             }
             &.sm-panel-border-bottom {
+                bottom: -6px;
+                height: 6px;
+                left: 0px;
+                right: 0px;
+                background-image: url(/assets/images/ui/border_large_bottom_small.png);
+                background-repeat: repeat-x;
             }
             &.sm-panel-border-left {
+                right: -6px;
+                width: 6px;
+                top: 0px; 
+                bottom: 0px;
+                background-image: url(/assets/images/ui/border_large_left_small.png);
+                background-repeat: repeat-y;
             }
         }
 
         .sm-panel-corner {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-size: cover;
             &.sm-panel-corner-tr {
+                top: -9px;
+                right: -9px;
+                background-image: url(/assets/images/ui/corner_large_tr.png);
             }
             &.sm-panel-corner-br {
+                bottom: -8px;
+                right: -8px;
+                background-image: url(/assets/images/ui/corner_large_br.png);
             }
             &.sm-panel-corner-bl {
+                bottom: -8px;
+                left: -8px;
+                background-image: url(/assets/images/ui/corner_large_bl.png);
             }
             &.sm-panel-corner-tl {
+                top: -8px;
+                left: -8px;
+                background-image: url(/assets/images/ui/corner_large_tl.png);
             }
         }
     }
