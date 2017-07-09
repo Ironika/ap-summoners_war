@@ -17,16 +17,29 @@
 		border-radius: 5px;
 		width: 100px;
 	}
-	.sm-monster-stars {
-		text-align: center;
-		margin-top: 3px
-	}
+    .sm-monster-stars {
+        height: 32%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        .sm-monsterstars {
+            height: 100%;
+            .sm-monsterstar {
+                height: 100%;
+                max-width: 13px;
+                .sm-monsterstar-image {
+                    height: 100%;
+                }
+            }
+        }
+    }
 	.sm-monster-lvl {
 		position: absolute;
 		bottom: 0;
 		right: 8px;
 	    color: white;
 	    font-size: 18px;
+        text-shadow: 1px 1px 3px black;
 	}
 
     &::after {

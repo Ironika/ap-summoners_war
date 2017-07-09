@@ -1,0 +1,10 @@
+.sm-monsterstars {
+    height: 100%;
+    .sm-monsterstar {
+        display: inline-block;
+        height: 100%;
+        .sm-monsterstar-image {
+            height: 100%;
+        }
+    }
+}
