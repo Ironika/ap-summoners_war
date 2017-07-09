@@ -72,12 +72,12 @@ class MonsterConfigData extends BaseData {
             monsterName: monster,
             monsterImage: monsterImage,
 
-            requiredStatsSelect: "",
-            requiredStatsInput: "",
+            requiredStatsSelect: statTypeValues[0],
+            requiredStatsInput: "0",
             requiredStats: requiredStats,
 
-            notationStatsSelect: "",
-            notationStatsInput: "",
+            notationStatsSelect: statTypeValues[0],
+            notationStatsInput: "0",
             notationStats: notationStats,
 
             setsSelect: "",
@@ -97,8 +97,7 @@ class MonsterConfigData extends BaseData {
 					monsterConfig: monsterConfig
 				})
 				break
-			} else 
-				this.setState({monsterName: event.target.value, monsterImage: "default-monster"})
+			}
 			
 		}
 	}
@@ -106,17 +105,15 @@ class MonsterConfigData extends BaseData {
 	onClickDeleteStat(id, stat) {
 		delete(this.getState(id)[stat])
 		this.obj.state[id] = this.getState(id)
-		this.setState()
+		this._fillMonsterConfig(id)
 	}
 
 	onChangeInput(id, event) {
 		this.obj.state[id + "Input"] = event.target.value
-		this.setState()
 	}
 
 	onChangeSelect(id, event) {
 		this.obj.state[id + "Select"] = event.target.value
-		this.setState()
 	}
 
 	onClickShow(id) {
@@ -125,16 +122,20 @@ class MonsterConfigData extends BaseData {
 	}
 
 	_fillMonsterConfig(id) {
-		let monsterConfig = Utils.clone(this.getState('monsterConfig'))
+		let monsterConfig = this.getState('monsterConfig')
 
 		if(id == 'requiredStats') {
         	for(let key in StatType.VALUES)
         		if(this.getState('requiredStats')[StatType.VALUES[key].key])
-        			monsterConfig['required'+ StatType.VALUES[key].key] = this.getState('requiredStats')[StatType.VALUES[key].key]
+        			monsterConfig['required'+ StatType.VALUES[key].key] = parseInt(this.getState('requiredStats')[StatType.VALUES[key].key])
+        		else
+        			delete(monsterConfig['required'+ StatType.VALUES[key].key])
 		} else if(id == 'notationStats') {
 			for(let key in StatType.VALUES) 
 				if(this.getState('notationStats')[StatType.VALUES[key].key])
-        			monsterConfig['notation'+ StatType.VALUES[key].key] = this.getState('notationStats')[StatType.VALUES[key].key]
+        			monsterConfig['notation'+ StatType.VALUES[key].key] = parseInt(this.getState('notationStats')[StatType.VALUES[key].key])
+        		else
+        			delete(monsterConfig['notation'+ StatType.VALUES[key].key])
 		} else {
 			let count = 1
 			for(let key in this.getState('sets')) {
