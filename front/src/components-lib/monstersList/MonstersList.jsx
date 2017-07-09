@@ -4,7 +4,7 @@ import MonstersListData from 'components-lib/monstersList/MonstersListData';
 import Monster from 'components-lib/monster/Monster';
 import MonsterInfos from 'components-lib/monsterInfos/MonsterInfos';
 import MonsterRunes from 'components-lib/monsterRunes/MonsterRunes';
-
+import { BusyBars }  from 'ap-react-bootstrap'
 import ElemType from 'utils/constants/ElemType'
 import './MonstersList.scss';
 
@@ -45,13 +45,21 @@ class MonsterList extends React.Component {
     }
 
     render() { 
+        if (this.refs.list && this.state.threshold === MonstersListData.GROWING_INITIAL) {
+            this.refs.list.scrollTop = 0;
+        }
         return (
             <div className="sm-monsterslist">
                 <div className="sm-sheet sm-monster-filters-elements">
                     {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
                 </div>
-                <div className="sm-monster-list">
-                    {this.state.monsters.map(this._buildMonster.bind(this))}
+                <div className='sm-monster-list' ref='list' onScroll={this.onScroll}>
+                    {this.state.monsters.slice(0, this.state.threshold).map(this._buildMonster.bind(this))}
+                    {this.state.monsters.length > this.state.threshold ?
+                        <div className='sm-monsters-busy'>
+                            <BusyBars className='sm-busy-indicator'/>
+                        </div>
+                    : '' }
                 </div>
                 <div className="sm-sheet sm-sheet-top sm-monster-filters">
                     <ul>

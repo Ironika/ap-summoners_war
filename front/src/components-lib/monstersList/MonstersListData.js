@@ -8,6 +8,9 @@ let SORT_ATTRIBUTE = {
     lvl: 'lvl'
 }
 
+let GROWING_INITIAL = 50;
+let GROWING_THRESHOLD = 50;
+
 class MonstersListData extends BaseData {
 
 	register(obj) {
@@ -15,7 +18,8 @@ class MonstersListData extends BaseData {
 
         this.obj.onSearch = this.onSearch.bind(this)
         this.obj.onClickMonster = this.onClickMonster.bind(this)
-		
+		this.obj.onScroll = this.onScroll.bind(this)
+
         this.obj.onClickElementFilters = this.onClickElementFilters.bind(this)
         this.obj.onClickSort = this.onClickSort.bind(this)
 
@@ -23,7 +27,10 @@ class MonstersListData extends BaseData {
         this.elementFilter = null
         this.sorts = {}
 
-        this.obj.state = {  monsters: [] }
+        this.obj.state = { 
+            monsters: [],
+            threshold: GROWING_INITIAL
+        }
 
         this.buildMonstersData()
 	}
@@ -38,7 +45,9 @@ class MonstersListData extends BaseData {
             AppHelper.put('/monster/' + this.monster.id, true)
             AppHelper.put('/currentMonster', this.monster)
         }
-        this.setState({ monsters: monsters })
+        this.setState({ 
+            monsters: monsters 
+        })
     }
 
     filterMonsters(monster) {
@@ -78,16 +87,36 @@ class MonstersListData extends BaseData {
 	onClickElementFilters(key) {
         this.elementFilter = (this.elementFilter === key) ? null : key
         let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
-        this.setState({monsters: monsters, elementFilter: this.elementFilter})
+        this.setState({
+            threshold: GROWING_INITIAL,
+            monsters: monsters, 
+            elementFilter: this.elementFilter
+        })
 	}
 
 	onClickSort(key) {
         let sorts = this.sorts
         sorts[key] = !sorts[key]
         let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
-        this.setState({monsters: monsters})
+        this.setState({
+            threshold: GROWING_INITIAL,
+            monsters: monsters
+        })
 	}
+
+    onScroll() {
+        let oH = this.obj.refs.list.offsetHeight
+        let sH = this.obj.refs.list.scrollHeight
+        let sT = this.obj.refs.list.scrollTop
+        if (sT + oH >= sH - 1) {
+            clearTimeout(this.growTimeout)
+            this.growTimeout = setTimeout(this.setState.bind(this, {
+                threshold: this.getState('threshold') + GROWING_THRESHOLD
+            }), 250)
+        }
+    }
 }
 let MonstersListObj = new MonstersListData()
 MonstersListObj.SORT_ATTRIBUTE = SORT_ATTRIBUTE
+MonstersListObj.GROWING_INITIAL = GROWING_INITIAL;
 export default MonstersListObj

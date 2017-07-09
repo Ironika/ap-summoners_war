@@ -21,6 +21,9 @@
 		overflow: auto;
 		height: calc(73% - 40px);
 		margin-top: 20px;
+        .sm-monsters-busy {
+            margin: 25px;
+        }
 	}
 
 	.sm-monster-filters {

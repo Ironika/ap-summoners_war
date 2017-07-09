@@ -44,7 +44,7 @@ class App extends React.Component {
 		if (busy) {
 			this.setState({ busy: true })
 		} else {
-			this._busyTimeout = setTimeout(this.setState.bind(this, { busy: false }), 1000)
+			this._busyTimeout = setTimeout(this.setState.bind(this, { busy: false }), 100)
 		}
 	}
 
