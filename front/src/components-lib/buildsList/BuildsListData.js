@@ -29,7 +29,7 @@ class BuildsListData extends BaseData {
         let builds = Utils.map(BuildHelper.getData())
         let build = builds.length ? builds[0] : null
 
-        if (AppHelper.getData('/currentBuild'))
+        if (AppHelper.getData('/currentBuild') && BuildHelper.getData()[AppHelper.getData('/currentBuild').id])
             build = AppHelper.getData('/currentBuild')
         else if (build)
             AppHelper.put('/currentBuild', build)

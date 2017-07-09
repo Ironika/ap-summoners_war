@@ -111,7 +111,17 @@ class BuildInfos extends React.Component {
 
 	onClickDelete(buildId) {
 		BuildHelper.deleteBuild(buildId).
-		then(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+		then(function(result) {
+			let promises = []-
+			let storeMonstersConfig = AppHelper.getData('/monstersConfig')
+	    	for(let key in storeMonstersConfig)
+	    		if (buildId == storeMonstersConfig[key].buildId) {
+					promises.push(MonsterConfigHelper.deleteMonstersconfig(storeMonstersConfig[key].id))
+	    		}
+			return Promise.all(promises)
+		}.bind(this)).
+		then(MonsterConfigHelper.getUserMonstersconfig.bind(MonsterConfigHelper, AuthHelper.getEntityId())).
+		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId()))
 	}
 
 
