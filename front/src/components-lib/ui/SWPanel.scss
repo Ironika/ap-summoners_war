@@ -1,0 +1,93 @@
+.sm-panel {
+    position: relative;
+
+    &.sm-panel-sm {
+
+        .sm-panel-border {
+            position: absolute;
+
+            &.sm-panel-border-top {    
+                top: -5px;
+                height: 5px;
+                left: 0px;
+                right: 0px;
+                background-image: url(/assets/images/ui/border_top_small.png);
+                background-repeat: repeat-x;
+            }
+            &.sm-panel-border-right {
+                left: -5px;
+                width: 5px;
+                top: 0px;
+                bottom: 0px;
+                background-image: url(/assets/images/ui/border_side_small.png);
+                background-repeat: repeat-y;
+            }
+            &.sm-panel-border-bottom {
+                bottom: -5px;
+                height: 5px;
+                left: 0px;
+                right: 0px;
+                background-image: url(/assets/images/ui/border_top_small.png);
+                background-repeat: repeat-x;
+            }
+            &.sm-panel-border-left {
+                right: -5px;
+                width: 5px;
+                top: 0px; 
+                bottom: 0px;
+                background-image: url(/assets/images/ui/border_side_small.png);
+                background-repeat: repeat-y;
+            }
+        }
+
+        .sm-panel-corner {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-image: url(/assets/images/ui/corner.png);
+            background-size: cover;
+
+            &.sm-panel-corner-tr {
+                top: -12px;
+                right: -12px;
+            }
+            &.sm-panel-corner-br {
+                bottom: -12px;
+                right: -12px;
+            }
+            &.sm-panel-corner-bl {
+                bottom: -12px;
+                left: -12px;
+            }
+            &.sm-panel-corner-tl {
+                top: -12px;
+                left: -12px;
+            }
+        }
+    }
+
+    &.sm-panel-lg {
+
+        .sm-panel-border {
+            &.sm-panel-border-top {    
+            }
+            &.sm-panel-border-right {
+            }
+            &.sm-panel-border-bottom {
+            }
+            &.sm-panel-border-left {
+            }
+        }
+
+        .sm-panel-corner {
+            &.sm-panel-corner-tr {
+            }
+            &.sm-panel-corner-br {
+            }
+            &.sm-panel-corner-bl {
+            }
+            &.sm-panel-corner-tl {
+            }
+        }
+    }
+}
