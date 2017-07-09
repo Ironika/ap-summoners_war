@@ -118,5 +118,5 @@ class MonstersListData extends BaseData {
 }
 let MonstersListObj = new MonstersListData()
 MonstersListObj.SORT_ATTRIBUTE = SORT_ATTRIBUTE
-MonstersListObj.GROWING_INITIAL = GROWING_INITIAL;
+MonstersListObj.GROWING_INITIAL = GROWING_INITIAL
 export default MonstersListObj
