@@ -2,57 +2,90 @@
 
 .sm-monsterprofil {
 	height: calc(100% - 20px);
+
 	@media screen and (max-width: $screen-md) {
 		margin: 10% 0 !important;
 	}
+
 	@media screen and (min-width: $screen-md) {
 		margin-left: 10% !important;
     	width: 90% !important;
 	}
-	.sm-monster-tab {
-		background-color: $marron2;
-		color: $color-text;
-	    text-align: center;
-	    display: inline-block;
-	    position: absolute;
-	    padding: 20px;
-	    border-radius: 10px;
-	    width: 115px;
-	    font-size: 20px;
-	    cursor: pointer;
-    	@media screen and (max-width: $screen-xs) {
-			top: 0;
-			left: 15%;
-		}
-    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-			top: 5%;
-			left: 25%;
-		}
-    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-			top: 10%;
-    		left: 35%;
-		}
-	    @media screen and (min-width: $screen-md) {
-			left: -2%;
-    		top: 25%;
-		}
-		@media screen and (min-width: $screen-lg) {
-			left: 2%;
-    		top: 25%;
-		}
-	    &:hover {
-	    	color: $yellow;
-			background-color: $yellow-dark;
-	    }
+
+    .sm-monster-tab {
+        z-index: 100;
+        background-size: contain;
+        color: #937F78;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        border-radius: 10px;
+        width: 140px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        cursor: pointer;
+        padding-right: 25px;
+        text-shadow: 
+            2px 2px 3px black,
+            2px -2px 3px black,
+            -2px -2px 3px black,
+            -2px 2px 3px black;
+
+        &:hover {
+            color: $color-text;
+            &:after {
+                content: url(/assets/images/ui/corner.png);
+            }
+        }
+        &:after {
+            position: absolute;
+            content: url(/assets/images/ui/corner_sepia.png);
+            transform: scale(0.5);
+            right: 0;
+            top: -4px;
+        }
+        &.sm-monster-tab-active {
+            color: $yellow;
+            &:after {
+                content: url(/assets/images/ui/arrow.png);
+            }
+        }
+
+        @media screen and (max-width: $screen-xs) {
+            top: 0;
+            left: 15%;
+        }
+        @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+            top: 5%;
+            left: 25%;
+        }
+        @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+            top: 10%;
+            left: 35%;
+        }
+        @media screen and (min-width: $screen-md) {
+            left: -2%;
+            top: 25%;
+        }
+        @media screen and (min-width: $screen-lg) {
+            left: 2%;
+            top: 25%;
+        }
+    }
+
+	.sm-monster-tab-info {
+		background-image: url(/assets/images/ui/tile1_inactive.png);
+        &.sm-monster-tab-active {
+            background-image: url(/assets/images/ui/tile1_active.png);
+        }
 	}
-	.sm-monster-tab-active {
-		color: $yellow;
-		background-color: $yellow-dark;
-	}
-	.sm-monster-tab-hide {
-		display:none;
-	}
-	.sm-monster-tab2 {
+	
+	.sm-monster-tab-rune {
+        background-image: url(/assets/images/ui/tile2_inactive.png);
+        &.sm-monster-tab-active {
+            background-image: url(/assets/images/ui/tile2_active.png);
+        }
 		@media screen and (max-width: $screen-xs) {
 			left: 55%;
 		}
@@ -63,4 +96,8 @@
 			top: 40%;
 		}
 	}
+
+    .sm-monster-tab-hide {
+        display:none;
+    }
 }
