@@ -23,6 +23,7 @@ let get_build = new ActionBase({ name: 'GET_BUILD' })
 let put_build = new ActionBase({ name: 'PUT_BUILD' })
 let delete_build = new ActionBase({ name: 'DELETE_BUILD' })
 let get_build_monstersconfig = new ActionBase({ name: 'GET_BUILD_MONSTERSCONFIG' })
+let post_build_do = new ActionBase({ name: 'POST_BUILD_DO' })
 let get_runes = new ActionBase({ name: 'GET_RUNES' })
 let post_rune = new ActionBase({ name: 'POST_RUNE' })
 let get_rune = new ActionBase({ name: 'GET_RUNE' })
@@ -276,6 +277,17 @@ get_build_monstersconfig.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/builds/' + args.buildId + '/monstersconfig',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_build_do.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/builds/do',
+		data : args.data,
 		token : args.token,
 	};
 	return RestService._request(reqParam);
