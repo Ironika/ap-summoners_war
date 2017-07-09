@@ -1,10 +1,16 @@
 .sm-panel {
     position: relative;
 
+    .sm-panel-border,
+    .sm-panel-corner {
+        pointer-events: none;
+    }
+
     &.sm-panel-sm {
 
         .sm-panel-border {
             position: absolute;
+            
 
             &.sm-panel-border-top {    
                 top: -5px;
