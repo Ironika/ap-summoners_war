@@ -13,7 +13,7 @@ public class DoBuildHelper {
 	public static Object postDoBuild(SecurityContext sc, DoBuildBean doBuildBean) throws APWebException {
 		
 		try {
-		
+			doBuildBean = doBuildBean;
 			
 		} catch (Exception e) {
 			throw new APWebException(e.getMessage(), "500", Status.INTERNAL_SERVER_ERROR);

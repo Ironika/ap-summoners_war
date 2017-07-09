@@ -3,7 +3,9 @@ import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import BuildHelper from 'helpers/BuildHelper'
 import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
+import DefaultHelper from 'helpers/DefaultHelper'
 import BuildState from 'utils/constants/BuildState'
+
 
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -124,6 +126,12 @@ class BuildInfos extends React.Component {
 		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId()))
 	}
 
+	onClickBuild() {
+		let build = AppHelper.getData('/currentBuild')
+		build.state = BuildState.INBUILDING.key
+		DefaultHelper.postBuildDo({buildId: build.id})
+	}
+
 
 	render() {
 		if (this.state.build) {
@@ -135,7 +143,7 @@ class BuildInfos extends React.Component {
 					<input className="sm-input" value={this.state.build.state} disabled={true}/>
 					<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>
 					<button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button>
-					<button className="sm-button">Build</button>
+					<button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button>
 					<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
 				</div>
 			);
