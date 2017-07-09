@@ -19,46 +19,61 @@ class MonsterConfigListData extends BaseData {
             monstersConfig: []
         }
 
+        this._buildMonstersConfig()
+        MonsterConfigHelper.register(this, this._buildMonstersConfig.bind(this))
         AppHelper.register('/currentBuild', this, this._onBuildChange.bind(this));
+	}
 
+	_buildMonstersConfig() {
+		let storeMonstersConfig = MonsterConfigHelper.getData()
+        let monstersConfig = {}
+        for(let key in storeMonstersConfig)
+            monstersConfig[key] = Utils.clone(storeMonstersConfig[key])
+
+        AppHelper.put('/monstersConfig', monstersConfig).
+        then(function() {
+            this._onBuildChange()
+        }.bind(this))
 	}
 
 	_onBuildChange() {
 		let build = AppHelper.getData('/currentBuild')
-       	this.monstersConfig = {}
-    	let storeMonstersConfig = MonsterConfigHelper.getData()
+       	let currentMonstersConfig = {}
+    	let storeMonstersConfig = AppHelper.getData('/monstersConfig')
     	for(let key in storeMonstersConfig)
     		if (build.id == storeMonstersConfig[key].buildId)
-    			this.monstersConfig[key] = Utils.clone(storeMonstersConfig[key])
-		AppHelper.put('/currentMonstersConfig', this.monstersConfig).
-		then( function() {
-			this.setState({monstersConfig: this.monstersConfig})
-		}.bind(this))
+    			currentMonstersConfig[key] = storeMonstersConfig[key]
+		this.setState({monstersConfig: currentMonstersConfig})
 
 	}
 
 	onClickAddMonsterConfig() {
 		let build = AppHelper.getData('/currentBuild')
-		let monstersConfig = this.getState('monstersConfig')
-		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId}
-		monstersConfig[monsterConfig.id] = monsterConfig
-		AppHelper.put('/currentMonstersConfig', monstersConfig).
-		then( function() {
-			this.setState({monstersConfig: monstersConfig})
+		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id}
+
+		AppHelper.put('/monstersConfig/' + monsterConfig.id, monsterConfig).
+		then(function() {
+			let currentMonstersConfig = this.getState('monstersConfig')
+			currentMonstersConfig[monsterConfig.id] = monsterConfig
+			this.setState({monstersConfig: currentMonstersConfig})
 		}.bind(this))
+		
 	}
 
 	onClickDeleteMonsterConfig(monsterConfig) {
-		let monstersConfig = this.getState('monstersConfig')
+		let monstersConfig = AppHelper.getData('/monstersConfig')
 		delete(monstersConfig[monsterConfig.id])
-		AppHelper.put('/currentMonstersConfig', monstersConfig).
-		then( function() {
-			this.setState({monstersConfig: monstersConfig})
+		AppHelper.put('/monstersConfig', monstersConfig).
+		then(function() {
+			let currentMonstersConfig = this.getState('monstersConfig')
+			delete(currentMonstersConfig[monsterConfig.id])
+			this.setState({monstersConfig: currentMonstersConfig})
 		}.bind(this))
 	}
 
 	unregister() {
 		AppHelper.unregister(this)
+		MonsterConfigHelper.unregister(this)
 	}
 }
 var MonsterConfigListObj = new MonsterConfigListData();

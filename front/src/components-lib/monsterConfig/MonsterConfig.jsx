@@ -2,6 +2,7 @@ import React from 'react';
 import MonsterConfigData from 'components-lib/monsterConfig/MonsterConfigData';
 
 import {Utils, FormSelect}  from 'ap-react-bootstrap'
+import AppHelper from 'helpers/AppHelper'
 
 import './MonsterConfig.scss';
 
@@ -19,6 +20,10 @@ class MonsterConfig extends React.Component {
 
 	componentWillUnmount() {
 		this.MonsterConfigDataObj.unregister()
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.MonsterConfigDataObj.update(nextProps)
 	}
 
 	_buildStat(id, stat, key) {
@@ -41,7 +46,7 @@ class MonsterConfig extends React.Component {
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src={"assets/images/monsters/" + this.state.monsterImage + ".jpg"}/>
-					<input className="sm-input" type="text" onChange={this.onChangeMonsterName.bind(this)}/>
+					<input className="sm-input" type="text" defaultValue={this.state.monsterName} onChange={this.onChangeMonsterName.bind(this)}/>
 				</div>
 				<hr/>
 				<div className="sm-builds-monster-stats">

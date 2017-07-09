@@ -13,9 +13,7 @@ class MonsterConfigData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		let monstersConfig = AppHelper.getData('/currentMonstersConfig')
-
-		let monsterConfig = monstersConfig[this.obj.props.monsterConfigId]
+		let monsterConfig = this.obj.props.monsterConfig
 
 		let monsters = {}
 		for(let key in MonsterHelper.getData())
@@ -23,7 +21,7 @@ class MonsterConfigData extends BaseData {
 
 		let monster = ""
 		let monsterImage = "default-monster"
-		if(monsterConfig.monsterId) {
+		if(monsterConfig.monsterId && monsters[monsterConfig.monsterId]) {
 			monster = monsters[monsterConfig.monsterId]
 			monsterImage = monsters[monsterConfig.monsterId]
 		}
@@ -66,6 +64,7 @@ class MonsterConfigData extends BaseData {
             notationStatsIsOpen: false,
             setsIsOpen: false,
 
+            
             monsterConfig: monsterConfig,
 
             monsters: monsters,
@@ -80,9 +79,45 @@ class MonsterConfigData extends BaseData {
             notationStatsInput: "0",
             notationStats: notationStats,
 
-            setsSelect: "",
+            setsSelect: setTypeValues[0],
             sets: sets
         }
+	}
+
+	update(props) {
+		let monsterConfig = props.monsterConfig
+		let monster = ""
+		let monsterImage = "default-monster"
+		if(monsterConfig.monsterId && this.obj.state.monsters[monsterConfig.monsterId]) {
+			monster = this.obj.state.monsters[monsterConfig.monsterId]
+			monsterImage = this.obj.state.monsters[monsterConfig.monsterId]
+		}
+
+		let requiredStats = []
+        for(let key in StatType.VALUES)
+        	if(monsterConfig['required'+ StatType.VALUES[key].key])
+	        	requiredStats[StatType.VALUES[key].key] = monsterConfig['required'+ StatType.VALUES[key].key]
+
+	    let notationStats = []
+        for(let key in StatType.VALUES)
+        	if(monsterConfig['notation'+ StatType.VALUES[key].key])
+	        	notationStats[StatType.VALUES[key].key] = monsterConfig['notation'+ StatType.VALUES[key].key]
+
+        let sets = []
+        for(let i = 1; i < 4; i++)
+        	if(monsterConfig['set'+i]) 
+        		sets.push(monsterConfig['set'+i])
+
+
+		this.setState({        
+            monsterConfig: monsterConfig,
+            monsterName: monster,
+            monsterImage: monsterImage,
+
+            requiredStats: requiredStats,
+            notationStats: notationStats,
+            sets: sets
+        })
 	}
 
 	onChangeMonsterName(event) {
@@ -90,7 +125,7 @@ class MonsterConfigData extends BaseData {
 			if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
 				let monsterConfig = this.getState('monsterConfig')
 				monsterConfig.monsterId = key
-				AppHelper.put("currentMonstersConfig/" + monsterConfig.id, monsterConfig)
+				AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
 				this.setState({
 					monsterName: event.target.value, 
 					monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
@@ -142,10 +177,11 @@ class MonsterConfigData extends BaseData {
 				monsterConfig['set' + count] = this.getState('sets')[key]
 				count++
 			}
+			for (let i = count; i < 4; i++)
+				delete(monsterConfig['set' + i])
 		}
 
 		this.obj.state[id] = this.getState(id);
-		AppHelper.put('/currentMonstersConfig/' + monsterConfig.id, monsterConfig)
 		this.setState({monsterConfig: monsterConfig})
 	}
 

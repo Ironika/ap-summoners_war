@@ -1,7 +1,9 @@
 import React from 'react'
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 import BuildHelper from 'helpers/BuildHelper'
-import MonsterConfigHelper from 'helpers/AppHelper'
+import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
+import BuildState from 'utils/constants/BuildState'
 
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -15,9 +17,10 @@ class BuildInfos extends React.Component {
 	}
 
 	componentWillMount() {
+		let currentBuild = AppHelper.getData('/currentBuild')
 		this.state = {
-            build: AppHelper.getData('/currentBuild'),
-            isNewBuild: AppHelper.getData('/isNewBuild')
+            build: currentBuild,
+            isNewBuild: this.isNewBuild(currentBuild)
         }  
 		AppHelper.register('/currentBuild', this, this._onBuildChange.bind(this));
 	}
@@ -26,47 +29,84 @@ class BuildInfos extends React.Component {
 		AppHelper.unregister(this)
 	}
 
+	isNewBuild(build) {
+		if (build && build.isNewBuild)
+			return true
+		else
+			return false
+	}
+
 	_onBuildChange() {
+		let currentBuild = AppHelper.getData('/currentBuild')
         this.setState({
-            build: AppHelper.getData('/currentBuild'),
-            isNewBuild: AppHelper.getData('/isNewBuild')
+            build: currentBuild,
+            isNewBuild: this.isNewBuild(currentBuild)
         })
     }
 
 	onChangeBuildName(event) {
-		this.getState('build').name = event.target.value
-		this.setState({build: this.getState('build')})
+		this.state.build.name = event.target.value
+		this.setState({build: this.state.build})
 	}
 
 	onClickEdit(){
 		let build = AppHelper.getData('/currentBuild')
 		build.state = BuildState.SAVE.key
 		BuildHelper.putBuild(build).
-		then(function(result) {
+		then(function() {
 			let promises = []
-			let monstersConfig = AppHelper.getData('/currentMonstersConfig')
-			for (let key in monstersConfig)
-				promises.push(MonsterConfigHelper.putMonstersconfig(monstersConfig[key]))
-			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+			let currentMonsterConfig = {}
+			let oldMonsterConfig = {}
+
+			let storeMonstersConfig = AppHelper.getData('/monstersConfig')
+			for(let key in storeMonstersConfig) {
+	    		if (build.id == storeMonstersConfig[key].buildId) {
+	    			storeMonstersConfig[key].buildId = build.id
+	    			currentMonsterConfig[key] = storeMonstersConfig[key]
+	    		}
+	    	}
+
+	    	let oldStoreMonstersConfig = MonsterConfigHelper.getData()
+			for(let key in oldStoreMonstersConfig) {
+	    		if (build.id == oldStoreMonstersConfig[key].buildId)
+	    			oldMonsterConfig[key] = oldStoreMonstersConfig[key]
+	    	}
+
+	    	for (let key in currentMonsterConfig) {
+	    		if (oldMonsterConfig[key])
+	    			promises.push(MonsterConfigHelper.putMonstersconfig(currentMonsterConfig[key]))
+	    		else
+	    			promises.push(MonsterConfigHelper.postMonstersconfig(currentMonsterConfig[key]))
+	    	}
+
+	    	for (let key in oldMonsterConfig) {
+	    		if (!currentMonsterConfig[key])
+	    			promises.push(MonsterConfigHelper.deleteMonstersconfig(oldMonsterConfig[key].id))
+	    	}
+
 			return Promise.all(promises)
-		}.bind(this))
+		}.bind(this)).
+		then(MonsterConfigHelper.getUserMonstersconfig.bind(MonsterConfigHelper, AuthHelper.getEntityId())).
+		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId()))
 	}
 
 	onClickSave() {
-		AppHelper.put('/isNewBuild', false)
 		let build = AppHelper.getData('/currentBuild')
+		delete(build.isNewBuild)
 		build.state = BuildState.SAVE.key
 		BuildHelper.postBuild(build).
 		then(function(result) {
 			let promises = []
-			let monstersConfig = AppHelper.getData('/currentMonstersConfig')
-			for (let key in monstersConfig) {
-				monstersConfig[key].buildId = result.id
-				promises.push(MonsterConfigHelper.postMonstersconfig(monstersConfig[key]))
-			}
-			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
+			let storeMonstersConfig = AppHelper.getData('/monstersConfig')
+	    	for(let key in storeMonstersConfig)
+	    		if (build.id == storeMonstersConfig[key].buildId) {
+	    			storeMonstersConfig[key].buildId = result.id
+					promises.push(MonsterConfigHelper.postMonstersconfig(storeMonstersConfig[key]))
+	    		}
 			return Promise.all(promises)
-		}.bind(this))
+		}.bind(this)).
+		then(MonsterConfigHelper.getUserMonstersconfig.bind(MonsterConfigHelper, AuthHelper.getEntityId())).
+		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId()))
 	}
 
 	onClickDelete(buildId) {
@@ -76,7 +116,7 @@ class BuildInfos extends React.Component {
 
 
 	render() {
-		if (this.state.build)
+		if (this.state.build) {
 			return (
 				<div className="sm-sheet sm-sheet-top sm-builds-infos">
 					<label className="sm-label">Build Name</label>
@@ -89,6 +129,7 @@ class BuildInfos extends React.Component {
 					<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
 				</div>
 			);
+		}
 		else
 			return(<div>No Build</div>);
 	}

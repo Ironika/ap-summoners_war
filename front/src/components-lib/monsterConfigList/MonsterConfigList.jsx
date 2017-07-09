@@ -2,6 +2,7 @@ import React from 'react'
 import MonsterConfigListData from 'components-lib/monsterConfigList/MonsterConfigListData'
 import MonsterConfig from 'components-lib/monsterConfig/MonsterConfig'
 
+
 import {Utils}  from 'ap-react-bootstrap'
 
 import './MonsterConfigList.scss';
@@ -22,7 +23,7 @@ class MonsterConfigList extends React.Component {
 	}
 
 	_buildMonstersConfig(monsterConfig) {
-		return (<MonsterConfig key={monsterConfig.id} monsterConfigId={monsterConfig.id} onClick={this.onClickDeleteMonsterConfig}/>)
+		return (<MonsterConfig key={monsterConfig.id} monsterConfig={monsterConfig} onClick={this.onClickDeleteMonsterConfig}/>)
 	}
 
 	render() {
