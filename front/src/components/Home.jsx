@@ -2,6 +2,8 @@ import React from 'react'
 import HomeData from 'components/HomeData'
 import Login from 'components-lib/login/Login'
 import Register from 'components-lib/register/Register'
+import SWPanel from 'components-lib/ui/SWPanel'
+
 import './Home.scss'
 
 class Home extends React.Component {
@@ -35,9 +37,9 @@ class Home extends React.Component {
                         {this.buildData()}
                     </div>
                     <div className="col-xs-12 col-md-6">
-                        <div className="sm-sheet">
-                            <p className="sm-home-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                        </div>
+                        <SWPanel className="sm-home-text">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                        </SWPanel>
                         <img className="sm-home-img" src={"assets/images/summonerswar.png"} />
                     </div>
                 </div>

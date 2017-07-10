@@ -5,6 +5,7 @@
     .sm-monster-filters-elements {
     	height: 12%;
 		text-align: center;
+		padding: 15px;
 		.sm-monster-filters-element {
 		    display: inline-block;
 		    margin: 0 4%;
@@ -28,10 +29,8 @@
 
 	.sm-monster-filters {
 		height: 15%;
-		margin-bottom: 20px !important;
-		@media screen and (min-width: $screen-md) {
-			margin-bottom: 0 !important;
-		}
+		padding: 5px;
+		margin: 20px 0 !important;
 		ul {
 			text-align: center;
 			display: inline-block;

@@ -1,4 +1,5 @@
 import React from 'react';
+import SWPanel from 'components-lib/ui/SWPanel'
 import MonsterProfilData from 'components-lib/monsterProfil/MonsterProfilData';
 import MonsterInfos from 'components-lib/monsterInfos/MonsterInfos';
 import MonsterRunes from 'components-lib/monsterRunes/MonsterRunes';
@@ -29,7 +30,7 @@ class MonsterProfil extends React.Component {
 
     render() { 
         return (
-        <div className="sm-sheet sm-monsterprofil">
+        <SWPanel className="sm-monsterprofil" size="lg">
             <div 
                 className={"sm-monster-tab sm-monster-tab-info " + (this.state.currentPage === 'infos' ? 'sm-monster-tab-active' : "")} 
                 onClick={this.onClickInfos}>
@@ -41,7 +42,7 @@ class MonsterProfil extends React.Component {
                 Runes
             </div>
             { this._buildMonsterProfil(this.state.currentPage) }
-        </div>
+        </SWPanel>
     )}
 
 }

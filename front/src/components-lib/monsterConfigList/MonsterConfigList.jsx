@@ -1,7 +1,7 @@
 import React from 'react'
 import MonsterConfigListData from 'components-lib/monsterConfigList/MonsterConfigListData'
 import MonsterConfig from 'components-lib/monsterConfig/MonsterConfig'
-
+import SWPanel from 'components-lib/ui/SWPanel'
 
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -28,12 +28,14 @@ class MonsterConfigList extends React.Component {
 
 	render() {
 		return (
-			<div className="sm-sheet sm-builds-monsters">
-				{Utils.map(this.state.monstersConfig, this._buildMonstersConfig.bind(this))}
-				<div className="sm-builds-monster-add1">
-					<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
+			<SWPanel className="sm-builds-monsters" size="lg">
+				<div className="sm-builds-monsters-scroll">
+					{Utils.map(this.state.monstersConfig, this._buildMonstersConfig.bind(this))}
+					<div className="sm-builds-monster-add1">
+						<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
+					</div>
 				</div>
-			</div>
+			</SWPanel>
 		);
 	}
 

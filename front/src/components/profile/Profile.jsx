@@ -23,18 +23,18 @@ class Profile extends React.Component {
 			<div className='sm-profile'>
 				<div className="row">
 					<div className="col-xs-12 col-md-6">
-						<div className="sm-sheet sm-profil-stat">
+						<SWPanel className='sm-profil-stat'>
 							<img alt="Summoners War" src="assets/images/runes.png"/>
 							<p>Monsters : <span>{this.state.monsters}</span></p>
-						</div>
-						<div className="sm-sheet sm-sheet-top sm-profil-stat">
+						</SWPanel>
+						<SWPanel className='sm-profil-stat'>
 							<img alt="Summoners War" src="assets/images/runes.png"/>
 							<p>Runes : <span>{this.state.runes}</span></p>
-						</div>
-						<div className="sm-sheet sm-sheet-top sm-profil-stat sm-profil-stat-last">
+						</SWPanel>
+						<SWPanel className='sm-profil-stat sm-profil-stat-last'>
 							<img alt="Summoners War" src="assets/images/runes.png"/>
 							<p>Builds : <span>{this.state.builds}</span></p>
-						</div>
+						</SWPanel>
 					</div>
 					<div className="col-xs-12 col-md-6">
                         <SWPanel className='sm-profile-user' size='lg'>

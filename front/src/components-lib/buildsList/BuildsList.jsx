@@ -1,5 +1,6 @@
 import React from 'react';
 import BuildsListData from 'components-lib/buildsList/BuildsListData';
+import SWPanel from 'components-lib/ui/SWPanel'
 
 import {Utils, FormSelect}  from 'ap-react-bootstrap'
 
@@ -30,7 +31,7 @@ class BuildsList extends React.Component {
 
 	render() {
 		return (
-			<div className="sm-sheet sm-builds-list">
+			<SWPanel className="sm-builds-list">
 			 	<ul>
 			 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
 			 		<li>
@@ -39,7 +40,7 @@ class BuildsList extends React.Component {
 						</div>
 					</li>
 			 	</ul>
-		 	</div>
+		 	</SWPanel>
 		)
 	}
 }

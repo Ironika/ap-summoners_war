@@ -13,6 +13,23 @@
 		border-radius: 5px;
 		padding: 5px;
 		height: 20%;
+		position: relative;
+		@media screen and (max-width: $screen-md) {
+			height: 30%;
+		}
+		.sm-monster-stars {
+	        height: 32%;
+	        .sm-monsterstars {
+	            height: 100%;
+	            .sm-monsterstar {
+	                height: 100%;
+	                max-width: 13px;
+	                .sm-monsterstar-image {
+	                    height: 100%
+	                }
+	            }
+	        }
+	    }
 		.sm-monster-info {
 			padding: 5px 10px;
 			.sm-monster-element { 
@@ -33,32 +50,22 @@
 				}
 			}
 			.sm-monster-name {
-				font-size: 13px;
+				font-size: 18px;
 				color: white;
 				font-family: $font;
 				display: inline-block;
 				margin: 0 10px;
 			}
-			.sm-monster-star {
-				font-size: 13px;
-	   	 		color: $yellow;
-			}
 			.sm-monster-xp {
 				color: white;
 				font-size: 18px;
 				display: inline-block;
-				@media screen and (min-width: $screen-md) {
-					margin-top: 15px;
-				}
 			}
 			.sm-monster-progressbar {
 				background-color: $black !important;
 				margin-bottom: 0px;
-				@media screen and (min-width: $screen-md) {
-					margin-top: 15px;
-				}
 				.sm-monster-Water {
-					background-color: blue !important;
+					background-color: #1256A3 !important;
 				}
 				.sm-monster-Fire {
 					background-color: $color-text-error !important;
@@ -70,7 +77,7 @@
 					background-color: wheat !important;
 				}
 				.sm-monster-Dark {
-					background-color: purple !important;
+					background-color: #721669 !important;
 				}
 			}
 		}
@@ -81,6 +88,10 @@
 	    margin-top: 15px;
 	    border-radius: 5px;
 	    padding: 25px;
+	    @media screen and (max-width: $screen-md) {
+			height: calc(70% - 20px);
+			padding: 15px;
+		}
 	    .sm-monster-keys {
 	    	li {
 	    		color: $yellow;

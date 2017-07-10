@@ -3,6 +3,7 @@ import RunesData from 'components/runes/RunesData'
 import Rune from 'components-lib/rune/Rune'
 import RuneStar from 'components-lib/runeStar/RuneStar'
 import { Utils, FormSelect, BusyBars }  from 'ap-react-bootstrap'
+import SWPanel from 'components-lib/ui/SWPanel'
 
 import PosType from 'utils/constants/PosType'
 import SetType from 'utils/constants/SetType'
@@ -58,30 +59,36 @@ class Runes extends React.Component {
             this.refs.list.scrollTop = 0;
         }
 		return (
-			<div className='sm-runes'>
-				<div className="row">
-					<div className="col-xs-12 col-md-4">
-						<div className="sm-sheet sm-runes-types">
-							{SetType.VALUES.map(this._buildType.bind(this))}
-						</div>
-						<div className="sm-sheet sm-sheet-top sm-runes-main-filters"> 
-							<h4>Main Stat</h4>
-							<FormSelect values={this.state.statTypeValues} className={'sm-input sm-runes-main-select'} onChange={this.onChangeMainStatFilter.bind(this)}/>
-						</div>
-						<div className="sm-sheet sm-sheet-top sm-runes-sub-filters">
-							<h4>Sub Stat</h4>
-							<ul>
-								{StatType.VALUES.map(this._buildSubStat.bind(this))}
-							</ul>
-						</div>
-                        <div className="sm-sheet sm-sheet-top sm-runes-positions">
+			<div className='sm-runes sm-max-height'>
+				<div className="row sm-max-height">
+					<div className="col-xs-12 col-md-4 sm-max-height">
+                        <SWPanel className="sm-runes-positions">
                             <RuneStar onChange={this.onClickRuneStar}/>
                             <ul>
                                 {Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
                             </ul>
-                        </div>
+                        </SWPanel>
+                        <SWPanel className="sm-runes-types">
+							{SetType.VALUES.map(this._buildType.bind(this))}
+						</SWPanel>
 					</div>
-					<div className="col-xs-12 col-md-8">
+					<div className="col-xs-12 col-md-8 sm-max-height">
+						<div className="row sm-runes-stats">
+							<div className="col-xs-12 col-md-4 sm-max-height">
+								<SWPanel className="sm-runes-main-filters"> 
+									<h4>Main Stat</h4>
+									<FormSelect values={this.state.statTypeValues} className={'sm-input sm-runes-main-select'} onChange={this.onChangeMainStatFilter.bind(this)}/>
+								</SWPanel>
+							</div>
+							<div className="col-xs-12 col-md-8 sm-max-height">
+								<SWPanel className="sm-runes-sub-filters"> 
+									<ul>
+										{StatType.VALUES.map(this._buildSubStat.bind(this))}
+									</ul>
+								</SWPanel>
+							</div>
+						</div>
+						<div className="clearfix"></div>
 						<div className='sm-runes-list' onScroll={this.onScroll} ref='list'>
 							{this.state.runes.slice(0, this.state.threshold).map(this._buildRune)}
                             {this.state.runes.length > this.state.threshold ?

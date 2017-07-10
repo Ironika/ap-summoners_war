@@ -5,7 +5,7 @@ import BuildHelper from 'helpers/BuildHelper'
 import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
 import DefaultHelper from 'helpers/DefaultHelper'
 import BuildState from 'utils/constants/BuildState'
-
+import SWPanel from 'components-lib/ui/SWPanel'
 
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -136,7 +136,7 @@ class BuildInfos extends React.Component {
 	render() {
 		if (this.state.build) {
 			return (
-				<div className="sm-sheet sm-sheet-top sm-builds-infos">
+				<SWPanel className="sm-builds-infos">
 					<label className="sm-label">Build Name</label>
 					<input className="sm-input" type="text" value={this.state.build.name} onChange={this.onChangeBuildName.bind(this)}/>
 					<label className="sm-label">Status</label>
@@ -145,7 +145,7 @@ class BuildInfos extends React.Component {
 					<button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button>
 					<button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button>
 					<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
-				</div>
+				</SWPanel>
 			);
 		}
 		else

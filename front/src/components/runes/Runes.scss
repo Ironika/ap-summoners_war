@@ -1,19 +1,16 @@
 @import '../var.scss';
 
 .sm-runes {
-	height: 100%;
 	padding-top: 20px;
-	.row, .col-md-8, .col-md-4 {
-		height: 100%;
+	.sm-runes-stats {
+		height: 20%;
+		margin-bottom: 20px;
 	}
 	.sm-runes-list {
-		height: calc(100% - 20px);
+		height: calc(80% - 40px);
 	    overflow: auto;
-		@media screen and (max-width: $screen-xs) {
-			padding: 0 12%;
-		}
-    	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
-			padding: 0 6%;
+		@media screen and (max-width: $screen-md) {
+			margin: 20% 0;
 		}
 	}
     .sm-runes-busy {
@@ -21,11 +18,8 @@
     }
 
 	.sm-runes-types {
-	    width: 100%;
-	    text-align: center;
-	    overflow:scroll;
-    	white-space: nowrap;
-    	height: 15%;
+		text-align: center;
+    	margin-bottom: 20px;
 	    .sm-rune-type {
 		   	display: inline-block;
 		    padding: 10px;
@@ -39,7 +33,8 @@
 	}
 
 	.sm-runes-main-filters {
-		height: 22%;
+		height: 100%;
+		padding: 15px;
 		h4 {
 			color: $color-text;
 			text-align: center;
@@ -54,23 +49,21 @@
 	}
 
 	.sm-runes-sub-filters {
-		height: 23%;
-		h4 {
-			color: $color-text;
-			text-align: center;
+		height: 100%;
+		padding: 15px;
+		@media screen and (max-width: $screen-md) {
+			margin: 20px 0;
 		}
 		ul {
-			overflow:scroll;
-    		white-space: nowrap;
+			text-align: center;
     		li {
 				display: inline-block;
-				padding: 10px;
+				padding: 8px;
 				border-radius: 100%; 
-				margin-bottom: 10px;
 				cursor: pointer;
 				span {
 					color: $color-text;
-					font-size: 18px;
+					font-size: 15px;
 				}
 				&:hover {
 					background-color: $black;
@@ -85,6 +78,7 @@
 	}
 
 	.sm-runes-positions {
+		padding: 15px;
 		margin-bottom: 20px !important;
 		ul {
             text-align: center;
@@ -96,21 +90,6 @@
     			}
     			input[type=checkbox] {
 				  transform: scale(1.2);
-				}
-    			@media screen and (max-width: $screen-xs) {
-					padding2: 15% 10%;
-				}
-		    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-					padding2: 10% 10%;
-				}
-		    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-					padding2: 8% 15%;
-				}
-		    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
-					padding2: 7% 20%;
-				}
-				@media screen and (min-width: $screen-lg) {
-					padding2: 7% 25%;
 				}
 		    }
 		}

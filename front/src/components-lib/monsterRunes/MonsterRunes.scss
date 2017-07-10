@@ -13,18 +13,6 @@
 		overflow: auto;
 		height: 75%;
 		margin-top: 20px;
-		@media screen and (max-width: $screen-xs) {
-			padding: 0 12%;
-		}
-    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-			padding-left: 4%;
-		}
-    	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-			padding-left: 6%;
-		}
-    	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-			padding-left: 2%;
-		}
 	}
 
 	.sm-monster-rune-set {

@@ -2,7 +2,7 @@
 
 .sm-monsterprofil {
 	height: calc(100% - 20px);
-
+    padding: 15px;
 	@media screen and (max-width: $screen-md) {
 		margin: 10% 0 !important;
 	}
@@ -53,24 +53,24 @@
         }
 
         @media screen and (max-width: $screen-xs) {
-            top: 0;
-            left: 15%;
+            top: -6%;
+            left: 12%;
         }
         @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-            top: 5%;
-            left: 25%;
+            top: -6%;
+            left: 18%;
         }
         @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-            top: 10%;
-            left: 35%;
+            top: -6%;
+            left: 30%;
         }
-        @media screen and (min-width: $screen-md) {
-            left: -2%;
-            top: 25%;
+        @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+            left: -18%;
+            top: 30%;
         }
         @media screen and (min-width: $screen-lg) {
-            left: 2%;
-            top: 25%;
+            left: -17%;
+            top: 30%;
         }
     }
 
@@ -87,7 +87,7 @@
             background-image: url(/assets/images/ui/tile2_active.png);
         }
 		@media screen and (max-width: $screen-xs) {
-			left: 55%;
+			left: 50%;
 		}
     	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
 			left: 55%;

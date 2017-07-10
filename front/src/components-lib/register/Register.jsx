@@ -1,4 +1,5 @@
 import React from 'react'
+import SWPanel from 'components-lib/ui/SWPanel'
 import RegisterData from 'components-lib/register/RegisterData'
 
 import './Register.scss'
@@ -47,7 +48,7 @@ class Register extends React.Component {
     }
 
     renderInitial() {return (
-        <div className="sm-sheet sm-register">
+        <SWPanel className="sm-register" size="lg">
             {this._buildHeader()}
             <div className="sm-content">
                 {this._buildInputGroup('Name', 'username', true)}
@@ -56,11 +57,11 @@ class Register extends React.Component {
                 <a onClick={this.props.onClick} className="sm-register-login">Back to Login</a>
             </div>
             {this._buildFooter('Register', this.onSubmit)}
-        </div>
+        </SWPanel>
     )}
 
     renderCheck() {return (
-        <div className="sm-sheet sm-register">
+        <SWPanel className="sm-register">
             {this._buildHeader()}
             <div className="sm-content">
                 <div className="sm-register-message">
@@ -69,7 +70,7 @@ class Register extends React.Component {
                 {this._buildInputGroup('Confirmation code', 'token')}
             </div>
             {this._buildFooter('Confirm email', this.onSubmitCheck)}
-        </div>
+        </SWPanel>
     )}
 
 }
