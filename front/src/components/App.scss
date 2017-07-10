@@ -22,7 +22,6 @@ html, body, .app, .ap-app {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
     }
 
-	.sm-hide { display: none; }
 	a {
 		color: $color-text;
 		text-decoration: none;
@@ -34,9 +33,14 @@ html, body, .app, .ap-app {
 		padding: 0;
 		margin: 0;
 	}
-	.sm-max-height {
-		height: 100%;
+	.sm-hide { display: none; }
+
+	.sm-max-height { height: 100%; }
+
+	.sm-cursor-disabled {
+		cursor: no-drop !important;
 	}
+
 	.sm-busy {
 		position: fixed;
 		top: 0;

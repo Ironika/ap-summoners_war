@@ -137,10 +137,24 @@ class BuildInfos extends React.Component {
 		if (this.state.build) {
 			return (
 				<SWPanel className="sm-builds-infos">
-					<label className="sm-label">Build Name</label>
-					<input className="sm-input" type="text" value={this.state.build.name} onChange={this.onChangeBuildName.bind(this)}/>
-					<label className="sm-label">Status</label>
-					<input className="sm-input" value={this.state.build.state} disabled={true}/>
+					<ul>
+						<li>
+							<label className="sm-label">Build Name</label>
+							<input className="sm-input" type="text" value={this.state.build.name} onChange={this.onChangeBuildName.bind(this)}/>
+						</li>
+						<li>
+							<label className="sm-label">Status</label>
+							<input className="sm-input sm-cursor-disabled" value={this.state.build.state} disabled={true}/>
+						</li>
+						<li className="sm-mini-li">
+							<label className="sm-label">Runes lvl</label>
+							<input className="sm-input sm-cursor-disabled" value="9" disabled={true}/>
+						</li>
+						<li className="sm-mini-li">
+							<label className="sm-label">Runes stars</label>
+							<input className="sm-input sm-cursor-disabled" value="5" disabled={true}/>
+						</li>
+					</ul>
 					<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>
 					<button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button>
 					<button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button>

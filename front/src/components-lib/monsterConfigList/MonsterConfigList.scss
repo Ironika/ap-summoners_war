@@ -1,11 +1,12 @@
 @import '../../components/var.scss';
 
 .sm-builds-monsters {
-	padding: 25px;
+	padding: 15px;
+	height: 100%;
 	.sm-builds-monsters-scroll {
 		overflow: auto;
 		overflow-y: hidden;
-		height: 405px;
+		height: 100%;
 		white-space:nowrap;
 		.sm-builds-monster-add1 {
 			display: inline-block;

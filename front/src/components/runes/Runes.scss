@@ -6,6 +6,11 @@
 		height: 20%;
 		margin-bottom: 20px;
 	}
+	.sm-max-height-fix {
+		@media screen and (max-width: $screen-md) {
+			height: initial;
+		}
+	}
 	.sm-runes-list {
 		height: calc(80% - 40px);
 	    overflow: auto;
@@ -19,13 +24,21 @@
 
 	.sm-runes-types {
 		text-align: center;
-    	margin-bottom: 20px;
+    	@media screen and (max-width: $screen-md) {
+			overflow-x: scroll;
+			overflow-y: hidden; 
+			white-space: nowrap;
+			margin-bottom: 20px;
+		}
 	    .sm-rune-type {
 		   	display: inline-block;
-		    padding: 10px;
+		    padding: 7px;
 		    border-radius: 1000px;
 		    cursor: pointer;
 		    margin-right: 5px;
+		    @media screen and (min-width: $screen-lg) {
+				padding: 10px;
+			}
 			img { width: 20px; }
 			&:hover { background-color: $color-text; }
 		}
@@ -55,6 +68,12 @@
 			margin: 20px 0;
 		}
 		ul {
+	    	@media screen and (max-width: $screen-md) {
+				overflow-x: scroll;
+				overflow-y: hidden; 
+				white-space: nowrap;
+				padding: 15px;
+			}
 			text-align: center;
     		li {
 				display: inline-block;

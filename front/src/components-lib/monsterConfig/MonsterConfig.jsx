@@ -42,7 +42,7 @@ class MonsterConfig extends React.Component {
 
 	render() {
 		return (
-			<div className="sm-build-buildmonsterconfig sm-content">
+			<div className="sm-build-buildmonsterconfig sm-content sm-build-content">
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src={"assets/images/monsters/" + this.state.monsterImage + ".jpg"}/>

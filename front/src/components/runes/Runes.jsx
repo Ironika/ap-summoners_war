@@ -61,15 +61,17 @@ class Runes extends React.Component {
 		return (
 			<div className='sm-runes sm-max-height'>
 				<div className="row sm-max-height">
-					<div className="col-xs-12 col-md-4 sm-max-height">
+					<div className="col-xs-12 col-md-4 sm-max-height sm-max-height-fix">
                         <SWPanel className="sm-runes-positions">
                             <RuneStar onChange={this.onClickRuneStar}/>
                             <ul>
                                 {Utils.map(RunesData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
                             </ul>
                         </SWPanel>
-                        <SWPanel className="sm-runes-types">
-							{SetType.VALUES.map(this._buildType.bind(this))}
+                        <SWPanel>
+                        	<div className="sm-runes-types">
+								{SetType.VALUES.map(this._buildType.bind(this))}
+							</div>
 						</SWPanel>
 					</div>
 					<div className="col-xs-12 col-md-8 sm-max-height">

@@ -3,13 +3,29 @@
 .sm-builds-infos {
 	padding: 10px;
 	margin-top: 20px;
-	label { margin-right: 10px; }
-	input {
-		width: 20%;
-		display: inline-block;
-		margin-right: 20px;
+	text-align: center;
+	ul {
+		margin-bottom: 10px;
+		li {
+			text-align: left;
+			margin: 3%;
+			@media screen and (min-width: $screen-md) {
+				display: inline-block;
+				margin: 0 3%;
+			}
+		}
+		.sm-mini-li {
+			@media screen and (min-width: $screen-md) {
+				width: 12%;
+			}
+		}
 	}
-	button { margin-left: 20px; }
+	button { 
+		margin: 3%; 
+		@media screen and (min-width: $screen-md) {
+			margin: 0 3%; 
+		}
+	}
 	.sm-builds-infos-delete {
 		background-image: radial-gradient(#DD4333 50%, #ee1010 100%);
 		&:hover { color: white; }

@@ -1,18 +1,33 @@
 @import '../../components/var.scss';
 
+.sm-build-content {
+	padding: 5px 10px !important;
+}
 .sm-build-buildmonsterconfig {
 	display: inline-block;
     overflow: auto;
     margin-right: 20px;
-    max-height: 365px;
-    width: 40%;
+    max-height: 100%;
+    width: 45%;
+    @media screen and (max-width: $screen-xs) {
+		width: 100%;
+	}
+	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+		width: 70%;
+	}
+	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+		width: 55%;
+	}
+	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+		width: 70%;
+	}
     hr {
     	border-color: $color-text;
     }
     .sm-build-buildmonsterconfig-delete {
     	color: $color-text-error;
-	    top: -16px;
-		left: 97%;
+	    top: 0;
+		left: 94%;
     	font-size: 25px;
     	cursor: pointer;
     }

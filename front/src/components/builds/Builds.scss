@@ -2,5 +2,10 @@
 
 .sm-builds {
 	height: 100%;
-	padding-top: 20px;	
+	padding-top: 20px;
+	.sm-builds-height {
+		@media screen and (min-width: $screen-md) {
+			height: 68%;
+		}
+	}	
 }
