@@ -23,7 +23,7 @@ class BuildsList extends React.Component {
 
 	_buildBuild(build) {
 		return (
-			<li key={build.id} onClick={this.onClickBuild.bind(this, build)}>
+			<li key={build.id} onClick={this.onClickBuild.bind(this, build)} className="sm-builds-list-li">
 				<div className={"sm-build " + (this.state.build.id == build.id? "sm-build-active" : "")}><span>{build.name}</span></div>
 			</li>
 		)
@@ -34,10 +34,8 @@ class BuildsList extends React.Component {
 			<SWPanel className="sm-builds-list">
 			 	<ul>
 			 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
-			 		<li>
-						<div className="sm-build">
-							<i className="glyphicon glyphicon-plus-sign sm-build-add" onClick={this.onClickAddBuild.bind(this)}></i>
-						</div>
+			 		<li className="sm-builds-add">
+			 			<i className="glyphicon glyphicon-plus-sign" onClick={this.onClickAddBuild.bind(this)}></i>
 					</li>
 			 	</ul>
 		 	</SWPanel>

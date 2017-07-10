@@ -31,7 +31,7 @@ class MonsterConfigList extends React.Component {
 			<SWPanel className="sm-builds-monsters" size="lg">
 				<div className="sm-builds-monsters-scroll">
 					{Utils.map(this.state.monstersConfig, this._buildMonstersConfig.bind(this))}
-					<div className="sm-builds-monster-add1">
+					<div className={"sm-builds-monster-add1 " + (Object.keys(this.state.monstersConfig).length === 0 ? "sm-builds-monster-empty" : "")}>
 						<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
 					</div>
 				</div>

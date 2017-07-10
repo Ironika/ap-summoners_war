@@ -16,7 +16,19 @@
 			height: 100%;
 			white-space: normal;
 		}
-		li {
+		.sm-builds-add {
+			text-align: center;
+			display: block;
+			@media screen and (max-width: $screen-md) {
+				display: inline-block;
+			}
+			i {
+				font-size: 35px;
+	    		color: $color-text;
+	    		cursor: pointer;
+			}
+	    }
+		.sm-builds-list-li {
 			cursor: pointer;
 			text-align: center;
 	        @media screen and (max-width: $screen-xs) {
