@@ -30,7 +30,7 @@ class MonsterList extends React.Component {
 
     _buildElementFilters(elemType) {
         return (
-            <div key={elemType.key} onClick={this.onClickElementFilters.bind(this, elemType.key)} className={this.state.elementFilter === elemType.key ? "sm-monster-filters-element sm-monster-filters-element-active" : "sm-monster-filters-element"}>
+            <div key={elemType.key} onClick={this.onClickElementFilters.bind(this, elemType.key)} className={this.state.elementFilter[elemType.key] ? "sm-monster-filters-element sm-monster-filters-element-active" : "sm-monster-filters-element"}>
                 <img src={"assets/images/elements/" + elemType.key + ".png"}/>
             </div>
         )

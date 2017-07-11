@@ -24,7 +24,8 @@ class MonstersListData extends BaseData {
         this.obj.onClickSort = this.onClickSort.bind(this)
 
         this.search = ''
-        this.elementFilter = null
+        this.elementFilter = {}
+        this.hasElementFilter = false
         this.sorts = {}
 
         this.obj.state = { 
@@ -46,12 +47,13 @@ class MonstersListData extends BaseData {
             AppHelper.put('/currentMonster', this.monster)
         }
         this.setState({ 
-            monsters: monsters 
+            monsters: monsters,
+            elementFilter: this.elementFilter 
         })
     }
 
     filterMonsters(monster) {
-        if (this.elementFilter && monster.elemType !== this.elementFilter) {
+        if (this.hasElementFilter && !this.elementFilter[monster.elemType]) {
             return false
         }
         if (this.search && monster.name.toUpperCase().indexOf(this.search.toUpperCase()) === -1) {
@@ -85,7 +87,21 @@ class MonstersListData extends BaseData {
     }
 
 	onClickElementFilters(key) {
-        this.elementFilter = (this.elementFilter === key) ? null : key
+        if(this.elementFilter.hasOwnProperty(key))
+            delete this.elementFilter[key]
+        else
+            this.elementFilter[key] = key
+
+        this.hasElementFilter = false
+        for (let item in this.elementFilter) {
+            if (this.elementFilter.hasOwnProperty(item)) {
+                if (this.elementFilter[item]) {
+                    this.hasElementFilter = true
+                    break;
+                }
+            }
+        }
+
         let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
         this.setState({
             threshold: GROWING_INITIAL,

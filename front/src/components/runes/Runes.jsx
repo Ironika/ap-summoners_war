@@ -31,7 +31,7 @@ class Runes extends React.Component {
 
 	_buildType(setType) {
 		return (
-			<div key={setType.key} onClick={this.onClickSetFilter.bind(this, setType.key)} className={(this.state.setFilter === setType.key) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
+			<div key={setType.key} onClick={this.onClickSetFilter.bind(this, setType.key)} className={(this.state.setFilter[setType.key]) ? "sm-rune-type sm-rune-type-active" : "sm-rune-type"}>
 				<img src={"assets/images/runes/Rune-" + setType.key + ".png"} title={setType.key}/>
 			</div>
 		)
@@ -39,7 +39,7 @@ class Runes extends React.Component {
 
 	_buildSubStat(substat) {
 		return (
-			<li key={substat.key} className={(this.state.subStatFilter === substat.key) ? "sm-runes-sub-active" : ""}>
+			<li key={substat.key} className={(this.state.subStatFilter[substat.key]) ? "sm-runes-sub-active" : ""}>
 				<span className="sm-label" onClick={this.onClickSubStatFilter.bind(this, substat.key)}>{substat.key}</span>
 			</li>
 		)
