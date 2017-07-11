@@ -53,8 +53,14 @@
 				background-image: radial-gradient($marroon-light 40%, $marroon-dark 70%);
 				border: 1px solid $marroon-light;
 				border-radius: 1000px;
-			    @media screen and (min-width: $screen-md) {
+			    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
 					width: 90%;
+				}
+				@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg){
+					width: 85%;
+				}
+				@media screen and (min-width: $screen-xlg){
+					width: 60%;
 				}
 				i {
 				    position: relative;
@@ -71,6 +77,11 @@
 					font-size: 18px;
 					background-color: $marron;
 				    padding: 10px;
+				    text-shadow: 
+			            2px 2px 3px black,
+			            2px -2px 3px black,
+			            -2px -2px 3px black,
+			            -2px 2px 3px black;
 				}
 				&:hover {
 					background-image: radial-gradient($marroon-light2 40%, $marroon-dark2 70%);

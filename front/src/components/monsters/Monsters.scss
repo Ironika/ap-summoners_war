@@ -2,4 +2,11 @@
 
 .sm-monsters {
 	padding-top: 20px;
+	height: 100%;
+	@media screen and (min-width: $screen-lg) {
+        height: 75%;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+    }
 }

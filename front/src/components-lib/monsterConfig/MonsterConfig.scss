@@ -7,19 +7,26 @@
 	display: inline-block;
     overflow: auto;
     margin-right: 20px;
-    max-height: 100%;
-    width: 45%;
-    @media screen and (max-width: $screen-xs) {
-		width: 100%;
-	}
+    height: calc(100% - 20px);
+    max-height: 330px;
+    width: 100%;
 	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
 		width: 70%;
+		max-height: 330px;
 	}
 	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-		width: 55%;
+		width: 44%;
+		max-height: 330px;
 	}
 	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-		width: 60%;
+		width: 50%;
+		max-height: initial;
+	}
+	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+		width: 55%;
+	}
+	@media screen and (min-width: $screen-xlg) {
+		width: 40%;
 	}
     hr {
     	border-color: $color-text;

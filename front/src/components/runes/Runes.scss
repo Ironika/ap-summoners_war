@@ -2,6 +2,13 @@
 
 .sm-runes {
 	padding-top: 20px;
+	height: 100%;
+	@media screen and (min-width: $screen-lg) {
+        height: 75%;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+    }
 	.sm-runes-stats {
 		height: 20%;
 		margin-bottom: 20px;
@@ -51,6 +58,11 @@
 		h4 {
 			color: $color-text;
 			text-align: center;
+			text-shadow: 
+            	2px 2px 3px black,
+            	2px -2px 3px black,
+            	-2px -2px 3px black,
+            	-2px 2px 3px black;
 		}
 		@media screen and (max-width: $screen-xs) {
 			select { padding:5px !important; }

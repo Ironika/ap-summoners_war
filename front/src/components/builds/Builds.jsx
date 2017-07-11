@@ -23,7 +23,7 @@ class Builds extends React.Component {
 
 	render() {
 		return (
-			<div className='sm-builds sm-max-height'>
+			<div className='sm-builds'>
 				<div className="row sm-builds-height">
 					<div className="col-xs-12 col-md-3 sm-max-height">
 						 <BuildsList/>

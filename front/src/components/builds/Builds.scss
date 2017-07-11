@@ -3,6 +3,12 @@
 .sm-builds {
 	height: 100%;
 	padding-top: 20px;
+	@media screen and (min-width: $screen-lg) {
+        height: 75%;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+    }
 	.sm-builds-height {
 		@media screen and (min-width: $screen-md) {
 			height: 68%;

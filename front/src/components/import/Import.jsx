@@ -23,6 +23,17 @@ class Import extends React.Component {
 			<div className='sm-import'>
 				<div className="row">
 					<div className="col-xs-12 col-md-6">
+						<SWPanel>
+							<p className="sm-import-text">
+								Import your Json file and create your optimised builds for your team !
+								<br/>
+								<br/>
+								Take a look of all your monsters and runes like in game !
+								<br/>
+								<br/>
+								<a className="sm-button" href="https://github.com/kakaroto/SWProxy" target="_blank">How to get your Json File ?</a>
+							</p>
+						</SWPanel>
 						<SWPanel className="sm-import-bloc" size="lg">
 							<div className="sm-content sm-upload">
 								<label htmlFor="file-upload" className="sm-label sm-upload-label">
@@ -36,17 +47,6 @@ class Import extends React.Component {
 							<div className="sm-upload-button">
 								<button className="sm-button" onClick={this.onClickImport}>Import</button>
 							</div>
-						</SWPanel>
-						<SWPanel>
-							<p className="sm-import-text">
-								Import your Json file and create your optimised builds for your team !
-								<br/>
-								<br/>
-								Take a look of all your monsters and runes like in game !
-								<br/>
-								<br/>
-								<a className="sm-button" href="https://github.com/kakaroto/SWProxy" target="_blank">How to get your Json File ?</a>
-							</p>
 						</SWPanel>
 					</div>
 					<div className="col-xs-12 col-md-6">

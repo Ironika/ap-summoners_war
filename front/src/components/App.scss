@@ -127,6 +127,11 @@ html, body, .app, .ap-app {
 	    color: white;
 	    font-size: 18px;
 	    font-family: $font;
+	    text-shadow: 
+            2px 2px 3px black,
+            2px -2px 3px black,
+            -2px -2px 3px black,
+            -2px 2px 3px black;
 	    &:hover {
 	    	background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
 	    	color:	$color-text;

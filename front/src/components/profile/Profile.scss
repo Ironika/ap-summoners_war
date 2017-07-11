@@ -2,6 +2,13 @@
 
 .sm-profile {
 	padding-top: 20px;
+	height: 100%;
+	@media screen and (min-width: $screen-lg) {
+        height: 75%;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+    }
 	.sm-profile-user {
         padding: 25px 15px;
 		margin-bottom: 20px !important;

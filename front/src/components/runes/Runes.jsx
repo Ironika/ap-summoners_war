@@ -59,7 +59,7 @@ class Runes extends React.Component {
             this.refs.list.scrollTop = 0;
         }
 		return (
-			<div className='sm-runes sm-max-height'>
+			<div className='sm-runes'>
 				<div className="row sm-max-height">
 					<div className="col-xs-12 col-md-4 sm-max-height sm-max-height-fix">
                         <SWPanel className="sm-runes-positions">

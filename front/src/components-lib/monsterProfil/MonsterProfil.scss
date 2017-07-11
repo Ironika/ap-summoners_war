@@ -68,8 +68,12 @@
             left: -18%;
             top: 30%;
         }
-        @media screen and (min-width: $screen-lg) {
+        @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
             left: -17%;
+            top: 30%;
+        }
+        @media screen and (min-width: $screen-xlg) {
+            left: -14%;
             top: 30%;
         }
     }
