@@ -106,16 +106,6 @@ ErrorStore.handleGetBuildMonstersconfigError = function(error, params) {
 	ErrorStore.notifyPath('/GET_BUILD_MONSTERSCONFIG');
 }
 
-ErrorStore.handlePostBuildDoSuccess = function(results, params) {
-	delete ErrorStore._content.POST_BUILD_DO;
-	ErrorStore.notifyPath('/POST_BUILD_DO');
-}
-
-ErrorStore.handlePostBuildDoError = function(error, params) {
-	ErrorStore._content.POST_BUILD_DO = error;
-	ErrorStore.notifyPath('/POST_BUILD_DO');
-}
-
 ErrorStore.handleGetRunesSuccess = function(results, params) {
 	delete ErrorStore._content.GET_RUNES;
 	ErrorStore.notifyPath('/GET_RUNES');
@@ -477,7 +467,6 @@ Dispatcher.register('GET_BUILD', ErrorStore.handleGetBuildSuccess, ErrorStore.ha
 Dispatcher.register('PUT_BUILD', ErrorStore.handlePutBuildSuccess, ErrorStore.handlePutBuildError)
 Dispatcher.register('DELETE_BUILD', ErrorStore.handleDeleteBuildSuccess, ErrorStore.handleDeleteBuildError)
 Dispatcher.register('GET_BUILD_MONSTERSCONFIG', ErrorStore.handleGetBuildMonstersconfigSuccess, ErrorStore.handleGetBuildMonstersconfigError)
-Dispatcher.register('POST_BUILD_DO', ErrorStore.handlePostBuildDoSuccess, ErrorStore.handlePostBuildDoError)
 Dispatcher.register('GET_RUNES', ErrorStore.handleGetRunesSuccess, ErrorStore.handleGetRunesError)
 Dispatcher.register('POST_RUNE', ErrorStore.handlePostRuneSuccess, ErrorStore.handlePostRuneError)
 Dispatcher.register('GET_RUNE', ErrorStore.handleGetRuneSuccess, ErrorStore.handleGetRuneError)

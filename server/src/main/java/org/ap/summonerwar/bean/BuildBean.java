@@ -4,8 +4,10 @@ package org.ap.summonerwar.bean;
 public class BuildBean {
 
 	public String userId;
+	public Integer runesLvl;
 	public String name;
 	public String state;
 	public String id;
+	public Integer runesStars;
 
 }

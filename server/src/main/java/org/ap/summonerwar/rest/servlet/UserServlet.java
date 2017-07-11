@@ -241,9 +241,11 @@ public class UserServlet extends APServletBase {
 			for (BuildData data : datas) {
 				BuildBean bean = new BuildBean();
 				bean.userId = data.getUserId();
+				bean.runesLvl = data.getRunesLvl();
 				bean.name = data.getName();
 				bean.state = data.getState();
 				bean.id = data.getId();
+				bean.runesStars = data.getRunesStars();
 				
 				beanList.add(bean);
 			}
@@ -424,6 +426,7 @@ public class UserServlet extends APServletBase {
 				bean.set3 = data.getSet3();
 				bean.requiredRes = data.getRequiredRes();
 				bean.set2 = data.getSet2();
+				bean.brokenSet = data.getBrokenSet();
 				bean.requiredSpd = data.getRequiredSpd();
 				bean.notationDefFlat = data.getNotationDefFlat();
 				bean.requiredHp = data.getRequiredHp();

@@ -22,6 +22,7 @@ public class MonsterConfigData {
 	public String set3;
 	public Integer requiredRes;
 	public String set2;
+	public Boolean brokenSet;
 	public String buildId;
 	public Integer requiredSpd;
 	public String userId;
@@ -183,6 +184,14 @@ public class MonsterConfigData {
 
 	public void setSet2(String set2) {
 		this.set2 = set2;
+	}
+
+	public Boolean getBrokenSet() {
+		return this.brokenSet;
+	}
+
+	public void setBrokenSet(Boolean brokenSet) {
+		this.brokenSet = brokenSet;
 	}
 
 	public String getBuildId() {

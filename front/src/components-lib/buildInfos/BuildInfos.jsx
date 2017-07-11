@@ -40,6 +40,8 @@ class BuildInfos extends React.Component {
 
 	_onBuildChange() {
 		let currentBuild = AppHelper.getData('/currentBuild')
+		currentBuild.runesLvl = 9
+		currentBuild.runesStars = 5
         this.setState({
             build: currentBuild,
             isNewBuild: this.isNewBuild(currentBuild)
@@ -148,11 +150,11 @@ class BuildInfos extends React.Component {
 						</li>
 						<li className="sm-mini-li">
 							<label className="sm-label">Runes lvl</label>
-							<input className="sm-input sm-cursor-disabled" value="9" disabled={true}/>
+							<input className="sm-input sm-cursor-disabled" value={this.state.build.runesLvl} disabled={true}/>
 						</li>
 						<li className="sm-mini-li">
 							<label className="sm-label">Runes stars</label>
-							<input className="sm-input sm-cursor-disabled" value="5" disabled={true}/>
+							<input className="sm-input sm-cursor-disabled" value={this.state.build.runesStars} disabled={true}/>
 						</li>
 					</ul>
 					<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>

@@ -103,6 +103,7 @@ public class MonsterConfigCollection {
 		data.set3 = document.getString("set3");
 		data.requiredRes = document.getInteger("requiredRes");
 		data.set2 = document.getString("set2");
+		data.brokenSet = document.getBoolean("brokenSet");
 		data.buildId = document.getString("buildId");
 		data.requiredSpd = document.getInteger("requiredSpd");
 		data.userId = document.getString("userId");
@@ -156,6 +157,8 @@ public class MonsterConfigCollection {
 			document.append("requiredRes", monsterConfig.requiredRes);
 		if (monsterConfig.set2 != null)
 			document.append("set2", monsterConfig.set2);
+		if (monsterConfig.brokenSet != null)
+			document.append("brokenSet", monsterConfig.brokenSet);
 		if (monsterConfig.buildId != null)
 			document.append("buildId", monsterConfig.buildId);
 		if (monsterConfig.requiredSpd != null)
@@ -200,6 +203,7 @@ public class MonsterConfigCollection {
 		document.append("set3", monsterConfig.set3);
 		document.append("requiredRes", monsterConfig.requiredRes);
 		document.append("set2", monsterConfig.set2);
+		document.append("brokenSet", monsterConfig.brokenSet);
 		document.append("buildId", monsterConfig.buildId);
 		document.append("requiredSpd", monsterConfig.requiredSpd);
 		document.append("userId", monsterConfig.userId);

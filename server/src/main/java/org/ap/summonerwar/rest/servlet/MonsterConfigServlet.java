@@ -51,6 +51,7 @@ public class MonsterConfigServlet extends APServletBase {
 				bean.set3 = data.getSet3();
 				bean.requiredRes = data.getRequiredRes();
 				bean.set2 = data.getSet2();
+				bean.brokenSet = data.getBrokenSet();
 				bean.requiredSpd = data.getRequiredSpd();
 				bean.notationDefFlat = data.getNotationDefFlat();
 				bean.requiredHp = data.getRequiredHp();
@@ -99,6 +100,7 @@ public class MonsterConfigServlet extends APServletBase {
 			data.setSet3(monsterConfigBean.set3);
 			data.setRequiredRes(monsterConfigBean.requiredRes);
 			data.setSet2(monsterConfigBean.set2);
+			data.setBrokenSet(monsterConfigBean.brokenSet);
 			data.setRequiredSpd(monsterConfigBean.requiredSpd);
 			data.setNotationDefFlat(monsterConfigBean.notationDefFlat);
 			data.setRequiredHp(monsterConfigBean.requiredHp);
@@ -149,6 +151,7 @@ public class MonsterConfigServlet extends APServletBase {
 			bean.set3 = data.getSet3();
 			bean.requiredRes = data.getRequiredRes();
 			bean.set2 = data.getSet2();
+			bean.brokenSet = data.getBrokenSet();
 			bean.requiredSpd = data.getRequiredSpd();
 			bean.notationDefFlat = data.getNotationDefFlat();
 			bean.requiredHp = data.getRequiredHp();
@@ -200,6 +203,7 @@ public class MonsterConfigServlet extends APServletBase {
 			data.setSet3(monsterConfigBean.set3);
 			data.setRequiredRes(monsterConfigBean.requiredRes);
 			data.setSet2(monsterConfigBean.set2);
+			data.setBrokenSet(monsterConfigBean.brokenSet);
 			data.setRequiredSpd(monsterConfigBean.requiredSpd);
 			data.setNotationDefFlat(monsterConfigBean.notationDefFlat);
 			data.setRequiredHp(monsterConfigBean.requiredHp);

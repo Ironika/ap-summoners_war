@@ -24,6 +24,7 @@ public class MonsterConfigBean {
 	public String set3;
 	public Integer requiredRes;
 	public String set2;
+	public Boolean brokenSet;
 	public Integer requiredSpd;
 	public Integer notationDefFlat;
 	public Integer requiredHp;

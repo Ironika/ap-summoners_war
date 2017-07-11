@@ -84,15 +84,19 @@ public class BuildCollection {
 			return null;
 		}
 		BuildData data = new BuildData();
+		data.runesLvl = document.getInteger("runesLvl");
 		data.name = document.getString("name");
 		data.state = document.getString("state");
 		data.id = document.getString("id");
 		data.userId = document.getString("userId");
+		data.runesStars = document.getInteger("runesStars");
 		return data;
 	}
 
 	public static Document toDocument(BuildData build) {
 		Document document = new Document();
+		if (build.runesLvl != null)
+			document.append("runesLvl", build.runesLvl);
 		if (build.name != null)
 			document.append("name", build.name);
 		if (build.state != null)
@@ -101,15 +105,19 @@ public class BuildCollection {
 			document.append("id", build.id);
 		if (build.userId != null)
 			document.append("userId", build.userId);
+		if (build.runesStars != null)
+			document.append("runesStars", build.runesStars);
 		return document;
 	}
 
 	public static Document toNullDocument(BuildData build) {
 		Document document = new Document();
+		document.append("runesLvl", build.runesLvl);
 		document.append("name", build.name);
 		document.append("state", build.state);
 		document.append("id", build.id);
 		document.append("userId", build.userId);
+		document.append("runesStars", build.runesStars);
 		return document;
 	}
 

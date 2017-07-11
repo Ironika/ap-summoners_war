@@ -27,13 +27,14 @@ class MonstersListData extends BaseData {
         this.elementFilter = {}
         this.hasElementFilter = false
         this.sorts = {}
+        this.hasSort = false
+        this.hasSearch = false
 
         this.obj.state = { 
-            monsters: [],
-            threshold: GROWING_INITIAL
+            threshold: GROWING_INITIAL,
+            elementFilter: this.elementFilter,
+            monsters: this.buildMonstersData() 
         }
-
-        this.buildMonstersData()
 	}
 
 	unregister() {
@@ -46,20 +47,14 @@ class MonstersListData extends BaseData {
             AppHelper.put('/monster/' + this.monster.id, true)
             AppHelper.put('/currentMonster', this.monster)
         }
-        this.setState({ 
-            monsters: monsters,
-            elementFilter: this.elementFilter 
-        })
+        return monsters
     }
 
     filterMonsters(monster) {
-        if (this.hasElementFilter && !this.elementFilter[monster.elemType]) {
-            return false
+        if ((!this.hasElementFilter || this.elementFilter[monster.elemType]) && monster.name.toUpperCase().indexOf(this.search.toUpperCase()) >= 0) {
+            return true
         }
-        if (this.search && monster.name.toUpperCase().indexOf(this.search.toUpperCase()) === -1) {
-            return false
-        }
-        return true        
+        return false        
     }
 
     sortMonsters(m1, m2) {
@@ -75,8 +70,9 @@ class MonstersListData extends BaseData {
 
     onSearch(event) {
         this.search = event.target.value ? event.target.value.trimLeft() : ''
-        let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
-        this.setState({monsters: monsters})
+        
+        this.checkFilterSort()
+        this.applyFiltersSorts()
     }
 
 	onClickMonster(monster) {
@@ -86,12 +82,26 @@ class MonstersListData extends BaseData {
         AppHelper.put('/currentMonster', monster)
     }
 
-	onClickElementFilters(key) {
-        if(this.elementFilter.hasOwnProperty(key))
-            delete this.elementFilter[key]
-        else
-            this.elementFilter[key] = key
+    applyFiltersSorts() {
+        let monsters = Utils.map(MonsterHelper.getData())
+        if(this.hasElementFilter || this.hasSearch)
+            monsters = monsters.filter(this.filterMonsters.bind(this));
+        if(this.hasSort)
+            monsters = monsters.sort(this.sortMonsters.bind(this))
+        this.setState({
+            threshold: GROWING_INITIAL,
+            monsters: monsters, 
+            elementFilter: this.elementFilter
+        })
+    }
 
+    checkFilterSort() {
+
+        if (this.search == '')
+            this.hasSearch = false
+        else
+            this.hasSearch = true
+        
         this.hasElementFilter = false
         for (let item in this.elementFilter) {
             if (this.elementFilter.hasOwnProperty(item)) {
@@ -102,22 +112,31 @@ class MonstersListData extends BaseData {
             }
         }
 
-        let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
-        this.setState({
-            threshold: GROWING_INITIAL,
-            monsters: monsters, 
-            elementFilter: this.elementFilter
-        })
+        this.hasSort = false
+        for (let item in this.sorts) {
+            if (this.sorts.hasOwnProperty(item)) {
+                if (this.sorts[item]) {
+                    this.hasSort = true
+                    break;
+                }
+            }
+        }
+    }
+
+	onClickElementFilters(key) {
+        if(this.elementFilter.hasOwnProperty(key))
+            delete this.elementFilter[key]
+        else
+            this.elementFilter[key] = key
+
+        this.checkFilterSort()
+        this.applyFiltersSorts()
 	}
 
 	onClickSort(key) {
-        let sorts = this.sorts
-        sorts[key] = !sorts[key]
-        let monsters = Utils.map(MonsterHelper.getData()).filter(this.filterMonsters.bind(this)).sort(this.sortMonsters.bind(this));
-        this.setState({
-            threshold: GROWING_INITIAL,
-            monsters: monsters
-        })
+        this.sorts[key] = !this.sorts[key]
+        this.checkFilterSort()
+        this.applyFiltersSorts()
 	}
 
     onScroll() {
