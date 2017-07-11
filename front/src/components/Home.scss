@@ -3,11 +3,29 @@
 .ap-home {
 	padding-top: 20px;
 	height: 100%;
-	@media screen and (min-width: $screen-lg) {
+    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
         height: 75%;
-        width: 80%;
+        width: 90%;
         margin: auto;
         margin-top: 5%;
+    }
+	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+        height: 85%;
+        width: 85%;
+        margin: auto;
+        margin-top: 5%;
+    }
+    @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
+        height: 80%;
+        width: 80%;
+        margin: auto;
+        margin-top: 15%;
+    }
+    @media screen and (min-width: $screen-xxlg) {
+        height: 80%;
+        width: 80%;
+        margin: auto;
+        margin-top: 15%;
     }
     .sm-home-text {
         color: $color-text;

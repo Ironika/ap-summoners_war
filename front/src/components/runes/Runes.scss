@@ -3,11 +3,17 @@
 .sm-runes {
 	padding-top: 20px;
 	height: 100%;
-	@media screen and (min-width: $screen-lg) {
+    @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
         height: 75%;
+	    width: 90%;
+	    margin: auto;
+	    margin-top: 8%;
+    }
+    @media screen and (min-width: $screen-xxlg) {
+        height: 80%;
         width: 80%;
         margin: auto;
-        margin-top: 5%;
+        margin-top: 15%;
     }
 	.sm-runes-stats {
 		height: 20%;

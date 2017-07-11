@@ -87,7 +87,8 @@
 	    height: calc(80% - 20px);
 	    margin-top: 15px;
 	    border-radius: 5px;
-	    padding: 25px;
+        padding: 10px;
+    	padding-left: 10%;
 	    @media screen and (max-width: $screen-md) {
 			height: calc(70% - 20px);
 			padding: 15px;
