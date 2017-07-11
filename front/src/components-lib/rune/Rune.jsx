@@ -16,7 +16,7 @@ class Rune extends React.Component {
 			if(statType == "AtkFlat" || statType == "DefFlat" || statType == "HpFlat") 
 				return (<li key={statType} className="sm-rune-main-stat">{statType} <span>{stat}</span></li>)
 			else 
-				return (<li key={statType} className="sm-rune-main-stat">{statType} <span>{stat}%</span></li>)
+				return (<li key={statType} className="sm-rune-main-stat">{statType} <span>{stat} %</span></li>)
 		}
 	}
 
@@ -25,7 +25,7 @@ class Rune extends React.Component {
 			if(statType == "AtkFlat" || statType == "DefFlat" || statType == "HpFlat") 
 				return (<li key={statType} className="sm-rune-sub-stat">{statType} <span>{stat}</span></li>)
 			else 
-				return (<li key={statType} className="sm-rune-sub-stat">{statType} <span>{stat}%</span></li>)
+				return (<li key={statType} className="sm-rune-sub-stat">{statType} <span>{stat} %</span></li>)
 		}
 	}
 
@@ -34,7 +34,7 @@ class Rune extends React.Component {
 			if(statType == "AtkFlat" || statType == "DefFlat" || statType == "HpFlat") 
 				return (<li key={statType}>{statType} <span>{stat}</span></li>)
 			else 
-				return (<li key={statType}>{statType} <span>{stat}%</span></li>)
+				return (<li key={statType}>{statType} <span>{stat} %</span></li>)
 		}
 	}
 

@@ -104,6 +104,11 @@
 				span {
 					color: $color-text;
 					font-size: 15px;
+					text-shadow: 
+		            	2px 2px 3px black,
+		            	2px -2px 3px black,
+		            	-2px -2px 3px black,
+		            	-2px 2px 3px black;
 				}
 				&:hover {
 					background-color: $black;

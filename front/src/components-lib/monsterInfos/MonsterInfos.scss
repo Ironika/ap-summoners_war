@@ -18,12 +18,18 @@
 			height: 30%;
 		}
 		.sm-monster-stars {
-	        height: 32%;
+	        height: 23%;
+	        @media screen and (min-width: $screen-xlg) {
+				width: 32%; 
+			}
 	        .sm-monsterstars {
 	            height: 100%;
 	            .sm-monsterstar {
 	                height: 100%;
-	                max-width: 13px;
+	                max-width: 9px;
+	                @media screen and (min-width: $screen-xlg) {
+						max-width: 13px; 
+					}
 	                .sm-monsterstar-image {
 	                    height: 100%
 	                }
