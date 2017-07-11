@@ -21,8 +21,11 @@
 	.sm-runes-list {
 		height: calc(80% - 40px);
 	    overflow: auto;
-		@media screen and (max-width: $screen-md) {
-			margin: 20% 0;
+		@media screen and (max-width: $screen-xs) {
+			margin: 10% 0;
+		}
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+			margin: 10% 0;
 		}
 	}
     .sm-runes-busy {
