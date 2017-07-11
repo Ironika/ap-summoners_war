@@ -2,12 +2,28 @@
 
 .sm-monster-runes {
 	height: 100%;
-    @media screen and (max-width: $screen-md) {
-		padding-top: 40px;
-	}
-	@media screen and (min-width: $screen-md) {
-		margin-left: 15%;
-	}
+	@media screen and (max-width: $screen-xs) {
+        padding: 0 8%;
+        padding-top: 40px;
+    }
+    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+        padding: 0 9%;
+        padding-top: 40px;
+    }
+    @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+        padding: 0 6%;
+        padding-top: 40px;
+    }
+    @media screen and (min-width: $screen-md) {
+        padding: 0;
+        margin-left: 20%;
+    }
+    @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+        margin-left: 15%;
+    }
+    @media screen and (min-width: $screen-xlg) {
+        margin-left: 20%;
+    }
 
 	.sm-monster-runes-list {
 		overflow: auto;
