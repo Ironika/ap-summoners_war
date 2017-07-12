@@ -45,6 +45,7 @@ class RunesData extends BaseData {
         this.hasSubStatFilter = false
 
         this.statTypeValues = []
+        this.statTypeValues.push('All')
         for(var i = 0; i < StatType.VALUES.length; i++) {
             this.statTypeValues.push(StatType.VALUES[i].key)
         }

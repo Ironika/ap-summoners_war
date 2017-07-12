@@ -55,6 +55,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onChangeSelect = this.onChangeSelect.bind(this)
         this.obj.onClickDeleteStat = this.onClickDeleteStat.bind(this)
         this.obj.onChangeMonsterName = this.onChangeMonsterName.bind(this)
+        this.obj.onChangeBrokenSet = this.onChangeBrokenSet.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -135,6 +136,12 @@ class MonsterConfigData extends BaseData {
 			}
 			
 		}
+	}
+
+	onChangeBrokenSet(event) {
+		let monsterConfig = this.getState('monsterConfig')
+		monsterConfig.brokenSet = !monsterConfig.brokenSet
+		this.setState({monsterConfig: monsterConfig})
 	}
 
 	onClickDeleteStat(id, stat) {

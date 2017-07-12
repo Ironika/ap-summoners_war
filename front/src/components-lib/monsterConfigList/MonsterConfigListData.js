@@ -49,7 +49,7 @@ class MonsterConfigListData extends BaseData {
 
 	onClickAddMonsterConfig() {
 		let build = AppHelper.getData('/currentBuild')
-		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id}
+		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id, brokenSet: false}
 
 		AppHelper.put('/monstersConfig/' + monsterConfig.id, monsterConfig).
 		then(function() {

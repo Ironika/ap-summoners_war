@@ -40,6 +40,13 @@ class MonsterConfig extends React.Component {
 		)
 	}
 
+	_buildBrokenSet() {
+		if(this.state.monsterConfig.brokenSet)
+			return ( <input id="brokenSet" type="checkbox" className="sm-checkbox" onChange={this.onChangeBrokenSet.bind(this)} checked/>)
+		else
+			return ( <input id="brokenSet" type="checkbox" className="sm-checkbox" onChange={this.onChangeBrokenSet.bind(this)}/>)
+	}
+
 	render() {
 		return (
 			<div className="sm-build-buildmonsterconfig sm-content sm-build-content">
@@ -82,6 +89,8 @@ class MonsterConfig extends React.Component {
 					<div className={"sm-builds-monster-stats-box " + (this.state.setsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.setTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'sets')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'sets')}>Ok</button>
+						<label htmlFor="brokenSet" className="sm-label sm-builds-brokenset">Broken Set</label>
+						{this._buildBrokenSet()}
 						<div className="sm-stats-content">
 							<ul>
 								{Utils.map(this.state.sets, this._buildStat.bind(this, 'sets'))}

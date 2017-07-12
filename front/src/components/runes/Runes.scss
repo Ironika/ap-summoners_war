@@ -63,7 +63,7 @@
 
 	.sm-runes-main-filters {
 		height: 100%;
-		padding: 15px;
+		padding: 5px;
 		h4 {
 			color: $color-text;
 			text-align: center;
@@ -84,7 +84,7 @@
 
 	.sm-runes-sub-filters {
 		height: 100%;
-		padding: 15px;
+		padding: 5px;
 		@media screen and (max-width: $screen-md) {
 			margin: 20px 0;
 		}
@@ -98,9 +98,11 @@
 			text-align: center;
     		li {
 				display: inline-block;
-				padding: 8px;
-				border-radius: 100%; 
-				cursor: pointer;
+			    padding: 5px;
+			    margin: 5px;
+			    border-radius: 5%;
+			    cursor: pointer;
+			    border: 1px solid transparent;
 				span {
 					color: $color-text;
 					font-size: 15px;
