@@ -116,7 +116,10 @@ class RunesData extends BaseData {
     onChangeMainStatFilter(event) {
         this.mainStatFilter = (this.mainStatFilter === event.target.value) ? null : event.target.value
 
-        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        let runes = Utils.map(RuneHelper.getData())
+        if(event.target.value != "All")
+            runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+
         this.setState({
             threshold: GROW_THRESHOLD,
             runes: runes, 
