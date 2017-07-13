@@ -35,12 +35,14 @@ class RunesData extends BaseData {
 
         this.obj.onScroll = this.onScroll.bind(this)
 
-        this.sorts = {}
+        this.sortsFilter = {}
+        this.hasSorts = false
         this.setFilter = {}
         this.hasSetFilter = false
         this.posFilter = {}
         this.hasPosFilter = false
-        this.mainStatFilter = null
+        this.mainStatFilter = "All"
+        this.hasMainStatFilter = false
         this.subStatFilter = {}
         this.hasSubStatFilter = false
 
@@ -68,23 +70,49 @@ class RunesData extends BaseData {
         this.setState({runes: runes})
     }
 
+    checkFilters(key) {
+        let UpperKey = key[0].toUpperCase() + key.slice(1);
+        this['has' + UpperKey + 'Filter'] = false
+        for (let item in this[key + 'Filter']) {
+            if (this[key + 'Filter'].hasOwnProperty(item)) {
+                if (this[key + 'Filter'][item]) {
+                    this['has' + UpperKey + 'Filter'] = true
+                    break;
+                }
+            }
+        }
+    }
+
+    checkFiltersAndSorts() {
+        this.checkFilters('set')
+        this.checkFilters('pos')
+        this.checkFilters('subStat')
+        this.checkFilters('sorts')
+
+        this.hasMainStatFilter = false
+        if (this.mainStatFilter != 'All')
+            this.hasMainStatFilter = true
+
+        let runes = Utils.map(RuneHelper.getData())
+
+        if(this.hasSetFilter || this.hasPosFilter || this.hasMainStatFilter || this.hasSubStatFilter) {
+            runes = runes.filter(this._filterRunes.bind(this))
+        }
+
+        if(this.hasSorts)
+            runes = runes.sort(this._sortRunes.bind(this))
+
+        return runes
+    }
+
 	onClickSetFilter(key) {
         if(this.setFilter.hasOwnProperty(key))
             delete this.setFilter[key]
         else
             this.setFilter[key] = key
 
-        this.hasSetFilter = false
-        for (let item in this.setFilter) {
-            if (this.setFilter.hasOwnProperty(item)) {
-                if (this.setFilter[item]) {
-                    this.hasSetFilter = true
-                    break;
-                }
-            }
-        }   
-
-        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        let runes = this.checkFiltersAndSorts()
+        
         this.setState({
             threshold: GROW_THRESHOLD,
             runes: runes, 
@@ -95,17 +123,8 @@ class RunesData extends BaseData {
     onClickRuneStar(key, value) {
         this.posFilter[key] = value
 
-        this.hasPosFilter = false
-        for (let key in this.posFilter) {
-            if (this.posFilter.hasOwnProperty(key)) {
-                if (this.posFilter[key]) {
-                    this.hasPosFilter = true
-                    break;
-                }
-            }
-        }
+        let runes = this.checkFiltersAndSorts()
 
-        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
         this.setState({
             threshold: GROW_THRESHOLD,
             runes: runes, 
@@ -114,11 +133,9 @@ class RunesData extends BaseData {
     }
 
     onChangeMainStatFilter(event) {
-        this.mainStatFilter = (this.mainStatFilter === event.target.value) ? null : event.target.value
+        this.mainStatFilter = event.target.value
 
-        let runes = Utils.map(RuneHelper.getData())
-        if(event.target.value != "All")
-            runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
+        let runes = this.checkFiltersAndSorts()
 
         this.setState({
             threshold: GROW_THRESHOLD,
@@ -133,17 +150,8 @@ class RunesData extends BaseData {
         else
             this.subStatFilter[key] = key
 
-        this.hasSubStatFilter = false
-        for (let item in this.subStatFilter) {
-            if (this.subStatFilter.hasOwnProperty(item)) {
-                if (this.subStatFilter[item]) {
-                    this.hasSubStatFilter = true
-                    break;
-                }
-            }
-        }
+        let runes = this.checkFiltersAndSorts()
 
-        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this))
         this.setState({
             threshold: GROW_THRESHOLD,
             runes: runes, 
@@ -152,12 +160,14 @@ class RunesData extends BaseData {
     }
 
     onClickSort(key) {
-        let sorts = this.sorts
-        sorts[key] = !sorts[key]
-        let runes = Utils.map(RuneHelper.getData()).filter(this._filterRunes.bind(this)).sort(this._sortRunes.bind(this));
+        this.sortsFilter[key] = !this.sortsFilter[key]
+
+        let runes = this.checkFiltersAndSorts()
+
         this.setState({
             threshold: GROW_THRESHOLD,
-            runes: runes
+            runes: runes,
+            sorts: this.sortsFilter
         })
     }
 
@@ -177,7 +187,7 @@ class RunesData extends BaseData {
         let sortAtts = Object.keys(SORT_ATTRIBUTE)
         for (let i = 0; i < sortAtts.length; i++) {
             let sortAtt = sortAtts[i]
-            if (this.sorts[sortAtt]) {
+            if (this.sortsFilter[sortAtt]) {
                 let s = r2[sortAtt] - r1[sortAtt]
                 if (s) return s    
             }
@@ -214,7 +224,7 @@ class RunesData extends BaseData {
         if (this.hasPosFilter && !this.posFilter[rune.pos]) {
             return false
         }
-        if (this.mainStatFilter && rune.statMainType !== this.mainStatFilter) {
+        if (this.hasMainStatFilter && rune.statMainType != this.mainStatFilter) {
             return false
         }
         if (this.hasSubStatFilter && !this._runeHaveStatType(rune, this.subStatFilter)) {
