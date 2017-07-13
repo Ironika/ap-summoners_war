@@ -5,10 +5,10 @@
 }
 .sm-build-buildmonsterconfig {
 	display: inline-block;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     margin-right: 20px;
     height: calc(100% - 20px);
-    max-height: 330px;
     width: 100%;
 	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
 		width: 70%;

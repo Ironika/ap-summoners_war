@@ -36,7 +36,7 @@ class RunesData extends BaseData {
         this.obj.onScroll = this.onScroll.bind(this)
 
         this.sortsFilter = {}
-        this.hasSorts = false
+        this.hasSortsFilter = false
         this.setFilter = {}
         this.hasSetFilter = false
         this.posFilter = {}
@@ -99,7 +99,7 @@ class RunesData extends BaseData {
             runes = runes.filter(this._filterRunes.bind(this))
         }
 
-        if(this.hasSorts)
+        if(this.hasSortsFilter)
             runes = runes.sort(this._sortRunes.bind(this))
 
         return runes
@@ -194,22 +194,29 @@ class RunesData extends BaseData {
         }
     }
 
-    _runeHaveStatType(rune, statTypes) {
-        let haveStatTypes = false
+    _runeHaveStatType(rune, subStats) {
+        let stats = {}
         let haveStatType = false
+        let haveStatTypes = false
 
-        for (let key in statTypes) {
-            if(statTypes[key] == rune.subStatType)
-                haveStatType = true
-            if(statTypes[key] == rune.stat1Type)
-                haveStatType = true
-            if(statTypes[key] == rune.stat2Type)
-                haveStatType = true
-            if(statTypes[key] == rune.stat3Type)
-                haveStatType = true
-            if(statTypes[key] == rune.stat4Type)
-                haveStatType = true 
+        for (let key in subStats) {
+            if(subStats[key] == rune.subStatType)
+                stats[subStats[key]] = subStats[key]
+            if(subStats[key] == rune.stat1Type)
+                stats[subStats[key]] = subStats[key]
+            if(subStats[key] == rune.stat2Type)
+                stats[subStats[key]] = subStats[key]
+            if(subStats[key] == rune.stat3Type)
+                stats[subStats[key]] = subStats[key]
+            if(subStats[key] == rune.stat4Type)
+                stats[subStats[key]] = subStats[key] 
         }
+
+        for (let item in stats)
+            if(stats[item] == subStats[item])
+                haveStatType = true
+            else
+                haveStatType = false
 
         if(haveStatType)
             haveStatTypes = true

@@ -28,8 +28,11 @@
         margin-top: 15%;
     }
 	.sm-builds-height {
-		@media screen and (min-width: $screen-md) {
-			height: 68%;
+		@media screen and (min-width: $screen-md) and (max-width: $screen-xlg) {
+			height: 80%;
 		}
+		@media screen and (min-width: $screen-xlg) {
+	        height: calc(100% - 40px);	
+	    }
 	}	
 }

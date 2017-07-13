@@ -144,23 +144,23 @@ class BuildInfos extends React.Component {
 							<label className="sm-label">Build Name</label>
 							<input className="sm-input" type="text" value={this.state.build.name} onChange={this.onChangeBuildName.bind(this)}/>
 						</li>
-						<li>
+						<li className="sm-mini-li">
 							<label className="sm-label">Status</label>
 							<input className="sm-input sm-cursor-disabled" value={this.state.build.state} disabled={true}/>
 						</li>
 						<li className="sm-mini-li">
 							<label className="sm-label">Runes lvl</label>
-							<input className="sm-input sm-cursor-disabled" value={this.state.build.runesLvl} disabled={true}/>
+							<input className="sm-input sm-cursor-disabled sm-mini-input" value={this.state.build.runesLvl} disabled={true}/>
 						</li>
 						<li className="sm-mini-li">
 							<label className="sm-label">Runes stars</label>
-							<input className="sm-input sm-cursor-disabled" value={this.state.build.runesStars} disabled={true}/>
+							<input className="sm-input sm-cursor-disabled sm-mini-input" value={this.state.build.runesStars} disabled={true}/>
 						</li>
+						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button></li>
+						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button></li>
+						<li className="sm-button-mobile"><button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button></li>
+						<li className="sm-button-mobile"><button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button></li>
 					</ul>
-					<button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button>
-					<button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button>
-					<button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button>
-					<button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button>
 				</SWPanel>
 			);
 		}
