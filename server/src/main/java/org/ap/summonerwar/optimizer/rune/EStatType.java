@@ -70,4 +70,36 @@ public enum EStatType {
 			return null;
 		}
 	}
+	
+	public static EStatType fromMarkup3(String markup) {
+		switch (markup) {
+		case "Spd":
+			return EStatType.SPD;
+		case "Atk":
+			return EStatType.ATK;
+		case "AtkFlat":
+			return EStatType.ATK_FLAT;
+		case "Hp":
+			return EStatType.HP;
+		case "HpFlat":
+			return EStatType.HP_FLAT;
+		case "Def":
+			return EStatType.DEF;
+		case "DefFlat":
+			return EStatType.DEF_FLAT;
+		case "Cdmg":
+			return EStatType.CDMG;
+		case "Crate":
+			return EStatType.CRATE;
+		case "Acc":
+			return EStatType.ACC;
+		case "Res":
+			return EStatType.RES;
+		case "":
+			return null;
+		default:
+			System.err.println("UNKNOW STAT TYPE:" + markup);
+			return null;
+		}
+	}
 }

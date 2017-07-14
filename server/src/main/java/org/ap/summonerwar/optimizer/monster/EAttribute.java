@@ -12,6 +12,7 @@ public enum EAttribute {
 	}
 	
 	public static EAttribute fromMarkup(String markup) {
+		markup = markup.toLowerCase();
 		for (EAttribute entry : values()) {
 			if (entry.getMarkup().equals(markup)) {
 				return entry;

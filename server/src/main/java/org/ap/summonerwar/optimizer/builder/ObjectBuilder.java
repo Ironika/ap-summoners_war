@@ -51,7 +51,7 @@ public class ObjectBuilder {
 	public static Monster buildMonster(MonsterData monsterData) throws APWebException {
 		MonsterStats stats = new MonsterStats(monsterData.getHp(), monsterData.getAtk(), monsterData.getDef(), 
 				monsterData.getSpd(), monsterData.getCrate(), monsterData.getCdmg(), monsterData.getRes(), monsterData.getAcc());
-		Monster monster = new Monster(Long.parseLong(monsterData.getUserId()), Long.parseLong(monsterData.getId()), monsterData.getName(), 
+		Monster monster = new Monster(0, 0, monsterData.getName(), 
 				EAttribute.fromMarkup(monsterData.getElemType()), monsterData.getStar(), monsterData.getLvl(), stats);
 		return monster;
 	}
@@ -160,39 +160,48 @@ public class ObjectBuilder {
 	}
 	
 	public static Rune buildRune(RuneData runeData) {
-		long id = Long.parseLong(runeData.getId());
 		ERuneSet set = ERuneSet.fromMarkup(runeData.getSet());
 		Stat[] stats = ObjectBuilder.buildRuneStats(runeData);
-		Rune rune = new Rune(id, id, set, runeData.getStar(), runeData.getLvl(), Integer.parseInt(runeData.getPos()), runeData.getMonsterId(), stats);
+		Rune rune = new Rune(runeData.getId(), set, runeData.getStar(), runeData.getLvl(), Integer.parseInt(runeData.getPos()), runeData.getMonsterId(), stats);
 		return rune;
 	}
 	
 	public static Stat[] buildRuneStats(RuneData runeData) {
 		int nbStats = 0;		
 		
-		EStatType statType = EStatType.fromMarkup(runeData.getStatMainType());
+		EStatType statType = EStatType.fromMarkup3(runeData.getStatMainType());
 		Stat mainStat  = new Stat(statType, runeData.getStatMain(), EStatPos.MAIN, false, 0);
 		nbStats++;
-		statType = EStatType.fromMarkup(runeData.getStatSubType());
-		Stat subMainStat  = new Stat(statType, runeData.getStatSub(), EStatPos.SUBMAIN, false, 0);
-		if (subMainStat != null)
+		Stat subMainStat = null;
+		if (runeData.getStatSubType() != null) {
+			statType = EStatType.fromMarkup3(runeData.getStatSubType());
+			subMainStat  = new Stat(statType, runeData.getStatSub(), EStatPos.SUBMAIN, false, 0);
 			nbStats++;
-		statType = EStatType.fromMarkup(runeData.getStat1Type());
-		Stat s1Stat  = new Stat(statType, runeData.getStat1(), EStatPos.SUB1, false, 0);
-		if (s1Stat != null)
+		}
+		Stat s1Stat = null;
+		if (runeData.getStat1Type() != null) {
+			statType = EStatType.fromMarkup3(runeData.getStat1Type());
+			s1Stat  = new Stat(statType, runeData.getStat1(), EStatPos.SUB1, false, 0);
 			nbStats++;
-		statType = EStatType.fromMarkup(runeData.getStat2Type());
-		Stat s2Stat  = new Stat(statType, runeData.getStat2(), EStatPos.SUB2, false, 0);
-		if (s2Stat != null)
+		}
+		Stat s2Stat = null;
+		if (runeData.getStat2Type() != null) {
+			statType = EStatType.fromMarkup3(runeData.getStat2Type());
+			s2Stat  = new Stat(statType, runeData.getStat2(), EStatPos.SUB2, false, 0);
 			nbStats++;
-		statType = EStatType.fromMarkup(runeData.getStat3Type());
-		Stat s3Stat  = new Stat(statType, runeData.getStat3(), EStatPos.SUB3, false, 0);
-		if (s3Stat != null)
+		}
+		Stat s3Stat = null;
+		if (runeData.getStat3Type() != null) {
+			statType = EStatType.fromMarkup3(runeData.getStat3Type());
+			s3Stat  = new Stat(statType, runeData.getStat3(), EStatPos.SUB3, false, 0);
 			nbStats++;
-		statType = EStatType.fromMarkup(runeData.getStat4Type());
-		Stat s4Stat  = new Stat(statType, runeData.getStat4(), EStatPos.SUB4, false, 0);
-		if (s4Stat != null)
+		}
+		Stat s4Stat = null;
+		if (runeData.getStat4Type() != null) {
+			statType = EStatType.fromMarkup3(runeData.getStat4Type());
+			s4Stat  = new Stat(statType, runeData.getStat4(), EStatPos.SUB4, false, 0);
 			nbStats++;
+		}
 		
 		Stat[] stats = new Stat[nbStats];
 		int statPos = 0;

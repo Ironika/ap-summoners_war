@@ -6,8 +6,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class Rune {
 
-	private long id;
-	private long uniqueId;
+	private String id;
 	private ERuneSet set;
 	private int stars;
 	private int level;
@@ -17,9 +16,8 @@ public class Rune {
 	private Stat[] stats;
 
 	
-	public Rune(long id, long uniqueId, ERuneSet set, int stars, int level, int slot, String monster, Stat[] stats) {
+	public Rune(String id, ERuneSet set, int stars, int level, int slot, String monster, Stat[] stats) {
 		this.setId(id);
-		this.setUniqueId(uniqueId);
 		this.setSet(set);
 		this.setStars(stars);
 		this.setLevel(level);
@@ -31,7 +29,6 @@ public class Rune {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("id: ").append(id).append("\n");
-		builder.append("uniqueId: ").append(uniqueId).append("\n");
 		builder.append("set: ").append(set).append("\n");
 		builder.append("stars: ").append(stars).append("\n");
 		builder.append("level: ").append(level).append("\n");
@@ -40,7 +37,7 @@ public class Rune {
 			builder.append(stat).append("\n");
 		}
 		builder.append("location: ");
-		if (this.monster.equals("Unknown name"))
+		if (this.monster == null || this.monster.equals("Unknown name"))
 			builder.append("storage").append("\n");
 		else
 			builder.append(this.monster).append("\n");
@@ -65,11 +62,8 @@ public class Rune {
 		return result;
 	}
 	
-	public long getId() { return id; }
-	public void setId(long id) { this.id = id; }
-
-	public long getUniqueId() { return uniqueId; }
-	public void setUniqueId(long uniqueId) { this.uniqueId = uniqueId; }
+	public String getId() { return id; }
+	public void setId(String id) { this.id = id; }
 
 	public ERuneSet getSet() { return set; }
 	public void setSet(ERuneSet set) { this.set = set; }
