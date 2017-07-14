@@ -50,7 +50,7 @@ public class Rune {
 		result.put("level", this.level);
 		result.put("slot", this.slot);
 		result.put("set", this.set);
-		if (this.monster.equals("Unknown name"))
+		if (this.monster == null || this.monster.equals("Unknown name"))
 			result.put("location", "storage");
 		else
 			result.put("location", this.monster);

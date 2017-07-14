@@ -1,6 +1,7 @@
 package org.ap.summonerwar.optimizer.builder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class ObjectBuilder {
 		teamMate.setRequiredStats(ObjectBuilder.buildRequiredStats(config));
 		teamMate.setEvalStats(ObjectBuilder.buildEvalStats(config));
 		teamMate.setRequiredSets(ObjectBuilder.buildRequiredSets(config));
-		teamMate.setBrokenSet(false);
+		teamMate.setBrokenSet(config.getBrokenSet());
 		return teamMate;
 	}
 	
@@ -134,7 +135,8 @@ public class ObjectBuilder {
 	}
 	
 	public static List<List<Rune>> buildSelectedRunes(String userId, BuildData buildData) throws APWebException {
-		List<String> bannedRunes = new ArrayList<String>();
+		List<String> bannedMonsters = new ArrayList<String>(Arrays.asList("Vigor", "Belladeon", "Veromos", "Verdehile", "Megan", "Betta", "Chasun", "Tesarion", "Mav", "Baretta", "Spectra", "Hraesvelg", "Lushen", "Bernard", "Raoq"));
+		List<String> bannedRunes = ObjectBuilder.buildBannedRunes(userId, bannedMonsters);
 		
 		Document doc = new Document().append("userId", userId);
 		List<RuneData> runeDatas = RuneCollection.get(doc);
@@ -159,10 +161,14 @@ public class ObjectBuilder {
 		return selectedRunes;
 	}
 	
-	public static Rune buildRune(RuneData runeData) {
+	public static Rune buildRune(RuneData runeData) throws APWebException {
 		ERuneSet set = ERuneSet.fromMarkup(runeData.getSet());
 		Stat[] stats = ObjectBuilder.buildRuneStats(runeData);
-		Rune rune = new Rune(runeData.getId(), set, runeData.getStar(), runeData.getLvl(), Integer.parseInt(runeData.getPos()), runeData.getMonsterId(), stats);
+		MonsterData monsterData = MonsterCollection.getById(runeData.getMonsterId());
+		String monsterName = null;
+		if (monsterData != null)
+			monsterName = monsterData.getName();
+		Rune rune = new Rune(runeData.getId(), set, runeData.getStar(), runeData.getLvl(), Integer.parseInt(runeData.getPos()), monsterName, stats);
 		return rune;
 	}
 	
@@ -229,5 +235,22 @@ public class ObjectBuilder {
 		}			
 		
 		return stats;
+	}
+	
+	public static List<String> buildBannedRunes(String userId, List<String> monsterNames) throws APWebException {
+		List<String> bannedRunes = new ArrayList<String>();
+		for (String monsterName : monsterNames) {
+			Document doc = new Document().append("name", monsterName).append("userId", userId);
+			List<MonsterData> monsterDatas = MonsterCollection.get(doc);
+			if (monsterDatas.size() > 0) {
+				MonsterData monsterData = monsterDatas.get(0);
+				doc = new Document().append("monsterId", monsterData.getId());
+				List<RuneData> runeDatas = RuneCollection.get(doc);
+				for (RuneData runeData : runeDatas)
+					bannedRunes.add(runeData.getId());
+			}
+		}
+		System.out.println("BannedRunes: " + bannedRunes.size());
+		return bannedRunes;
 	}
 }
