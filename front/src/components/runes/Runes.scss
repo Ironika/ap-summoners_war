@@ -33,6 +33,9 @@
     	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
 			margin: 10% 0;
 		}
+		@media screen and (min-width: $screen-xlg) {
+	        height: calc(100% - 20px);;
+	    }
 	}
     .sm-runes-busy {
         margin: 25px;

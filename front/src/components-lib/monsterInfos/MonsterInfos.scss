@@ -88,6 +88,10 @@
 			}
 		}
 	}
+	.sm-monster-infos-button {
+		text-align: center;
+		margin-top: 10px;
+	}
 	.sm-monster-stats {
 		background-color: $black;
 	    height: calc(80% - 20px);
@@ -103,6 +107,9 @@
 	    	li {
 	    		color: $yellow;
 				font-size: 17px;
+				@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
+					font-size: 14px; 
+				}
 	    	}
 	    }
 	    .sm-monster-values {
@@ -110,6 +117,9 @@
 	    		color:	white;
 				font-size: 17px;
 				span { color: green; }
+				@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
+					font-size: 14px; 
+				}
 	    	}
 	    }
 	    .sm-monster-separator { padding: 15px; }

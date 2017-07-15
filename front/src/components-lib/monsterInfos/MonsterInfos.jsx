@@ -88,7 +88,9 @@ class MonsterInfos extends React.Component {
 							</ul>
 						</div>
 					</div>
-					<button onClick={this.onClickLock.bind(this)}>{this.props.monster.isLock ? "UNLOCK" : "LOCK"}</button>
+					<div className="sm-monster-infos-button">
+						<button className="sm-button" onClick={this.onClickLock.bind(this)}>{this.props.monster.isLock ? "UNLOCK" : "LOCK"}</button>
+					</div>
 				</div>
 			</div>
 		);
