@@ -64,7 +64,6 @@ class MonsterConfigData extends BaseData {
             requiredStatsIsOpen: false,
             notationStatsIsOpen: false,
             setsIsOpen: false,
-            showRequiredStats: false,
             
             monsterConfig: monsterConfig,
 
@@ -171,10 +170,8 @@ class MonsterConfigData extends BaseData {
 
 		if(id == 'requiredStats') {
         	for(let key in StatType.VALUES)
-        		if(this.getState('requiredStats')[StatType.VALUES[key].key]) {
+        		if(this.getState('requiredStats')[StatType.VALUES[key].key])
         			monsterConfig['required'+ StatType.VALUES[key].key] = parseInt(this.getState('requiredStats')[StatType.VALUES[key].key])
-        			showRequiredStats: true
-        		}
         		else
         			delete(monsterConfig['required'+ StatType.VALUES[key].key])
 		} else if(id == 'notationStats') {
