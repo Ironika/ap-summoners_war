@@ -28,7 +28,8 @@ class MonsterConfigData extends BaseData {
 
 		let statTypeValues = []
         for(let i = 0; i < StatType.VALUES.length; i++)
-            statTypeValues.push(StatType.VALUES[i].key)
+        	if (StatType.VALUES[i].key != 'AtkFlat' && StatType.VALUES[i].key != 'DefFlat' && StatType.VALUES[i].key != 'HpFlat')
+            	statTypeValues.push(StatType.VALUES[i].key)
 
         let setTypeValues = []
         for(let i = 0; i < SetType.VALUES.length; i++)
