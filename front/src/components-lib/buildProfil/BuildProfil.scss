@@ -1,5 +1,104 @@
 @import '../../components/var.scss';
 
 .sm-build-profil {
+    .sm-monster-tab {
+        z-index: 10;
+        background-size: contain;
+        color: #937F78;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        border-radius: 10px;
+        width: 140px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        cursor: pointer;
+        padding-right: 25px;
+        text-shadow: 
+            2px 2px 3px black,
+            2px -2px 3px black,
+            -2px -2px 3px black,
+            -2px 2px 3px black;
 
+        &:hover {
+            color: $color-text;
+            &:after {
+                content: url(/assets/images/ui/corner.png);
+            }
+        }
+        &:after {
+            position: absolute;
+            content: url(/assets/images/ui/corner_sepia.png);
+            transform: scale(0.5);
+            right: 0;
+            top: -4px;
+        }
+        &.sm-monster-tab-active {
+            color: $yellow;
+            &:after {
+                content: url(/assets/images/ui/arrow.png);
+            }
+        }
+
+        @media screen and (max-width: $screen-xs) {
+            top: -6%;
+            left: 12%;
+        }
+        @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+            top: -6%;
+            left: 18%;
+        }
+        @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+            top: -6%;
+            left: 30%;
+        }
+        @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+            left: -18%;
+            top: 30%;
+        }
+        @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+            left: -17%;
+            top: 29%;
+        }
+        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
+            left: -14%;
+            top: 29%;
+        }
+        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
+            left: -14%;
+            top: 29%;
+        }
+        @media screen and (min-width: $screen-xxlg) {
+            left: -14%;
+            top: 29%;
+        }
+    }
+
+    .sm-monster-tab-info {
+        background-image: url(/assets/images/ui/tile1_inactive.png);
+        &.sm-monster-tab-active {
+            background-image: url(/assets/images/ui/tile1_active.png);
+        }
+    }
+    
+    .sm-monster-tab-rune {
+        background-image: url(/assets/images/ui/tile2_inactive.png);
+        &.sm-monster-tab-active {
+            background-image: url(/assets/images/ui/tile2_active.png);
+        }
+        @media screen and (max-width: $screen-xs) {
+            left: 50%;
+        }
+        @media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+            left: 55%;
+        }
+        @media screen and (min-width: $screen-md) {
+            top: 40%;
+        }
+    }
+
+    .sm-monster-tab-hide {
+        display:none;
+    }
 }
