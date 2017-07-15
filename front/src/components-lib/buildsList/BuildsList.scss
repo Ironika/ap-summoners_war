@@ -19,13 +19,17 @@
 		.sm-builds-add {
 			text-align: center;
 			display: block;
+			cursor: pointer;
 			@media screen and (max-width: $screen-md) {
 				display: inline-block;
 			}
 			i {
-				font-size: 35px;
+				font-size: 25px;
 	    		color: $color-text;
-	    		cursor: pointer;
+			}
+			span {
+				display: inherit;
+				color: $color-text;
 			}
 	    }
 		.sm-builds-list-li {

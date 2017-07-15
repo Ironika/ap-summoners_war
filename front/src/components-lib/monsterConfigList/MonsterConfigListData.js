@@ -16,7 +16,8 @@ class MonsterConfigListData extends BaseData {
 		this.obj.onClickDeleteMonsterConfig = this.onClickDeleteMonsterConfig.bind(this)
 
        	this.obj.state = {
-            monstersConfig: []
+            monstersConfig: [],
+            haveBuild: false
         }
 
         this._buildMonstersConfig()
@@ -38,6 +39,11 @@ class MonsterConfigListData extends BaseData {
 
 	_onBuildChange() {
 		let build = AppHelper.getData('/currentBuild')
+
+		this.obj.state.haveBuild = false
+		if(build) 
+			this.obj.state.haveBuild = true
+
        	let currentMonstersConfig = {}
     	let storeMonstersConfig = AppHelper.getData('/monstersConfig')
     	for(let key in storeMonstersConfig)

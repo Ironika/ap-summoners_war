@@ -10,10 +10,15 @@
 		white-space:nowrap;
 		.sm-builds-monster-add1 {
 			display: inline-block;
-			.sm-builds-monster-add {
-			    font-size: 35px;
+			cursor: pointer;
+			text-align: center;
+			i {
+			    font-size: 25px;
 	    		color: $color-text;
-	    		cursor: pointer;
+		    }
+		    span {
+		    	display: block;
+		    	color: $color-text;
 		    }
 		}
 		.sm-builds-monster-empty {

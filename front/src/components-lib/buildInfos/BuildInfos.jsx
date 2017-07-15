@@ -165,7 +165,7 @@ class BuildInfos extends React.Component {
 			);
 		}
 		else
-			return(<div>No Build</div>);
+			return(<div></div>);
 	}
 
 }

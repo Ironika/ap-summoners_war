@@ -1,6 +1,6 @@
 import React from 'react'
 import BuildsData from 'components/builds/BuildsData'
-import MonsterConfigList from 'components-lib/monsterConfigList/MonsterConfigList'
+import BuildProfil from 'components-lib/buildProfil/BuildProfil'
 import BuildsList from 'components-lib/buildsList/BuildsList'
 import BuildInfos from 'components-lib/buildInfos/BuildInfos'
 
@@ -29,7 +29,7 @@ class Builds extends React.Component {
 						 <BuildsList/>
 					</div>
 					<div className="col-xs-12 col-md-9 sm-max-height">
-						<MonsterConfigList/>
+						<BuildProfil />
 					</div>
 				</div>
 				<BuildInfos/>

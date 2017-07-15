@@ -34,8 +34,9 @@ class BuildsList extends React.Component {
 			<SWPanel className="sm-builds-list">
 			 	<ul>
 			 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
-			 		<li className="sm-builds-add">
-			 			<i className="glyphicon glyphicon-plus-sign" onClick={this.onClickAddBuild.bind(this)}></i>
+			 		<li className="sm-builds-add" onClick={this.onClickAddBuild.bind(this)}>
+			 			<i className="glyphicon glyphicon-plus-sign"></i>
+			 			<span>Add New Build</span>
 					</li>
 			 	</ul>
 		 	</SWPanel>
