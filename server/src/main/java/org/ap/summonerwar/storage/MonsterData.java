@@ -20,6 +20,7 @@ public class MonsterData {
 	public String name;
 	public Integer xp;
 	public Integer atk;
+	public Long unitId;
 	public String id;
 
 	public Integer getAcc() {
@@ -156,6 +157,14 @@ public class MonsterData {
 
 	public void setAtk(Integer atk) {
 		this.atk = atk;
+	}
+
+	public Long getUnitId() {
+		return this.unitId;
+	}
+
+	public void setUnitId(Long unitId) {
+		this.unitId = unitId;
 	}
 
 	public String getId() {

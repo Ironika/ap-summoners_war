@@ -49,6 +49,7 @@ public class RuneServlet extends APServletBase {
 				bean.stat1Type = data.getStat1Type();
 				bean.statMainType = data.getStatMainType();
 				bean.id = data.getId();
+				bean.uniqueId = data.getUniqueId();
 				
 				beanList.add(bean);
 			}
@@ -87,6 +88,7 @@ public class RuneServlet extends APServletBase {
 			data.setStat1(runeBean.stat1);
 			data.setStat1Type(runeBean.stat1Type);
 			data.setStatMainType(runeBean.statMainType);
+			data.setUniqueId(runeBean.uniqueId);
 			RuneCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -127,6 +129,7 @@ public class RuneServlet extends APServletBase {
 			bean.stat1Type = data.getStat1Type();
 			bean.statMainType = data.getStatMainType();
 			bean.id = data.getId();
+			bean.uniqueId = data.getUniqueId();
 			
 			return Response.status(Status.OK).entity(bean).build();
 			
@@ -168,6 +171,7 @@ public class RuneServlet extends APServletBase {
 			data.setStat1(runeBean.stat1);
 			data.setStat1Type(runeBean.stat1Type);
 			data.setStatMainType(runeBean.statMainType);
+			data.setUniqueId(runeBean.uniqueId);
 			// Store the updated data object
 			RuneCollection.updateNull(data);
 			// Send the response

@@ -1,6 +1,7 @@
 package org.ap.summonerwar.helpers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.core.Response.Status;
@@ -18,6 +19,7 @@ import org.ap.summonerwar.storage.UserCollection;
 import org.ap.summonerwar.storage.UserData;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
+import org.bson.Document;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -36,15 +38,26 @@ public class ImportHelper {
 			}
 			
 			JSONObject json = new JSONObject(importBean.data);
-			JSONArray monsterJson = json.getJSONArray("mons"); 
+			JSONArray monsterJsson = json.getJSONArray("mons"); 
 			
-			Map<Integer, String> monsterIds = new HashMap<Integer, String>();
-			for (int i = 0; i < monsterJson.length(); i++) {
-				JSONObject obj = monsterJson.getJSONObject(i);
+			Document doc = new Document().append("userId", user.getId());
+			List<MonsterData> oldMonsters = MonsterCollection.get(doc);
+			List<RuneData> oldRunes = RuneCollection.get(doc);
+			
+			Map<Integer, MonsterData> monsterIds = new HashMap<Integer, MonsterData>();
+			for (int i = 0; i < monsterJsson.length(); i++) {
+				JSONObject obj = monsterJsson.getJSONObject(i);
 				
-				MonsterData monster = new MonsterData();
+				doc = new Document().append("unitId", obj.getLong("unit_id"));
+				List<MonsterData> currentMonsters = MonsterCollection.get(doc);
+				MonsterData monster = null;
+				if (currentMonsters.size() > 0) {
+					monster = currentMonsters.get(0);
+				} else {
+					monster = new MonsterData();
+					monster.setId(UUIDGenerator.nextId());
+				}
 				monster.setUserId(importBean.userId);
-				monster.setId(UUIDGenerator.nextId());
 				monster.setName(obj.getString("name"));
 				monster.setElemType(obj.getString("attribute"));
 				monster.setStar(obj.getInt("stars"));
@@ -57,26 +70,48 @@ public class ImportHelper {
 				monster.setCdmg(obj.getInt("b_cdmg"));
 				monster.setRes(obj.getInt("b_res"));
 				monster.setAcc(obj.getInt("b_acc"));
+				monster.setUnitId(obj.getLong("unit_id"));
 				
-				monsterIds.put(obj.getInt("id"), monster.id);
+				monsterIds.put(obj.getInt("id"), monster);
 				
-				MonsterCollection.create(monster);
+				if (currentMonsters.size() > 0)
+					MonsterCollection.update(monster);
+				else
+					MonsterCollection.create(monster);
+				
+				for (MonsterData oldMonster : oldMonsters) {
+					if (monster.getUnitId().equals(oldMonster.getUnitId())) {
+						oldMonsters.remove(oldMonster);
+						break;
+					}
+				}
 			}
+			for (MonsterData oldMonster : oldMonsters)
+				MonsterCollection.delete(oldMonster);
+			
 			
 			JSONArray runesJson = json.getJSONArray("runes");
 			for (int i = 0; i < runesJson.length(); i++) {
 				JSONObject obj = runesJson.getJSONObject(i);
 				
-				RuneData rune = new RuneData();
+				doc = new Document().append("uniqueId", obj.getLong("unique_id"));
+				List<RuneData> currentRunes = RuneCollection.get(doc);
+				RuneData rune = null;
+				if (currentRunes.size() > 0) {
+					rune = currentRunes.get(0);
+				} else {
+					rune = new RuneData();
+					rune.setId(UUIDGenerator.nextId());
+				}
+				rune.setUniqueId(obj.getLong("unique_id"));
 				rune.setUserId(importBean.userId);
-				rune.setId(UUIDGenerator.nextId());
 				rune.setSet(obj.getString("set"));
 				rune.setStar(obj.getInt("grade"));
 				rune.setLvl(obj.getInt("level"));
 				rune.setPos(String.valueOf(obj.getInt("slot")));
 				int monster = obj.getInt("monster");
 				if (monster != 0) {
-					rune.monsterId = monsterIds.get(monster);
+					rune.monsterId = monsterIds.get(monster).id;
 				}				
 				ImportHelper.buildStat(obj, "m", rune);
 				ImportHelper.buildStat(obj, "i", rune);
@@ -85,8 +120,20 @@ public class ImportHelper {
 				ImportHelper.buildStat(obj, "s3", rune);
 				ImportHelper.buildStat(obj, "s4", rune);
 				
-				RuneCollection.create(rune);
-			};
+				if (currentRunes.size() > 0)
+					RuneCollection.update(rune);
+				else
+					RuneCollection.create(rune);
+				
+				for (RuneData oldRune : oldRunes) {
+					if (rune.getUniqueId().equals(oldRune.getUniqueId())) {
+						oldRunes.remove(oldRune);
+						break;
+					}
+				}
+			}
+			for (RuneData oldRune : oldRunes)
+				RuneCollection.delete(oldRune);
 			
 			user.setLastImport(TimeHelper.nowDateTimeIntegers());
 			UserCollection.update(user);

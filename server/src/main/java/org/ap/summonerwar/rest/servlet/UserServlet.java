@@ -315,6 +315,7 @@ public class UserServlet extends APServletBase {
 				bean.stat1Type = data.getStat1Type();
 				bean.statMainType = data.getStatMainType();
 				bean.id = data.getId();
+				bean.uniqueId = data.getUniqueId();
 				
 				beanList.add(bean);
 			}
@@ -373,6 +374,7 @@ public class UserServlet extends APServletBase {
 				bean.name = data.getName();
 				bean.xp = data.getXp();
 				bean.atk = data.getAtk();
+				bean.unitId = data.getUnitId();
 				bean.id = data.getId();
 				
 				beanList.add(bean);

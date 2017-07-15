@@ -22,5 +22,6 @@ public class RuneBean {
 	public String stat1Type;
 	public String statMainType;
 	public String id;
+	public Long uniqueId;
 
 }

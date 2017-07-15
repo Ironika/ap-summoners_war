@@ -101,6 +101,7 @@ public class MonsterCollection {
 		data.name = document.getString("name");
 		data.xp = document.getInteger("xp");
 		data.atk = document.getInteger("atk");
+		data.unitId = document.getLong("unitId");
 		data.id = document.getString("id");
 		return data;
 	}
@@ -141,6 +142,8 @@ public class MonsterCollection {
 			document.append("xp", monster.xp);
 		if (monster.atk != null)
 			document.append("atk", monster.atk);
+		if (monster.unitId != null)
+			document.append("unitId", monster.unitId);
 		if (monster.id != null)
 			document.append("id", monster.id);
 		return document;
@@ -165,6 +168,7 @@ public class MonsterCollection {
 		document.append("name", monster.name);
 		document.append("xp", monster.xp);
 		document.append("atk", monster.atk);
+		document.append("unitId", monster.unitId);
 		document.append("id", monster.id);
 		return document;
 	}

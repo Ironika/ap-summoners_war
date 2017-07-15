@@ -22,6 +22,7 @@ public class RuneData {
 	public String stat1Type;
 	public String statMainType;
 	public String id;
+	public Long uniqueId;
 
 	public Integer getLvl() {
 		return this.lvl;
@@ -173,6 +174,14 @@ public class RuneData {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Long getUniqueId() {
+		return this.uniqueId;
+	}
+
+	public void setUniqueId(Long uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 
 }

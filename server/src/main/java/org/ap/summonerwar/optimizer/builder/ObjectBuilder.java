@@ -52,7 +52,7 @@ public class ObjectBuilder {
 	public static Monster buildMonster(MonsterData monsterData) throws APWebException {
 		MonsterStats stats = new MonsterStats(monsterData.getHp(), monsterData.getAtk(), monsterData.getDef(), 
 				monsterData.getSpd(), monsterData.getCrate(), monsterData.getCdmg(), monsterData.getRes(), monsterData.getAcc());
-		Monster monster = new Monster(0, 0, monsterData.getName(), 
+		Monster monster = new Monster(monsterData.getId(), monsterData.getName(), 
 				EAttribute.fromMarkup(monsterData.getElemType()), monsterData.getStar(), monsterData.getLvl(), stats);
 		return monster;
 	}

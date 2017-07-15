@@ -51,6 +51,7 @@ public class MonsterServlet extends APServletBase {
 				bean.name = data.getName();
 				bean.xp = data.getXp();
 				bean.atk = data.getAtk();
+				bean.unitId = data.getUnitId();
 				bean.id = data.getId();
 				
 				beanList.add(bean);
@@ -89,6 +90,7 @@ public class MonsterServlet extends APServletBase {
 			data.setName(monsterBean.name);
 			data.setXp(monsterBean.xp);
 			data.setAtk(monsterBean.atk);
+			data.setUnitId(monsterBean.unitId);
 			MonsterCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -127,6 +129,7 @@ public class MonsterServlet extends APServletBase {
 			bean.name = data.getName();
 			bean.xp = data.getXp();
 			bean.atk = data.getAtk();
+			bean.unitId = data.getUnitId();
 			bean.id = data.getId();
 			
 			return Response.status(Status.OK).entity(bean).build();
@@ -168,6 +171,7 @@ public class MonsterServlet extends APServletBase {
 			data.setName(monsterBean.name);
 			data.setXp(monsterBean.xp);
 			data.setAtk(monsterBean.atk);
+			data.setUnitId(monsterBean.unitId);
 			// Store the updated data object
 			MonsterCollection.updateNull(data);
 			// Send the response
@@ -229,6 +233,7 @@ public class MonsterServlet extends APServletBase {
 				bean.stat1Type = data.getStat1Type();
 				bean.statMainType = data.getStatMainType();
 				bean.id = data.getId();
+				bean.uniqueId = data.getUniqueId();
 				
 				beanList.add(bean);
 			}

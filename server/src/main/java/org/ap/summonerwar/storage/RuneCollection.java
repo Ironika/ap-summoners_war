@@ -103,6 +103,7 @@ public class RuneCollection {
 		data.stat1Type = document.getString("stat1Type");
 		data.statMainType = document.getString("statMainType");
 		data.id = document.getString("id");
+		data.uniqueId = document.getLong("uniqueId");
 		return data;
 	}
 
@@ -146,6 +147,8 @@ public class RuneCollection {
 			document.append("statMainType", rune.statMainType);
 		if (rune.id != null)
 			document.append("id", rune.id);
+		if (rune.uniqueId != null)
+			document.append("uniqueId", rune.uniqueId);
 		return document;
 	}
 
@@ -170,6 +173,7 @@ public class RuneCollection {
 		document.append("stat1Type", rune.stat1Type);
 		document.append("statMainType", rune.statMainType);
 		document.append("id", rune.id);
+		document.append("uniqueId", rune.uniqueId);
 		return document;
 	}
 

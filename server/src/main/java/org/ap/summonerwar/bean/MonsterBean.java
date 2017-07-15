@@ -20,6 +20,7 @@ public class MonsterBean {
 	public String name;
 	public Integer xp;
 	public Integer atk;
+	public Long unitId;
 	public String id;
 
 }

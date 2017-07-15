@@ -2,8 +2,7 @@ package org.ap.summonerwar.optimizer.monster;
 
 public class Monster {
 
-	private long masterId;
-	private long id;
+	private String id;
 	
 	private String name;
 	private EAttribute attribute;
@@ -13,8 +12,7 @@ public class Monster {
 	
 	private MonsterStats monsterStats;
 	
-	public Monster(long masterId, long id, String name, EAttribute attribute, int stars, int level, MonsterStats monsterStats) {
-		this.setMasterId(masterId);
+	public Monster(String id, String name, EAttribute attribute, int stars, int level, MonsterStats monsterStats) {
 		this.setId(id);
 		this.setName(name);
 		this.setAttribute(attribute);
@@ -28,12 +26,9 @@ public class Monster {
 		builder.append(this.name);
 		return builder.toString();
 	}
-	
-	public long getMasterId() { return masterId; }
-	public void setMasterId(long masterId) { this.masterId = masterId; }
 
-	public long getId() { return id; }
-	public void setId(long id) { this.id = id; }
+	public String getId() { return id; }
+	public void setId(String id) { this.id = id; }
 
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }
