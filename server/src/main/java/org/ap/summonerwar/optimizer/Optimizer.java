@@ -8,12 +8,18 @@ import java.util.List;
 import org.ap.summonerwar.bean.DoBuildBean;
 import org.ap.summonerwar.optimizer.builder.ObjectBuilder;
 import org.ap.summonerwar.optimizer.builder.StuffBuilder;
+import org.ap.summonerwar.optimizer.monster.StuffedMonster;
 import org.ap.summonerwar.optimizer.rune.Rune;
 import org.ap.summonerwar.optimizer.stuff.StuffNode;
 import org.ap.summonerwar.optimizer.team.Team;
 import org.ap.summonerwar.storage.BuildCollection;
 import org.ap.summonerwar.storage.BuildData;
+import org.ap.summonerwar.storage.BuildResultCollection;
+import org.ap.summonerwar.storage.BuildResultData;
+import org.ap.summonerwar.storage.MonsterResultCollection;
+import org.ap.summonerwar.storage.MonsterResultData;
 import org.ap.web.internal.APWebException;
+import org.ap.web.internal.UUIDGenerator;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -34,6 +40,8 @@ public class Optimizer {
 		for (int i = 0; i < nbStuff; i++) {
 			StuffNode current = stuffNodes.get(i);
 			
+			Optimizer.buildResultOnDatabase(userId, doBuildBean.buildId, current);
+			
 			JSONObject currentObj = new JSONObject();
 			currentObj.put("id", i);
 			
@@ -48,6 +56,43 @@ public class Optimizer {
 			FileWriter fw = new FileWriter(file);
 			fw.write(currentObj.toString());
 			fw.close();
+		}
+	}
+	
+	public static void buildResultOnDatabase(String userId, String buildId, StuffNode stuffNode) throws APWebException {
+		BuildResultData buildResultData = new BuildResultData();
+		String buildResultId = UUIDGenerator.nextId();
+		buildResultData.setId(buildResultId);
+		buildResultData.setBuildId(buildId);
+		buildResultData.setUserId(userId);
+		buildResultData.setEval(stuffNode.getEval());
+		BuildResultCollection.create(buildResultData);
+		
+		StuffNode current = stuffNode;
+		while(current != null) {
+			StuffedMonster stuffedMonster = current.getStuffedMonster();
+			MonsterResultData monsterResultData = new MonsterResultData();
+			monsterResultData.setId(UUIDGenerator.nextId());
+			monsterResultData.setUserId(userId);
+			monsterResultData.setBuildResultId(buildResultId);
+			monsterResultData.setMonsterConfigId(stuffedMonster.getTeamMate().getId());
+			monsterResultData.setHp(stuffedMonster.getFinalStats().getHp());
+			monsterResultData.setAtk(stuffedMonster.getFinalStats().getAtk());
+			monsterResultData.setDef(stuffedMonster.getFinalStats().getDef());
+			monsterResultData.setSpd(stuffedMonster.getFinalStats().getSpd());
+			monsterResultData.setCrate(stuffedMonster.getFinalStats().getCrate());
+			monsterResultData.setCdmg(stuffedMonster.getFinalStats().getCdmg());
+			monsterResultData.setRes(stuffedMonster.getFinalStats().getRes());
+			monsterResultData.setAcc(stuffedMonster.getFinalStats().getAcc());
+			Rune[] runes = stuffedMonster.getStuff().getRunes();
+			monsterResultData.setRune1(runes[0].getId());
+			monsterResultData.setRune2(runes[1].getId());
+			monsterResultData.setRune3(runes[2].getId());
+			monsterResultData.setRune4(runes[3].getId());
+			monsterResultData.setRune5(runes[4].getId());
+			monsterResultData.setRune6(runes[5].getId());
+			MonsterResultCollection.create(monsterResultData);
+			current = current.getParent();
 		}
 	}
 }

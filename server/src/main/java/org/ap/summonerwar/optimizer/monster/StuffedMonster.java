@@ -4,6 +4,7 @@ import java.util.Map;
 import org.ap.summonerwar.optimizer.rune.EStatType;
 import org.ap.summonerwar.optimizer.rune.Rune;
 import org.ap.summonerwar.optimizer.stuff.Stuff;
+import org.ap.summonerwar.optimizer.team.TeamMate;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -11,15 +12,15 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class StuffedMonster {
 	
-	private Monster monster;
+	private TeamMate teamMate;
 	private Stuff stuff;
 	private MonsterStats bonusStats;
 	private MonsterStats finalStats;
 	
 	private double eval = -1;
 	
-	public StuffedMonster(Monster monster, Stuff stuff, MonsterStats bonusStats, MonsterStats finalStats) {
-		this.setMonster(monster);
+	public StuffedMonster(TeamMate teamMate, Stuff stuff, MonsterStats bonusStats, MonsterStats finalStats) {
+		this.setTeamMate(teamMate);
 		this.setStuff(stuff);
 		this.setBonusStats(bonusStats);
 		this.setFinalStats(finalStats);
@@ -66,8 +67,7 @@ public class StuffedMonster {
 		return result;
 	}
 	
-	public Monster getMonster() { return monster; }
-	public void setMonster(Monster monster) { this.monster = monster; }
+	public Monster getMonster() { return this.teamMate.getMonster(); }
 
 	public MonsterStats getBonusStats() { return bonusStats; }
 	public void setBonusStats(MonsterStats bonusStats) { this.bonusStats = bonusStats; }
@@ -80,5 +80,8 @@ public class StuffedMonster {
 
 	public double getEval() { return eval; }
 	public void setEval(long eval) { this.eval = eval; }
+
+	public TeamMate getTeamMate() { return teamMate; }
+	public void setTeamMate(TeamMate teamMate) { this.teamMate = teamMate; }
 	
 }

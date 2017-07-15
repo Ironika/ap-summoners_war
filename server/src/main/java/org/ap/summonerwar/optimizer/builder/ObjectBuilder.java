@@ -41,7 +41,7 @@ public class ObjectBuilder {
 	public static TeamMate buildTeamMate(MonsterConfigData config) throws APWebException {
 		MonsterData monsterData = MonsterCollection.getById(config.getMonsterId());
 		Monster monster = ObjectBuilder.buildMonster(monsterData);
-		TeamMate teamMate = new TeamMate(monster);
+		TeamMate teamMate = new TeamMate(config.getId(), monster);
 		teamMate.setRequiredStats(ObjectBuilder.buildRequiredStats(config));
 		teamMate.setEvalStats(ObjectBuilder.buildEvalStats(config));
 		teamMate.setRequiredSets(ObjectBuilder.buildRequiredSets(config));

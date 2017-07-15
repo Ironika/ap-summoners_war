@@ -9,6 +9,7 @@ import org.ap.summonerwar.optimizer.rune.EStatType;
 
 public class TeamMate {
 
+	private String id;
 	private Map<EStatType, Integer> requiredStats;
 	private Map<EStatType, Integer> evalStats;
 	private Map<ERuneSet, Integer> requiredSets;
@@ -17,7 +18,8 @@ public class TeamMate {
 	
 	private StuffedMonster[] selectedStuff;
 	
-	public TeamMate(Monster monster) {
+	public TeamMate(String id, Monster monster) {
+		this.setId(id);
 		this.setRequiredStats(new HashMap<EStatType, Integer>());
 		this.setEvalStats(new HashMap<EStatType, Integer>());
 		this.setSelectedStuff(new StuffedMonster[0]);
@@ -55,5 +57,8 @@ public class TeamMate {
 
 	public boolean isBrokenSet() { return brokenSet; }
 	public void setBrokenSet(boolean brokenSet) { this.brokenSet = brokenSet; }
+
+	public String getId() { return id; }
+	public void setId(String id) { this.id = id; }
 	
 }

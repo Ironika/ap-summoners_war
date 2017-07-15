@@ -47,6 +47,22 @@ RestStore.handleLogout = function(results, params) {
 	RestStore.setContent({});
 }
 
+RestStore.handleGetMonsterresult = function(result, params) {
+	let content = RestStore.getContent()
+	if (!content.monsterResult)
+		content.monsterResult = {};
+	content.monsterResult[result.id] = result;
+	RestStore.notifyPath('/monsterResult')
+}
+
+RestStore.handleGetBuildresult = function(result, params) {
+	let content = RestStore.getContent()
+	if (!content.buildResult)
+		content.buildResult = {};
+	content.buildResult[result.id] = result;
+	RestStore.notifyPath('/buildResult')
+}
+
 RestStore.handleGetMonstersconfig = function(result, params) {
 	let content = RestStore.getContent()
 	if (!content.monsterConfig)
@@ -173,6 +189,8 @@ Dispatcher.register('LOGOUT', AuthStore.handleLogout)
 Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
 Dispatcher.register('GET_IMAGE', ImageStore.handleGetImage)
 Dispatcher.register('LOGOUT', RestStore.handleLogout)
+Dispatcher.register('GET_MONSTERRESULT', RestStore.handleGetMonsterresult)
+Dispatcher.register('GET_BUILDRESULT', RestStore.handleGetBuildresult)
 Dispatcher.register('GET_MONSTERSCONFIG', RestStore.handleGetMonstersconfig)
 Dispatcher.register('GET_BUILDS', RestStore.handleGetBuilds)
 Dispatcher.register('GET_BUILD', RestStore.handleGetBuild)

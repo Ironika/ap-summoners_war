@@ -13,6 +13,14 @@ let put_auth_changemail = new ActionBase({ name: 'PUT_AUTH_CHANGEMAIL' })
 let post_auth_changemail_confirm = new ActionBase({ name: 'POST_AUTH_CHANGEMAIL_CONFIRM' })
 let get_image = new ActionBase({ name: 'GET_IMAGE' })
 let post_image = new ActionBase({ name: 'POST_IMAGE' })
+let get_monsterresult = new ActionBase({ name: 'GET_MONSTERRESULT' })
+let post_monsterresult = new ActionBase({ name: 'POST_MONSTERRESULT' })
+let put_monsterresult = new ActionBase({ name: 'PUT_MONSTERRESULT' })
+let delete_monsterresult = new ActionBase({ name: 'DELETE_MONSTERRESULT' })
+let get_buildresult = new ActionBase({ name: 'GET_BUILDRESULT' })
+let post_buildresult = new ActionBase({ name: 'POST_BUILDRESULT' })
+let put_buildresult = new ActionBase({ name: 'PUT_BUILDRESULT' })
+let delete_buildresult = new ActionBase({ name: 'DELETE_BUILDRESULT' })
 let get_monstersconfig = new ActionBase({ name: 'GET_MONSTERSCONFIG' })
 let post_monstersconfig = new ActionBase({ name: 'POST_MONSTERSCONFIG' })
 let put_monstersconfig = new ActionBase({ name: 'PUT_MONSTERSCONFIG' })
@@ -176,6 +184,90 @@ post_image.do = function(args) {
 		data  : args.data
 	};
 	return RestService._sendData(reqParam);
+}
+
+get_monsterresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'monsterResultId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/monsterresult/' + args.monsterResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_monsterresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/monsterresult',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_monsterresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'monsterResultId', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/monsterresult/' + args.monsterResultId + '',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_monsterresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'monsterResultId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/monsterresult/' + args.monsterResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_buildresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildResultId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/buildresult/' + args.buildResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_buildresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/buildresult',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_buildresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildResultId', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/buildresult/' + args.buildResultId + '',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_buildresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'buildResultId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/buildresult/' + args.buildResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
 }
 
 get_monstersconfig.do = function(args) {

@@ -6,6 +6,86 @@ ErrorStore.handleLogout = function(results, params) {
 	ErrorStore.setContent({});
 }
 
+ErrorStore.handleGetMonsterresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_MONSTERRESULT;
+	ErrorStore.notifyPath('/GET_MONSTERRESULT');
+}
+
+ErrorStore.handleGetMonsterresultError = function(error, params) {
+	ErrorStore._content.GET_MONSTERRESULT = error;
+	ErrorStore.notifyPath('/GET_MONSTERRESULT');
+}
+
+ErrorStore.handlePostMonsterresultSuccess = function(results, params) {
+	delete ErrorStore._content.POST_MONSTERRESULT;
+	ErrorStore.notifyPath('/POST_MONSTERRESULT');
+}
+
+ErrorStore.handlePostMonsterresultError = function(error, params) {
+	ErrorStore._content.POST_MONSTERRESULT = error;
+	ErrorStore.notifyPath('/POST_MONSTERRESULT');
+}
+
+ErrorStore.handlePutMonsterresultSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_MONSTERRESULT;
+	ErrorStore.notifyPath('/PUT_MONSTERRESULT');
+}
+
+ErrorStore.handlePutMonsterresultError = function(error, params) {
+	ErrorStore._content.PUT_MONSTERRESULT = error;
+	ErrorStore.notifyPath('/PUT_MONSTERRESULT');
+}
+
+ErrorStore.handleDeleteMonsterresultSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_MONSTERRESULT;
+	ErrorStore.notifyPath('/DELETE_MONSTERRESULT');
+}
+
+ErrorStore.handleDeleteMonsterresultError = function(error, params) {
+	ErrorStore._content.DELETE_MONSTERRESULT = error;
+	ErrorStore.notifyPath('/DELETE_MONSTERRESULT');
+}
+
+ErrorStore.handleGetBuildresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_BUILDRESULT;
+	ErrorStore.notifyPath('/GET_BUILDRESULT');
+}
+
+ErrorStore.handleGetBuildresultError = function(error, params) {
+	ErrorStore._content.GET_BUILDRESULT = error;
+	ErrorStore.notifyPath('/GET_BUILDRESULT');
+}
+
+ErrorStore.handlePostBuildresultSuccess = function(results, params) {
+	delete ErrorStore._content.POST_BUILDRESULT;
+	ErrorStore.notifyPath('/POST_BUILDRESULT');
+}
+
+ErrorStore.handlePostBuildresultError = function(error, params) {
+	ErrorStore._content.POST_BUILDRESULT = error;
+	ErrorStore.notifyPath('/POST_BUILDRESULT');
+}
+
+ErrorStore.handlePutBuildresultSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_BUILDRESULT;
+	ErrorStore.notifyPath('/PUT_BUILDRESULT');
+}
+
+ErrorStore.handlePutBuildresultError = function(error, params) {
+	ErrorStore._content.PUT_BUILDRESULT = error;
+	ErrorStore.notifyPath('/PUT_BUILDRESULT');
+}
+
+ErrorStore.handleDeleteBuildresultSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_BUILDRESULT;
+	ErrorStore.notifyPath('/DELETE_BUILDRESULT');
+}
+
+ErrorStore.handleDeleteBuildresultError = function(error, params) {
+	ErrorStore._content.DELETE_BUILDRESULT = error;
+	ErrorStore.notifyPath('/DELETE_BUILDRESULT');
+}
+
 ErrorStore.handleGetMonstersconfigSuccess = function(results, params) {
 	delete ErrorStore._content.GET_MONSTERSCONFIG;
 	ErrorStore.notifyPath('/GET_MONSTERSCONFIG');
@@ -467,6 +547,14 @@ ErrorStore.handlePostImageError = function(error, params) {
 }
 
 Dispatcher.register('LOGOUT', ErrorStore.handleLogout)
+Dispatcher.register('GET_MONSTERRESULT', ErrorStore.handleGetMonsterresultSuccess, ErrorStore.handleGetMonsterresultError)
+Dispatcher.register('POST_MONSTERRESULT', ErrorStore.handlePostMonsterresultSuccess, ErrorStore.handlePostMonsterresultError)
+Dispatcher.register('PUT_MONSTERRESULT', ErrorStore.handlePutMonsterresultSuccess, ErrorStore.handlePutMonsterresultError)
+Dispatcher.register('DELETE_MONSTERRESULT', ErrorStore.handleDeleteMonsterresultSuccess, ErrorStore.handleDeleteMonsterresultError)
+Dispatcher.register('GET_BUILDRESULT', ErrorStore.handleGetBuildresultSuccess, ErrorStore.handleGetBuildresultError)
+Dispatcher.register('POST_BUILDRESULT', ErrorStore.handlePostBuildresultSuccess, ErrorStore.handlePostBuildresultError)
+Dispatcher.register('PUT_BUILDRESULT', ErrorStore.handlePutBuildresultSuccess, ErrorStore.handlePutBuildresultError)
+Dispatcher.register('DELETE_BUILDRESULT', ErrorStore.handleDeleteBuildresultSuccess, ErrorStore.handleDeleteBuildresultError)
 Dispatcher.register('GET_MONSTERSCONFIG', ErrorStore.handleGetMonstersconfigSuccess, ErrorStore.handleGetMonstersconfigError)
 Dispatcher.register('POST_MONSTERSCONFIG', ErrorStore.handlePostMonstersconfigSuccess, ErrorStore.handlePostMonstersconfigError)
 Dispatcher.register('PUT_MONSTERSCONFIG', ErrorStore.handlePutMonstersconfigSuccess, ErrorStore.handlePutMonstersconfigError)

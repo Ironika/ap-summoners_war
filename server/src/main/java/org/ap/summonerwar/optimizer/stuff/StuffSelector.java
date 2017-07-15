@@ -31,7 +31,12 @@ public class StuffSelector {
 		return true;
 	}
 	
-	public static StuffedMonster goodStuff(Stuff stuff, Monster monster, Map<EStatType, Integer> requiredStatsEntrySet, Map<ERuneSet, Integer> requiredSetsEntrySet, boolean brokenSet, MonsterStats maxStats, int[] failures) {
+	public static StuffedMonster goodStuff(Stuff stuff, TeamMate teamMate, MonsterStats maxStats, int[] failures) {
+		Monster monster = teamMate.getMonster();
+		Map<EStatType, Integer> requiredStats = teamMate.getRequiredStats();
+		Map<ERuneSet, Integer> requiredSets = teamMate.getRequiredSets();
+		boolean brokenSet = teamMate.isBrokenSet();
+		
 		MonsterStats statsBonus = new MonsterStats(-1, -1, -1, -1, -1, -1, -1, -1);
 		MonsterStats finalStats = new MonsterStats(0, 0, 0, 0, 0, 0, 0, 0);
 		
@@ -41,14 +46,14 @@ public class StuffSelector {
 		}
 			
 		
-		for (Entry<ERuneSet, Integer> set : requiredSetsEntrySet.entrySet()) {
+		for (Entry<ERuneSet, Integer> set : requiredSets.entrySet()) {
 			if (!(stuff.getSet()[set.getKey().ordinal()] >= set.getValue())) {
 				failures[8]++;
 				return null;
 			}	
 		}
 		
-		for (Entry<EStatType, Integer> requiredStat : requiredStatsEntrySet.entrySet()) {
+		for (Entry<EStatType, Integer> requiredStat : requiredStats.entrySet()) {
 			EStatType type = requiredStat.getKey();
 			int value = requiredStat.getValue();
 			
@@ -162,7 +167,7 @@ public class StuffSelector {
 		if (maxStats.getAcc() < finalStats.getAcc())
 			maxStats.setAcc(finalStats.getAcc());
 		
-		StuffedMonster stuffedMonster = new StuffedMonster(monster, stuff, statsBonus, finalStats);
+		StuffedMonster stuffedMonster = new StuffedMonster(teamMate, stuff, statsBonus, finalStats);
 		return stuffedMonster;
 	}
 	

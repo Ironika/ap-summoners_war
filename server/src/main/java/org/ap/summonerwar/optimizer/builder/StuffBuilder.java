@@ -61,7 +61,7 @@ public class StuffBuilder {
 								StuffBuilder.computeBonus(bonus5, bonusFinal, rune6);
 								Stuff stuff = new Stuff(rune1, rune2, rune3, rune4, rune5, rune6, bonusFinal);
 								for (TeamMate teamMate : team.getTeamMates()) {
-									StuffedMonster stuffedMonster = StuffSelector.goodStuff(stuff, teamMate.getMonster(), teamMate.getRequiredStats(), teamMate.getRequiredSets(), teamMate.isBrokenSet(), maxStats.get(teamMate), failures.get(teamMate));
+									StuffedMonster stuffedMonster = StuffSelector.goodStuff(stuff, teamMate, maxStats.get(teamMate), failures.get(teamMate));
 									if (stuffedMonster != null) {
 										preSelectedsRunes.get(teamMate).add(stuffedMonster);
 									}	

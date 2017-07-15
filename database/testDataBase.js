@@ -24,6 +24,12 @@ db.monsterConfig.createIndex({"id": 1}, {"unique": true})
 db.rune.drop()
 db.rune.createIndex({"id": 1}, {"unique": true})
 
+db.buildResult.drop()
+db.buildResult.createIndex({"id": 1}, {"unique": true})
+
+db.monsterResult.drop()
+db.monsterResult.createIndex({"id": 1}, {"unique": true})
+
 db.apauth.insert({
 	"id":"useradmin",
 	"username":"admin",
