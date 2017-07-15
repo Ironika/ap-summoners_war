@@ -1,5 +1,8 @@
 import { BaseData }  from 'ap-react-bootstrap'
 import AppHelper from 'helpers/AppHelper'
+import BuildResultHelper from 'helpers/BuildResultHelper'
+import TeamResultHelper from 'helpers/TeamResultHelper'
+import MonsterResultHelper from 'helpers/MonsterResultHelper'
 
 class BuildProfilData extends BaseData {
 
@@ -12,6 +15,7 @@ class BuildProfilData extends BaseData {
         this.obj.state = {
             currentPage: 'config',
             buildHaveResults: false,
+            buildResults: {}
         }
 
         AppHelper.register('/currentBuild', this, this.onBuildChange.bind(this));
@@ -22,22 +26,35 @@ class BuildProfilData extends BaseData {
     }
 
     onBuildChange() {
-        // let monster = AppHelper.getData('/currentMonster')
-        // let runes = []
+        let build = AppHelper.getData('/currentBuild')
 
-        // let allRunes = RuneHelper.getData()
-        // let monsterHaveRunes = false
-        // for (let key in allRunes) {
-        //     if (allRunes[key].monsterId == monster.id) {
-        //         runes.push(allRunes[key])
-        //         monsterHaveRunes = true
-        //     }
-        // }
+        let allResults = BuildResultHelper.getData()
+        let teamResults = TeamResultHelper.getData()
+        let monsterResults = MonsterResultHelper.getData()
 
-        // if(monsterHaveRunes)
-        //     this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, runes: runes})
-        // else 
-        //     this.setState({ monster: monster, monsterHaveRunes: monsterHaveRunes, currentPage: 'infos', runes: runes})
+        let buildHaveResults = false
+        let buildResults = {}
+
+        for (let key in allResults) {
+            if (allResults[key].buildId == build.id) {
+                buildHaveResults = true
+                buildResults[key] = allResults[key]
+                buildResults[key]['teamResults'] = {}
+            }
+        }
+
+        for (let key in teamResults) {
+            buildResults[teamResults[key].buildResultId].teamResults[key] = teamResults[key]
+             buildResults[teamResults[key].buildResultId].teamResults[key]['monsterResults'] = {}
+        }
+
+        for (let key in monsterResults)
+            buildResults[teamResults[monsterResults[key].teamResultId].buildResultId].teamResults[monsterResults[key].teamResultId].monsterResults[key] = monsterResults[key]
+
+        if(buildHaveResults)
+            this.setState({buildHaveResults: buildHaveResults, buildResults: buildResults})
+        else 
+            this.setState({buildHaveResults: buildHaveResults, currentPage: 'config', buildResults: buildResults})
     }
 
     onClickConfig() {

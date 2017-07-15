@@ -8,15 +8,23 @@ class BuildResultsData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-        this.onClickShow = this.onClickShow.bind(this)
+        this.obj.onClickShow = this.onClickShow.bind(this)
+
+        let buildResults = this.obj.props.buildResults
+
+        let showResult = {}
+        for (let key in buildResults)
+        	showResult[key] = false
 
 		this.obj.state = {  
-
+			showResult: showResult
 		}
 	}
 
-    onClickShow() {
-
+    onClickShow(id) {
+    	let showResult = this.getState('showResult')
+    	showResult[id] = !showResult[id]
+    	this.setState({showResult: showResult})
     }
     
     unregister() {

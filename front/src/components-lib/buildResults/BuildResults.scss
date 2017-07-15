@@ -1,5 +1,82 @@
 @import '../../components/var.scss';
 
 .sm-build-results {
-
+	padding: 15px;
+	overflow: auto;
+    height: calc(100% - 20px);
+    hr {
+    	border-color: $color-text;
+    }
+    .sm-content {
+    	overflow: auto;
+    }
+	.sm-build-result {
+		.sm-label {
+			cursor: pointer;
+		}
+		.sm-build-team-result {
+			padding-left: 10px;
+			white-space: nowrap;
+	    	.sm-build-team-result-first {
+	    		background: $black;
+			    display: inline-block;
+			    padding: 15px;
+			    width: 15%;
+			    margin-right: 2%;
+			    color: $color-text;
+			    text-shadow: 
+	            	2px 2px 3px black,
+	            	2px -2px 3px black,
+	            	-2px -2px 3px black,
+	            	-2px 2px 3px black;
+		        float: left;
+    			margin-top: 10%;
+    			text-align: center;
+	    	}
+			.sm-build-monster-result {
+			    background: $black;
+			    display: inline-block;
+			    padding: 5px;
+			    width: 30%;
+			    margin-right: 2%;
+			    .sm-build-monster-result-left {
+			    	padding: 5px;
+			    	.sm-monster-image {
+			    	    width: 90%;
+					    display: block;
+				    }
+				    .sm-build-monster-result-runes {
+				    	margin-top: 10px;
+				    	white-space: normal;
+				    	img { 
+				    		width: 30%;
+				    		cursor: pointer;
+				    	}
+				    }
+			    }
+			    .sm-build-monster-result-right {
+			    	padding: 0;
+			    	ul {
+				    	li {
+				    		color: $yellow;
+				    		font-size: 10px;
+				    		text-shadow: 
+				            	2px 2px 3px black,
+				            	2px -2px 3px black,
+				            	-2px -2px 3px black,
+				            	-2px 2px 3px black;
+				    		span { 
+				    			color: white;
+				    			text-shadow: 
+					            	2px 2px 3px black,
+					            	2px -2px 3px black,
+					            	-2px -2px 3px black,
+					            	-2px 2px 3px black;
+				    		 }
+				    	}
+				    }
+			    }
+			}
+		}
+	}
 }

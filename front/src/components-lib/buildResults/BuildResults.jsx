@@ -1,5 +1,10 @@
 import React from 'react';
 
+import MonsterHelper from 'helpers/MonsterHelper'
+import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
+
+import RuneHelper from 'helpers/RuneHelper'
+import BuildResultsData from 'components-lib/buildResults/BuildResultsData';
 import {Utils}  from 'ap-react-bootstrap'
 
 import './BuildResults.scss';
@@ -19,10 +24,89 @@ class BuildResults extends React.Component {
 		BuildResultsData.unregister()
 	}
 
-	_buildBuildResult() {
-		return (
-			<label className="sm-label" onClick={this.onClickShow.bind(this, 'sets')}>Results - Date</label>
+	buildImg(monster){
+		let storage = "(In Storage)"
+		let element = "(" + monster.elemType + ")"
 
+		let name = monster.name
+
+		if(name.search("Unknow") != -1) {
+			return (<img className="sm-monster-image" src={"assets/images/monsters/default-monster.jpg"}/>)
+		}
+
+		if(name.search(storage) != -1) {
+			name = name.slice(0 , name.search(storage) - 2)
+		}
+
+		if(name.search(element) != -1) {
+			name = name.slice(0 , name.search(element) - 2)
+			name = name + "_" + monster.elemType
+		}
+
+		while(name.search(" ") != -1)
+			name = name.replace(" ", "-")
+
+
+		return (<img className="sm-monster-image" src={"assets/images/monsters/" + name + ".jpg"}/>)
+	}
+
+	_buildMonsterResult(monsterResult) {
+		let monster = MonsterHelper.getData(MonsterConfigHelper.getData(monsterResult.monsterConfigId).monsterId)
+		let rune1 = RuneHelper.getData(monsterResult.rune1)
+		let rune2 = RuneHelper.getData(monsterResult.rune2)
+		let rune3 = RuneHelper.getData(monsterResult.rune3)
+		let rune4 = RuneHelper.getData(monsterResult.rune4)
+		let rune5 = RuneHelper.getData(monsterResult.rune5)
+		let rune6 = RuneHelper.getData(monsterResult.rune6)
+		return (
+			<li className="sm-build-monster-result">
+				<div className="col-xs-6 sm-build-monster-result-left">
+					{this.buildImg(monster)}
+					<div className="sm-build-monster-result-runes">
+						<img src={"assets/images/runes/Rune-" + rune1.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune2.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune3.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune4.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune5.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune6.set + ".png"}/>
+					</div>
+				</div>
+				<div className="col-xs-6 sm-build-monster-result-right">
+					<ul>
+						<li>Hp : <span>{monsterResult.hp}</span></li>
+						<li>Atk : <span>{monsterResult.atk}</span></li>
+						<li>Def : <span>{monsterResult.def}</span></li>
+						<li>Spd : <span>{monsterResult.spd}</span></li>
+						<li>Crate : <span>{monsterResult.crate}</span></li>
+						<li>Cdmg : <span>{monsterResult.cdmg}</span></li>
+						<li>Res : <span>{monsterResult.res}</span></li>
+						<li>Acc : <span>{monsterResult.acc}</span></li>
+					</ul>
+				</div>
+			</li>
+		)
+	}
+
+	_buildTeamResult(teamResult) {
+		return (
+			<div className="sm-build-team-result">
+				<ul>
+					<li className="sm-build-team-result-first">{teamResult.eval.toFixed(2)}</li>
+					{Utils.map(teamResult.monsterResults, this._buildMonsterResult.bind(this))}
+				</ul>
+			</div>
+		)
+	}
+
+	_buildBuildResult(buildResult) {
+		return (
+			<div className={"sm-build-result" }>
+				<label className="sm-label" onClick={this.onClickShow.bind(this, buildResult.id)}>Result - {buildResult.id}</label>
+				<div className={"sm-build-team-results " + (this.state.showResult[buildResult.id] ? "" : "sm-hide")} >
+					{Utils.map(buildResult.teamResults, this._buildTeamResult.bind(this))}
+				</div>
+				<hr/>
+			</div>
 		)
 	}
 
@@ -30,7 +114,7 @@ class BuildResults extends React.Component {
 		return (
 			<div className="sm-build-results">
 			 	<div className="sm-content">
-			 		{this._buildBuildResult()}
+			 		{Utils.map(this.props.buildResults, this._buildBuildResult.bind(this))}
 			 	</div>
 		 	</div>
 		)

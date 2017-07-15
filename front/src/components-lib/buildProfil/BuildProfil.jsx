@@ -25,7 +25,7 @@ class BuildProfil extends React.Component {
         if(id === "config" )
             return (<MonsterConfigList />)
         else
-            return (<BuildResults />)
+            return (<BuildResults buildResults={this.state.buildResults}/>)
     }
 
     render() { 
