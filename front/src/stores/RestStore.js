@@ -63,6 +63,14 @@ RestStore.handleGetBuildresult = function(result, params) {
 	RestStore.notifyPath('/buildResult')
 }
 
+RestStore.handleGetTeamresult = function(result, params) {
+	let content = RestStore.getContent()
+	if (!content.teamResult)
+		content.teamResult = {};
+	content.teamResult[result.id] = result;
+	RestStore.notifyPath('/teamResult')
+}
+
 RestStore.handleGetMonstersconfig = function(result, params) {
 	let content = RestStore.getContent()
 	if (!content.monsterConfig)
@@ -184,6 +192,15 @@ RestStore.handleGetUserMonstersconfig = function(result, params) {
 	RestStore.notifyPath('/monsterConfig')
 }
 
+RestStore.handleGetUserTeamresult = function(result, params) {
+	let content = RestStore.getContent()
+	content.teamResult = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.teamResult[result[i].id] = result[i];
+	RestStore.notifyPath('/teamResult')
+}
+
 RestStore.handleGetUserBuildresult = function(result, params) {
 	let content = RestStore.getContent()
 	content.buildResult = {};
@@ -209,6 +226,7 @@ Dispatcher.register('GET_IMAGE', ImageStore.handleGetImage)
 Dispatcher.register('LOGOUT', RestStore.handleLogout)
 Dispatcher.register('GET_MONSTERRESULT', RestStore.handleGetMonsterresult)
 Dispatcher.register('GET_BUILDRESULT', RestStore.handleGetBuildresult)
+Dispatcher.register('GET_TEAMRESULT', RestStore.handleGetTeamresult)
 Dispatcher.register('GET_MONSTERSCONFIG', RestStore.handleGetMonstersconfig)
 Dispatcher.register('GET_BUILDS', RestStore.handleGetBuilds)
 Dispatcher.register('GET_BUILD', RestStore.handleGetBuild)
@@ -223,5 +241,6 @@ Dispatcher.register('GET_USER_BUILDS', RestStore.handleGetUserBuilds)
 Dispatcher.register('GET_USER_RUNES', RestStore.handleGetUserRunes)
 Dispatcher.register('GET_USER_MONSTERS', RestStore.handleGetUserMonsters)
 Dispatcher.register('GET_USER_MONSTERSCONFIG', RestStore.handleGetUserMonstersconfig)
+Dispatcher.register('GET_USER_TEAMRESULT', RestStore.handleGetUserTeamresult)
 Dispatcher.register('GET_USER_BUILDRESULT', RestStore.handleGetUserBuildresult)
 Dispatcher.register('GET_USER_MONSTERRESULT', RestStore.handleGetUserMonsterresult)

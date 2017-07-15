@@ -16,7 +16,7 @@ public class MonsterResultData {
 	public String rune1;
 	public Integer crate;
 	public String userId;
-	public String buildResultId;
+	public String teamResultId;
 	public Integer cdmg;
 	public Integer atk;
 	public String id;
@@ -126,12 +126,12 @@ public class MonsterResultData {
 		this.userId = userId;
 	}
 
-	public String getBuildResultId() {
-		return this.buildResultId;
+	public String getTeamResultId() {
+		return this.teamResultId;
 	}
 
-	public void setBuildResultId(String buildResultId) {
-		this.buildResultId = buildResultId;
+	public void setTeamResultId(String teamResultId) {
+		this.teamResultId = teamResultId;
 	}
 
 	public Integer getCdmg() {

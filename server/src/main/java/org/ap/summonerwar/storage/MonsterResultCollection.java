@@ -97,7 +97,7 @@ public class MonsterResultCollection {
 		data.rune1 = document.getString("rune1");
 		data.crate = document.getInteger("crate");
 		data.userId = document.getString("userId");
-		data.buildResultId = document.getString("buildResultId");
+		data.teamResultId = document.getString("teamResultId");
 		data.cdmg = document.getInteger("cdmg");
 		data.atk = document.getInteger("atk");
 		data.id = document.getString("id");
@@ -133,8 +133,8 @@ public class MonsterResultCollection {
 			document.append("crate", monsterResult.crate);
 		if (monsterResult.userId != null)
 			document.append("userId", monsterResult.userId);
-		if (monsterResult.buildResultId != null)
-			document.append("buildResultId", monsterResult.buildResultId);
+		if (monsterResult.teamResultId != null)
+			document.append("teamResultId", monsterResult.teamResultId);
 		if (monsterResult.cdmg != null)
 			document.append("cdmg", monsterResult.cdmg);
 		if (monsterResult.atk != null)
@@ -161,7 +161,7 @@ public class MonsterResultCollection {
 		document.append("rune1", monsterResult.rune1);
 		document.append("crate", monsterResult.crate);
 		document.append("userId", monsterResult.userId);
-		document.append("buildResultId", monsterResult.buildResultId);
+		document.append("teamResultId", monsterResult.teamResultId);
 		document.append("cdmg", monsterResult.cdmg);
 		document.append("atk", monsterResult.atk);
 		document.append("id", monsterResult.id);

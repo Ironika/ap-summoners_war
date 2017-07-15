@@ -180,7 +180,6 @@ public class StuffSelector {
 		for (int j = 0; j < teamMate.getSelectedStuff().length; j++) {
 			StuffedMonster currentMonster = teamMate.getSelectedStuff()[j];
 			currentNodes.add(new StuffNode(null, currentMonster, currentMonster.getEval() / bestEval));
-			
 		}
 		
 		

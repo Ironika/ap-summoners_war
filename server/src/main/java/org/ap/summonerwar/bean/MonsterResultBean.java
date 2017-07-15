@@ -4,7 +4,7 @@ package org.ap.summonerwar.bean;
 public class MonsterResultBean {
 
 	public String rune6;
-	public String buildResultId;
+	public String teamResultId;
 	public String rune3;
 	public String rune2;
 	public String rune5;

@@ -86,6 +86,46 @@ ErrorStore.handleDeleteBuildresultError = function(error, params) {
 	ErrorStore.notifyPath('/DELETE_BUILDRESULT');
 }
 
+ErrorStore.handleGetTeamresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_TEAMRESULT;
+	ErrorStore.notifyPath('/GET_TEAMRESULT');
+}
+
+ErrorStore.handleGetTeamresultError = function(error, params) {
+	ErrorStore._content.GET_TEAMRESULT = error;
+	ErrorStore.notifyPath('/GET_TEAMRESULT');
+}
+
+ErrorStore.handlePostTeamresultSuccess = function(results, params) {
+	delete ErrorStore._content.POST_TEAMRESULT;
+	ErrorStore.notifyPath('/POST_TEAMRESULT');
+}
+
+ErrorStore.handlePostTeamresultError = function(error, params) {
+	ErrorStore._content.POST_TEAMRESULT = error;
+	ErrorStore.notifyPath('/POST_TEAMRESULT');
+}
+
+ErrorStore.handlePutTeamresultSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_TEAMRESULT;
+	ErrorStore.notifyPath('/PUT_TEAMRESULT');
+}
+
+ErrorStore.handlePutTeamresultError = function(error, params) {
+	ErrorStore._content.PUT_TEAMRESULT = error;
+	ErrorStore.notifyPath('/PUT_TEAMRESULT');
+}
+
+ErrorStore.handleDeleteTeamresultSuccess = function(results, params) {
+	delete ErrorStore._content.DELETE_TEAMRESULT;
+	ErrorStore.notifyPath('/DELETE_TEAMRESULT');
+}
+
+ErrorStore.handleDeleteTeamresultError = function(error, params) {
+	ErrorStore._content.DELETE_TEAMRESULT = error;
+	ErrorStore.notifyPath('/DELETE_TEAMRESULT');
+}
+
 ErrorStore.handleGetMonstersconfigSuccess = function(results, params) {
 	delete ErrorStore._content.GET_MONSTERSCONFIG;
 	ErrorStore.notifyPath('/GET_MONSTERSCONFIG');
@@ -416,6 +456,16 @@ ErrorStore.handleGetUserMonstersconfigError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_MONSTERSCONFIG');
 }
 
+ErrorStore.handleGetUserTeamresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_USER_TEAMRESULT;
+	ErrorStore.notifyPath('/GET_USER_TEAMRESULT');
+}
+
+ErrorStore.handleGetUserTeamresultError = function(error, params) {
+	ErrorStore._content.GET_USER_TEAMRESULT = error;
+	ErrorStore.notifyPath('/GET_USER_TEAMRESULT');
+}
+
 ErrorStore.handleGetUserBuildresultSuccess = function(results, params) {
 	delete ErrorStore._content.GET_USER_BUILDRESULT;
 	ErrorStore.notifyPath('/GET_USER_BUILDRESULT');
@@ -575,6 +625,10 @@ Dispatcher.register('GET_BUILDRESULT', ErrorStore.handleGetBuildresultSuccess, E
 Dispatcher.register('POST_BUILDRESULT', ErrorStore.handlePostBuildresultSuccess, ErrorStore.handlePostBuildresultError)
 Dispatcher.register('PUT_BUILDRESULT', ErrorStore.handlePutBuildresultSuccess, ErrorStore.handlePutBuildresultError)
 Dispatcher.register('DELETE_BUILDRESULT', ErrorStore.handleDeleteBuildresultSuccess, ErrorStore.handleDeleteBuildresultError)
+Dispatcher.register('GET_TEAMRESULT', ErrorStore.handleGetTeamresultSuccess, ErrorStore.handleGetTeamresultError)
+Dispatcher.register('POST_TEAMRESULT', ErrorStore.handlePostTeamresultSuccess, ErrorStore.handlePostTeamresultError)
+Dispatcher.register('PUT_TEAMRESULT', ErrorStore.handlePutTeamresultSuccess, ErrorStore.handlePutTeamresultError)
+Dispatcher.register('DELETE_TEAMRESULT', ErrorStore.handleDeleteTeamresultSuccess, ErrorStore.handleDeleteTeamresultError)
 Dispatcher.register('GET_MONSTERSCONFIG', ErrorStore.handleGetMonstersconfigSuccess, ErrorStore.handleGetMonstersconfigError)
 Dispatcher.register('POST_MONSTERSCONFIG', ErrorStore.handlePostMonstersconfigSuccess, ErrorStore.handlePostMonstersconfigError)
 Dispatcher.register('PUT_MONSTERSCONFIG', ErrorStore.handlePutMonstersconfigSuccess, ErrorStore.handlePutMonstersconfigError)
@@ -608,6 +662,7 @@ Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError)
 Dispatcher.register('DELETE_USER_MONSTER_RUNES', ErrorStore.handleDeleteUserMonsterRunesSuccess, ErrorStore.handleDeleteUserMonsterRunesError)
 Dispatcher.register('GET_USER_MONSTERSCONFIG', ErrorStore.handleGetUserMonstersconfigSuccess, ErrorStore.handleGetUserMonstersconfigError)
+Dispatcher.register('GET_USER_TEAMRESULT', ErrorStore.handleGetUserTeamresultSuccess, ErrorStore.handleGetUserTeamresultError)
 Dispatcher.register('GET_USER_BUILDRESULT', ErrorStore.handleGetUserBuildresultSuccess, ErrorStore.handleGetUserBuildresultError)
 Dispatcher.register('GET_USER_MONSTERRESULT', ErrorStore.handleGetUserMonsterresultSuccess, ErrorStore.handleGetUserMonsterresultError)
 Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError)

@@ -22,12 +22,9 @@ class MonsterInfos extends React.Component {
 
 	onClickLock() {
 		if (this.props.monster.isLock) {
-			console.log("UNLOCK")
 			this.props.monster.isLock = false;
-			MonsterHelper
 		}
 		else {
-			console.log("LOCK")
 			this.props.monster.isLock = true;
 		}
 		MonsterHelper.putMonster(this.props.monster).

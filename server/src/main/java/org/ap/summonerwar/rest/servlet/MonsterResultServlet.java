@@ -31,7 +31,7 @@ public class MonsterResultServlet extends APServletBase {
 			for (MonsterResultData data : datas) {
 				MonsterResultBean bean = new MonsterResultBean();
 				bean.rune6 = data.getRune6();
-				bean.buildResultId = data.getBuildResultId();
+				bean.teamResultId = data.getTeamResultId();
 				bean.rune3 = data.getRune3();
 				bean.rune2 = data.getRune2();
 				bean.rune5 = data.getRune5();
@@ -69,7 +69,7 @@ public class MonsterResultServlet extends APServletBase {
 			MonsterResultData data = new MonsterResultData();
 			data.setId(UUIDGenerator.nextId());
 			data.setRune6(monsterResultBean.rune6);
-			data.setBuildResultId(monsterResultBean.buildResultId);
+			data.setTeamResultId(monsterResultBean.teamResultId);
 			data.setRune3(monsterResultBean.rune3);
 			data.setRune2(monsterResultBean.rune2);
 			data.setRune5(monsterResultBean.rune5);
@@ -107,7 +107,7 @@ public class MonsterResultServlet extends APServletBase {
 			}
 			MonsterResultBean bean = new MonsterResultBean();
 			bean.rune6 = data.getRune6();
-			bean.buildResultId = data.getBuildResultId();
+			bean.teamResultId = data.getTeamResultId();
 			bean.rune3 = data.getRune3();
 			bean.rune2 = data.getRune2();
 			bean.rune5 = data.getRune5();
@@ -148,7 +148,7 @@ public class MonsterResultServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setRune6(monsterResultBean.rune6);
-			data.setBuildResultId(monsterResultBean.buildResultId);
+			data.setTeamResultId(monsterResultBean.teamResultId);
 			data.setRune3(monsterResultBean.rune3);
 			data.setRune2(monsterResultBean.rune2);
 			data.setRune5(monsterResultBean.rune5);

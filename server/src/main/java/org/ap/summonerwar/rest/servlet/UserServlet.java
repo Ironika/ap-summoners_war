@@ -31,6 +31,9 @@ import org.ap.summonerwar.storage.MonsterCollection;
 import org.ap.summonerwar.bean.MonsterConfigBean;
 import org.ap.summonerwar.storage.MonsterConfigData;
 import org.ap.summonerwar.storage.MonsterConfigCollection;
+import org.ap.summonerwar.bean.TeamResultBean;
+import org.ap.summonerwar.storage.TeamResultData;
+import org.ap.summonerwar.storage.TeamResultCollection;
 import org.ap.summonerwar.bean.BuildResultBean;
 import org.ap.summonerwar.storage.BuildResultData;
 import org.ap.summonerwar.storage.BuildResultCollection;
@@ -456,6 +459,34 @@ public class UserServlet extends APServletBase {
 	}
 
 	@GET
+	@Path("/{userId}/teamresult")
+	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
+	public Response getUserTeamresults(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			List<TeamResultData> datas = TeamResultCollection.get(and(eq("userId", userId)));
+			
+			List<TeamResultBean> beanList = new ArrayList<TeamResultBean>();
+			for (TeamResultData data : datas) {
+				TeamResultBean bean = new TeamResultBean();
+				bean.buildResultId = data.getBuildResultId();
+				bean.userId = data.getUserId();
+				bean.eval = data.getEval();
+				bean.id = data.getId();
+				
+				beanList.add(bean);
+			}
+			
+			return Response.status(Status.OK).entity(beanList.toArray(new TeamResultBean[beanList.size()])).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@GET
 	@Path("/{userId}/buildresult")
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("user")
@@ -468,7 +499,6 @@ public class UserServlet extends APServletBase {
 				BuildResultBean bean = new BuildResultBean();
 				bean.buildId = data.getBuildId();
 				bean.userId = data.getUserId();
-				bean.eval = data.getEval();
 				bean.id = data.getId();
 				
 				beanList.add(bean);
@@ -495,7 +525,7 @@ public class UserServlet extends APServletBase {
 			for (MonsterResultData data : datas) {
 				MonsterResultBean bean = new MonsterResultBean();
 				bean.rune6 = data.getRune6();
-				bean.buildResultId = data.getBuildResultId();
+				bean.teamResultId = data.getTeamResultId();
 				bean.rune3 = data.getRune3();
 				bean.rune2 = data.getRune2();
 				bean.rune5 = data.getRune5();

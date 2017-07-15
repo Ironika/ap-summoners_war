@@ -21,6 +21,10 @@ let get_buildresult = new ActionBase({ name: 'GET_BUILDRESULT' })
 let post_buildresult = new ActionBase({ name: 'POST_BUILDRESULT' })
 let put_buildresult = new ActionBase({ name: 'PUT_BUILDRESULT' })
 let delete_buildresult = new ActionBase({ name: 'DELETE_BUILDRESULT' })
+let get_teamresult = new ActionBase({ name: 'GET_TEAMRESULT' })
+let post_teamresult = new ActionBase({ name: 'POST_TEAMRESULT' })
+let put_teamresult = new ActionBase({ name: 'PUT_TEAMRESULT' })
+let delete_teamresult = new ActionBase({ name: 'DELETE_TEAMRESULT' })
 let get_monstersconfig = new ActionBase({ name: 'GET_MONSTERSCONFIG' })
 let post_monstersconfig = new ActionBase({ name: 'POST_MONSTERSCONFIG' })
 let put_monstersconfig = new ActionBase({ name: 'PUT_MONSTERSCONFIG' })
@@ -54,6 +58,7 @@ let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' })
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' })
 let delete_user_monster_runes = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNES' })
 let get_user_monstersconfig = new ActionBase({ name: 'GET_USER_MONSTERSCONFIG' })
+let get_user_teamresult = new ActionBase({ name: 'GET_USER_TEAMRESULT' })
 let get_user_buildresult = new ActionBase({ name: 'GET_USER_BUILDRESULT' })
 let get_user_monsterresult = new ActionBase({ name: 'GET_USER_MONSTERRESULT' })
 let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' })
@@ -267,6 +272,48 @@ delete_buildresult.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/buildresult/' + args.buildResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_teamresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'teamResultId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/teamresult/' + args.teamResultId + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_teamresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/teamresult',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_teamresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'teamResultId', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/teamresult/' + args.teamResultId + '',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+delete_teamresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'teamResultId']);
+	var reqParam = {
+		method: 'DELETE',
+		url: '/teamresult/' + args.teamResultId + '',
 		token : args.token,
 	};
 	return RestService._request(reqParam);
@@ -608,6 +655,16 @@ get_user_monstersconfig.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/user/' + args.userId + '/monstersconfig',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_user_teamresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/user/' + args.userId + '/teamresult',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

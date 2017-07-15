@@ -18,6 +18,8 @@ import org.ap.summonerwar.storage.BuildResultCollection;
 import org.ap.summonerwar.storage.BuildResultData;
 import org.ap.summonerwar.storage.MonsterResultCollection;
 import org.ap.summonerwar.storage.MonsterResultData;
+import org.ap.summonerwar.storage.TeamResultCollection;
+import org.ap.summonerwar.storage.TeamResultData;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
 import org.codehaus.jettison.json.JSONArray;
@@ -35,12 +37,19 @@ public class Optimizer {
 		StuffBuilder.buildTeamStuffs(team, selectedRunes);
 		List<StuffNode> stuffNodes = StuffBuilder.selectStuffsForTeam(team);
 		
+		BuildResultData buildResultData = new BuildResultData();
+		String buildResultId = UUIDGenerator.nextId();
+		buildResultData.setId(buildResultId);
+		buildResultData.setBuildId(doBuildBean.buildId);
+		buildResultData.setUserId(userId);
+		BuildResultCollection.create(buildResultData);
+		
 		int nbStuff = 3;
 		nbStuff = nbStuff > stuffNodes.size() ? stuffNodes.size() : nbStuff;
 		for (int i = 0; i < nbStuff; i++) {
 			StuffNode current = stuffNodes.get(i);
 			
-			Optimizer.buildResultOnDatabase(userId, doBuildBean.buildId, current);
+			Optimizer.buildResultOnDatabase(userId, buildResultId, current);
 			
 			JSONObject currentObj = new JSONObject();
 			currentObj.put("id", i);
@@ -59,14 +68,14 @@ public class Optimizer {
 		}
 	}
 	
-	public static void buildResultOnDatabase(String userId, String buildId, StuffNode stuffNode) throws APWebException {
-		BuildResultData buildResultData = new BuildResultData();
-		String buildResultId = UUIDGenerator.nextId();
-		buildResultData.setId(buildResultId);
-		buildResultData.setBuildId(buildId);
-		buildResultData.setUserId(userId);
-		buildResultData.setEval(stuffNode.getEval());
-		BuildResultCollection.create(buildResultData);
+	public static void buildResultOnDatabase(String userId, String buildResultId, StuffNode stuffNode) throws APWebException {
+		TeamResultData teamResultData = new TeamResultData();
+		String teamResultId = UUIDGenerator.nextId();
+		teamResultData.setId(teamResultId);
+		teamResultData.setBuildResultId(buildResultId);;
+		teamResultData.setUserId(userId);
+		teamResultData.setEval(stuffNode.getEval());
+		TeamResultCollection.create(teamResultData);
 		
 		StuffNode current = stuffNode;
 		while(current != null) {
@@ -74,7 +83,7 @@ public class Optimizer {
 			MonsterResultData monsterResultData = new MonsterResultData();
 			monsterResultData.setId(UUIDGenerator.nextId());
 			monsterResultData.setUserId(userId);
-			monsterResultData.setBuildResultId(buildResultId);
+			monsterResultData.setTeamResultId(teamResultId);
 			monsterResultData.setMonsterConfigId(stuffedMonster.getTeamMate().getId());
 			monsterResultData.setHp(stuffedMonster.getFinalStats().getHp());
 			monsterResultData.setAtk(stuffedMonster.getFinalStats().getAtk());
