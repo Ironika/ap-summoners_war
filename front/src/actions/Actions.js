@@ -54,6 +54,8 @@ let delete_user_runes = new ActionBase({ name: 'DELETE_USER_RUNES' })
 let get_user_monsters = new ActionBase({ name: 'GET_USER_MONSTERS' })
 let delete_user_monster_runes = new ActionBase({ name: 'DELETE_USER_MONSTER_RUNES' })
 let get_user_monstersconfig = new ActionBase({ name: 'GET_USER_MONSTERSCONFIG' })
+let get_user_buildresult = new ActionBase({ name: 'GET_USER_BUILDRESULT' })
+let get_user_monsterresult = new ActionBase({ name: 'GET_USER_MONSTERRESULT' })
 let post_user_import = new ActionBase({ name: 'POST_USER_IMPORT' })
 
 get_auth.do = function(args) {
@@ -606,6 +608,26 @@ get_user_monstersconfig.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/user/' + args.userId + '/monstersconfig',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_user_buildresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/user/' + args.userId + '/buildresult',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_user_monsterresult.do = function(args) {
+	Utils.checkMembers(args, ['token', 'userId']);
+	var reqParam = {
+		method: 'GET',
+		url: '/user/' + args.userId + '/monsterresult',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

@@ -28,6 +28,10 @@ class MonsterResultHelper {
 		return Dispatcher.issue('DELETE_MONSTERRESULT', {token: AuthHelper.getToken(), monsterResultId: monsterResultId});
 	}
 
+	getUserMonsterresult(userId) {
+		return Dispatcher.issue('GET_USER_MONSTERRESULT', {token: AuthHelper.getToken(), userId: userId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/monsterResult' + (id ? '/' + id : ''));
 	}

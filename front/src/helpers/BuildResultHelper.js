@@ -28,6 +28,10 @@ class BuildResultHelper {
 		return Dispatcher.issue('DELETE_BUILDRESULT', {token: AuthHelper.getToken(), buildResultId: buildResultId});
 	}
 
+	getUserBuildresult(userId) {
+		return Dispatcher.issue('GET_USER_BUILDRESULT', {token: AuthHelper.getToken(), userId: userId});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/buildResult' + (id ? '/' + id : ''));
 	}

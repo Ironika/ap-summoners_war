@@ -416,6 +416,26 @@ ErrorStore.handleGetUserMonstersconfigError = function(error, params) {
 	ErrorStore.notifyPath('/GET_USER_MONSTERSCONFIG');
 }
 
+ErrorStore.handleGetUserBuildresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_USER_BUILDRESULT;
+	ErrorStore.notifyPath('/GET_USER_BUILDRESULT');
+}
+
+ErrorStore.handleGetUserBuildresultError = function(error, params) {
+	ErrorStore._content.GET_USER_BUILDRESULT = error;
+	ErrorStore.notifyPath('/GET_USER_BUILDRESULT');
+}
+
+ErrorStore.handleGetUserMonsterresultSuccess = function(results, params) {
+	delete ErrorStore._content.GET_USER_MONSTERRESULT;
+	ErrorStore.notifyPath('/GET_USER_MONSTERRESULT');
+}
+
+ErrorStore.handleGetUserMonsterresultError = function(error, params) {
+	ErrorStore._content.GET_USER_MONSTERRESULT = error;
+	ErrorStore.notifyPath('/GET_USER_MONSTERRESULT');
+}
+
 ErrorStore.handlePostUserImportSuccess = function(results, params) {
 	delete ErrorStore._content.POST_USER_IMPORT;
 	ErrorStore.notifyPath('/POST_USER_IMPORT');
@@ -588,6 +608,8 @@ Dispatcher.register('DELETE_USER_RUNES', ErrorStore.handleDeleteUserRunesSuccess
 Dispatcher.register('GET_USER_MONSTERS', ErrorStore.handleGetUserMonstersSuccess, ErrorStore.handleGetUserMonstersError)
 Dispatcher.register('DELETE_USER_MONSTER_RUNES', ErrorStore.handleDeleteUserMonsterRunesSuccess, ErrorStore.handleDeleteUserMonsterRunesError)
 Dispatcher.register('GET_USER_MONSTERSCONFIG', ErrorStore.handleGetUserMonstersconfigSuccess, ErrorStore.handleGetUserMonstersconfigError)
+Dispatcher.register('GET_USER_BUILDRESULT', ErrorStore.handleGetUserBuildresultSuccess, ErrorStore.handleGetUserBuildresultError)
+Dispatcher.register('GET_USER_MONSTERRESULT', ErrorStore.handleGetUserMonsterresultSuccess, ErrorStore.handleGetUserMonsterresultError)
 Dispatcher.register('POST_USER_IMPORT', ErrorStore.handlePostUserImportSuccess, ErrorStore.handlePostUserImportError)
 Dispatcher.register('GET_AUTH', ErrorStore.handleGetAuthSuccess, ErrorStore.handleGetAuthError)
 Dispatcher.register('PUT_AUTH_PASSWORD', ErrorStore.handlePutAuthPasswordSuccess, ErrorStore.handlePutAuthPasswordError)

@@ -31,6 +31,12 @@ import org.ap.summonerwar.storage.MonsterCollection;
 import org.ap.summonerwar.bean.MonsterConfigBean;
 import org.ap.summonerwar.storage.MonsterConfigData;
 import org.ap.summonerwar.storage.MonsterConfigCollection;
+import org.ap.summonerwar.bean.BuildResultBean;
+import org.ap.summonerwar.storage.BuildResultData;
+import org.ap.summonerwar.storage.BuildResultCollection;
+import org.ap.summonerwar.bean.MonsterResultBean;
+import org.ap.summonerwar.storage.MonsterResultData;
+import org.ap.summonerwar.storage.MonsterResultCollection;
 import org.ap.summonerwar.bean.ImportBean;
 import org.ap.summonerwar.helpers.ImportHelper;
 
@@ -440,6 +446,76 @@ public class UserServlet extends APServletBase {
 			}
 			
 			return Response.status(Status.OK).entity(beanList.toArray(new MonsterConfigBean[beanList.size()])).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@GET
+	@Path("/{userId}/buildresult")
+	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
+	public Response getUserBuildresults(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			List<BuildResultData> datas = BuildResultCollection.get(and(eq("userId", userId)));
+			
+			List<BuildResultBean> beanList = new ArrayList<BuildResultBean>();
+			for (BuildResultData data : datas) {
+				BuildResultBean bean = new BuildResultBean();
+				bean.buildId = data.getBuildId();
+				bean.userId = data.getUserId();
+				bean.eval = data.getEval();
+				bean.id = data.getId();
+				
+				beanList.add(bean);
+			}
+			
+			return Response.status(Status.OK).entity(beanList.toArray(new BuildResultBean[beanList.size()])).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@GET
+	@Path("/{userId}/monsterresult")
+	@Produces({MediaType.APPLICATION_JSON})
+	@RolesAllowed("user")
+	public Response getUserMonsterresults(@Context SecurityContext sc, @PathParam("userId") final String userId) {
+		try {
+			List<MonsterResultData> datas = MonsterResultCollection.get(and(eq("userId", userId)));
+			
+			List<MonsterResultBean> beanList = new ArrayList<MonsterResultBean>();
+			for (MonsterResultData data : datas) {
+				MonsterResultBean bean = new MonsterResultBean();
+				bean.rune6 = data.getRune6();
+				bean.buildResultId = data.getBuildResultId();
+				bean.rune3 = data.getRune3();
+				bean.rune2 = data.getRune2();
+				bean.rune5 = data.getRune5();
+				bean.rune4 = data.getRune4();
+				bean.rune1 = data.getRune1();
+				bean.userId = data.getUserId();
+				bean.monsterConfigId = data.getMonsterConfigId();
+				bean.acc = data.getAcc();
+				bean.res = data.getRes();
+				bean.def = data.getDef();
+				bean.cdmg = data.getCdmg();
+				bean.spd = data.getSpd();
+				bean.hp = data.getHp();
+				bean.atk = data.getAtk();
+				bean.crate = data.getCrate();
+				bean.id = data.getId();
+				
+				beanList.add(bean);
+			}
+			
+			return Response.status(Status.OK).entity(beanList.toArray(new MonsterResultBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
