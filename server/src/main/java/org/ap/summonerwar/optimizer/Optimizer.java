@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import org.ap.common.TimeHelper;
 import org.ap.summonerwar.bean.DoBuildBean;
 import org.ap.summonerwar.optimizer.builder.ObjectBuilder;
 import org.ap.summonerwar.optimizer.builder.StuffBuilder;
@@ -42,6 +43,7 @@ public class Optimizer {
 		buildResultData.setId(buildResultId);
 		buildResultData.setBuildId(doBuildBean.buildId);
 		buildResultData.setUserId(userId);
+		buildResultData.setCreationDate(TimeHelper.nowDateTimeIntegers());
 		BuildResultCollection.create(buildResultData);
 		
 		int nbStuff = 3;

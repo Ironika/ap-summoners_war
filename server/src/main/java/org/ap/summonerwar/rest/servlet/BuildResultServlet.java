@@ -33,6 +33,7 @@ public class BuildResultServlet extends APServletBase {
 				bean.buildId = data.getBuildId();
 				bean.userId = data.getUserId();
 				bean.id = data.getId();
+				bean.creationDate = data.getCreationDate();
 				
 				beanList.add(bean);
 			}
@@ -55,6 +56,7 @@ public class BuildResultServlet extends APServletBase {
 			data.setId(UUIDGenerator.nextId());
 			data.setBuildId(buildResultBean.buildId);
 			data.setUserId(buildResultBean.userId);
+			data.setCreationDate(buildResultBean.creationDate);
 			BuildResultCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -79,6 +81,7 @@ public class BuildResultServlet extends APServletBase {
 			bean.buildId = data.getBuildId();
 			bean.userId = data.getUserId();
 			bean.id = data.getId();
+			bean.creationDate = data.getCreationDate();
 			
 			return Response.status(Status.OK).entity(bean).build();
 			
@@ -104,6 +107,7 @@ public class BuildResultServlet extends APServletBase {
 			// Update the data object
 			data.setBuildId(buildResultBean.buildId);
 			data.setUserId(buildResultBean.userId);
+			data.setCreationDate(buildResultBean.creationDate);
 			// Store the updated data object
 			BuildResultCollection.updateNull(data);
 			// Send the response

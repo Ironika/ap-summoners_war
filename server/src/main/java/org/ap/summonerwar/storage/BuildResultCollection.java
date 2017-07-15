@@ -79,6 +79,7 @@ public class BuildResultCollection {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static BuildResultData fromDocument(Document document) {
 		if(document == null) {
 			return null;
@@ -86,6 +87,7 @@ public class BuildResultCollection {
 		BuildResultData data = new BuildResultData();
 		data.buildId = document.getString("buildId");
 		data.id = document.getString("id");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.userId = document.getString("userId");
 		return data;
 	}
@@ -96,6 +98,8 @@ public class BuildResultCollection {
 			document.append("buildId", buildResult.buildId);
 		if (buildResult.id != null)
 			document.append("id", buildResult.id);
+		if (buildResult.creationDate != null)
+			document.append("creationDate", buildResult.creationDate);
 		if (buildResult.userId != null)
 			document.append("userId", buildResult.userId);
 		return document;
@@ -105,6 +109,7 @@ public class BuildResultCollection {
 		Document document = new Document();
 		document.append("buildId", buildResult.buildId);
 		document.append("id", buildResult.id);
+		document.append("creationDate", buildResult.creationDate);
 		document.append("userId", buildResult.userId);
 		return document;
 	}
