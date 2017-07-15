@@ -365,6 +365,7 @@ public class UserServlet extends APServletBase {
 				bean.hp = data.getHp();
 				bean.crate = data.getCrate();
 				bean.elemType = data.getElemType();
+				bean.isLock = data.getIsLock();
 				bean.cdmg = data.getCdmg();
 				bean.name = data.getName();
 				bean.xp = data.getXp();

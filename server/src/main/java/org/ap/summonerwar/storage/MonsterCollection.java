@@ -96,6 +96,7 @@ public class MonsterCollection {
 		data.crate = document.getInteger("crate");
 		data.userId = document.getString("userId");
 		data.elemType = document.getString("elemType");
+		data.isLock = document.getBoolean("isLock");
 		data.cdmg = document.getInteger("cdmg");
 		data.name = document.getString("name");
 		data.xp = document.getInteger("xp");
@@ -130,6 +131,8 @@ public class MonsterCollection {
 			document.append("userId", monster.userId);
 		if (monster.elemType != null)
 			document.append("elemType", monster.elemType);
+		if (monster.isLock != null)
+			document.append("isLock", monster.isLock);
 		if (monster.cdmg != null)
 			document.append("cdmg", monster.cdmg);
 		if (monster.name != null)
@@ -157,6 +160,7 @@ public class MonsterCollection {
 		document.append("crate", monster.crate);
 		document.append("userId", monster.userId);
 		document.append("elemType", monster.elemType);
+		document.append("isLock", monster.isLock);
 		document.append("cdmg", monster.cdmg);
 		document.append("name", monster.name);
 		document.append("xp", monster.xp);

@@ -15,6 +15,7 @@ public class MonsterData {
 	public Integer crate;
 	public String userId;
 	public String elemType;
+	public Boolean isLock;
 	public Integer cdmg;
 	public String name;
 	public Integer xp;
@@ -115,6 +116,14 @@ public class MonsterData {
 
 	public void setElemType(String elemType) {
 		this.elemType = elemType;
+	}
+
+	public Boolean getIsLock() {
+		return this.isLock;
+	}
+
+	public void setIsLock(Boolean isLock) {
+		this.isLock = isLock;
 	}
 
 	public Integer getCdmg() {

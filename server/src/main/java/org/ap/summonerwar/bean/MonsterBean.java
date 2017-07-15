@@ -15,6 +15,7 @@ public class MonsterBean {
 	public Integer hp;
 	public Integer crate;
 	public String elemType;
+	public Boolean isLock;
 	public Integer cdmg;
 	public String name;
 	public Integer xp;

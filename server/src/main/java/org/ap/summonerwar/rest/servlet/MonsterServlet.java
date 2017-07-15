@@ -46,6 +46,7 @@ public class MonsterServlet extends APServletBase {
 				bean.hp = data.getHp();
 				bean.crate = data.getCrate();
 				bean.elemType = data.getElemType();
+				bean.isLock = data.getIsLock();
 				bean.cdmg = data.getCdmg();
 				bean.name = data.getName();
 				bean.xp = data.getXp();
@@ -83,6 +84,7 @@ public class MonsterServlet extends APServletBase {
 			data.setHp(monsterBean.hp);
 			data.setCrate(monsterBean.crate);
 			data.setElemType(monsterBean.elemType);
+			data.setIsLock(monsterBean.isLock);
 			data.setCdmg(monsterBean.cdmg);
 			data.setName(monsterBean.name);
 			data.setXp(monsterBean.xp);
@@ -120,6 +122,7 @@ public class MonsterServlet extends APServletBase {
 			bean.hp = data.getHp();
 			bean.crate = data.getCrate();
 			bean.elemType = data.getElemType();
+			bean.isLock = data.getIsLock();
 			bean.cdmg = data.getCdmg();
 			bean.name = data.getName();
 			bean.xp = data.getXp();
@@ -160,6 +163,7 @@ public class MonsterServlet extends APServletBase {
 			data.setHp(monsterBean.hp);
 			data.setCrate(monsterBean.crate);
 			data.setElemType(monsterBean.elemType);
+			data.setIsLock(monsterBean.isLock);
 			data.setCdmg(monsterBean.cdmg);
 			data.setName(monsterBean.name);
 			data.setXp(monsterBean.xp);

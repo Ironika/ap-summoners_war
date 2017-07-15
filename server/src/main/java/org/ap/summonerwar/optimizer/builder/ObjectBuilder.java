@@ -135,8 +135,7 @@ public class ObjectBuilder {
 	}
 	
 	public static List<List<Rune>> buildSelectedRunes(String userId, BuildData buildData) throws APWebException {
-		List<String> bannedMonsters = new ArrayList<String>(Arrays.asList("Vigor", "Belladeon", "Veromos", "Verdehile", "Megan", "Betta", "Chasun", "Tesarion", "Mav", "Baretta", "Spectra", "Hraesvelg", "Lushen", "Bernard", "Raoq"));
-		List<String> bannedRunes = ObjectBuilder.buildBannedRunes(userId, bannedMonsters);
+		List<String> bannedRunes = ObjectBuilder.buildBannedRunes(userId);
 		
 		Document doc = new Document().append("userId", userId);
 		List<RuneData> runeDatas = RuneCollection.get(doc);
@@ -237,13 +236,12 @@ public class ObjectBuilder {
 		return stats;
 	}
 	
-	public static List<String> buildBannedRunes(String userId, List<String> monsterNames) throws APWebException {
+	public static List<String> buildBannedRunes(String userId) throws APWebException {
 		List<String> bannedRunes = new ArrayList<String>();
-		for (String monsterName : monsterNames) {
-			Document doc = new Document().append("name", monsterName).append("userId", userId);
-			List<MonsterData> monsterDatas = MonsterCollection.get(doc);
-			if (monsterDatas.size() > 0) {
-				MonsterData monsterData = monsterDatas.get(0);
+		Document doc = new Document().append("userId", userId);
+		List<MonsterData> monsterDatas = MonsterCollection.get(doc);
+		for (MonsterData monsterData : monsterDatas) {
+			if (monsterData.getIsLock() != null && monsterData.getIsLock() == true) {
 				doc = new Document().append("monsterId", monsterData.getId());
 				List<RuneData> runeDatas = RuneCollection.get(doc);
 				for (RuneData runeData : runeDatas)
