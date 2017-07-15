@@ -19,14 +19,14 @@
 		max-height: 330px;
 	}
 	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-		width: 50%;
+		width: 60%;
 		max-height: initial;
 	}
 	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
 		width: 55%;
 	}
 	@media screen and (min-width: $screen-xlg) {
-		width: 40%;
+		width: 50%;
 	}
     hr {
     	border-color: $color-text;

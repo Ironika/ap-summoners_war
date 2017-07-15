@@ -1,7 +1,26 @@
 @import '../../components/var.scss';
 
 .sm-build-profil {
-    .sm-monster-tab {
+    padding: 0;
+    height: 100%;
+    @media screen and (max-width: $screen-md) {
+        padding-top: 10% !important;
+        margin-top: 10px;
+    }
+
+    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+        padding-left: 12% !important;
+        margin-left: 2%;
+    }
+    @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+        padding-left: 11% !important;
+        margin-left: 2%;
+    }
+    @media screen and (min-width: $screen-xlg) {
+        padding-left: 12% !important;
+        margin-left: 2%;
+    }
+    .sm-build-tab {
         z-index: 10;
         background-size: contain;
         color: #937F78;
@@ -34,7 +53,7 @@
             right: 0;
             top: -4px;
         }
-        &.sm-monster-tab-active {
+        &.sm-build-tab-active {
             color: $yellow;
             &:after {
                 content: url(/assets/images/ui/arrow.png);
@@ -54,37 +73,37 @@
             left: 30%;
         }
         @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-            left: -18%;
+            left: -10%;
             top: 30%;
         }
         @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-            left: -17%;
+            left: -9%;
             top: 29%;
         }
         @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -14%;
+            left: -8%;
             top: 29%;
         }
         @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -14%;
+            left: -8%;
             top: 29%;
         }
         @media screen and (min-width: $screen-xxlg) {
-            left: -14%;
+            left: -8%;
             top: 29%;
         }
     }
 
-    .sm-monster-tab-info {
+    .sm-build-tab-info {
         background-image: url(/assets/images/ui/tile1_inactive.png);
-        &.sm-monster-tab-active {
+        &.sm-build-tab-active {
             background-image: url(/assets/images/ui/tile1_active.png);
         }
     }
     
-    .sm-monster-tab-rune {
+    .sm-build-tab-rune {
         background-image: url(/assets/images/ui/tile2_inactive.png);
-        &.sm-monster-tab-active {
+        &.sm-build-tab-active {
             background-image: url(/assets/images/ui/tile2_active.png);
         }
         @media screen and (max-width: $screen-xs) {
@@ -98,7 +117,7 @@
         }
     }
 
-    .sm-monster-tab-hide {
+    .sm-build-tab-hide {
         display:none;
     }
 }

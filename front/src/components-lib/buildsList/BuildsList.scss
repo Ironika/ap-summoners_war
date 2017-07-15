@@ -6,6 +6,9 @@
 	@media screen and (max-width: $screen-md) {
 		margin-bottom: 20px;
 	}
+	@media screen and (min-width: $screen-md) {
+		margin-right: 10%;
+	}
 	ul {
 		overflow-x: auto;
 		overflow-y: hidden;
