@@ -7,25 +7,25 @@
 	    height: 90%;
 	    width: 95%;
 	    margin: auto;
-	    margin-top: 4%;
+	    margin-top: 2%;
     }
 	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
 	    height: 90%;
 	    width: 90%;
 	    margin: auto;
-	    margin-top: 3%;
+	    margin-top: 2%;
     }
     @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-        height: 75%;
+        height: 80%;
 	    width: 90%;
 	    margin: auto;
-	    margin-top: 8%;
+	    margin-top: 4%;
     }
     @media screen and (min-width: $screen-xxlg) {
-        height: 80%;
-        width: 80%;
+        height: 75%;
+        width: 75%;
         margin: auto;
-        margin-top: 15%;
+        margin-top: 6%;
     }
 	.sm-builds-height {
 		@media screen and (min-width: $screen-md) and (max-width: $screen-xlg) {

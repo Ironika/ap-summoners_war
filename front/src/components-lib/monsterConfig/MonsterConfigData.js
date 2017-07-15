@@ -34,12 +34,12 @@ class MonsterConfigData extends BaseData {
         for(let i = 0; i < SetType.VALUES.length; i++)
             setTypeValues.push(SetType.VALUES[i].key)
         
-       	let requiredStats = []
+       	let requiredStats = {}
         for(let key in StatType.VALUES)
         	if(monsterConfig['required'+ StatType.VALUES[key].key])
 	        	requiredStats[StatType.VALUES[key].key] = monsterConfig['required'+ StatType.VALUES[key].key]
 
-	    let notationStats = []
+	    let notationStats = {}
         for(let key in StatType.VALUES)
         	if(monsterConfig['notation'+ StatType.VALUES[key].key])
 	        	notationStats[StatType.VALUES[key].key] = monsterConfig['notation'+ StatType.VALUES[key].key]
@@ -64,7 +64,7 @@ class MonsterConfigData extends BaseData {
             requiredStatsIsOpen: false,
             notationStatsIsOpen: false,
             setsIsOpen: false,
-
+            showRequiredStats: false,
             
             monsterConfig: monsterConfig,
 
@@ -94,12 +94,12 @@ class MonsterConfigData extends BaseData {
 			monsterImage = this.obj.state.monsters[monsterConfig.monsterId]
 		}
 
-		let requiredStats = []
+		let requiredStats = {}
         for(let key in StatType.VALUES)
         	if(monsterConfig['required'+ StatType.VALUES[key].key])
 	        	requiredStats[StatType.VALUES[key].key] = monsterConfig['required'+ StatType.VALUES[key].key]
 
-	    let notationStats = []
+	    let notationStats = {}
         for(let key in StatType.VALUES)
         	if(monsterConfig['notation'+ StatType.VALUES[key].key])
 	        	notationStats[StatType.VALUES[key].key] = monsterConfig['notation'+ StatType.VALUES[key].key]
@@ -145,8 +145,11 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onClickDeleteStat(id, stat) {
-		delete(this.getState(id)[stat])
-		this.obj.state[id] = this.getState(id)
+		if( id== 'sets')
+			this.getState('sets').splice(stat, 1)
+		else
+			delete(this.getState(id)[stat])
+
 		this._fillMonsterConfig(id)
 	}
 
@@ -168,8 +171,10 @@ class MonsterConfigData extends BaseData {
 
 		if(id == 'requiredStats') {
         	for(let key in StatType.VALUES)
-        		if(this.getState('requiredStats')[StatType.VALUES[key].key])
+        		if(this.getState('requiredStats')[StatType.VALUES[key].key]) {
         			monsterConfig['required'+ StatType.VALUES[key].key] = parseInt(this.getState('requiredStats')[StatType.VALUES[key].key])
+        			showRequiredStats: true
+        		}
         		else
         			delete(monsterConfig['required'+ StatType.VALUES[key].key])
 		} else if(id == 'notationStats') {
@@ -188,13 +193,12 @@ class MonsterConfigData extends BaseData {
 				delete(monsterConfig['set' + i])
 		}
 
-		this.obj.state[id] = this.getState(id);
 		this.setState({monsterConfig: monsterConfig})
 	}
 
 	onClickSubmit(id) {
 		if(id == 'sets')
-			this.getState(id)[this.getState(id + 'Select')] = this.getState(id + 'Select')
+			this.getState(id).push(this.getState(id + 'Select'))
 		else
 			this.getState(id)[this.getState(id + 'Select')] = this.getState(id + 'Input')
 

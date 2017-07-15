@@ -105,7 +105,7 @@
 			    border: 1px solid transparent;
 				span {
 					color: $color-text;
-					font-size: 15px;
+					font-size: 14px;
 					text-shadow: 
 		            	2px 2px 3px black,
 		            	2px -2px 3px black,
@@ -133,7 +133,12 @@
                 margin: 10px;
     			display: inline-block;
     			label {
-    				font-size: 18px;
+    				font-size: 14px;
+    				text-shadow: 
+		            	2px 2px 3px black,
+		            	2px -2px 3px black,
+		            	-2px -2px 3px black,
+		            	-2px 2px 3px black;
     			}
     			input[type=checkbox] {
 				  transform: scale(1.2);

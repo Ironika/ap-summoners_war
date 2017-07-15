@@ -62,7 +62,7 @@ class MonsterConfig extends React.Component {
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'requiredStats')}/>
 						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'requiredStats')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'requiredStats')}>Ok</button>
-						<div className="sm-stats-content">
+						<div className={"sm-stats-content " + (Object.keys(this.state.requiredStats).length > 0 ? "" : "sm-hide")}>
 							<ul>
 								{Utils.map(this.state.requiredStats, this._buildStat.bind(this, 'requiredStats'))}
 							</ul>
@@ -76,7 +76,7 @@ class MonsterConfig extends React.Component {
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'notationStats')}/>
 						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'notationStats')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'notationStats')}>Ok</button>
-						<div className="sm-stats-content">
+						<div className={"sm-stats-content " + (Object.keys(this.state.notationStats).length > 0  ? "" : "sm-hide")}>
 							<ul>
 								{Utils.map(this.state.notationStats, this._buildStat.bind(this, 'notationStats'))}
 							</ul>
@@ -91,7 +91,7 @@ class MonsterConfig extends React.Component {
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'sets')}>Ok</button>
 						<label htmlFor="brokenSet" className="sm-label sm-builds-brokenset">Broken Set</label>
 						{this._buildBrokenSet()}
-						<div className="sm-stats-content">
+						<div className={"sm-stats-content " + (this.state.sets.length > 0  ? "" : "sm-hide")}>
 							<ul>
 								{Utils.map(this.state.sets, this._buildStat.bind(this, 'sets'))}
 							</ul>
