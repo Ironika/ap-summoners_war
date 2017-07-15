@@ -51,7 +51,7 @@ class ImportData extends BaseData {
 					AppHelper.setBusy(false)
 				}.bind(this))
 
-	      	}
+	      	}.bind(this)
 	      	r.readAsText(f);
 	    } else { 
 	      	this.setState({error: "Choose your file !"})
