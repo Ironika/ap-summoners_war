@@ -4,6 +4,8 @@ import MonsterHelper from 'helpers/MonsterHelper'
 import MonsterConfigHelper from 'helpers/MonsterConfigHelper'
 
 import RuneHelper from 'helpers/RuneHelper'
+import Rune from 'components-lib/rune/Rune'
+
 import BuildResultsData from 'components-lib/buildResults/BuildResultsData';
 import {Utils}  from 'ap-react-bootstrap'
 
@@ -60,15 +62,19 @@ class BuildResults extends React.Component {
 		let rune6 = RuneHelper.getData(monsterResult.rune6)
 		return (
 			<li className="sm-build-monster-result">
+				<div className={"sm-build-monster-result-rune " + (this.state.showRune ? "" : "sm-hide")}>
+					<i className="glyphicon glyphicon-remove" onClick={this.onClickRuneDelete}></i>
+					<Rune rune={this.state.rune}/>
+				</div>
 				<div className="col-xs-6 sm-build-monster-result-left">
 					{this.buildImg(monster)}
 					<div className="sm-build-monster-result-runes">
-						<img src={"assets/images/runes/Rune-" + rune1.set + ".png"}/>
-						<img src={"assets/images/runes/Rune-" + rune2.set + ".png"}/>
-						<img src={"assets/images/runes/Rune-" + rune3.set + ".png"}/>
-						<img src={"assets/images/runes/Rune-" + rune4.set + ".png"}/>
-						<img src={"assets/images/runes/Rune-" + rune5.set + ".png"}/>
-						<img src={"assets/images/runes/Rune-" + rune6.set + ".png"}/>
+						<img src={"assets/images/runes/Rune-" + rune1.set + ".png"} onClick={this.onClickRune.bind(this, rune1)}/>
+						<img src={"assets/images/runes/Rune-" + rune2.set + ".png"} onClick={this.onClickRune.bind(this, rune2)}/>
+						<img src={"assets/images/runes/Rune-" + rune3.set + ".png"} onClick={this.onClickRune.bind(this, rune3)}/>
+						<img src={"assets/images/runes/Rune-" + rune4.set + ".png"} onClick={this.onClickRune.bind(this, rune4)}/>
+						<img src={"assets/images/runes/Rune-" + rune5.set + ".png"} onClick={this.onClickRune.bind(this, rune5)}/>
+						<img src={"assets/images/runes/Rune-" + rune6.set + ".png"} onClick={this.onClickRune.bind(this, rune6)}/>
 					</div>
 				</div>
 				<div className="col-xs-6 sm-build-monster-result-right">

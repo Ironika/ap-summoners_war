@@ -9,6 +9,8 @@ class BuildResultsData extends BaseData {
 		super.register(obj)
 
         this.obj.onClickShow = this.onClickShow.bind(this)
+        this.obj.onClickRune = this.onClickRune.bind(this)
+        this.obj.onClickRuneDelete = this.onClickRuneDelete.bind(this)
 
         let buildResults = this.obj.props.buildResults
 
@@ -17,9 +19,19 @@ class BuildResultsData extends BaseData {
         	showResult[key] = false
 
 		this.obj.state = {  
-			showResult: showResult
+			showResult: showResult,
+            rune: {},
+            showRune: false
 		}
 	}
+
+    onClickRuneDelete() {
+        this.setState({showRune: false})
+    }
+
+    onClickRune(rune) {
+        this.setState({rune: rune, showRune: true})
+    }
 
     onClickShow(id) {
     	let showResult = this.getState('showResult')

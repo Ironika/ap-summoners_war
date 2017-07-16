@@ -60,7 +60,7 @@ class MonsterConfig extends React.Component {
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'requiredStats')}>Required Stats</label>
 					<div className={"sm-builds-monster-stats-box " + (this.state.requiredStatsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'requiredStats')}/>
-						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'requiredStats')}/>
+						<input type="text" className="sm-input" placeholder="(150)..." onChange={this.onChangeInput.bind(this, 'requiredStats')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'requiredStats')}>Ok</button>
 						<div className={"sm-stats-content " + (Object.keys(this.state.requiredStats).length > 0 ? "" : "sm-hide")}>
 							<ul>
@@ -74,7 +74,7 @@ class MonsterConfig extends React.Component {
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStats')}>Notations Stats</label>
 					<div className={"sm-builds-monster-stats-box " + (this.state.notationStatsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'notationStats')}/>
-						<input type="text" className="sm-input" onChange={this.onChangeInput.bind(this, 'notationStats')}/>
+						<input type="text" className="sm-input" placeholder="0 < 1 (0.90 or 1)..." onChange={this.onChangeInput.bind(this, 'notationStats')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'notationStats')}>Ok</button>
 						<div className={"sm-stats-content " + (Object.keys(this.state.notationStats).length > 0  ? "" : "sm-hide")}>
 							<ul>
