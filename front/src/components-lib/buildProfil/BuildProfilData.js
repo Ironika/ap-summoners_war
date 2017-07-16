@@ -43,16 +43,16 @@ class BuildProfilData extends BaseData {
             }
         }
 
-        for (let key in teamResults) {
-            buildResults[teamResults[key].buildResultId].teamResults[key] = teamResults[key]
-             buildResults[teamResults[key].buildResultId].teamResults[key]['monsterResults'] = {}
-        }
+        if(buildHaveResults) {
+            for (let key in teamResults) {
+                buildResults[teamResults[key].buildResultId].teamResults[key] = teamResults[key]
+                buildResults[teamResults[key].buildResultId].teamResults[key]['monsterResults'] = {}
+            }
 
-        for (let key in monsterResults)
-            buildResults[teamResults[monsterResults[key].teamResultId].buildResultId].teamResults[monsterResults[key].teamResultId].monsterResults[key] = monsterResults[key]
-
-        if(buildHaveResults)
+            for (let key in monsterResults)
+                buildResults[teamResults[monsterResults[key].teamResultId].buildResultId].teamResults[monsterResults[key].teamResultId].monsterResults[key] = monsterResults[key]
             this.setState({buildHaveResults: buildHaveResults, buildResults: buildResults})
+        }
         else 
             this.setState({buildHaveResults: buildHaveResults, currentPage: 'config', buildResults: buildResults})
     }
