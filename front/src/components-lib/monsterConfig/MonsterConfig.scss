@@ -38,6 +38,21 @@
     	font-size: 25px;
     	cursor: pointer;
     }
+    .sm-monsterconfig-infos {
+    	color: $color-text;
+    	border-radius: 100%;
+    	cursor: pointer; 
+    	display: inline-block;
+    }
+    .sm-monsterconfig-infos-content {
+    	width: 80%;
+    	margin: auto;
+    	background-color: $black;
+	    padding: 10px;
+    	margin-bottom: 10px;
+    	color: $color-text;
+    	text-align: center;
+    }
     .sm-builds-monster-name {
     	img {
 	    	height: 60px;
@@ -53,8 +68,9 @@
     .sm-builds-monster-stats {
     	margin-top: 20px;
     	label {
-    		display: block;
+    		display: inline-block;
     		cursor: pointer;
+    		width: 95%;
     	}
     	.sm-builds-monster-stats-box {
     		input {
@@ -75,6 +91,7 @@
 	    	.sm-builds-brokenset {
 	    		display: inline-block;
 	    		margin-left: 15px;
+	    		width: inherit;
 	    	}
 	    	.sm-builds-select {
 	    		display: inline-block;

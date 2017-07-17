@@ -58,6 +58,13 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'requiredStats')}>Required Stats</label>
+					<i className="glyphicon glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'required')}></i>
+					<div className={"sm-monsterconfig-infos-content " + (this.state.requiredInfos ? "" : "sm-hide")}>
+						Something like : <br/>
+						Hp : 20000 <br/>
+						Atk : 150 <br/>
+						...
+					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.requiredStatsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'requiredStats')}/>
 						<input type="text" className="sm-input" placeholder="(150)..." onChange={this.onChangeInput.bind(this, 'requiredStats')}/>
@@ -72,9 +79,17 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStats')}>Notations Stats</label>
+					<i className="glyphicon glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'notation')}></i>
+					<div className={"sm-monsterconfig-infos-content " + (this.state.notationInfos ? "" : "sm-hide")}>
+						Notation is beetween 0 - 1 <br/>
+						Something like : <br/>
+						Spd : 1 <br/>
+						Atk : 0.90 <br/>
+						...
+					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.notationStatsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'notationStats')}/>
-						<input type="text" className="sm-input" placeholder="0 < 1 (0.90 or 1)..." onChange={this.onChangeInput.bind(this, 'notationStats')}/>
+						<input type="text" className="sm-input" placeholder="(1)..." onChange={this.onChangeInput.bind(this, 'notationStats')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'notationStats')}>Ok</button>
 						<div className={"sm-stats-content " + (Object.keys(this.state.notationStats).length > 0  ? "" : "sm-hide")}>
 							<ul>
@@ -86,6 +101,10 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'sets')}>Sets</label>
+					<i className="glyphicon glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'sets')}></i>
+					<div className={"sm-monsterconfig-infos-content " + (this.state.setsInfos ? "" : "sm-hide")}>
+						Choose your Runes Sets
+					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.setsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.setTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'sets')}/>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'sets')}>Ok</button>

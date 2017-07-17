@@ -105,9 +105,10 @@ class BuildResults extends React.Component {
 	}
 
 	_buildBuildResult(buildResult) {
+		let creationDate = buildResult.creationDate[0] + "/" + buildResult.creationDate[1] + "/" + buildResult.creationDate[2] + " - " + buildResult.creationDate[3] + ":" + buildResult.creationDate[4]
 		return (
 			<div className={"sm-build-result" }>
-				<label className="sm-label" onClick={this.onClickShow.bind(this, buildResult.id)}>Result - {buildResult.id}</label>
+				<label className="sm-label" onClick={this.onClickShow.bind(this, buildResult.id)}>Result : {creationDate}</label>
 				<div className={"sm-build-team-results " + (this.state.showResult[buildResult.id] ? "" : "sm-hide")} >
 					{Utils.map(buildResult.teamResults, this._buildTeamResult.bind(this))}
 				</div>
