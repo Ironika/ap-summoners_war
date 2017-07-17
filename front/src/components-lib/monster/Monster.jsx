@@ -64,6 +64,9 @@ class Monster extends React.Component {
 				<div className="sm-monster-lvl">
 					{(this.props.monster.lvl > 9) ? this.props.monster.lvl : "0" + this.props.monster.lvl}
 				</div>
+				<div className={"sm-monster-lock " + (this.props.monster.isLock ? "" : "sm-hide")}>
+					<img src="assets/images/lock.png"/>
+				</div>
 			</div>
 		);
 	}
