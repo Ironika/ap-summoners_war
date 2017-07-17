@@ -25,14 +25,16 @@ class Builds extends React.Component {
 		return (
 			<div className='sm-builds'>
 				<div className="row sm-builds-height">
-					<div className="col-xs-12 col-md-3 sm-max-height">
+					<div className="col-xs-12 col-md-3 sm-builds-min-height">
 						 <BuildsList/>
 					</div>
 					<div className="col-xs-12 col-md-9 sm-max-height">
 						<BuildProfil />
 					</div>
+					<div className="col-xs-12">
+						<BuildInfos/>
+					</div>
 				</div>
-				<BuildInfos/>
 			</div>
 		);
 	}

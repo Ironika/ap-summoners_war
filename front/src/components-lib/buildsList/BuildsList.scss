@@ -29,6 +29,9 @@
 			i {
 				font-size: 25px;
 	    		color: $color-text;
+	    		@media screen and (max-width: $screen-md) {
+					display: block;
+				}
 			}
 			span {
 				display: inherit;

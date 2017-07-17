@@ -12,15 +12,12 @@
     width: 100%;
 	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
 		width: 70%;
-		max-height: 330px;
 	}
 	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
 		width: 44%;
-		max-height: 330px;
 	}
 	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
 		width: 60%;
-		max-height: initial;
 	}
 	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
 		width: 55%;
@@ -51,7 +48,6 @@
 	    padding: 10px;
     	margin-bottom: 10px;
     	color: $color-text;
-    	text-align: center;
     }
     .sm-builds-monster-name {
     	img {
