@@ -12,10 +12,15 @@ class Monster extends React.Component {
 
 	componentWillMount() {
         AppHelper.register('/monster/' + this.props.monster.id, this, this.onMonsterChange.bind(this));
+        AppHelper.register("/monster/isLock", this, this.onMonsterLockChange.bind(this));
     }
 
     componentWillUnmount() {
         AppHelper.unregister(this)
+    }
+
+    onMonsterLockChange() {
+        this.setState({})
     }
 
 	onMonsterChange() {

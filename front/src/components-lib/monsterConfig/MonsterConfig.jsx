@@ -81,7 +81,7 @@ class MonsterConfig extends React.Component {
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStats')}>Notations Stats</label>
 					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'notation')}></i>
 					<div className={"sm-monsterconfig-infos-content " + (this.state.notationInfos ? "" : "sm-hide")}>
-						Notation is beetween 0 - 1 <br/>
+						Notation is between 0 - 1 <br/>
 						Something like : <br/>
 						Spd : 1 <br/>
 						Atk : 0.90 <br/>
