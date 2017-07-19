@@ -94,7 +94,7 @@ class App extends React.Component {
 			      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" className="sm-form-paypal">
 						<input type="hidden" name="cmd" value="_s-xclick"/>
 						<input type="hidden" name="hosted_button_id" value="N2LQ9Q723DR9S"/>
-						<input type="image" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+						<input type="image" className="sm-paypal" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
 						<img alt=""src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
 					</form>
 				</nav>

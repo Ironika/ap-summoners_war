@@ -25,6 +25,7 @@
 			cursor: pointer;
 			@media screen and (max-width: $screen-md) {
 				display: inline-block;
+				margin-left: 20px;
 			}
 			i {
 				font-size: 25px;
