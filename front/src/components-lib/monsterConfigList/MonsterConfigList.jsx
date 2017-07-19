@@ -31,8 +31,8 @@ class MonsterConfigList extends React.Component {
 			<div className={"sm-builds-monsters " + (this.state.haveBuild ? "" : "sm-hide")} size="lg">
 				<div className="sm-builds-monsters-scroll">
 					{Utils.map(this.state.monstersConfig, this._buildMonstersConfig.bind(this))}
-					<div className={"sm-builds-monster-add1 " + (Object.keys(this.state.monstersConfig).length === 0 ? "sm-builds-monster-empty" : "")}>
-						<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add" onClick={this.onClickAddMonsterConfig.bind(this)}></i>
+					<div className={"sm-builds-monster-add1 " + (Object.keys(this.state.monstersConfig).length === 0 ? "sm-builds-monster-empty" : "")} onClick={this.onClickAddMonsterConfig.bind(this)}>
+						<i className="glyphicon glyphicon-plus-sign sm-builds-monster-add"></i>
 						<span>Add New<br/>Monster Config</span>
 					</div>
 				</div>

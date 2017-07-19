@@ -31,7 +31,7 @@ class Import extends React.Component {
 								Take a look of all your monsters and runes like in game !
 								<br/>
 								<br/>
-								<a className="sm-button" href="https://github.com/kakaroto/SWProxy" target="_blank">How to get your Json File ?</a>
+								<a href="https://github.com/kakaroto/SWProxy" target="_blank"><button className="sm-button">Get your Json File ?</button></a>
 							</p>
 						</SWPanel>
 						<SWPanel className="sm-import-bloc" size="lg">

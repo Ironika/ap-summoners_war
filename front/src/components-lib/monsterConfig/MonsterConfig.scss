@@ -89,10 +89,10 @@
     		}
 	    	button {
 	    		display: inline-block;
-			    height: 43px;
-			    width: 16%;
+			    height: initial;
 			    margin-left: 2%;
-			    padding: 0;
+			    padding: 5px;
+			    font-size: 12px;
 	    	}
 	    	.sm-builds-brokenset {
 	    		display: inline-block;

@@ -90,6 +90,7 @@ html, body, .app, .ap-app {
 	    font-family: $font;
 	}
 	.sm-input {
+		&:focus {outline:0 !important;}
 		width: 100%;
 		display: block;
 		background-color: $black; 
@@ -98,6 +99,7 @@ html, body, .app, .ap-app {
 	    border-color: $color-text;
 	}
 	.sm-upload {
+		&:focus {outline:0 !important;}
 		.sm-upload-label {
 			display: block;
 		    padding: 10px;
@@ -120,6 +122,7 @@ html, body, .app, .ap-app {
 		font-size: 20px;
 	}
 	.sm-button {
+		&:focus {outline:0 !important;}
 		padding: 10px 20px;
 	    border-radius: 5px;
 	    background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
@@ -136,6 +139,12 @@ html, body, .app, .ap-app {
 	    	background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
 	    	color:	$color-text;
 	    }
+	}
+	.sm-button-disabled {
+	    background-color: grey !important;
+	    background-image: initial !important;
+	    cursor: no-drop !important;
+	    border-color: white !important;
 	}
 	.sm-error { color: $color-text-error; }
 

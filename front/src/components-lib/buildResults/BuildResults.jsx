@@ -61,7 +61,7 @@ class BuildResults extends React.Component {
 		let rune5 = RuneHelper.getData(monsterResult.rune5)
 		let rune6 = RuneHelper.getData(monsterResult.rune6)
 		return (
-			<li className="sm-build-monster-result">
+			<li className="sm-build-monster-result" key={monsterResult.id}>
 				<div className="col-xs-6 sm-build-monster-result-left">
 					{this.buildImg(monster)}
 					<div className="sm-build-monster-result-runes">
@@ -109,7 +109,7 @@ class BuildResults extends React.Component {
 
 	_buildTeamResult(teamResult) {
 		return (
-			<div className="sm-build-team-result">
+			<div className="sm-build-team-result" key={teamResult.id}>
 				<ul>
 					<li className="sm-build-team-result-first">{teamResult.eval.toFixed(2)}</li>
 					{Utils.map(teamResult.monsterResults, this._buildMonsterResult.bind(this))}
@@ -121,7 +121,7 @@ class BuildResults extends React.Component {
 	_buildBuildResult(buildResult) {
 		let creationDate = buildResult.creationDate[0] + "/" + buildResult.creationDate[1] + "/" + buildResult.creationDate[2] + " - " + buildResult.creationDate[3] + ":" + buildResult.creationDate[4]
 		return (
-			<div className={"sm-build-result" }>
+			<div className={"sm-build-result"} key={buildResult.id}>
 				<label className="sm-label" onClick={this.onClickShow.bind(this, buildResult.id)}>Result : {creationDate}</label>
 				<div className={"sm-build-team-results " + (this.state.showResult[buildResult.id] ? "" : "sm-hide")} >
 					{Utils.map(buildResult.teamResults, this._buildTeamResult.bind(this))}

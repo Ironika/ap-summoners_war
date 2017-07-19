@@ -48,8 +48,8 @@ class Runes extends React.Component {
 	_buildSorts(sort, key) {
         return (
             <li key={key}>
-                <label className="sm-label">{key}</label>
-                <input className="sm-checkbox" type="checkbox" onClick={this.onClickSort.bind(this, key)}/>
+                <label className="sm-label" htmlFor={key}>{key}</label>
+                <input id={key} className="sm-checkbox" type="checkbox" onClick={this.onClickSort.bind(this, key)}/>
             </li>
         )
     }

@@ -122,11 +122,14 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onChangeMonsterName(event) {
+		let build = AppHelper.getData('/currentBuild')
+
 		for(let key in this.getState('monsters')) {
 			if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
 				let monsterConfig = this.getState('monsterConfig')
 				monsterConfig.monsterId = key
 				AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
+				AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
 				this.setState({
 					monsterName: event.target.value, 
 					monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
@@ -195,6 +198,9 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onClickSubmit(id) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		
 		if(id == 'sets')
 			this.getState(id).push(this.getState(id + 'Select'))
 		else

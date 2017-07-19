@@ -22,7 +22,8 @@ class BuildInfos extends React.Component {
 		let currentBuild = AppHelper.getData('/currentBuild')
 		this.state = {
             build: currentBuild,
-            isNewBuild: this.isNewBuild(currentBuild)
+            isNewBuild: this.isNewBuild(currentBuild),
+            canSave: false
         }  
 		AppHelper.register('/currentBuild', this, this._onBuildChange.bind(this));
 	}
@@ -38,23 +39,35 @@ class BuildInfos extends React.Component {
 			return false
 	}
 
+	_onBuildChangeCanSave() {
+		let build = AppHelper.getData('/currentBuild')
+		let canSave = AppHelper.getData('/currentBuild/' + build.id + "/canSave")
+        this.setState({canSave: canSave})
+    }
+
 	_onBuildChange() {
-		let currentBuild = AppHelper.getData('/currentBuild')
-		currentBuild.runesLvl = 9
-		currentBuild.runesStars = 5
+		let build = AppHelper.getData('/currentBuild')
+		AppHelper.register('/currentBuild/' + build.id + "/canSave", this, this._onBuildChangeCanSave.bind(this));
+		let canSave = AppHelper.getData('/currentBuild/' + build.id + "/canSave")
+		build.runesLvl = 9
+		build.runesStars = 5
         this.setState({
-            build: currentBuild,
-            isNewBuild: this.isNewBuild(currentBuild)
+            build: build,
+            isNewBuild: this.isNewBuild(build),
+            canSave: canSave
         })
     }
 
 	onChangeBuildName(event) {
+		let build = AppHelper.getData('/currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
 		this.state.build.name = event.target.value
 		this.setState({build: this.state.build})
 	}
 
 	onClickEdit(){
 		let build = AppHelper.getData('/currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", false)
 		build.state = BuildState.SAVE.key
 		BuildHelper.putBuild(build).
 		then(function() {
@@ -157,7 +170,7 @@ class BuildInfos extends React.Component {
 							<input className="sm-input sm-cursor-disabled sm-mini-input" value={this.state.build.runesStars} disabled={true}/>
 						</li>
 						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button></li>
-						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.isNewBuild ? "sm-hide" : "")} onClick={this.onClickEdit.bind(this)}>Edit</button></li>
+						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.canSave ? "" : "sm-button-disabled ") + (this.state.isNewBuild ? "sm-hide" : "")} disabled={!this.state.canSave} onClick={this.onClickEdit.bind(this)}>Save</button></li>
 						<li className="sm-button-mobile"><button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button></li>
 						<li className="sm-button-mobile"><button className="sm-button sm-builds-infos-delete" onClick={this.onClickDelete.bind(this, this.state.build.id)}>Delete</button></li>
 					</ul>
