@@ -9,9 +9,6 @@ class MonsterInfos extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			lockInfos : false
-		}
 	}
 
 	_parseName(monster) {
@@ -22,10 +19,6 @@ class MonsterInfos extends React.Component {
 				name = name.slice(0 , name.search(element) - 2)
 			return (name)
 		}
-	}	
-
-	onClickLockInfos() {
-		this.setState({lockInfos: !this.state.lockInfos})
 	}
 
 	onClickLock() {
@@ -101,8 +94,8 @@ class MonsterInfos extends React.Component {
 					</div>
 					<div className="sm-monster-infos-button">
 						<button className="sm-button" onClick={this.onClickLock.bind(this)}>{this.props.monster.isLock ? "Unlock" : "Lock"}</button>
-						<i className="glyphicon glyphicon-question-sign sm-monster-lock" onClick={this.onClickLockInfos.bind(this)}></i>
-						<div className={"sm-monster-lock-infos " + (this.state.lockInfos ? "" : "sm-hide")}>
+						<i className="glyphicon glyphicon-question-sign"></i>
+						<div className="sm-monster-lock-infos">
 							Lock runes monster for your Builds<br/>
 						</div>
 					</div>

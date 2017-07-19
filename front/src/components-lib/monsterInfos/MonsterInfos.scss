@@ -61,6 +61,11 @@
 				font-family: $font;
 				display: inline-block;
 				margin: 0 10px;
+				text-shadow: 
+	            	2px 2px 3px black,
+	            	2px -2px 3px black,
+	            	-2px -2px 3px black,
+	            	-2px 2px 3px black;
 			}
 			.sm-monster-xp {
 				color: white;
@@ -91,22 +96,33 @@
 	.sm-monster-infos-button {
 		text-align: center;
 		margin-top: 10px;
+		position: relative;
 		.sm-button {
 			padding: 5px 10px !important;
 		}
-	    .sm-monster-lock {
+	    i {
 	    	color: $color-text;
 	    	border-radius: 100%;
 	    	cursor: pointer; 
-	    	display: inline-block;
+	    	display: inline-block !important;
 	    	margin-left: 20px;
 	    }
 	    .sm-monster-lock-infos {
+	    	display:none;
 	    	width: 80%;
 	    	margin: auto;
-		    padding: 10px;
+		    padding: 30px;
 	    	margin-bottom: 10px;
 	    	color: $color-text;
+	    	z-index: 50;
+	    	background-color: $marron;
+	    	position: absolute;
+	    	top: -110px;
+	    	left: -5px;
+	    	text-align: left;
+	    }
+	    i:hover + .sm-monster-lock-infos {
+	    	display: block;
 	    }
 	}
 	.sm-monster-stats {
@@ -124,6 +140,11 @@
 	    	li {
 	    		color: $yellow;
 				font-size: 17px;
+				text-shadow: 
+	            	2px 2px 3px black,
+	            	2px -2px 3px black,
+	            	-2px -2px 3px black,
+	            	-2px 2px 3px black;
 				@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
 					font-size: 14px; 
 				}
@@ -133,6 +154,11 @@
 	    	li {
 	    		color:	white;
 				font-size: 17px;
+				text-shadow: 
+	            	2px 2px 3px black,
+	            	2px -2px 3px black,
+	            	-2px -2px 3px black,
+	            	-2px 2px 3px black;
 				span { color: green; }
 				@media screen and (min-width: $screen-md) and (max-width: $screen-lg){
 					font-size: 14px; 

@@ -58,8 +58,8 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'requiredStats')}>Required Stats</label>
-					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'required')}></i>
-					<div className={"sm-monsterconfig-infos-content " + (this.state.requiredInfos ? "" : "sm-hide")}>
+					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
+					<div className="sm-monsterconfig-infos-content">
 						Something like : <br/>
 						Hp : 20000 <br/>
 						Atk : 150 <br/>
@@ -79,8 +79,8 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStats')}>Notations Stats</label>
-					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'notation')}></i>
-					<div className={"sm-monsterconfig-infos-content " + (this.state.notationInfos ? "" : "sm-hide")}>
+					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
+					<div className="sm-monsterconfig-infos-content">
 						Notation is between 0 - 1 <br/>
 						Something like : <br/>
 						Spd : 1 <br/>
@@ -101,8 +101,8 @@ class MonsterConfig extends React.Component {
 				<hr/>
 				<div className="sm-builds-monster-stats">
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'sets')}>Sets</label>
-					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos" onClick={this.onClickInfos.bind(this, 'sets')}></i>
-					<div className={"sm-monsterconfig-infos-content " + (this.state.setsInfos ? "" : "sm-hide")}>
+					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
+					<div className="sm-monsterconfig-infos-content">
 						Choose your Runes Sets
 					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.setsIsOpen ? "" : "sm-hide")}>
