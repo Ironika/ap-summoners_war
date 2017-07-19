@@ -73,6 +73,12 @@ class App extends React.Component {
 					<ul>
 						{Utils.map(AppData.PAGES, this.buildPage.bind(this))}
 			      	</ul>
+			      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" className="sm-form-paypal">
+						<input type="hidden" name="cmd" value="_s-xclick"/>
+						<input type="hidden" name="hosted_button_id" value="N2LQ9Q723DR9S"/>
+						<input type="image" className="sm-paypal" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+						<img alt=""src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
+					</form>
 				</nav>
 
 				<nav className={"sm-sidebar-mobile " + (this.state.showMobileMenu ? "" : "sm-hide")}>
@@ -85,6 +91,12 @@ class App extends React.Component {
 					<ul>
 						{Utils.map(AppData.PAGES, this.buildPage.bind(this))}
 			      	</ul>
+			      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" className="sm-form-paypal">
+						<input type="hidden" name="cmd" value="_s-xclick"/>
+						<input type="hidden" name="hosted_button_id" value="N2LQ9Q723DR9S"/>
+						<input type="image" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+						<img alt=""src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
+					</form>
 				</nav>
 
 				<section className={"sm-section"}>
@@ -97,7 +109,11 @@ class App extends React.Component {
 					</div>
 					<footer>
 						<div className={"sm-footer"}>
-						  	<p className={"sm-copyright"}>Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.</p>
+						  	<p className={"sm-copyright"}>
+						  		Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.
+						  		<br/>
+						  		<a href="mailto:test@test.com">Contact Us</a>
+						  	</p>
 						</div>
 					</footer>
 				</section>

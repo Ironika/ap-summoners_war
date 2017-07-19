@@ -231,6 +231,15 @@ html, body, .app, .ap-app {
 			}
 		}
 	}
+	.sm-form-paypal {
+		width: 80%;
+		margin: auto;
+		text-align: center;
+		.sm-paypal {
+			width: 100%;
+			margin-top: 20px;
+		}
+	}
 
 	.sm-sidebar {
 		background-image: radial-gradient($marroon-light 65%,$marroon-dark 100%);
@@ -265,7 +274,7 @@ html, body, .app, .ap-app {
 			a, a:hover, a:focus {
 				text-decoration: none;
 				color: $marroon-dark2;
-			    font-size: 18px;
+			    font-size: 15px;
 			}
 		}
 		ul {
@@ -338,7 +347,7 @@ html, body, .app, .ap-app {
 			a, a:hover, a:focus {
 				text-decoration: none;
 				color: $marroon-dark2;
-			    font-size: 18px;
+			    font-size: 15px;
 			}
 		}
 		ul {
