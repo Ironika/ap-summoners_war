@@ -221,7 +221,7 @@ html, body, .app, .ap-app {
 		    .sm-footer {
 				background-color: $black;
 				border-top: 2px solid $marroon-light;
-				padding: 2%;
+				padding: 1.5%;
 				height: 100%;
 				.sm-copyright {
 					text-align: center;
@@ -236,8 +236,13 @@ html, body, .app, .ap-app {
 		margin: auto;
 		text-align: center;
 		.sm-paypal {
-			width: 100%;
 			margin-top: 20px;
+			@media screen and (max-width: $screen-lg) {
+				width: 100%;
+			}
+			@media screen and (min-width: $screen-md) {
+				width: 80%;
+			}
 		}
 	}
 
@@ -289,7 +294,7 @@ html, body, .app, .ap-app {
 				}
 				a {
 					color: $marroon-dark2;
-				    font-size: 18px;
+				    font-size: 16px;
 				    width: 100%;
 				    display: block;
 				    padding: 10px;
@@ -360,7 +365,7 @@ html, body, .app, .ap-app {
 				&:hover { background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%); }
 				a {
 					color: $marroon-dark2;
-				    font-size: 18px;
+				    font-size: 16px;
 				    width: 100%;
 				    display: block;
 				    padding: 10px;

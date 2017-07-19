@@ -56,11 +56,36 @@
 		    border-radius: 1000px;
 		    cursor: pointer;
 		    margin-right: 5px;
+		    position: relative;
 		    @media screen and (min-width: $screen-lg) {
 				padding: 10px;
 			}
 			img { width: 20px; }
 			&:hover { background-color: $color-text; }
+			&[title]:hover:after {
+				content: attr(title);
+				padding: 8px 12px;
+				color: $color-text;
+				position: absolute;
+				border: 1px solid $color-text;
+				left: -15px;
+				top: -40px;
+				white-space: nowrap;
+				z-index: 20;
+				font-family: $font;
+				text-shadow: 
+	            	2px 2px 3px black,
+	            	2px -2px 3px black,
+	            	-2px -2px 3px black,
+	            	-2px 2px 3px black;
+				-moz-border-radius: 3px;
+				-webkit-border-radius: 3px;
+				border-radius: 3px;
+				-moz-box-shadow: 0px 0px 2px #c0c1c2;
+				-webkit-box-shadow: 0px 0px 2px #c0c1c2;
+				box-shadow: 0px 0px 2px #c0c1c2;
+				background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
+			}
 		}
 		.sm-rune-type-active { background-color: $color-text; }
 	}
