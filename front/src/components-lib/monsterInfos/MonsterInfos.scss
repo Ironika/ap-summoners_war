@@ -85,7 +85,8 @@
 					background-color: $yellow-dark !important;
 				}
 				.sm-monster-Light {
-					background-color: wheat !important;
+					background-color: $color-text !important;
+					color: $black;
 				}
 				.sm-monster-Dark {
 					background-color: #721669 !important;
@@ -109,16 +110,15 @@
 	    }
 	    .sm-monster-lock-infos {
 	    	display:none;
-	    	width: 80%;
-	    	margin: auto;
-		    padding: 30px;
+		    padding: 10px;
 	    	margin-bottom: 10px;
 	    	color: $color-text;
 	    	z-index: 50;
 	    	background-color: $marron;
+	    	border: 1px solid $color-text;
 	    	position: absolute;
-	    	top: -110px;
-	    	left: -5px;
+    	    top: -65px;
+    		left: 60px;
 	    	text-align: left;
 	    }
 	    i:hover + .sm-monster-lock-infos {

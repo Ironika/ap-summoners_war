@@ -31,9 +31,9 @@
     .sm-build-buildmonsterconfig-delete {
     	color: $color-text-error;
 	    top: 0;
-		left: 94%;
-    	font-size: 25px;
-    	cursor: pointer;
+	    left: 96%;
+	    font-size: 15px;
+	    cursor: pointer;
     }
     .sm-monsterconfig-infos {
     	color: $color-text;
@@ -45,10 +45,15 @@
     	display: none;
     	width: 80%;
     	margin: auto;
-    	background-color: $black;
+    	background-color: #261D14;
+    	border: 1px solid $color-text;
 	    padding: 10px;
     	margin-bottom: 10px;
     	color: $color-text;
+	    position: absolute;
+	    top: 0;
+	    right: 15px;
+	    z-index: 50;
     }
     .sm-monsterconfig-infos:hover + .sm-monsterconfig-infos-content {
     	display: block;
@@ -67,6 +72,7 @@
     }
     .sm-builds-monster-stats {
     	margin-top: 20px;
+    	position: relative;
     	label {
     		display: inline-block;
     		cursor: pointer;
