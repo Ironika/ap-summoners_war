@@ -39,25 +39,15 @@
 			    padding: 5px;
 			    width: 130px;
 			    margin-right: 2%;
-    	    	.sm-build-monster-result-rune {
-	    		    position: absolute;
-				    z-index: 50;
-				    top: 35%;
-				    left: 45%;
-				    background: $black;
-				    text-align: center;
-				    padding: 20px;
-				    i {
-				    	position: absolute;
-					    top: 5px;
-					    right: 5px;
-					    color: $color-text-error;
-					    cursor: pointer;
-				    }
-				    .sm-rune {
-				    	text-align: left !important;
-				    }
-		    	}
+			    .sm-rune {
+			    	text-align: left !important;
+			    	.sm-rune-set {
+			    		width: 24% !important;
+			    	}
+			    	.sm-monsterstar-image {
+			    		width: 20px !important;
+			    	}
+			    }
 			    .sm-build-monster-result-left {
 			    	padding: 5px;
 			    	.sm-monster-image {
@@ -70,9 +60,88 @@
 				    	img { 
 				    		width: 30%;
 				    		cursor: pointer;
+				    		display: inline-block !important;
 				    		&:hover {
-					    		width: 35%;
+					    		width: 40%;
 					    	}
+				    	}
+    				    .sm-build-monster-result-rune1 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+					        padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune1:hover + .sm-build-monster-result-rune1 {
+				    		display: block;
+				    	}
+				    	.sm-build-monster-result-rune2 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+						    padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune2:hover + .sm-build-monster-result-rune2 {
+				    		display: block;
+				    	}
+				    	.sm-build-monster-result-rune3 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+						    padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune3:hover + .sm-build-monster-result-rune3 {
+				    		display: block;
+				    	}
+				    	.sm-build-monster-result-rune4 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+						    padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune4:hover + .sm-build-monster-result-rune4 {
+				    		display: block;
+				    	}
+				    	.sm-build-monster-result-rune5 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+						    padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune5:hover + .sm-build-monster-result-rune5 {
+				    		display: block;
+				    	}
+				    	.sm-build-monster-result-rune6 {
+				    		display: none;
+			    		    position: absolute;
+						    z-index: 50;
+						    top: -25%;
+						    left: 100%;
+						    background: $black;
+						    padding: 10px;
+							border-radius: 10%;
+				    	}
+				    	.sm-rune6:hover + .sm-build-monster-result-rune6 {
+				    		display: block;
 				    	}
 				    }
 			    }

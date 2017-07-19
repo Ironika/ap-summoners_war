@@ -62,19 +62,33 @@ class BuildResults extends React.Component {
 		let rune6 = RuneHelper.getData(monsterResult.rune6)
 		return (
 			<li className="sm-build-monster-result">
-				<div className={"sm-build-monster-result-rune " + (this.state.showRune ? "" : "sm-hide")}>
-					<i className="glyphicon glyphicon-remove" onClick={this.onClickRuneDelete}></i>
-					<Rune rune={this.state.rune}/>
-				</div>
 				<div className="col-xs-6 sm-build-monster-result-left">
 					{this.buildImg(monster)}
 					<div className="sm-build-monster-result-runes">
-						<img src={"assets/images/runes/Rune-" + rune1.set + ".png"} onClick={this.onClickRune.bind(this, rune1)}/>
-						<img src={"assets/images/runes/Rune-" + rune2.set + ".png"} onClick={this.onClickRune.bind(this, rune2)}/>
-						<img src={"assets/images/runes/Rune-" + rune3.set + ".png"} onClick={this.onClickRune.bind(this, rune3)}/>
-						<img src={"assets/images/runes/Rune-" + rune4.set + ".png"} onClick={this.onClickRune.bind(this, rune4)}/>
-						<img src={"assets/images/runes/Rune-" + rune5.set + ".png"} onClick={this.onClickRune.bind(this, rune5)}/>
-						<img src={"assets/images/runes/Rune-" + rune6.set + ".png"} onClick={this.onClickRune.bind(this, rune6)}/>
+						<img className="sm-rune1" src={"assets/images/runes/Rune-" + rune1.set + ".png"}/>
+						<div className="sm-build-monster-result-rune1">
+							<Rune rune={rune1}/>
+						</div>
+						<img className="sm-rune2" src={"assets/images/runes/Rune-" + rune2.set + ".png"}/>
+						<div className="sm-build-monster-result-rune2">
+							<Rune rune={rune2}/>
+						</div>
+						<img className="sm-rune3" src={"assets/images/runes/Rune-" + rune3.set + ".png"}/>
+						<div className="sm-build-monster-result-rune3">
+							<Rune rune={rune3}/>
+						</div>
+						<img className="sm-rune4" src={"assets/images/runes/Rune-" + rune4.set + ".png"}/>
+						<div className="sm-build-monster-result-rune4">
+							<Rune rune={rune4}/>
+						</div>
+						<img className="sm-rune5" src={"assets/images/runes/Rune-" + rune5.set + ".png"}/>
+						<div className="sm-build-monster-result-rune5">
+							<Rune rune={rune5}/>
+						</div>
+						<img className="sm-rune6" src={"assets/images/runes/Rune-" + rune6.set + ".png"}/>
+						<div className="sm-build-monster-result-rune6">
+							<Rune rune={rune6}/>
+						</div>
 					</div>
 				</div>
 				<div className="col-xs-6 sm-build-monster-result-right">
