@@ -148,6 +148,9 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onClickDeleteStat(id, stat) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		
 		if( id== 'sets')
 			this.getState('sets').splice(stat, 1)
 		else

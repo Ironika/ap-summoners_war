@@ -11,6 +11,7 @@ class BuildResultsData extends BaseData {
         this.obj.onClickShow = this.onClickShow.bind(this)
 
         let buildResults = this.obj.props.buildResults
+        Utils.map(buildResults).sort(this._sortByDate)
 
         let showResult = {}
         for (let key in buildResults)
@@ -18,8 +19,13 @@ class BuildResultsData extends BaseData {
 
 		this.obj.state = {  
 			showResult: showResult,
+            buildResults: buildResults
 		}
 	}
+
+    _sortByDate(buildResult1, buildResult2) {
+        return new Date(buildResult2.creationDate) - new Date(buildResult1.creationDate)
+    }
 
     onClickShow(id) {
     	let showResult = this.getState('showResult')

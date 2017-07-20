@@ -67,6 +67,7 @@ class BuildInfos extends React.Component {
 
 	onClickEdit(){
 		let build = AppHelper.getData('/currentBuild')
+		delete(build[build.id])
 		AppHelper.put('/currentBuild/' + build.id + "/canSave", false)
 		build.state = BuildState.SAVE.key
 		BuildHelper.putBuild(build).
@@ -110,6 +111,7 @@ class BuildInfos extends React.Component {
 	onClickSave() {
 		let build = AppHelper.getData('/currentBuild')
 		delete(build.isNewBuild)
+		delete(build[build.id])
 		build.state = BuildState.SAVE.key
 		BuildHelper.postBuild(build).
 		then(function(result) {

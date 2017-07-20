@@ -135,7 +135,7 @@ class BuildResults extends React.Component {
 		return (
 			<div className="sm-build-results">
 			 	<div className="sm-content">
-			 		{Utils.map(this.props.buildResults, this._buildBuildResult.bind(this))}
+			 		{Utils.map(this.state.buildResults, this._buildBuildResult.bind(this))}
 			 	</div>
 		 	</div>
 		)

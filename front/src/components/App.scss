@@ -235,8 +235,11 @@ html, body, .app, .ap-app {
 		width: 80%;
 		margin: auto;
 		text-align: center;
+		margin-top: 20px;
+		font-weight: bold;
+		color: $marroon-dark2;
 		.sm-paypal {
-			margin-top: 20px;
+			margin-top: 5px;
 			@media screen and (max-width: $screen-lg) {
 				width: 100%;
 			}
@@ -267,7 +270,7 @@ html, body, .app, .ap-app {
 			}
 		}
 		.sm-sidebar-profile {
-			margin-bottom: 35px;
+			margin-bottom: 15px;
 			text-align: center; 
 			.sm-sidebar-profile-img {
 				max-width: 130px;
