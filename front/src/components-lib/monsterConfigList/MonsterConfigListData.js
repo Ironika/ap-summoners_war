@@ -55,6 +55,8 @@ class MonsterConfigListData extends BaseData {
 
 	onClickAddMonsterConfig() {
 		let build = AppHelper.getData('/currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+
 		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id, brokenSet: false}
 
 		AppHelper.put('/monstersConfig/' + monsterConfig.id, monsterConfig).
@@ -67,6 +69,9 @@ class MonsterConfigListData extends BaseData {
 	}
 
 	onClickDeleteMonsterConfig(monsterConfig) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		
 		let monstersConfig = AppHelper.getData('/monstersConfig')
 		delete(monstersConfig[monsterConfig.id])
 		AppHelper.put('/monstersConfig', monstersConfig).
