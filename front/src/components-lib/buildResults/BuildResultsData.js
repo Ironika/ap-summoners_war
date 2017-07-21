@@ -11,7 +11,22 @@ class BuildResultsData extends BaseData {
         this.obj.onClickShow = this.onClickShow.bind(this)
 
         let buildResults = this.obj.props.buildResults
-        Utils.map(buildResults).sort(this._sortByDate)
+        
+        let buildResultsSorted = []
+        for(let key in buildResults)
+            buildResultsSorted.push(buildResults[key])
+
+        buildResultsSorted.sort((buildResult1, buildResult2) => {
+            let date1 = new Date(buildResult1.creationDate[0],buildResult1.creationDate[1] - 1 ,buildResult1.creationDate[2],buildResult1.creationDate[3],buildResult1.creationDate[4],buildResult1.creationDate[5])
+            let date2 = new Date(buildResult2.creationDate[0],buildResult2.creationDate[1] - 1 ,buildResult2.creationDate[2],buildResult2.creationDate[3],buildResult2.creationDate[4],buildResult2.creationDate[5])
+            
+            if (date1.getTime() < date2.getTime())
+                return 1
+            else if (date1.getTime() == date2.getTime())
+                return 0
+            else
+                return -1
+        })
 
         let showResult = {}
         for (let key in buildResults)
@@ -19,12 +34,23 @@ class BuildResultsData extends BaseData {
 
 		this.obj.state = {  
 			showResult: showResult,
-            buildResults: buildResults
+            buildResults: buildResultsSorted
 		}
 	}
 
     _sortByDate(buildResult1, buildResult2) {
-        return new Date(buildResult2.creationDate) - new Date(buildResult1.creationDate)
+        console.log("_sortByDate _sortByDate _sortByDate _sortByDate")
+        let date1 = new Date(buildResult1.creationDate[0],buildResult1.creationDate[1] - 1 ,buildResult1.creationDate[2],buildResult1.creationDate[3],buildResult1.creationDate[4],buildResult1.creationDate[5])
+        let date2 = new Date(buildResult2.creationDate[0],buildResult2.creationDate[1] - 1 ,buildResult2.creationDate[2],buildResult2.creationDate[3],buildResult2.creationDate[4],buildResult2.creationDate[5])
+        console.log(buildResult1.creationDate, date1, date1.getTime())
+        console.log(buildResult2.creationDate, date2, date2.getTime())
+        console.log(date2.getTime() - date1.getTime())
+
+
+        if(date1 > date2)
+            return buildResult1 - buildResult2
+        else 
+            return buildResult2 - buildResult1
     }
 
     onClickShow(id) {

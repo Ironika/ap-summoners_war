@@ -109,12 +109,10 @@ class BuildResults extends React.Component {
 
 	_buildTeamResult(teamResult) {
 		return (
-			<div className="sm-build-team-result" key={teamResult.id}>
-				<ul>
-					<li className="sm-build-team-result-first">{teamResult.eval.toFixed(2)}</li>
-					{Utils.map(teamResult.monsterResults, this._buildMonsterResult.bind(this))}
-				</ul>
-			</div>
+			<ul className="sm-build-team-result" key={teamResult.id}>
+				<li className="sm-build-team-result-first">{teamResult.eval.toFixed(2)}</li>
+				{Utils.map(teamResult.monsterResults, this._buildMonsterResult.bind(this))}
+			</ul>
 		)
 	}
 
