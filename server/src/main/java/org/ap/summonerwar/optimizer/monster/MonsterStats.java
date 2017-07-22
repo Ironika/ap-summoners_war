@@ -5,15 +5,15 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class MonsterStats {
 	private int hp;
-	private int atk;
-	private int def;
-	private int spd;
-	private int crate;
-	private int cdmg;
-	private int res;
-	private int acc;
+	private char atk;
+	private char def;
+	private char spd;
+	private char crate;
+	private char cdmg;
+	private char res;
+	private char acc;
 	
-	public MonsterStats(int hp, int atk, int def, int spd, int crate, int cdmg, int res, int acc) {
+	public MonsterStats(int hp, char atk, char def, char spd, char crate, char cdmg, char res, char acc) {
 		this.setHp(hp);
 		this.setAtk(atk);
 		this.setDef(def);
@@ -38,51 +38,51 @@ public class MonsterStats {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("HP: " + this.hp + "\n");
-		builder.append("ATK: " + this.atk + "\n");
-		builder.append("DEF: " + this.def + "\n");
-		builder.append("SPD: " + this.spd + "\n");
-		builder.append("CRATE: " + this.crate + "\n");
-		builder.append("CDMG: " + this.cdmg + "\n");
-		builder.append("RES: " + this.res + "\n");
-		builder.append("ACC: " + this.acc + "\n");
+		builder.append("ATK: " + (int)this.atk + "\n");
+		builder.append("DEF: " + (int)this.def + "\n");
+		builder.append("SPD: " + (int)this.spd + "\n");
+		builder.append("CRATE: " + (int)this.crate + "\n");
+		builder.append("CDMG: " + (int)this.cdmg + "\n");
+		builder.append("RES: " + (int)this.res + "\n");
+		builder.append("ACC: " + (int)this.acc + "\n");
 		return builder.toString();
 	}
 	
 	public JSONObject toJSON() throws JSONException {
 		JSONObject result = new JSONObject();
 		result.put("HP", this.hp);
-		result.put("ATK", this.atk);
-		result.put("DEF", this.def);
-		result.put("SPD", this.spd);
-		result.put("CRATE", this.crate);
-		result.put("CDMG", this.cdmg);
-		result.put("RES", this.res);
-		result.put("ACC", this.acc);
+		result.put("ATK", (int)this.atk);
+		result.put("DEF", (int)this.def);
+		result.put("SPD", (int)this.spd);
+		result.put("CRATE", (int)this.crate);
+		result.put("CDMG", (int)this.cdmg);
+		result.put("RES", (int)this.res);
+		result.put("ACC", (int)this.acc);
 		return result;
 	}
 	
 	public int getHp() { return hp; }
 	public void setHp(int hp) { this.hp = hp; }
 
-	public int getAtk() { return atk; }
-	public void setAtk(int atk) { this.atk = atk; }
+	public char getAtk() { return atk; }
+	public void setAtk(char atk) { this.atk = atk; }
 
-	public int getDef() { return def; }
-	public void setDef(int def) { this.def = def; }
+	public char getDef() { return def; }
+	public void setDef(char def) { this.def = def; }
 
-	public int getSpd() { return spd; }
-	public void setSpd(int spd) { this.spd = spd; }
+	public char getSpd() { return spd; }
+	public void setSpd(char spd) { this.spd = spd; }
 
-	public int getCrate() { return crate; }
-	public void setCrate(int crate) { this.crate = crate; }
+	public char getCrate() { return crate; }
+	public void setCrate(char crate) { this.crate = crate; }
 
-	public int getCdmg() { return cdmg; }
-	public void setCdmg(int cdmg) { this.cdmg = cdmg; }
+	public char getCdmg() { return cdmg; }
+	public void setCdmg(char cdmg) { this.cdmg = cdmg; }
 
-	public int getRes() { return res; }
-	public void setRes(int res) { this.res = res; }
+	public char getRes() { return res; }
+	public void setRes(char res) { this.res = res; }
 
-	public int getAcc() { return acc; }
-	public void setAcc(int acc) { this.acc = acc; }
+	public char getAcc() { return acc; }
+	public void setAcc(char acc) { this.acc = acc; }
 	
 }

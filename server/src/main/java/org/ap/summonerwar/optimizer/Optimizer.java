@@ -68,6 +68,7 @@ public class Optimizer {
 			fw.write(currentObj.toString());
 			fw.close();
 		}
+		System.out.println("BUILD FINISHED");
 	}
 	
 	public static void buildResultOnDatabase(String userId, String buildResultId, StuffNode stuffNode) throws APWebException {
@@ -88,13 +89,13 @@ public class Optimizer {
 			monsterResultData.setTeamResultId(teamResultId);
 			monsterResultData.setMonsterConfigId(stuffedMonster.getTeamMate().getId());
 			monsterResultData.setHp(stuffedMonster.getFinalStats().getHp());
-			monsterResultData.setAtk(stuffedMonster.getFinalStats().getAtk());
-			monsterResultData.setDef(stuffedMonster.getFinalStats().getDef());
-			monsterResultData.setSpd(stuffedMonster.getFinalStats().getSpd());
-			monsterResultData.setCrate(stuffedMonster.getFinalStats().getCrate());
-			monsterResultData.setCdmg(stuffedMonster.getFinalStats().getCdmg());
-			monsterResultData.setRes(stuffedMonster.getFinalStats().getRes());
-			monsterResultData.setAcc(stuffedMonster.getFinalStats().getAcc());
+			monsterResultData.setAtk((int)stuffedMonster.getFinalStats().getAtk());
+			monsterResultData.setDef((int)stuffedMonster.getFinalStats().getDef());
+			monsterResultData.setSpd((int)stuffedMonster.getFinalStats().getSpd());
+			monsterResultData.setCrate((int)stuffedMonster.getFinalStats().getCrate());
+			monsterResultData.setCdmg((int)stuffedMonster.getFinalStats().getCdmg());
+			monsterResultData.setRes((int)stuffedMonster.getFinalStats().getRes());
+			monsterResultData.setAcc((int)stuffedMonster.getFinalStats().getAcc());
 			Rune[] runes = stuffedMonster.getStuff().getRunes();
 			monsterResultData.setRune1(runes[0].getId());
 			monsterResultData.setRune2(runes[1].getId());

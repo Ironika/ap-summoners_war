@@ -14,38 +14,35 @@ public class StuffedMonster {
 	
 	private TeamMate teamMate;
 	private Stuff stuff;
-	private MonsterStats bonusStats;
 	private MonsterStats finalStats;
 	
 	private double eval = -1;
 	
-	public StuffedMonster(TeamMate teamMate, Stuff stuff, MonsterStats bonusStats, MonsterStats finalStats) {
+	public StuffedMonster(TeamMate teamMate, Stuff stuff, MonsterStats finalStats) {
 		this.setTeamMate(teamMate);
 		this.setStuff(stuff);
-		this.setBonusStats(bonusStats);
 		this.setFinalStats(finalStats);
 	}
 
-	public double eval(MonsterStats maxStats, Map<EStatType, Integer> evalStats) {
-		if (eval == -1) {
-			eval = 0;
-			if (evalStats.containsKey(EStatType.HP))
-				eval += (double)finalStats.getHp() / (double)maxStats.getHp();
-			if (evalStats.containsKey(EStatType.ATK))
-				eval += (double)finalStats.getAtk() / (double)maxStats.getAtk();
-			if (evalStats.containsKey(EStatType.DEF))
-				eval += (double)finalStats.getDef() /(double) maxStats.getDef();
-			if (evalStats.containsKey(EStatType.SPD))
-				eval += (double)finalStats.getSpd() /(double) maxStats.getSpd();
-			if (evalStats.containsKey(EStatType.CRATE))
-				eval += (double)finalStats.getCrate() / (double)maxStats.getCrate();
-			if (evalStats.containsKey(EStatType.CDMG))
-				eval += (double)finalStats.getCdmg() / (double)maxStats.getCdmg();
-			if (evalStats.containsKey(EStatType.RES))
-				eval += (double)finalStats.getRes() / (double)maxStats.getRes();
-			if (evalStats.containsKey(EStatType.ACC))
-				eval += (double)finalStats.getAcc() / (double)maxStats.getAcc();
-		}
+	public double eval(MonsterStats maxStats) {
+		Map<EStatType, Integer> evalStats = this.teamMate.getEvalStats();
+		eval = 0;
+		if (evalStats.containsKey(EStatType.HP))
+			eval += (double)finalStats.getHp() / (double)maxStats.getHp();
+		if (evalStats.containsKey(EStatType.ATK))
+			eval += (double)finalStats.getAtk() / (double)maxStats.getAtk();
+		if (evalStats.containsKey(EStatType.DEF))
+			eval += (double)finalStats.getDef() /(double) maxStats.getDef();
+		if (evalStats.containsKey(EStatType.SPD))
+			eval += (double)finalStats.getSpd() /(double) maxStats.getSpd();
+		if (evalStats.containsKey(EStatType.CRATE))
+			eval += (double)finalStats.getCrate() / (double)maxStats.getCrate();
+		if (evalStats.containsKey(EStatType.CDMG))
+			eval += (double)finalStats.getCdmg() / (double)maxStats.getCdmg();
+		if (evalStats.containsKey(EStatType.RES))
+			eval += (double)finalStats.getRes() / (double)maxStats.getRes();
+		if (evalStats.containsKey(EStatType.ACC))
+			eval += (double)finalStats.getAcc() / (double)maxStats.getAcc();
 		return eval;
 	}
 	
@@ -68,9 +65,6 @@ public class StuffedMonster {
 	}
 	
 	public Monster getMonster() { return this.teamMate.getMonster(); }
-
-	public MonsterStats getBonusStats() { return bonusStats; }
-	public void setBonusStats(MonsterStats bonusStats) { this.bonusStats = bonusStats; }
 
 	public MonsterStats getFinalStats() { return finalStats; }
 	public void setFinalStats(MonsterStats finalStats) { this.finalStats = finalStats; }

@@ -1,11 +1,10 @@
 package org.ap.summonerwar.optimizer.builder;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 import org.ap.summonerwar.optimizer.monster.MonsterStats;
 import org.ap.summonerwar.optimizer.monster.StuffedMonster;
@@ -20,6 +19,8 @@ import org.ap.summonerwar.optimizer.team.TeamMate;
 
 public class StuffBuilder {
 	
+	public static int STUFF_LIMIT = 24000;
+	
 	public static List<StuffNode> selectStuffsForTeam(Team team) {
 		return StuffSelector.selectStuffsForTeam(team);
 	}
@@ -33,12 +34,29 @@ public class StuffBuilder {
 		
 		Map<TeamMate, MonsterStats> maxStats = new HashMap<TeamMate, MonsterStats>();
 		Map<TeamMate, int[]> failures = new HashMap<TeamMate, int[]>();
-		Map<TeamMate, List<StuffedMonster>> preSelectedsRunes = new HashMap<TeamMate, List<StuffedMonster>>();
+		//Map<TeamMate, List<StuffedMonster>> preSelectedsRunes = new HashMap<TeamMate, List<StuffedMonster>>();
+		Map<TeamMate, TreeSet<StuffedMonster>> selectedsRunes = new HashMap<TeamMate, TreeSet<StuffedMonster>>();
 		for (TeamMate teamMate : team.getTeamMates()) {
-			preSelectedsRunes.put(teamMate, new ArrayList<StuffedMonster>());
-			maxStats.put(teamMate, new MonsterStats(0, 0, 0, 0, 0, 0, 0, 0));
+			//preSelectedsRunes.put(teamMate, new ArrayList<StuffedMonster>());
+			char zero = 0;
+			maxStats.put(teamMate, new MonsterStats(zero, zero, zero, zero, zero, zero, zero, zero));
 			failures.put(teamMate, new int[9]);
+			
+			
+			TreeSet<StuffedMonster> set = new TreeSet<>(new Comparator<StuffedMonster>() {
+
+				@Override
+				public int compare(StuffedMonster o1, StuffedMonster o2) {
+					if (o2.getEval() <= o1.getEval())
+						return -1;
+					else
+						return 1;
+				}
+			});
+			selectedsRunes.put(teamMate, set);
+			
 		}
+		
 		
 		int[] bonusBase = new int[EStatType.values().length];
 		int[] bonus1 = new int[EStatType.values().length];
@@ -63,9 +81,12 @@ public class StuffBuilder {
 								for (TeamMate teamMate : team.getTeamMates()) {
 									StuffedMonster stuffedMonster = StuffSelector.goodStuff(stuff, teamMate, maxStats.get(teamMate), failures.get(teamMate));
 									if (stuffedMonster != null) {
-										preSelectedsRunes.get(teamMate).add(stuffedMonster);
+										//preSelectedsRunes.get(teamMate).add(stuffedMonster);
+										StuffBuilder.addToSet(selectedsRunes.get(teamMate), StuffBuilder.STUFF_LIMIT, stuffedMonster, maxStats.get(teamMate));
 									}	
 								}
+								bonusFinal = null;
+								stuff = null;
 								currentNbStuff++;
 							}
 						}	
@@ -83,28 +104,34 @@ public class StuffBuilder {
 		}		
 		
 		for (TeamMate teamMate : team.getTeamMates()) {
-			PriorityQueue<StuffedMonster>  selecteds = new PriorityQueue<StuffedMonster>(new Comparator<StuffedMonster>() {
-
-				@Override
-				public int compare(StuffedMonster o1, StuffedMonster o2) {
-					if (o2.eval(maxStats.get(teamMate), teamMate.getEvalStats()) < o1.eval(maxStats.get(teamMate), teamMate.getEvalStats()))
-						return -1;
-					else
-						return 1;
-				}
-			});
+//			PriorityQueue<StuffedMonster>  selecteds = new PriorityQueue<StuffedMonster>(new Comparator<StuffedMonster>() {
+//
+//				@Override
+//				public int compare(StuffedMonster o1, StuffedMonster o2) {
+//					if (o2.eval(maxStats.get(teamMate)) < o1.eval(maxStats.get(teamMate)))
+//						return -1;
+//					else
+//						return 1;
+//				}
+//			});
+//			
+//			for (StuffedMonster selected : preSelectedsRunes.get(teamMate)) {
+//				selecteds.add(selected);
+//			}
+//			
+//			
+//			int selectedsSize = selecteds.size() > 16000 ? 16000 : selecteds.size();
+//			StuffedMonster[] selectedsArray = new StuffedMonster[selectedsSize];
+//			for (int i = 0; i < selectedsSize; i++) {
+//				selectedsArray[i] = selecteds.poll();
+//			}
 			
-			for (StuffedMonster selected : preSelectedsRunes.get(teamMate)) {
-				selecteds.add(selected);
-			}
+			TreeSet<StuffedMonster> currentStuff = selectedsRunes.get(teamMate);
+			int size = currentStuff.size();
+			StuffedMonster[] selectedsArray = new StuffedMonster[size];
+			for (int i = 0; i < size; i++)
+				selectedsArray[i] = currentStuff.pollFirst();
 			
-			
-			int selectedsSize = selecteds.size() > 16000 ? 16000 : selecteds.size();
-			StuffedMonster[] selectedsArray = new StuffedMonster[selectedsSize];
-			for (int i = 0; i < selectedsSize; i++) {
-				selectedsArray[i] = selecteds.poll();
-			}
-
 			if (selectedsArray.length == 0) {
 				System.err.println(teamMate.getMonster().getName() + " NO RUNAGE FOUND");
 				System.err.println("Failures: " + StuffBuilder.failuresToString(failures.get(teamMate)));
@@ -120,6 +147,24 @@ public class StuffBuilder {
 		}
 		for (Stat stat : rune.getStats()) {
 			bonusNew[stat.getType().ordinal()] += stat.getValue();
+		}
+	}
+	
+	private static void addToSet(TreeSet<StuffedMonster> set, int sizeLimit, StuffedMonster monster, MonsterStats maxStats) {
+		double currentEval = monster.eval(maxStats);
+		if (set.size() < sizeLimit) {
+			set.add(monster);
+		} else {
+	    	StuffedMonster last = set.last();
+	    	if (last.getEval() < currentEval) {
+	    		set.pollLast();
+	    		set.add(monster);
+	       }
+		}
+		StuffedMonster first = set.first();
+		if (first == monster) {
+			for(StuffedMonster currentMonster : set)
+				currentMonster.eval(maxStats);
 		}
 	}
 	

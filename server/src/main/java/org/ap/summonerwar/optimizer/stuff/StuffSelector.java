@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 import org.ap.summonerwar.optimizer.monster.Monster;
 import org.ap.summonerwar.optimizer.monster.MonsterStats;
@@ -37,8 +38,9 @@ public class StuffSelector {
 		Map<ERuneSet, Integer> requiredSets = teamMate.getRequiredSets();
 		boolean brokenSet = teamMate.isBrokenSet();
 		
-		MonsterStats statsBonus = new MonsterStats(-1, -1, -1, -1, -1, -1, -1, -1);
-		MonsterStats finalStats = new MonsterStats(0, 0, 0, 0, 0, 0, 0, 0);
+		char zero = 0;
+		MonsterStats statsBonus = new MonsterStats(zero, zero, zero, zero, zero, zero, zero, zero);
+		MonsterStats finalStats = new MonsterStats(zero, zero, zero, zero, zero, zero, zero, zero);
 		
 		if (!brokenSet && !StuffSelector.checkNoBrokenSet(stuff)) {
 			failures[8]++;
@@ -66,50 +68,50 @@ public class StuffSelector {
 				}
 					
 			} else if (type == EStatType.ATK) {
-				statsBonus.setAtk(stuff.computeBonusAtk(monster.getMonsterStats().getAtk()));
-				finalStats.setAtk(statsBonus.getAtk() + monster.getMonsterStats().getAtk());
+				statsBonus.setAtk((char)stuff.computeBonusAtk(monster.getMonsterStats().getAtk()));
+				finalStats.setAtk((char)(statsBonus.getAtk() + monster.getMonsterStats().getAtk()));
 				if (finalStats.getAtk() < value){
 					failures[1]++;
 					return null;
 				}
 			} else if (type == EStatType.DEF) {
-				statsBonus.setDef(stuff.computeBonusDef(monster.getMonsterStats().getDef()));
-				finalStats.setDef(statsBonus.getDef() + monster.getMonsterStats().getDef());
+				statsBonus.setDef((char)stuff.computeBonusDef(monster.getMonsterStats().getDef()));
+				finalStats.setDef((char)(statsBonus.getDef() + monster.getMonsterStats().getDef()));
 				if (finalStats.getDef() < value){
 					failures[2]++;
 					return null;
 				}
 			} else if (type == EStatType.SPD) {
-				statsBonus.setSpd(stuff.computeSpd(monster.getMonsterStats().getSpd()));
-				finalStats.setSpd(statsBonus.getSpd() + monster.getMonsterStats().getSpd());
+				statsBonus.setSpd((char)stuff.computeSpd(monster.getMonsterStats().getSpd()));
+				finalStats.setSpd((char)(statsBonus.getSpd() + monster.getMonsterStats().getSpd()));
 				if (finalStats.getSpd() < value){
 					failures[3]++;
 					return null;
 				}
 			} else if (type == EStatType.CRATE) {
-				statsBonus.setCrate(stuff.computeCrate());
-				finalStats.setCrate(statsBonus.getCrate() + monster.getMonsterStats().getCrate());
+				statsBonus.setCrate((char)stuff.computeCrate());
+				finalStats.setCrate((char)(statsBonus.getCrate() + monster.getMonsterStats().getCrate()));
 				if (finalStats.getCrate() < value){
 					failures[4]++;
 					return null;
 				}
 			} else if (type == EStatType.CDMG) {
-				statsBonus.setCdmg(stuff.computeCdmg());
-				finalStats.setCdmg(statsBonus.getCdmg() + monster.getMonsterStats().getCdmg());
+				statsBonus.setCdmg((char)stuff.computeCdmg());
+				finalStats.setCdmg((char)(statsBonus.getCdmg() + monster.getMonsterStats().getCdmg()));
 				if (finalStats.getCdmg() < value){
 					failures[5]++;
 					return null;
 				}
 			} else if (type == EStatType.RES) {
-				statsBonus.setRes(stuff.computeRes());
-				finalStats.setRes(statsBonus.getRes() + monster.getMonsterStats().getRes());
+				statsBonus.setRes((char)stuff.computeRes());
+				finalStats.setRes((char)(statsBonus.getRes() + monster.getMonsterStats().getRes()));
 				if (finalStats.getRes() < value){
 					failures[6]++;
 					return null;
 				}
 			} else if (type == EStatType.ACC) {
-				statsBonus.setAcc(stuff.computeAcc());
-				finalStats.setAcc(statsBonus.getAcc() + monster.getMonsterStats().getAcc());
+				statsBonus.setAcc((char)stuff.computeAcc());
+				finalStats.setAcc((char)(statsBonus.getAcc() + monster.getMonsterStats().getAcc()));
 				if (finalStats.getAcc() < value){
 					failures[7]++;
 					return null;
@@ -117,38 +119,40 @@ public class StuffSelector {
 			}
 		}
 		
-		if (statsBonus.getHp() == -1) {
+		if (statsBonus.getHp() == 0) {
 			statsBonus.setHp(stuff.computeBonusHp(monster.getMonsterStats().getHp()));
 			finalStats.setHp(statsBonus.getHp() + monster.getMonsterStats().getHp());
 		}
-		if (statsBonus.getAtk() == -1) {
-			statsBonus.setAtk(stuff.computeBonusAtk(monster.getMonsterStats().getAtk()));
-			finalStats.setAtk(statsBonus.getAtk() + monster.getMonsterStats().getAtk());
+		if (statsBonus.getAtk() == 0) {
+			statsBonus.setAtk((char)stuff.computeBonusAtk(monster.getMonsterStats().getAtk()));
+			finalStats.setAtk((char)(statsBonus.getAtk() + monster.getMonsterStats().getAtk()));
 		}
-		if (statsBonus.getDef() == -1) {
-			statsBonus.setDef(stuff.computeBonusDef(monster.getMonsterStats().getDef()));
-			finalStats.setDef(statsBonus.getDef() + monster.getMonsterStats().getDef());
+		if (statsBonus.getDef() == 0) {
+			statsBonus.setDef((char)stuff.computeBonusDef(monster.getMonsterStats().getDef()));
+			finalStats.setDef((char)(statsBonus.getDef() + monster.getMonsterStats().getDef()));
 		}
-		if (statsBonus.getSpd() == -1) {
-			statsBonus.setSpd(stuff.computeSpd(monster.getMonsterStats().getSpd()));
-			finalStats.setSpd(statsBonus.getSpd() + monster.getMonsterStats().getSpd());
+		if (statsBonus.getSpd() == 0) {
+			statsBonus.setSpd((char)stuff.computeSpd(monster.getMonsterStats().getSpd()));
+			finalStats.setSpd((char)(statsBonus.getSpd() + monster.getMonsterStats().getSpd()));
 		}
-		if (statsBonus.getCrate() == -1) {
-			statsBonus.setCrate(stuff.computeCrate());
-			finalStats.setCrate(statsBonus.getCrate() + monster.getMonsterStats().getCrate());
+		if (statsBonus.getCrate() == 0) {
+			statsBonus.setCrate((char)stuff.computeCrate());
+			finalStats.setCrate((char)(statsBonus.getCrate() + monster.getMonsterStats().getCrate()));
 		}
-		if (statsBonus.getCdmg() == -1) {
-			statsBonus.setCdmg(stuff.computeCdmg());
-			finalStats.setCdmg(statsBonus.getCdmg() + monster.getMonsterStats().getCdmg());
+		if (statsBonus.getCdmg() == 0) {
+			statsBonus.setCdmg((char)stuff.computeCdmg());
+			finalStats.setCdmg((char)(statsBonus.getCdmg() + monster.getMonsterStats().getCdmg()));
 		}
-		if (statsBonus.getRes() == -1) {
-			statsBonus.setRes(stuff.computeRes());
-			finalStats.setRes(statsBonus.getRes() + monster.getMonsterStats().getRes());
+		if (statsBonus.getRes() == 0) {
+			statsBonus.setRes((char)stuff.computeRes());
+			finalStats.setRes((char)(statsBonus.getRes() + monster.getMonsterStats().getRes()));
 		}
-		if (statsBonus.getAcc() == -1) {
-			statsBonus.setAcc(stuff.computeAcc());
-			finalStats.setAcc(statsBonus.getAcc() + monster.getMonsterStats().getAcc());
+		if (statsBonus.getAcc() == 0) {
+			statsBonus.setAcc((char)stuff.computeAcc());
+			finalStats.setAcc((char)(statsBonus.getAcc() + monster.getMonsterStats().getAcc()));
 		}
+		
+		statsBonus = null;
 		
 		if (maxStats.getHp() < finalStats.getHp())
 			maxStats.setHp(finalStats.getHp());
@@ -167,7 +171,7 @@ public class StuffSelector {
 		if (maxStats.getAcc() < finalStats.getAcc())
 			maxStats.setAcc(finalStats.getAcc());
 		
-		StuffedMonster stuffedMonster = new StuffedMonster(teamMate, stuff, statsBonus, finalStats);
+		StuffedMonster stuffedMonster = new StuffedMonster(teamMate, stuff, finalStats);
 		return stuffedMonster;
 	}
 	
@@ -182,21 +186,21 @@ public class StuffSelector {
 			currentNodes.add(new StuffNode(null, currentMonster, currentMonster.getEval() / bestEval));
 		}
 		
+		TreeSet<StuffNode> selecteds = new TreeSet<StuffNode>(new Comparator<StuffNode>() {
+
+			@Override
+			public int compare(StuffNode o1, StuffNode o2) {
+				if (o2.totalEval() < o1.totalEval())
+					return -1;
+				else
+					return 1;
+			}
+		});
+		
 		
 		for (int i = 1; i < teamMates.size(); i++) {
 			teamMate = teamMates.get(i);
 			bestEval = teamMate.getSelectedStuff()[0].getEval();
-			
-			PriorityQueue<StuffNode> selecteds = new PriorityQueue<StuffNode>(new Comparator<StuffNode>() {
-
-				@Override
-				public int compare(StuffNode o1, StuffNode o2) {
-					if (o2.totalEval() < o1.totalEval())
-						return -1;
-					else
-						return 1;
-				}
-			});
 			
 			for (StuffNode currentNode : currentNodes) {
 				for (int j = 0; j < teamMate.getSelectedStuff().length; j++) {
@@ -211,17 +215,32 @@ public class StuffSelector {
 						}
 						parentNode = parentNode.getParent();
 					}
-					if (add)
-						selecteds.add(new StuffNode(currentNode, currentMonster, currentMonster.getEval() / bestEval));
+					if (add) {
+						StuffSelector.addToSet(selecteds, 20000, new StuffNode(currentNode, currentMonster, currentMonster.getEval() / bestEval));
+						//selecteds.add(new StuffNode(currentNode, currentMonster, currentMonster.getEval() / bestEval));
+					}
 				}
 			}
 			currentNodes.clear();
-			int selectedsCount = selecteds.size() < 16000 ? selecteds.size() : 16000;
+			int selectedsCount = selecteds.size();
 			for (int j = 0; j < selectedsCount; j++) {
-				currentNodes.add(selecteds.poll());
+				currentNodes.add(selecteds.pollFirst());
 			}
+			selecteds.clear();
 		}
 		return currentNodes;
+	}
+	
+	private static void addToSet(TreeSet<StuffNode> set, int sizeLimit, StuffNode node) {
+		if (set.size() < sizeLimit) {
+			set.add(node);
+		} else {
+			StuffNode last = set.last();
+	    	if (last.totalEval() < node.totalEval()) {
+	    		set.pollLast();
+	    		set.add(node);
+	       }
+		}
 	}
 	
 	public static boolean haveSameRune(StuffedMonster monster1, StuffedMonster monster2) {

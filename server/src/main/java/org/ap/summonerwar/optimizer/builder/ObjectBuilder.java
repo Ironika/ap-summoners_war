@@ -50,8 +50,8 @@ public class ObjectBuilder {
 	}
 	
 	public static Monster buildMonster(MonsterData monsterData) throws APWebException {
-		MonsterStats stats = new MonsterStats(monsterData.getHp(), monsterData.getAtk(), monsterData.getDef(), 
-				monsterData.getSpd(), monsterData.getCrate(), monsterData.getCdmg(), monsterData.getRes(), monsterData.getAcc());
+		MonsterStats stats = new MonsterStats(monsterData.getHp(), (char)monsterData.getAtk().intValue(), (char)monsterData.getDef().intValue(), 
+				(char)monsterData.getSpd().intValue(), (char)monsterData.getCrate().intValue(), (char)monsterData.getCdmg().intValue(), (char)monsterData.getRes().intValue(), (char)monsterData.getAcc().intValue());
 		Monster monster = new Monster(monsterData.getId(), monsterData.getName(), 
 				EAttribute.fromMarkup(monsterData.getElemType()), monsterData.getStar(), monsterData.getLvl(), stats);
 		return monster;
