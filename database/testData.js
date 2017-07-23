@@ -16,6 +16,24 @@ db.user.insert({
 	"authId":"aauth"
 })
 
+db.apauth.insert({
+	"id":"bauth",
+	"username":"b",
+	"email":"b",
+	"password":"b",
+	"roles":["user"],
+	"type":"user",
+	"active":true,
+	"registrationDate":[2016, 1, 1, 0, 0],
+	"registered":true,
+	"entityId": "b"
+})
+
+db.user.insert({
+	"id":"b",
+	"authId":"bauth"
+})
+
 db.build.insert({
 	"id":"build-aa",
 	"name":"Nuckers",
