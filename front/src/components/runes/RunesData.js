@@ -84,9 +84,6 @@ class RunesData extends BaseData {
     }
 
     checkFiltersAndSorts() {
-        console.log("FILTER RUNES FILTER RUNES FILTER RUNES FILTER RUNES FILTER RUNES ")
-        console.log(this.subStatFilter)
-
         this.checkFilters('set')
         this.checkFilters('pos')
         this.checkFilters('subStat')
