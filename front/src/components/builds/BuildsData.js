@@ -26,12 +26,12 @@ class BuildsData extends BaseData {
         AppHelper.setBusy(true).
 		then(function () {
 			let promises = []
-			promises.push(BuildHelper.getUserBuilds(AuthHelper.getEntityId()))
 			promises.push(BuildResultHelper.getUserBuildresult(AuthHelper.getEntityId()))
 			promises.push(TeamResultHelper.getUserTeamresult(AuthHelper.getEntityId()))
 			promises.push(MonsterResultHelper.getUserMonsterresult(AuthHelper.getEntityId()))
 			return Promise.all(promises)
 		}).
+		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId())).
 		then(AppHelper.setBusy.bind(AppHelper, false)).
 		catch(function() {
 			this.setState({error: "An error has occured !"})
