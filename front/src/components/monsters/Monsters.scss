@@ -15,15 +15,9 @@
 	    margin: auto;
 	    margin-top: 3%;
     }
-    @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
+    @media screen and (min-width: $screen-xlg) {
         height: 85%;
-	    width: 85%;
-	    margin: auto;
-	    margin-top: 2%;
-    }
-    @media screen and (min-width: $screen-xxlg) {
-        height: 80%;
-        width: 80%;
+        width: 90%;
         margin: auto;
         margin-top: 2%;
     }

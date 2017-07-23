@@ -294,6 +294,7 @@ html, body, .app, .ap-app {
 				font-family: 'Exo', sans-serif;
 				&:hover {
 					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
+					color: $color-text !important;
 				}
 				a {
 					color: $marroon-dark2;
@@ -365,7 +366,10 @@ html, body, .app, .ap-app {
     			margin-top: 10px;
 				border-bottom: 2px solid $marroon-dark;
 				font-family: 'Exo', sans-serif;
-				&:hover { background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%); }
+				&:hover { 
+					background-image: radial-gradient($marroon-light2 50%,$marroon-dark2 100%);
+					color: $color-text !important;
+				}
 				a {
 					color: $marroon-dark2;
 				    font-size: 16px;
