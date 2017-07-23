@@ -84,6 +84,9 @@ class RunesData extends BaseData {
     }
 
     checkFiltersAndSorts() {
+        console.log("FILTER RUNES FILTER RUNES FILTER RUNES FILTER RUNES FILTER RUNES ")
+        console.log(this.subStatFilter)
+
         this.checkFilters('set')
         this.checkFilters('pos')
         this.checkFilters('subStat')
@@ -96,7 +99,7 @@ class RunesData extends BaseData {
         let runes = Utils.map(RuneHelper.getData())
 
         if(this.hasSetFilter || this.hasPosFilter || this.hasMainStatFilter || this.hasSubStatFilter) {
-            runes = runes.filter(this._filterRunes.bind(this))
+            runes = runes.filter(this._filterRune.bind(this))
         }
 
         if(this.hasSortsFilter)
@@ -195,36 +198,23 @@ class RunesData extends BaseData {
     }
 
     _runeHaveStatType(rune, subStats) {
-        let stats = {}
-        let haveStatType = false
-        let haveStatTypes = false
-
         for (let key in subStats) {
             if(subStats[key] == rune.subStatType)
-                stats[subStats[key]] = subStats[key]
+                continue
             if(subStats[key] == rune.stat1Type)
-                stats[subStats[key]] = subStats[key]
+                continue
             if(subStats[key] == rune.stat2Type)
-                stats[subStats[key]] = subStats[key]
+                continue
             if(subStats[key] == rune.stat3Type)
-                stats[subStats[key]] = subStats[key]
+                continue
             if(subStats[key] == rune.stat4Type)
-                stats[subStats[key]] = subStats[key] 
+                continue
+            return false
         }
-
-        for (let item in stats)
-            if(stats[item] == subStats[item])
-                haveStatType = true
-            else
-                haveStatType = false
-
-        if(haveStatType)
-            haveStatTypes = true
-
-        return haveStatTypes
+        return true
     }
 
-    _filterRunes(rune) {
+    _filterRune(rune) {
         if (this.hasSetFilter && !this.setFilter[rune.set]) {
             return false
         }
