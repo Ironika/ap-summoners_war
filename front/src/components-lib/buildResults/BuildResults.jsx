@@ -26,6 +26,10 @@ class BuildResults extends React.Component {
 		BuildResultsData.unregister()
 	}
 
+	componentWillReceiveProps(newProps) {
+		BuildResultsData.update(newProps)
+	}
+
 	buildImg(monster){
 		let storage = "(In Storage)"
 		let element = "(" + monster.elemType + ")"

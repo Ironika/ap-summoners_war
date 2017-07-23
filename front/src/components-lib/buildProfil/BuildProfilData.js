@@ -45,12 +45,18 @@ class BuildProfilData extends BaseData {
 
         if(buildHaveResults) {
             for (let key in teamResults) {
-                buildResults[teamResults[key].buildResultId].teamResults[key] = teamResults[key]
-                buildResults[teamResults[key].buildResultId].teamResults[key]['monsterResults'] = {}
+                let buildResult = buildResults[teamResults[key].buildResultId]
+                if (buildResult) {
+                    buildResult.teamResults[key] = teamResults[key]
+                    buildResult.teamResults[key]['monsterResults'] = {}
+                }
             }
 
-            for (let key in monsterResults)
-                buildResults[teamResults[monsterResults[key].teamResultId].buildResultId].teamResults[monsterResults[key].teamResultId].monsterResults[key] = monsterResults[key]
+            for (let key in monsterResults) {
+                let buildResult = buildResults[teamResults[monsterResults[key].teamResultId].buildResultId]
+                if (buildResult)
+                    buildResult.teamResults[monsterResults[key].teamResultId].monsterResults[key] = monsterResults[key]
+            }
             this.setState({buildHaveResults: buildHaveResults, buildResults: buildResults})
         }
         else 

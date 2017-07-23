@@ -12,6 +12,38 @@ class BuildResultsData extends BaseData {
 
         let buildResults = this.obj.props.buildResults
         
+        /*let buildResultsSorted = []
+        for(let key in buildResults)
+            buildResultsSorted.push(buildResults[key])
+
+        buildResultsSorted.sort((buildResult1, buildResult2) => {
+            let date1 = new Date(buildResult1.creationDate[0],buildResult1.creationDate[1] - 1 ,buildResult1.creationDate[2],buildResult1.creationDate[3],buildResult1.creationDate[4],buildResult1.creationDate[5])
+            let date2 = new Date(buildResult2.creationDate[0],buildResult2.creationDate[1] - 1 ,buildResult2.creationDate[2],buildResult2.creationDate[3],buildResult2.creationDate[4],buildResult2.creationDate[5])
+            
+            if (date1.getTime() < date2.getTime())
+                return 1
+            else if (date1.getTime() == date2.getTime())
+                return 0
+            else
+                return -1
+        })*/
+
+        let showResult = {}
+        for (let key in buildResults)
+        	showResult[key] = false
+
+		this.obj.state = {  
+			showResult: showResult,
+            buildResults: this.getBuildResultSorted(buildResults)
+		}
+	}
+
+    update(newProps) {
+        let buildResults = newProps.buildResults
+        this.setState({buildResults: this.getBuildResultSorted(buildResults)})
+    }
+
+    getBuildResultSorted(buildResults) {
         let buildResultsSorted = []
         for(let key in buildResults)
             buildResultsSorted.push(buildResults[key])
@@ -27,16 +59,8 @@ class BuildResultsData extends BaseData {
             else
                 return -1
         })
-
-        let showResult = {}
-        for (let key in buildResults)
-        	showResult[key] = false
-
-		this.obj.state = {  
-			showResult: showResult,
-            buildResults: buildResultsSorted
-		}
-	}
+        return buildResultsSorted
+    }
 
     _sortByDate(buildResult1, buildResult2) {
         console.log("_sortByDate _sortByDate _sortByDate _sortByDate")

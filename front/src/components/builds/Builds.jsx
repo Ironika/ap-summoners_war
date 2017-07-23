@@ -24,6 +24,7 @@ class Builds extends React.Component {
 	render() {
 		return (
 			<div className='sm-builds'>
+				<button onClick={this.onClickRefresh.bind(this)} >refresh</button>
 				<div className="row sm-builds-height">
 					<div className="col-xs-12 col-md-3 sm-builds-min-height">
 						 <BuildsList/>
