@@ -183,6 +183,8 @@ public class StuffSelector {
 		
 		List<StuffNode> currentNodes = new ArrayList<>();
 		TeamMate teamMate = teamMates.get(0);
+		if (teamMate.getSelectedStuff().length == 0)
+			return Collections.emptyList();
 		double bestEval = teamMate.getSelectedStuff()[0].getEval();
 		for (int j = 0; j < teamMate.getSelectedStuff().length; j++) {
 			StuffedMonster currentMonster = teamMate.getSelectedStuff()[j];
