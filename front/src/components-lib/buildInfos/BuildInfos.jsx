@@ -159,7 +159,7 @@ class BuildInfos extends React.Component {
 						</li>
 						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.isNewBuild ? "" : "sm-hide")} onClick={this.onClickSave.bind(this)}>Save</button></li>
 						<li className="sm-button-mobile"><button className={"sm-button " + (this.state.canSave ? "" : "sm-button-disabled ") + (this.state.isNewBuild ? "sm-hide" : "")} disabled={!this.state.canSave} onClick={this.onClickEdit.bind(this)}>Save</button></li>
-						<li className="sm-button-mobile"><button className="sm-button" onClick={this.onClickBuild.bind(this)}>Build</button></li>
+						<li className="sm-button-mobile"><button className={"sm-button " + (!this.state.canSave && this.state.build.state != BuildState.INBUILDING.key ? "" : "sm-button-disabled ")} disabled={this.state.canSave || this.state.build.state == BuildState.INBUILDING.key} onClick={this.onClickBuild.bind(this)}>Build</button></li>
 					</ul>
 				</SWPanel>
 			);
