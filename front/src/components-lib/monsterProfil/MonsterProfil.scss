@@ -64,25 +64,9 @@
             top: -6%;
             left: 30%;
         }
-        @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-            left: -18%;
-            top: 30%;
-        }
-        @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-            left: -17%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -14%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -17%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xxlg) {
-            left: -17%;
-            top: 29%;
+        @media screen and (min-width: $screen-md) {
+            left: -65px;
+            top: 155px;
         }
     }
 
@@ -105,7 +89,7 @@
 			left: 55%;
 		}
 	    @media screen and (min-width: $screen-md) {
-			top: 40%;
+			top: 205px;
 		}
 	}
 

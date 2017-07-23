@@ -102,7 +102,7 @@
         }
 
         @media screen and (max-width: $screen-xs) {
-            top: -6%;
+            top: -30px;
             left: 12%;
         }
         @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
@@ -113,26 +113,10 @@
             top: -6%;
             left: 30%;
         }
-        @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-            left: -10%;
-            top: 30%;
-        }
-        @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-            left: -9%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -8%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-            left: -8%;
-            top: 29%;
-        }
-        @media screen and (min-width: $screen-xxlg) {
-            left: -8%;
-            top: 29%;
-        }
+        @media screen and (min-width: $screen-md) {
+            left: -55px;
+            top: 130px;
+        }     
     }
 
     .sm-build-tab-info {
@@ -154,7 +138,7 @@
             left: 55%;
         }
         @media screen and (min-width: $screen-md) {
-            top: 42%;
+            top: 180px;
         }
     }
 
