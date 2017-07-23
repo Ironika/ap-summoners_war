@@ -3,6 +3,7 @@
 .sm-builds {
 	height: 100%;
 	padding-top: 20px;
+	position: relative;
     @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
 	    height: 90%;
 	    width: 95%;
@@ -26,6 +27,31 @@
         width: 80%;
         margin: auto;
         margin-top: 2%;
+    }
+    .sm-build-refresh {
+        color: $color-text;
+	    top: 25px;
+	    cursor: pointer;
+	    left: 7px;
+	    position: absolute;
+	    z-index: 50;
+	    display: inline-block !important;
+    }
+    .sm-build-refresh-infos {
+    	display:none;
+	    padding: 10px;
+    	margin-bottom: 10px;
+    	color: $color-text;
+    	z-index: 50;
+    	background-color: $marron;
+    	border: 1px solid $color-text;
+    	position: absolute;
+	    top: 5px;
+		left: 25px;
+    	text-align: left;
+    }
+    .sm-build-refresh:hover + .sm-build-refresh-infos {
+    	display: block;
     }
 	.sm-builds-height {
 		height: 100%;
