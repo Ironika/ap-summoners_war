@@ -30,19 +30,21 @@ class BuildProfil extends React.Component {
 
     render() { 
         return (
-        <SWPanel className="sm-build-profil" size="lg">
-            <div 
-                className={"sm-build-tab sm-build-tab-info " + (this.state.currentPage === 'config' ? 'sm-build-tab-active' : "")} 
-                onClick={this.onClickConfig}>
-                Config
-            </div>
-            <div 
-                className={"sm-build-tab sm-build-tab-rune " + (this.state.currentPage === 'results' ? 'sm-build-tab-active' : "") + (!this.state.buildHaveResults ? "sm-build-tab-hide" : "")} 
-                onClick={this.onClickResults}>
-                Results
-            </div>
-            { this._buildBuildProfil(this.state.currentPage) }
-        </SWPanel>
+            <SWPanel className="sm-build-profil" size="lg">
+                <i className="glyphicon glyphicon-expand sm-build-profil-expand" onClick={this.onClickExpand}></i>
+                <div className="sm-build-expand-infos">
+                    Expand screen<br/>
+                </div>
+                <div className={"sm-build-tab sm-build-tab-info " + (this.state.currentPage === 'config' ? 'sm-build-tab-active' : "")} 
+                    onClick={this.onClickConfig}>
+                    Config
+                </div>
+                <div className={"sm-build-tab sm-build-tab-rune " + (this.state.currentPage === 'results' ? 'sm-build-tab-active' : "") + (!this.state.buildHaveResults ? "sm-build-tab-hide" : "")} 
+                    onClick={this.onClickResults}>
+                    Results
+                </div>
+                { this._buildBuildProfil(this.state.currentPage) }
+            </SWPanel>
     )}
 
 }

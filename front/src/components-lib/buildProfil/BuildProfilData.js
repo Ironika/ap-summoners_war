@@ -11,6 +11,7 @@ class BuildProfilData extends BaseData {
 
         this.obj.onClickConfig = this.onClickConfig.bind(this)
         this.obj.onClickResults = this.onClickResults.bind(this)
+        this.obj.onClickExpand = this.onClickExpand.bind(this)
 
         this.obj.state = {
             currentPage: 'config',
@@ -61,6 +62,11 @@ class BuildProfilData extends BaseData {
         }
         else 
             this.setState({buildHaveResults: buildHaveResults, currentPage: 'config', buildResults: buildResults})
+    }
+
+    onClickExpand() {
+        AppHelper.put('/isExpanded', !AppHelper.getData("/isExpanded"))
+        this.setState()
     }
 
     onClickConfig() {

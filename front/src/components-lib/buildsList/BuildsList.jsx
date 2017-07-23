@@ -33,6 +33,10 @@ class BuildsList extends React.Component {
 	render() {
 		return (
 			<SWPanel className="sm-builds-list">
+				<i className="glyphicon glyphicon-refresh sm-build-refresh" onClick={this.onClickRefresh.bind(this)}></i>
+				<div className="sm-build-refresh-infos">
+					Refresh your builds and check their status<br/>
+				</div>
 			 	<ul>
 			 		{ Utils.map(this.state.builds, this._buildBuild.bind(this))}
 			 		<li className="sm-builds-add" onClick={this.onClickAddBuild.bind(this)}>

@@ -23,7 +23,7 @@ class BuildInfos extends React.Component {
 		this.state = {
             build: currentBuild,
             isNewBuild: this.isNewBuild(currentBuild),
-            canSave: false
+            canSave: false,
         }  
 		AppHelper.register('/currentBuild', this, this._onBuildChange.bind(this));
 	}

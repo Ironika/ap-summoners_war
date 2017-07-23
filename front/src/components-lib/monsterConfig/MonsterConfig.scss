@@ -3,6 +3,14 @@
 .sm-build-content {
 	padding: 5px 10px !important;
 }
+.sm-build-buildmonsterconfig-expanded {
+	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+		width: 40% !important;
+	}
+	@media screen and (min-width: $screen-lg) {
+		width: 35% !important;
+	}
+}
 .sm-build-buildmonsterconfig {
 	display: inline-block;
     overflow-y: auto;

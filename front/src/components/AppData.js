@@ -43,23 +43,31 @@ class AppData extends BaseData {
         let username = UserHelper.getData(AuthHelper.getEntityId() + '/username')
         let profileImage = UserHelper.getData(AuthHelper.getEntityId() + '/profileImage')
         
-        let img = ImageHelper.getData(profileImage)
-        if (!img) {
-            ImageHelper.getImage(profileImage).
-            then(function () {
-                let img = ImageHelper.getData(profileImage)
-                this.setState({
-                    username: username || 'Homunculus',
-                    profileImage: img,
-                    isLogged: true
-                })
-            }.bind(this))
-        } else {
-            this.setState({
+        if(profileImage == undefined)
+        	this.setState({
                 username: username || 'Homunculus',
-                profileImage: img,
+                profileImage: "assets/images/monsters/Homunculus-Awakened_Fire.jpg",
                 isLogged: true
             })
+        else {
+        	let img = ImageHelper.getData(profileImage)
+	        if (!img) {
+	            ImageHelper.getImage(profileImage).
+	            then(function () {
+	                let img = ImageHelper.getData(profileImage)
+	                this.setState({
+	                    username: username || 'Homunculus',
+	                    profileImage: img,
+	                    isLogged: true
+	                })
+	            }.bind(this))
+	        } else {
+	            this.setState({
+	                username: username || 'Homunculus',
+	                profileImage: img,
+	                isLogged: true
+	            })
+	        }
         }
 	}
 

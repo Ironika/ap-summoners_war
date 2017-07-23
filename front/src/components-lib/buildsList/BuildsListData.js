@@ -13,10 +13,11 @@ class BuildsListData extends BaseData {
 		this.obj.onClickAddBuild = this.onClickAddBuild.bind(this)
 		this.obj.onClickBuild = this.onClickBuild.bind(this)
         this.obj.onClickDelete = this.onClickDelete.bind(this)
+        this.obj.onClickRefresh = this.onClickRefresh.bind(this)
 
 		this.obj.state = {  
 			builds: [],
-			build: {}
+			build: {},
 		}
 
         this._buildBuildsData()
@@ -25,6 +26,23 @@ class BuildsListData extends BaseData {
 
     unregister() {
         BuildHelper.unregister(this)
+    }
+
+    onClickRefresh() {
+        AppHelper.setBusy(true).
+        then(function () {
+            let promises = []
+            promises.push(BuildResultHelper.getUserBuildresult(AuthHelper.getEntityId()))
+            promises.push(TeamResultHelper.getUserTeamresult(AuthHelper.getEntityId()))
+            promises.push(MonsterResultHelper.getUserMonsterresult(AuthHelper.getEntityId()))
+            return Promise.all(promises)
+        }).
+        then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId())).
+        then(AppHelper.setBusy.bind(AppHelper, false)).
+        catch(function() {
+            this.setState({error: "An error has occured !"})
+            AppHelper.setBusy(false)
+        }.bind(this))
     }
 
     onClickDelete(buildId) {

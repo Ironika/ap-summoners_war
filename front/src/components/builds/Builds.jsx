@@ -22,25 +22,38 @@ class Builds extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className='sm-builds'>
-				<i className="glyphicon glyphicon-refresh sm-build-refresh" onClick={this.onClickRefresh.bind(this)}></i>
-				<div className="sm-build-refresh-infos">
-					Refresh your builds and check their status<br/>
-				</div>
-				<div className="row sm-builds-height">
-					<div className="col-xs-12 col-md-3 sm-builds-min-height">
-						 <BuildsList/>
-					</div>
-					<div className="col-xs-12 col-md-9 sm-max-height">
-						<BuildProfil />
-					</div>
-					<div className="col-xs-12">
-						<BuildInfos/>
+		if(this.state.isExpanded)
+			return (
+				<div className='sm-builds'>
+					<div className="row sm-max-height">
+						<div className="col-xs-12 col-md-3 sm-builds-min-height sm-hide">
+							 <BuildsList/>
+						</div>
+						<div className="col-xs-12 sm-max-height">
+							<BuildProfil />
+						</div>
+						<div className="col-xs-12 sm-hide">
+							<BuildInfos/>
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		else
+			return (
+				<div className='sm-builds'>
+					<div className="row sm-builds-height">
+						<div className="col-xs-12 col-md-3 sm-builds-min-height">
+							 <BuildsList/>
+						</div>
+						<div className="col-xs-12 col-md-9 sm-max-height">
+							<BuildProfil />
+						</div>
+						<div className="col-xs-12">
+							<BuildInfos/>
+						</div>
+					</div>
+				</div>
+			);
 	}
 
 }

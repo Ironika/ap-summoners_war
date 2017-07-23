@@ -14,30 +14,22 @@ import {BaseData}  from 'ap-react-bootstrap'
 class BuildsData extends BaseData {
 
 	register(obj) {
+		let isExpanded = AppHelper.getData("/isExpanded")
 		if(!AuthHelper.getEntityId()) {
             AppHelper.navigate("/")
         }
 		super.register(obj)
-		this.obj.onClickRefresh = this.onClickRefresh.bind(this)
+		this.obj.state = {
+			isExpanded: isExpanded
+		}
 
+		AppHelper.register('/isExpanded', this, this.isExpanded.bind(this))
 	}
 
-	onClickRefresh() {
-        AppHelper.setBusy(true).
-		then(function () {
-			let promises = []
-			promises.push(BuildResultHelper.getUserBuildresult(AuthHelper.getEntityId()))
-			promises.push(TeamResultHelper.getUserTeamresult(AuthHelper.getEntityId()))
-			promises.push(MonsterResultHelper.getUserMonsterresult(AuthHelper.getEntityId()))
-			return Promise.all(promises)
-		}).
-		then(BuildHelper.getUserBuilds.bind(BuildHelper, AuthHelper.getEntityId())).
-		then(AppHelper.setBusy.bind(AppHelper, false)).
-		catch(function() {
-			this.setState({error: "An error has occured !"})
-			AppHelper.setBusy(false)
-		}.bind(this))
-    }
+	isExpanded() {
+		let isExpanded = AppHelper.getData("/isExpanded")
+		this.setState({isExpanded: isExpanded})
+	}
 
 	unregister() {
 	}

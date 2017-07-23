@@ -50,6 +50,8 @@ class MonsterConfigData extends BaseData {
         	if(monsterConfig['set'+i]) 
         		sets.push(monsterConfig['set'+i])
 
+        let isExpanded = AppHelper.getData("/isExpanded")
+
         this.obj.onClickShow = this.onClickShow.bind(this)
         this.obj.onClickSubmit = this.onClickSubmit.bind(this)
         this.obj.onChangeInput = this.onChangeInput.bind(this)
@@ -83,7 +85,11 @@ class MonsterConfigData extends BaseData {
 
             setsSelect: setTypeValues[0],
             sets: sets,
+
+            isExpanded: isExpanded
         }
+
+        AppHelper.register('/isExpanded', this, this.isExpanded.bind(this))
 	}
 
 	update(props) {
@@ -120,6 +126,11 @@ class MonsterConfigData extends BaseData {
             notationStats: notationStats,
             sets: sets
         })
+	}
+
+	isExpanded() {
+		let isExpanded = AppHelper.getData("/isExpanded")
+		this.setState({isExpanded: isExpanded})
 	}
 
 	onInputNotation(event) {

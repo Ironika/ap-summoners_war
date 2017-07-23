@@ -3,6 +3,7 @@
 .sm-build-profil {
     padding: 0;
     height: 100%;
+    position: relative;
     @media screen and (max-width: $screen-xs) {
         padding-top: 4% !important;
         margin-top: 40px;
@@ -30,6 +31,36 @@
         padding-left: 12% !important;
         margin-left: 2%;
     }
+
+    .sm-build-profil-expand {
+        color: $color-text;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 50;
+        display: inline-block!important;
+        @media screen and (max-width: $screen-md) {
+            display: none !important;
+        }
+    }
+    .sm-build-expand-infos {
+        display:none;
+        padding: 10px;
+        margin-bottom: 10px;
+        color: $color-text;
+        z-index: 50;
+        background-color: $marroon-dark2;
+        border: 1px solid $color-text;
+        position: absolute;
+        top: 5px;
+        left: 40px;
+        text-align: left;
+    }
+    .sm-build-profil-expand:hover + .sm-build-expand-infos {
+        display: block;
+    }
+
     .sm-build-tab {
         z-index: 10;
         background-size: contain;
