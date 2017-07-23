@@ -132,6 +132,7 @@ class BuildInfos extends React.Component {
 		let build = AppHelper.getData('/currentBuild')
 		build.state = BuildState.INBUILDING.key
 		DefaultHelper.postBuildDo({buildId: build.id})
+		this.setState({build: build})
 	}
 
 

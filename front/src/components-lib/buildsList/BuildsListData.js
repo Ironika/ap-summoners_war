@@ -47,7 +47,7 @@ class BuildsListData extends BaseData {
         let build = builds.length ? builds[0] : null
 
         if (AppHelper.getData('/currentBuild') && BuildHelper.getData()[AppHelper.getData('/currentBuild').id])
-            build = AppHelper.getData('/currentBuild')
+            build = BuildHelper.getData()[AppHelper.getData('/currentBuild').id]
         if (build)
             AppHelper.put('/currentBuild', build)
         this.setState({ builds: builds, build: build })
