@@ -1,6 +1,7 @@
 package org.ap.summonerwar.optimizer.stuff;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ import org.ap.summonerwar.optimizer.rune.EStatType;
 import org.ap.summonerwar.optimizer.rune.Rune;
 import org.ap.summonerwar.optimizer.team.Team;
 import org.ap.summonerwar.optimizer.team.TeamMate;
+
+import jersey.repackaged.com.google.common.collect.Lists;
 
 public class StuffSelector {
 
@@ -186,11 +189,11 @@ public class StuffSelector {
 			currentNodes.add(new StuffNode(null, currentMonster, currentMonster.getEval() / bestEval));
 		}
 		
-		TreeSet<StuffNode> selecteds = new TreeSet<StuffNode>(new Comparator<StuffNode>() {
+		PriorityQueue<StuffNode> selecteds = new PriorityQueue<StuffNode>(new Comparator<StuffNode>() {
 
 			@Override
 			public int compare(StuffNode o1, StuffNode o2) {
-				if (o2.totalEval() < o1.totalEval())
+				if (o2.totalEval() > o1.totalEval())
 					return -1;
 				else
 					return 1;
@@ -224,8 +227,9 @@ public class StuffSelector {
 			currentNodes.clear();
 			int selectedsCount = selecteds.size();
 			for (int j = 0; j < selectedsCount; j++) {
-				currentNodes.add(selecteds.pollFirst());
+				currentNodes.add(selecteds.poll());
 			}
+			Collections.reverse(currentNodes);
 			System.out.println("Finish: " + teamMate.getMonster().getName());
 			System.out.println("Selected: " + selectedsCount);
 			selecteds.clear();
@@ -233,13 +237,13 @@ public class StuffSelector {
 		return currentNodes;
 	}
 	
-	private static void addToSet(TreeSet<StuffNode> set, int sizeLimit, StuffNode node) {
+	private static void addToSet(PriorityQueue<StuffNode> set, int sizeLimit, StuffNode node) {
 		if (set.size() < sizeLimit) {
 			set.add(node);
 		} else {
-			StuffNode last = set.last();
+			StuffNode last = set.peek();
 	    	if (last.totalEval() < node.totalEval()) {
-	    		set.pollLast();
+	    		set.poll();
 	    		set.add(node);
 	       }
 		}
