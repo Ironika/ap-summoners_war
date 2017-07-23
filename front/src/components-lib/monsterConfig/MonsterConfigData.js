@@ -57,6 +57,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onClickDeleteStat = this.onClickDeleteStat.bind(this)
         this.obj.onChangeMonsterName = this.onChangeMonsterName.bind(this)
         this.obj.onChangeBrokenSet = this.onChangeBrokenSet.bind(this)
+        this.obj.onInputNotation = this.onInputNotation.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -119,6 +120,10 @@ class MonsterConfigData extends BaseData {
             notationStats: notationStats,
             sets: sets
         })
+	}
+
+	onInputNotation(event) {
+		this.setState({notationStatsInput: event.target.value})
 	}
 
 	onChangeMonsterName(event) {

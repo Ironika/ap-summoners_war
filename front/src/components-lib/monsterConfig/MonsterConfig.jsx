@@ -89,7 +89,8 @@ class MonsterConfig extends React.Component {
 					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.notationStatsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.statTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'notationStats')}/>
-						<input type="text" className="sm-input" placeholder="(1)..." onChange={this.onChangeInput.bind(this, 'notationStats')}/>
+						<input className="sm-range" type="range" onInput={this.onInputNotation.bind(this)} min="0" max="5" defaultValue="0" onChange={this.onChangeInput.bind(this, 'notationStats')}/>
+						<div className="sm-range-infos">{this.state.notationStatsInput}</div>
 						<button className="sm-button" onClick={this.onClickSubmit.bind(this, 'notationStats')}>Ok</button>
 						<div className={"sm-stats-content " + (Object.keys(this.state.notationStats).length > 0  ? "" : "sm-hide")}>
 							<ul>
