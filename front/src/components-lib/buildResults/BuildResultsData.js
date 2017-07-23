@@ -37,7 +37,7 @@ class BuildResultsData extends BaseData {
             buildResults: this.getBuildResultSorted(buildResults)
 		}
 	}
-
+    
     update(newProps) {
         let buildResults = newProps.buildResults
         this.setState({buildResults: this.getBuildResultSorted(buildResults)})
@@ -60,21 +60,6 @@ class BuildResultsData extends BaseData {
                 return -1
         })
         return buildResultsSorted
-    }
-
-    _sortByDate(buildResult1, buildResult2) {
-        console.log("_sortByDate _sortByDate _sortByDate _sortByDate")
-        let date1 = new Date(buildResult1.creationDate[0],buildResult1.creationDate[1] - 1 ,buildResult1.creationDate[2],buildResult1.creationDate[3],buildResult1.creationDate[4],buildResult1.creationDate[5])
-        let date2 = new Date(buildResult2.creationDate[0],buildResult2.creationDate[1] - 1 ,buildResult2.creationDate[2],buildResult2.creationDate[3],buildResult2.creationDate[4],buildResult2.creationDate[5])
-        console.log(buildResult1.creationDate, date1, date1.getTime())
-        console.log(buildResult2.creationDate, date2, date2.getTime())
-        console.log(date2.getTime() - date1.getTime())
-
-
-        if(date1 > date2)
-            return buildResult1 - buildResult2
-        else 
-            return buildResult2 - buildResult1
     }
 
     onClickShow(id) {

@@ -121,7 +121,7 @@ class BuildResults extends React.Component {
 	}
 
 	_buildBuildResult(buildResult) {
-		let creationDate = buildResult.creationDate[0] + "/" + buildResult.creationDate[1] + "/" + buildResult.creationDate[2] + " - " + buildResult.creationDate[3] + ":" + buildResult.creationDate[4]
+		let creationDate = buildResult.creationDate[0] + "/" + (buildResult.creationDate[1] > 9 ? buildResult.creationDate[1] : "0" + buildResult.creationDate[1]) + "/" + (buildResult.creationDate[2] > 9 ? buildResult.creationDate[2] : "0" + buildResult.creationDate[2]) + " - " + (buildResult.creationDate[3] > 9 ? buildResult.creationDate[3] : "0" + buildResult.creationDate[3]) + ":" + (buildResult.creationDate[4] > 9 ? buildResult.creationDate[4] : "0" + buildResult.creationDate[4])
 		return (
 			<div className={"sm-build-result"} key={buildResult.id}>
 				<label className="sm-label" onClick={this.onClickShow.bind(this, buildResult.id)}>Result : {creationDate}</label>

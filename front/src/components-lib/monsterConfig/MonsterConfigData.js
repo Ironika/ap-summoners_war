@@ -142,6 +142,9 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onChangeBrokenSet(event) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		
 		let monsterConfig = this.getState('monsterConfig')
 		monsterConfig.brokenSet = !monsterConfig.brokenSet
 		this.setState({monsterConfig: monsterConfig})
