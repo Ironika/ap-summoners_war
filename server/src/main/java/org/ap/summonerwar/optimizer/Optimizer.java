@@ -69,6 +69,7 @@ public class Optimizer {
 			fw.close();
 		}
 		System.out.println("BUILD FINISHED");
+		System.out.println("nbStuff: " + nbStuff);
 	}
 	
 	public static void buildResultOnDatabase(String userId, String buildResultId, StuffNode stuffNode) throws APWebException {

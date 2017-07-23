@@ -226,6 +226,8 @@ public class StuffSelector {
 			for (int j = 0; j < selectedsCount; j++) {
 				currentNodes.add(selecteds.pollFirst());
 			}
+			System.out.println("Finish: " + teamMate.getMonster().getName());
+			System.out.println("Selected: " + selectedsCount);
 			selecteds.clear();
 		}
 		return currentNodes;
