@@ -36,10 +36,10 @@
 		padding-left: 30px;
 		.sm-builds-add {
 			text-align: center;
-			display: block;
 			cursor: pointer;
 			display: inline-block;
-			float: left;
+			position: relative;
+			top: -15px;
 			i {
 				font-size: 20px;
 	    		color: $color-text;
@@ -55,7 +55,6 @@
 			text-align: center;
 			display: inline-block;
 			margin: 0 1%;
-			float: left;
 		    i {
 		    	top: -39px;
 			    right: -40%;
