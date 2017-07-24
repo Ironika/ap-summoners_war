@@ -8,7 +8,7 @@
 	    height: 90%;
 	    width: 90%;
 	    margin: auto;
-	    margin-top: 2%;
+	    margin-top: 1%;
     }
 	.sm-builds-height {
 		height: 100%;
@@ -19,15 +19,14 @@
 	        height: calc(90% - 40px);	
 	    }
 	}
-	.sm-builds-min-height {
-		@media screen and (max-width: $screen-xs) {
-	        height: 35%;
+	.sm-builds-lists {
+	    height: 10%;
+	    @media screen and (min-width: $screen-md) {
+	        margin-bottom: 20px;
+	        height: 15%;
 	    }
-	   	@media screen and (max-width: $screen-xs) and (max-width: $screen-md) {
-	        height: 35%;
-	    }
-		@media screen and (min-width: $screen-md) {
-	        height: 100%;
-	    }
+	}
+	.sm-builds-profil {
+		height: 85%;
 	}
 }

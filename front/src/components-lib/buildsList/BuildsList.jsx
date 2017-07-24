@@ -24,8 +24,8 @@ class BuildsList extends React.Component {
 	_buildBuild(build) {
 		return (
 			<li key={build.id} onClick={this.onClickBuild.bind(this, build)} className="sm-builds-list-li">
+				<div className={"sm-button sm-build " + (this.state.build.id == build.id? "sm-build-active" : "")}>{build.name}</div>
 				<i className="glyphicon glyphicon-remove" onClick={this.onClickDelete.bind(this, build.id)}></i>
-				<div className={"sm-build " + (this.state.build.id == build.id? "sm-build-active" : "")}><span>{build.name}</span></div>
 			</li>
 		)
 	}

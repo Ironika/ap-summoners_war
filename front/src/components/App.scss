@@ -235,9 +235,12 @@ html, body, .app, .ap-app {
 		width: 80%;
 		margin: auto;
 		text-align: center;
-		margin-top: 25%;
+		margin-top: 5%;
 		font-weight: bold;
 		color: $marroon-dark2;
+		@media screen and (min-width: $screen-xlg) {
+			margin-top: 15%;
+		}
 		.sm-paypal {
 			margin-top: 5px;
 			@media screen and (max-width: $screen-lg) {

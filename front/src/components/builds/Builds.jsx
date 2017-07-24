@@ -22,38 +22,21 @@ class Builds extends React.Component {
 	}
 
 	render() {
-		if(this.state.isExpanded)
-			return (
-				<div className='sm-builds'>
-					<div className="row sm-max-height">
-						<div className="col-xs-12 col-md-3 sm-builds-min-height sm-hide">
-							 <BuildsList/>
-						</div>
-						<div className="col-xs-12 sm-max-height">
-							<BuildProfil />
-						</div>
-						<div className="col-xs-12 sm-hide">
-							<BuildInfos/>
-						</div>
+		return (
+			<div className='sm-builds'>
+				<div className={"row " + (this.state.isExpanded ? "sm-max-height" : "sm-builds-height")}>
+					<div className={(this.state.isExpanded ? "col-xs-12 sm-builds-lists sm-hide" : "col-xs-12 sm-builds-lists")}>
+						 <BuildsList/>
+					</div>
+					<div className={(this.state.isExpanded ? "col-xs-12 sm-max-height" : "col-xs-12 sm-builds-profil")}>
+						<BuildProfil />
+					</div>
+					<div className={(this.state.isExpanded ? "col-xs-12 sm-hide" : "col-xs-12")}>
+						<BuildInfos/>
 					</div>
 				</div>
-			);
-		else
-			return (
-				<div className='sm-builds'>
-					<div className="row sm-builds-height">
-						<div className="col-xs-12 col-md-3 sm-builds-min-height">
-							 <BuildsList/>
-						</div>
-						<div className="col-xs-12 col-md-9 sm-max-height">
-							<BuildProfil />
-						</div>
-						<div className="col-xs-12">
-							<BuildInfos/>
-						</div>
-					</div>
-				</div>
-			);
+			</div>
+		);
 	}
 
 }

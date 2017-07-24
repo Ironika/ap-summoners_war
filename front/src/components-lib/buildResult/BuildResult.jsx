@@ -108,7 +108,10 @@ class BuildResults extends React.Component {
 
 	_buildTeamResults(buildResult) {
 		if (this.state.loaded)
-			return(Utils.map(buildResult.teamResults, this._buildTeamResult.bind(this)))
+			if(Object.keys(buildResult.teamResults).length > 0)
+				return(Utils.map(buildResult.teamResults, this._buildTeamResult.bind(this)))
+			else 
+				return (<div className="sm-label sm-label-noresult">No Results</div>)
 		else
 			return(<div></div>)
 	}

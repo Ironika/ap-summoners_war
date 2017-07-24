@@ -3,12 +3,8 @@
 .sm-builds-list {
 	padding: 5px;
 	height: 100%;
-	@media screen and (max-width: $screen-md) {
-		margin-bottom: 20px;
-	}
-	@media screen and (min-width: $screen-md) {
-		margin-right: 10%;
-	}
+	margin-bottom: 20px;
+
     .sm-build-refresh {
         color: $color-text;
 	    top: 10px;
@@ -37,27 +33,17 @@
 		overflow-x: auto;
 		overflow-y: hidden;
 		white-space: nowrap;
-		@media screen and (min-width: $screen-md) {
-			overflow-x: hidden;
-			overflow-y: auto;
-			height: 100%;
-			white-space: normal;
-			margin-top: 10px;
-		}
+		padding-left: 30px;
 		.sm-builds-add {
 			text-align: center;
 			display: block;
 			cursor: pointer;
-			@media screen and (max-width: $screen-md) {
-				display: inline-block;
-				margin-left: 20px;
-			}
+			display: inline-block;
+			float: left;
 			i {
-				font-size: 25px;
+				font-size: 20px;
 	    		color: $color-text;
-	    		@media screen and (max-width: $screen-md) {
-					display: block;
-				}
+	    		display: block;
 			}
 			span {
 				display: inherit;
@@ -67,73 +53,21 @@
 		.sm-builds-list-li {
 			cursor: pointer;
 			text-align: center;
-	        @media screen and (max-width: $screen-xs) {
-		       	display: inline-block;
-				margin: 0 2%;
-				width: 35%;
-		    }
-		    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-		        display: inline-block;
-				margin: 0 2%;
-				width: 27%;
-		    }
-		    @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-		        display: inline-block;
-				margin: 0 2%;
-				width: 17%;
-		    }
+			display: inline-block;
+			margin: 0 1%;
+			float: left;
 		    i {
-		    	top: 20px;
+		    	top: -39px;
 			    right: -40%;
 			    color: $color-text-error;
 			    cursor: pointer;
+			    font-size: 12px;
 		    }
 			.sm-build {
-			    height: 120px;
-			    margin: auto;
-				margin-bottom: 15px;
-				background-image: radial-gradient($marroon-light 40%, $marroon-dark 70%);
-				border: 1px solid $marroon-light;
-				border-radius: 1000px;
-			    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-					width: 90%;
-				}
-				@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg){
-					width: 85%;
-				}
-				@media screen and (min-width: $screen-xlg){
-					width: 60%;
-				}
-				i {
-				    position: relative;
-				    background-color: inherit;
-				    font-size: 40px;
-				    color: $marron;
-				    top: 35%;
-				}
-				span {
-					position: relative;
-					top: 42%;
-					color: $color-text;
-					font-family: $font;
-					font-size: 18px;
-					background-color: $marron;
-				    padding: 10px;
-				    text-shadow: 
-			            2px 2px 3px black,
-			            2px -2px 3px black,
-			            -2px -2px 3px black,
-			            -2px 2px 3px black;
-				}
+				border: 1px solid $color-text;
+				font-size: 12px;
 				&:hover {
-					background-image: radial-gradient($marroon-light2 40%, $marroon-dark2 70%);
-					span {
-						background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
-						color: white;
-					}
-					i {
-						color: $color-text;
-					}
+					border: 1px solid $color-text !important;
 				}
 			}
 			.sm-build-active {
