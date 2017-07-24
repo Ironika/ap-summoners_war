@@ -38,7 +38,10 @@
         position: absolute;
         bottom: 5px;
         left: 5px;
-        img { width: 25px; }
+        background: $marroon-dark2;
+        padding: 5px;
+        border-radius: 100%;
+        img { width: 20px; }
     }
 	.sm-monster-lvl {
 		position: absolute;
