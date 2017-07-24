@@ -47,13 +47,54 @@ class MonsterConfig extends React.Component {
 			return ( <input id="brokenSet" type="checkbox" className="sm-checkbox" onChange={this.onChangeBrokenSet.bind(this)}/>)
 	}
 
+	buildImg(monster){
+		let storage = "(In Storage)"
+		let element = "(" + monster.elemType + ")"
+
+		let name = monster.name
+
+		if(name.search("Unknow") != -1) {
+			return (<img className="sm-monster-image" src={"assets/images/monsters/default-monster.jpg"}/>)
+		}
+
+		if(name.search(storage) != -1) {
+			name = name.slice(0 , name.search(storage) - 2)
+		}
+
+		if(name.search(element) != -1) {
+			name = name.slice(0 , name.search(element) - 2)
+			name = name + "_" + monster.elemType
+		}
+
+		while(name.search(" ") != -1)
+			name = name.replace(" ", "-")
+
+
+		return (<img className="sm-monster-image" src={"assets/images/monsters/" + name + ".jpg"}/>)
+	}
+
+	_buildMonsterList(monster) {
+		return (
+			<div className="sm-list-monster" key={monster.id} onClick={this.onClickMonster.bind(this, monster)}>
+				{this.buildImg(monster)}
+				<span>{monster.name}</span>
+			</div>
+		)
+	}
+
 	render() {
+		console.log(this.state.monsterName)
 		return (
 			<div className={"sm-build-buildmonsterconfig sm-content sm-build-content " + (this.state.isExpanded ? "sm-build-buildmonsterconfig-expanded" : "")}>
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src={"assets/images/monsters/" + this.state.monsterImage + ".jpg"}/>
-					<input className="sm-input" type="text" placeholder="Monster Name..." defaultValue={this.state.monsterName} onChange={this.onChangeMonsterName.bind(this)}/>
+					<div className="sm-list-monsters">
+						<input className="sm-input" type="text" placeholder="Monster Name..." value={this.state.monsterName} onChange={this.onChangeMonsterName.bind(this)}/>
+						<div className={"sm-list-monster-input " + (this.state.monstersListShow ? "" : "sm-hide")}>
+							{Utils.map(this.state.monstersList, this._buildMonsterList.bind(this))}
+						</div>
+					</div>
 				</div>
 				<hr/>
 				<div className="sm-builds-monster-stats">

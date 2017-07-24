@@ -60,6 +60,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onChangeMonsterName = this.onChangeMonsterName.bind(this)
         this.obj.onChangeBrokenSet = this.onChangeBrokenSet.bind(this)
         this.obj.onInputNotation = this.onInputNotation.bind(this)
+        this.obj.onClickMonster = this.onClickMonster.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -86,7 +87,10 @@ class MonsterConfigData extends BaseData {
             setsSelect: setTypeValues[0],
             sets: sets,
 
-            isExpanded: isExpanded
+            isExpanded: isExpanded,
+
+            monstersList: {},
+            monstersListShow: false
         }
 
         AppHelper.register('/isExpanded', this, this.isExpanded.bind(this))
@@ -128,6 +132,31 @@ class MonsterConfigData extends BaseData {
         })
 	}
 
+	onClickMonster(monster) {
+		let monsters = MonsterHelper.getData()
+
+		for(let key in monsters) {
+			if(monsters[key].name.toUpperCase() == monster.name.toUpperCase()) {
+				let monsterConfig = this.getState('monsterConfig')
+				monsterConfig.monsterId = monsters[key].id
+				AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
+
+				this.setState({
+					monsterConfig: monsterConfig,
+					monsterName: monster.name, 
+					monsterImage: monster.name,
+					monstersListShow: false
+				})
+				break
+			}
+		}
+		// this.setState({
+		// 	monsterName: monster.name, 
+		// 	monsterImage: monster.name,
+		// 	monstersListShow: false
+		// })
+	}
+
 	isExpanded() {
 		let isExpanded = AppHelper.getData("/isExpanded")
 		this.setState({isExpanded: isExpanded})
@@ -138,28 +167,63 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onChangeMonsterName(event) {
-		let build = AppHelper.getData('/currentBuild')
+		console.log("event event event event event event ", event.target.value)
 
-		for(let key in this.getState('monsters')) {
-			if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
-				let monsterConfig = this.getState('monsterConfig')
-				monsterConfig.monsterId = key
-				AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
-				AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
-				this.setState({
-					monsterName: event.target.value, 
-					monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
-					monsterConfig: monsterConfig
-				})
-				break
-			}
+		let build = AppHelper.getData('/currentBuild')
+		AppHelper.put('/canSave/' + build.id, true)
+
+		let monsters = Utils.map(MonsterHelper.getData())
+		monsters = monsters.filter(function(monster) {
+			if (monster.name.toUpperCase().indexOf(event.target.value.toUpperCase()) >= 0)
+	            return true
+	        return false
+		})
+
+		let tryy = event.target.value
+		console.log(tryy)
+		this.setState({
+			monsterName: tryy, 
+			monstersList: monsters,
+			monstersListShow: true
+		})
+
+		// for(let key in monsters) {
+		// 	if(monsters[key].name.toUpperCase() == event.target.value.toUpperCase()) {
+		// 		let monsterConfig = this.getState('monsterConfig')
+		// 		monsterConfig.monsterId = monsters[key].id
+		// 		AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
+
+		// 		this.setState({
+		// 			monsterConfig: monsterConfig,
+		// 			monsterName: monsters[key].name, 
+		// 			monstersList: monsters,
+		// 			monstersListShow: true
+		// 		})
+		// 		break
+		// 	}
+		// }
 			
-		}
+		// let build = AppHelper.getData('/currentBuild')
+
+		// for(let key in this.getState('monsters')) {
+		// 	if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
+		// 		let monsterConfig = this.getState('monsterConfig')
+		// 		monsterConfig.monsterId = key
+		// 		AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
+		// 		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		// 		this.setState({
+		// 			monsterName: event.target.value, 
+		// 			monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
+		// 			monsterConfig: monsterConfig
+		// 		})
+		// 		break
+		// 	}
+		// }
 	}
 
 	onChangeBrokenSet(event) {
 		let build = AppHelper.getData('currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
 		
 		let monsterConfig = this.getState('monsterConfig')
 		monsterConfig.brokenSet = !monsterConfig.brokenSet
@@ -168,7 +232,7 @@ class MonsterConfigData extends BaseData {
 
 	onClickDeleteStat(id, stat) {
 		let build = AppHelper.getData('currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
 		
 		if( id== 'sets')
 			this.getState('sets').splice(stat, 1)
@@ -221,7 +285,7 @@ class MonsterConfigData extends BaseData {
 
 	onClickSubmit(id) {
 		let build = AppHelper.getData('currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
 		
 		if(id == 'sets')
 			this.getState(id).push(this.getState(id + 'Select'))

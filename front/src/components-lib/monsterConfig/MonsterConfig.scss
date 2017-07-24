@@ -72,10 +72,37 @@
 		    width: 60px;
 		    display: inline-block;
 	    }
-	    input {
-    	    display: inline-block;
+	    .sm-list-monsters {
+	    	display: inline-block;
 			width: 69%;
 			margin-left: 5%;
+	    }
+	    .sm-list-monster-input {
+		    position: absolute;
+		    background: $black;
+		    padding: 10px;
+		    width: 25%;
+		    z-index: 50;
+		    height: 180px;
+		    overflow: scroll;
+		    overflow-x: hidden;
+		    .sm-list-monster {
+		    	margin-bottom: 10px;
+		    	cursor: pointer;
+		    	color: $color-text;
+		    	padding: 5px;
+		    	img {
+		    		width: 35px !important;
+		    		height: 35px !important;
+		    	}
+		    	&:hover {
+		    		background-color: $color-text;
+		    		color: $marroon-dark2;
+		    	}
+		    	span {
+			    	margin-left: 10px;
+			    }
+		    }
 	    }
     }
     .sm-builds-monster-stats {

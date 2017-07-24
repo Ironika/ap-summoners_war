@@ -25,6 +25,10 @@
 	        margin-bottom: 20px;
 	        height: 20%;
 	    }
+	    @media screen and (min-width: $screen-xlg) {
+	        margin-bottom: 20px;
+	        height: 15%;
+	    }
 	}
 	.sm-builds-profil {
 		height: 80%;

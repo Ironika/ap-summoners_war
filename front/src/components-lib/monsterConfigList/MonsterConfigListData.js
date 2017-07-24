@@ -50,12 +50,11 @@ class MonsterConfigListData extends BaseData {
     		if (build.id == storeMonstersConfig[key].buildId)
     			currentMonstersConfig[key] = storeMonstersConfig[key]
 		this.setState({monstersConfig: currentMonstersConfig})
-
 	}
 
 	onClickAddMonsterConfig() {
 		let build = AppHelper.getData('/currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
 
 		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id, brokenSet: false}
 
@@ -70,7 +69,7 @@ class MonsterConfigListData extends BaseData {
 
 	onClickDeleteMonsterConfig(monsterConfig) {
 		let build = AppHelper.getData('currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
 		
 		let monstersConfig = AppHelper.getData('/monstersConfig')
 		delete(monstersConfig[monsterConfig.id])

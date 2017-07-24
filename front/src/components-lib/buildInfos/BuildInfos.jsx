@@ -41,14 +41,16 @@ class BuildInfos extends React.Component {
 
 	_onBuildChangeCanSave() {
 		let build = AppHelper.getData('/currentBuild')
-		let canSave = AppHelper.getData('/currentBuild/' + build.id + "/canSave")
+		let canSave = AppHelper.getData('/canSave/' + build.id)
+		
         this.setState({canSave: canSave})
     }
 
 	_onBuildChange() {
 		let build = AppHelper.getData('/currentBuild')
-		AppHelper.register('/currentBuild/' + build.id + "/canSave", this, this._onBuildChangeCanSave.bind(this));
-		let canSave = AppHelper.getData('/currentBuild/' + build.id + "/canSave")
+		AppHelper.register('/canSave/' + build.id, this, this._onBuildChangeCanSave.bind(this));
+
+		let canSave = AppHelper.getData('/canSave' + build.id)
 		build.runesLvl = 9
 		build.runesStars = 5
         this.setState({
@@ -60,15 +62,15 @@ class BuildInfos extends React.Component {
 
 	onChangeBuildName(event) {
 		let build = AppHelper.getData('/currentBuild')
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
+		AppHelper.put('/canSave/' + build.id, true)
+
 		this.state.build.name = event.target.value
 		this.setState({build: this.state.build})
 	}
 
 	onClickEdit(){
 		let build = AppHelper.getData('/currentBuild')
-		delete(build[build.id])
-		AppHelper.put('/currentBuild/' + build.id + "/canSave", false)
+		AppHelper.put('/canSave/' + build.id, false)
 		build.state = BuildState.SAVE.key
 		BuildHelper.putBuild(build).
 		then(function() {
@@ -111,7 +113,6 @@ class BuildInfos extends React.Component {
 	onClickSave() {
 		let build = AppHelper.getData('/currentBuild')
 		delete(build.isNewBuild)
-		delete(build[build.id])
 		build.state = BuildState.SAVE.key
 		BuildHelper.postBuild(build).
 		then(function(result) {
