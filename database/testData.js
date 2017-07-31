@@ -51,3 +51,21 @@ db.user.insert({
 	"id":"c",
 	"authId":"cauth"
 })
+
+db.apauth.insert({
+    "id":"sauth",
+    "username":"samael",
+    "email":"s",
+    "password":"s",
+    "roles":["user"],
+    "type":"user",
+    "active":true,
+    "registrationDate":[2016, 1, 1, 0, 0],
+    "registered":true,
+    "entityId": "s"
+})
+
+db.user.insert({
+    "id":"s",
+    "authId":"sauth"
+})
