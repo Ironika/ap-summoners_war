@@ -100,6 +100,9 @@
 		position: relative;
 		.sm-button {
 			padding: 5px 10px !important;
+			@media screen and (max-width: $screen-md) {
+				font-size: 13px;
+			}
 		}
 	    i {
 	    	color: $color-text;
@@ -146,7 +149,7 @@
 	            	-2px -2px 3px black,
 	            	-2px 2px 3px black;
 	            @media screen and (max-width: $screen-xs){
-					font-size: 13px; 
+					font-size: 10px; 
 				}
 	            @media screen and (min-width: $screen-xs) and (max-width: $screen-md){
 					font-size: 13px; 
@@ -167,7 +170,7 @@
 	            	-2px 2px 3px black;
 				span { color: green; }
 				@media screen and (max-width: $screen-xs){
-					font-size: 13px; 
+					font-size: 10px; 
 				}
 	            @media screen and (min-width: $screen-xs) and (max-width: $screen-md){
 					font-size: 13px; 

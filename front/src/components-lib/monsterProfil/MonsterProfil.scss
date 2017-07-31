@@ -54,7 +54,7 @@
 
         @media screen and (max-width: $screen-xs) {
             top: -6%;
-            left: 12%;
+            left: 5%;
         }
         @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
             top: -6%;
@@ -83,7 +83,7 @@
             background-image: url(/assets/images/ui/tile2_active.png);
         }
 		@media screen and (max-width: $screen-xs) {
-			left: 50%;
+			left: 52%;
 		}
     	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
 			left: 55%;
