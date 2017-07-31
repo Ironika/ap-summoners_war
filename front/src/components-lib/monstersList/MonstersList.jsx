@@ -55,14 +55,6 @@ class MonsterList extends React.Component {
                 <SWPanel className="sm-monster-filters-elements">
                     {ElemType.VALUES.map(this._buildElementFilters.bind(this))}
                 </SWPanel>
-                <div className='sm-monster-list' ref='list' onScroll={this.onScroll}>
-                    {this.state.monsters.slice(0, this.state.threshold).map(this._buildMonster.bind(this))}
-                    {this.state.monsters.length > this.state.threshold ?
-                        <div className='sm-monsters-busy'>
-                            <BusyBars className='sm-busy-indicator'/>
-                        </div>
-                    : '' }
-                </div>
                 <SWPanel className="sm-monster-filters">
                     <ul>
                         <li className="sm-li-search-input">
@@ -71,6 +63,14 @@ class MonsterList extends React.Component {
                         {Utils.map(MonstersListData.SORT_ATTRIBUTE, this._buildSorts.bind(this))}
                     </ul>
                 </SWPanel>
+                <div className='sm-monster-list' ref='list' onScroll={this.onScroll}>
+                    {this.state.monsters.slice(0, this.state.threshold).map(this._buildMonster.bind(this))}
+                    {this.state.monsters.length > this.state.threshold ?
+                        <div className='sm-monsters-busy'>
+                            <BusyBars className='sm-busy-indicator'/>
+                        </div>
+                    : '' }
+                </div>
             </div>
         )
     }

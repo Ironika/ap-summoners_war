@@ -3,9 +3,12 @@
 .sm-monsterprofil {
 	height: calc(100% - 20px);
     padding: 15px;
-	@media screen and (max-width: $screen-md) {
-		margin: 10% 0 !important;
-	}
+    @media screen and (max-width: $screen-xs) {
+        margin: 20% 0 !important;
+    }
+    @media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+        margin: 10% 0 !important;
+    }
 
 	@media screen and (min-width: $screen-md) {
 		margin-left: 10% !important;
