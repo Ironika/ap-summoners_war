@@ -48,6 +48,7 @@ public class MonsterConfigServlet extends APServletBase {
 				bean.notationCrate = data.getNotationCrate();
 				bean.notationAtk = data.getNotationAtk();
 				bean.set1 = data.getSet1();
+				bean.orderAtk = data.getOrderAtk();
 				bean.id = data.getId();
 				bean.requiredAtk = data.getRequiredAtk();
 				bean.requiredCdmg = data.getRequiredCdmg();
@@ -92,6 +93,7 @@ public class MonsterConfigServlet extends APServletBase {
 			data.setNotationCrate(monsterConfigBean.notationCrate);
 			data.setNotationAtk(monsterConfigBean.notationAtk);
 			data.setSet1(monsterConfigBean.set1);
+			data.setOrderAtk(monsterConfigBean.orderAtk);
 			data.setRequiredAtk(monsterConfigBean.requiredAtk);
 			data.setRequiredCdmg(monsterConfigBean.requiredCdmg);
 			data.setNotationRes(monsterConfigBean.notationRes);
@@ -136,6 +138,7 @@ public class MonsterConfigServlet extends APServletBase {
 			bean.notationCrate = data.getNotationCrate();
 			bean.notationAtk = data.getNotationAtk();
 			bean.set1 = data.getSet1();
+			bean.orderAtk = data.getOrderAtk();
 			bean.id = data.getId();
 			bean.requiredAtk = data.getRequiredAtk();
 			bean.requiredCdmg = data.getRequiredCdmg();
@@ -183,6 +186,7 @@ public class MonsterConfigServlet extends APServletBase {
 			data.setNotationCrate(monsterConfigBean.notationCrate);
 			data.setNotationAtk(monsterConfigBean.notationAtk);
 			data.setSet1(monsterConfigBean.set1);
+			data.setOrderAtk(monsterConfigBean.orderAtk);
 			data.setRequiredAtk(monsterConfigBean.requiredAtk);
 			data.setRequiredCdmg(monsterConfigBean.requiredCdmg);
 			data.setNotationRes(monsterConfigBean.notationRes);

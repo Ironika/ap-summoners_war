@@ -18,6 +18,7 @@
     margin-right: 20px;
     height: calc(100% - 20px);
     width: 100%;
+    position: relative;
 	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
 		width: 60%;
 	}
@@ -66,7 +67,23 @@
     .sm-monsterconfig-infos:hover + .sm-monsterconfig-infos-content {
     	display: block;
     }
+    .sm-order-attack {
+        position: absolute;
+	    top: 0;
+	    left: 40%;
+    	input {
+    		width: 25%;
+    		padding: 5px;
+    		display: inline-block;
+    	}
+    	i { margin-left: 5px; }
+    	.sm-monsterconfig-infos-content {
+    		top: 25px;
+    		width: 100%;
+    	}
+    }
     .sm-builds-monster-name {
+    	margin-top: 20px;
     	img {
 	    	height: 60px;
 		    width: 60px;
@@ -81,7 +98,7 @@
 		    position: absolute;
 		    background: $black;
 		    padding: 10px;
-		    width: 25%;
+		    width: 64%;
 		    z-index: 50;
 		    height: 180px;
 		    overflow: scroll;

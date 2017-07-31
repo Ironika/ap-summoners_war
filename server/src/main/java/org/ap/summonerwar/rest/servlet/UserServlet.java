@@ -435,6 +435,7 @@ public class UserServlet extends APServletBase {
 				bean.notationCrate = data.getNotationCrate();
 				bean.notationAtk = data.getNotationAtk();
 				bean.set1 = data.getSet1();
+				bean.orderAtk = data.getOrderAtk();
 				bean.id = data.getId();
 				bean.requiredAtk = data.getRequiredAtk();
 				bean.requiredCdmg = data.getRequiredCdmg();

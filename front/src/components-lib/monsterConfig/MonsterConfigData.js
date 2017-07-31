@@ -61,6 +61,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onChangeBrokenSet = this.onChangeBrokenSet.bind(this)
         this.obj.onInputNotation = this.onInputNotation.bind(this)
         this.obj.onClickMonster = this.onClickMonster.bind(this)
+        this.obj.onChangeOrderAtk = this.onChangeOrderAtk.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -150,11 +151,15 @@ class MonsterConfigData extends BaseData {
 				break
 			}
 		}
-		// this.setState({
-		// 	monsterName: monster.name, 
-		// 	monsterImage: monster.name,
-		// 	monstersListShow: false
-		// })
+	}
+
+	onChangeOrderAtk(event) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/canSave/' + build.id, true)
+		
+		let monsterConfig = this.getState('monsterConfig')
+		monsterConfig.orderAtk = event.target.value
+		this.setState({monsterConfig: monsterConfig})
 	}
 
 	isExpanded() {
@@ -167,8 +172,6 @@ class MonsterConfigData extends BaseData {
 	}
 
 	onChangeMonsterName(event) {
-		console.log("event event event event event event ", event.target.value)
-
 		let build = AppHelper.getData('/currentBuild')
 		AppHelper.put('/canSave/' + build.id, true)
 
@@ -179,46 +182,11 @@ class MonsterConfigData extends BaseData {
 	        return false
 		})
 
-		let tryy = event.target.value
-		console.log(tryy)
 		this.setState({
-			monsterName: tryy, 
+			monsterName: event.target.value, 
 			monstersList: monsters,
 			monstersListShow: true
 		})
-
-		// for(let key in monsters) {
-		// 	if(monsters[key].name.toUpperCase() == event.target.value.toUpperCase()) {
-		// 		let monsterConfig = this.getState('monsterConfig')
-		// 		monsterConfig.monsterId = monsters[key].id
-		// 		AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
-
-		// 		this.setState({
-		// 			monsterConfig: monsterConfig,
-		// 			monsterName: monsters[key].name, 
-		// 			monstersList: monsters,
-		// 			monstersListShow: true
-		// 		})
-		// 		break
-		// 	}
-		// }
-			
-		// let build = AppHelper.getData('/currentBuild')
-
-		// for(let key in this.getState('monsters')) {
-		// 	if(this.getState('monsters')[key].toUpperCase() == event.target.value.toUpperCase()) {
-		// 		let monsterConfig = this.getState('monsterConfig')
-		// 		monsterConfig.monsterId = key
-		// 		AppHelper.put("monstersConfig/" + monsterConfig.id, monsterConfig)
-		// 		AppHelper.put('/currentBuild/' + build.id + "/canSave", true)
-		// 		this.setState({
-		// 			monsterName: event.target.value, 
-		// 			monsterImage: event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1),
-		// 			monsterConfig: monsterConfig
-		// 		})
-		// 		break
-		// 	}
-		// }
 	}
 
 	onChangeBrokenSet(event) {

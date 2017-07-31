@@ -56,7 +56,7 @@ class MonsterConfigListData extends BaseData {
 		let build = AppHelper.getData('/currentBuild')
 		AppHelper.put('/canSave/' + build.id, true)
 
-		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id, brokenSet: false}
+		let monsterConfig = {id: String(new Date().getTime()), userId: build.userId, buildId: build.id, brokenSet: false, orderAtk: 1}
 
 		AppHelper.put('/monstersConfig/' + monsterConfig.id, monsterConfig).
 		then(function() {

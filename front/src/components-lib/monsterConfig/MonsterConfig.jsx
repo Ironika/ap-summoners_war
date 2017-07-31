@@ -87,6 +87,13 @@ class MonsterConfig extends React.Component {
 		return (
 			<div className={"sm-build-buildmonsterconfig sm-content sm-build-content " + (this.state.isExpanded ? "sm-build-buildmonsterconfig-expanded" : "")}>
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
+				<div className="sm-order-attack">
+					<input className="sm-input" type="number" value={this.state.monsterConfig.orderAtk} onChange={this.onChangeOrderAtk.bind(this)}/>
+					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
+					<div className="sm-monsterconfig-infos-content">
+						Order priority attack.
+					</div>
+				</div>
 				<div className="sm-builds-monster-name">
 					<img alt="Summoners War" src={"assets/images/monsters/" + this.state.monsterImage + ".jpg"}/>
 					<div className="sm-list-monsters">
@@ -122,10 +129,10 @@ class MonsterConfig extends React.Component {
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'notationStats')}>Notations Stats</label>
 					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
 					<div className="sm-monsterconfig-infos-content">
-						Notation is between 0 - 1 <br/>
+						Notation is between 0 - 5 <br/>
 						Something like : <br/>
-						Spd : 1 <br/>
-						Atk : 0.90 <br/>
+						Spd : 5 <br/>
+						Atk : 4 <br/>
 						...
 					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.notationStatsIsOpen ? "" : "sm-hide")}>

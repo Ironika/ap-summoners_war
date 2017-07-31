@@ -21,6 +21,7 @@ public class MonsterConfigBean {
 	public Integer notationCrate;
 	public Integer notationAtk;
 	public String set1;
+	public Integer orderAtk;
 	public String id;
 	public Integer requiredAtk;
 	public Integer requiredCdmg;
