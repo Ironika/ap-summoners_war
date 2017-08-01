@@ -232,18 +232,25 @@ html, body, .app, .ap-app {
 		}
 	}
 	.sm-form-paypal {
-		width: 80%;
+		width: 20%;
 		margin: auto;
 		text-align: center;
-		margin-top: 10%;
 		font-weight: bold;
 		color: $marroon-dark2;
+		position: fixed;
+		bottom: 20px;
+		@media screen and (max-width: $screen-xs) {
+			left: 15%;
+		}
+		@media screen and (min-width: $screen-xs) and (max-width: $screen-sm){
+			left: 11%;
+		}
 		.sm-paypal {
 			margin-top: 5px;
-			@media screen and (max-width: $screen-md) {
+			@media screen and (max-width: $screen-sm) {
 				width: 100%;
 			}
-			@media screen and (min-width: $screen-md) {
+			@media screen and (min-width: $screen-sm) {
 				width: 60%;
 			}
 		}
@@ -326,7 +333,7 @@ html, body, .app, .ap-app {
 			width: 40%;
 		}
     	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-			width: 30%;
+			width: 20%;
 		}
     	@media screen and (min-width: $screen-md) {
 			display: none;
