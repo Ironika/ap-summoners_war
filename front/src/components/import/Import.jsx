@@ -22,19 +22,19 @@ class Import extends React.Component {
 		return (
 			<div className='sm-import'>
 				<div className="row">
-					<div className="col-xs-12 col-md-6">
+					<div className="col-xs-12 col-sm-6">
 						<SWPanel>
 							<p className="sm-import-text">
 								Import your Json file and create your optimised builds for your team !
-								<br/>
-								<br/>
+								<br/><br/>
 								Take a look of all your monsters and runes like in game !
-								<br/>
-								<br/>
-								<a href="https://github.com/kakaroto/SWProxy" target="_blank"><button className="sm-button">Get your Json File ?</button></a>
+								<br/><br/>
+								<a href="assets/summonerswar-builderTEST.json" download>
+									<button className="sm-button">Get Test File ?</button>
+								</a>
 							</p>
 						</SWPanel>
-						<SWPanel className="sm-import-bloc" size="lg">
+						<SWPanel className="sm-import-file" size="lg">
 							<div className="sm-content sm-upload">
 								<label htmlFor="file-upload" className="sm-label sm-upload-label">
 								    {this.state.upload}
@@ -49,9 +49,9 @@ class Import extends React.Component {
 							</div>
 						</SWPanel>
 					</div>
-					<div className="col-xs-12 col-md-6">
-						<div className="sm-import-img-content">
-							<img src="assets/images/upload.png" alt="Summoners War Homunculus" className="sm-import-img" />
+					<div className="col-xs-12 col-sm-6">
+						<div className="sm-import-img">
+							<img src="assets/images/upload.png" alt="summonerswar-builder" />
 						</div>
 					</div>
 				</div>

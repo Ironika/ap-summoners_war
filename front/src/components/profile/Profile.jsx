@@ -22,21 +22,21 @@ class Profile extends React.Component {
 		return (
 			<div className='sm-profile'>
 				<div className="row">
-					<div className="col-xs-12 col-md-6">
+					<div className="col-xs-12 col-sm-6">
 						<SWPanel className='sm-profil-stat'>
-							<img alt="Summoners War" src="assets/images/runes.png"/>
+							<img alt="summonerswar-builder" src="assets/images/runes.png"/>
 							<p>Monsters : <span>{this.state.monsters}</span></p>
 						</SWPanel>
 						<SWPanel className='sm-profil-stat'>
-							<img alt="Summoners War" src="assets/images/runes.png"/>
+							<img alt="summonerswar-builder" src="assets/images/runes.png"/>
 							<p>Runes : <span>{this.state.runes}</span></p>
 						</SWPanel>
 						<SWPanel className='sm-profil-stat sm-profil-stat-last'>
-							<img alt="Summoners War" src="assets/images/runes.png"/>
+							<img alt="summonerswar-builder" src="assets/images/runes.png"/>
 							<p>Builds : <span>{this.state.builds}</span></p>
 						</SWPanel>
 					</div>
-					<div className="col-xs-12 col-md-6">
+					<div className="col-xs-12 col-sm-6">
                         <SWPanel className='sm-profile-user' size='lg'>
 							<div className="sm-content">
 								<ul className="sm-profil-user-key">

@@ -4,33 +4,24 @@
 	height: 100%;
 	padding-top: 20px;
 	position: relative;
-    @media screen and (min-width: $screen-md) {
-	    height: 90%;
+    @media screen and (min-width: $screen-sm) {
+	    height: 95%;
 	    width: 90%;
 	    margin: auto;
-	    margin-top: 1%;
     }
-	.sm-builds-height {
-		height: 100%;
-		@media screen and (min-width: $screen-md) and (max-width: $screen-xlg) {
-			height: 80%;
-		}
-		@media screen and (min-width: $screen-xlg) {
-	        height: calc(90% - 40px);	
-	    }
-	}
-	.sm-builds-lists {
-	    height: 10%;
-	    @media screen and (min-width: $screen-md) {
-	        margin-bottom: 20px;
-	        height: 20%;
-	    }
-	    @media screen and (min-width: $screen-xlg) {
-	        margin-bottom: 20px;
-	        height: 15%;
-	    }
-	}
 	.sm-builds-profil {
-		height: 80%;
+		
+		@media screen and (max-width: $screen-xs) {
+		    height: 100%;
+	    }
+	    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm){
+		    height: 100%;
+	    }
+	    @media screen and (min-width: $screen-sm) and (max-width: $screen-md){
+		    height: 58%;
+	    }
+		@media screen and (min-width: $screen-md) {
+		    height: 65%;
+	    }
 	}
 }

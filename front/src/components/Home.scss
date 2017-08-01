@@ -3,33 +3,17 @@
 .ap-home {
 	padding-top: 20px;
 	height: 100%;
-    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-        height: 75%;
-        width: 90%;
-        margin: auto;
-        margin-top: 5%;
-    }
-	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
+    @media screen and (min-width: $screen-sm) {
         height: 85%;
         width: 85%;
         margin: auto;
-        margin-top: 5%;
-    }
-    @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-        height: 80%;
-        width: 80%;
-        margin: auto;
-        margin-top: 2%;
-    }
-    @media screen and (min-width: $screen-xxlg) {
-        height: 80%;
-        width: 80%;
-        margin: auto;
-        margin-top: 2%;
+        padding-top: 5%;
     }
     .sm-home-text {
         color: $color-text;
         padding: 15px;
+        text-align: center;
+        font-family: $font;
     }
     .sm-home-img {
         width: 100%;

@@ -1,5 +1,7 @@
 import AppHelper from 'helpers/AppHelper'
 import { BaseData } from 'ap-react-bootstrap'
+import AuthHelper from 'helpers/AuthHelper';
+
 
 let STATUS = {
     HOME_LOGIN: 0,
@@ -9,6 +11,10 @@ let STATUS = {
 class HomeData extends BaseData {
 
     register(obj) {
+        if(AuthHelper.getEntityId()) {
+            AppHelper.navigate("/profile")
+        }
+        
         super.register(obj)
 
         this.obj.onSwitchMode = this.onSwitchMode.bind(this)

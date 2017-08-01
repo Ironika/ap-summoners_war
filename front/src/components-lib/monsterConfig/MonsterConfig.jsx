@@ -70,7 +70,7 @@ class MonsterConfig extends React.Component {
 			name = name.replace(" ", "-")
 
 
-		return (<img className="sm-monster-image" src={"assets/images/monsters/" + name + ".jpg"}/>)
+		return (<img className="sm-monster-image" src={"assets/images/monsters/" + name + ".jpg"} alt={"summonerswar-builder-monster " + name}/>)
 	}
 
 	_buildMonsterList(monster) {
@@ -92,6 +92,8 @@ class MonsterConfig extends React.Component {
 					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
 					<div className="sm-monsterconfig-infos-content">
 						Order priority attack.
+						<br/>
+						1 by default.
 					</div>
 				</div>
 				<div className="sm-builds-monster-name">

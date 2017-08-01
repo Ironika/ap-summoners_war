@@ -6,11 +6,11 @@
     @media screen and (max-width: $screen-xs) {
         margin: 20% 0 !important;
     }
-    @media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
         margin: 10% 0 !important;
     }
 
-	@media screen and (min-width: $screen-md) {
+	@media screen and (min-width: $screen-sm) {
 		margin-left: 10% !important;
     	width: 90% !important;
 	}
@@ -63,11 +63,7 @@
             top: -6%;
             left: 18%;
         }
-        @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-            top: -6%;
-            left: 30%;
-        }
-        @media screen and (min-width: $screen-md) {
+        @media screen and (min-width: $screen-sm) {
             left: -65px;
             top: 155px;
         }
@@ -88,10 +84,10 @@
 		@media screen and (max-width: $screen-xs) {
 			left: 52%;
 		}
-    	@media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
 			left: 55%;
 		}
-	    @media screen and (min-width: $screen-md) {
+	    @media screen and (min-width: $screen-sm) {
 			top: 205px;
 		}
 	}

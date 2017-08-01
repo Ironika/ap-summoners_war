@@ -3,17 +3,11 @@
 .sm-monsters {
 	padding-top: 20px;
 	height: 100%;
-    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-	    height: 90%;
+    @media screen and (min-width: $screen-sm) and (max-width: $screen-xlg) {
+	    height: 95%;
 	    width: 95%;
 	    margin: auto;
-	    margin-top: 4%;
-    }
-	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-	    height: 90%;
-	    width: 95%;
-	    margin: auto;
-	    margin-top: 3%;
+	    margin-top: 2%;
     }
     @media screen and (min-width: $screen-xlg) {
         height: 85%;

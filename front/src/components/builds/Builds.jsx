@@ -24,14 +24,14 @@ class Builds extends React.Component {
 	render() {
 		return (
 			<div className='sm-builds'>
-				<div className={"row " + (this.state.isExpanded ? "sm-max-height" : "sm-builds-height")}>
-					<div className={(this.state.isExpanded ? "col-xs-12 sm-builds-lists sm-hide" : "col-xs-12 sm-builds-lists")}>
+				<div className="row sm-max-height">
+					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-hide" : "")}>
 						 <BuildsList/>
 					</div>
-					<div className={(this.state.isExpanded ? "col-xs-12 sm-max-height" : "col-xs-12 sm-builds-profil")}>
+					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-max-height" : "sm-builds-profil")}>
 						<BuildProfil />
 					</div>
-					<div className={(this.state.isExpanded ? "col-xs-12 sm-hide" : "col-xs-12")}>
+					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-hide" : "")}>
 						<BuildInfos/>
 					</div>
 				</div>

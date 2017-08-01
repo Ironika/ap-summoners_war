@@ -23,7 +23,7 @@
 		width: 60%;
 	}
 	@media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-		width: 30%;
+		width: 50%;
 	}
 	@media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
 		width: 45%;
@@ -69,17 +69,21 @@
     }
     .sm-order-attack {
         position: absolute;
-	    top: 0;
-	    left: 40%;
+        display: inline-block;
+	    top: 8px;
+	    left: 45%;
+	    width: 30%;
     	input {
-    		width: 25%;
+    		width: 50%;
     		padding: 5px;
     		display: inline-block;
+    		border-radius: 100%;
+    		text-align: center;
     	}
     	i { margin-left: 5px; }
     	.sm-monsterconfig-infos-content {
     		top: 25px;
-    		width: 100%;
+    		width: 200%;
     	}
     }
     .sm-builds-monster-name {

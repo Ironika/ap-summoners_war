@@ -61,7 +61,7 @@ class Runes extends React.Component {
 		return (
 			<div className='sm-runes'>
 				<div className="row sm-max-height">
-					<div className="col-xs-12 col-md-4 sm-max-height sm-max-height-fix">
+					<div className="col-xs-12 col-sm-4 sm-max-height sm-max-height-fix">
                         <SWPanel className="sm-runes-positions">
                             <RuneStar onChange={this.onClickRuneStar}/>
                             <ul>
@@ -74,15 +74,15 @@ class Runes extends React.Component {
 							</div>
 						</SWPanel>
 					</div>
-					<div className="col-xs-12 col-md-8 sm-max-height">
+					<div className="col-xs-12 col-sm-8 sm-max-height">
 						<div className="row sm-runes-stats">
-							<div className="col-xs-12 col-md-4 sm-max-height">
+							<div className="col-xs-12 col-sm-4 sm-max-height">
 								<SWPanel className="sm-runes-main-filters"> 
 									<h4>Main Stat</h4>
 									<FormSelect values={this.state.statTypeValues} className={'sm-input sm-runes-main-select'} onChange={this.onChangeMainStatFilter.bind(this)}/>
 								</SWPanel>
 							</div>
-							<div className="col-xs-12 col-md-8 sm-max-height">
+							<div className="col-xs-12 col-sm-8 sm-max-height">
 								<SWPanel className="sm-runes-sub-filters"> 
 									<ul>
 										{StatType.VALUES.map(this._buildSubStat.bind(this))}

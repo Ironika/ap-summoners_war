@@ -14,11 +14,13 @@ import {BaseData}  from 'ap-react-bootstrap'
 class BuildsData extends BaseData {
 
 	register(obj) {
-		let isExpanded = AppHelper.getData("/isExpanded")
 		if(!AuthHelper.getEntityId()) {
             AppHelper.navigate("/")
         }
 		super.register(obj)
+
+		let isExpanded = AppHelper.getData("/isExpanded")
+
 		this.obj.state = {
 			isExpanded: isExpanded
 		}
@@ -32,6 +34,7 @@ class BuildsData extends BaseData {
 	}
 
 	unregister() {
+		AppHelper.unregister(this)
 	}
 
 

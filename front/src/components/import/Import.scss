@@ -3,35 +3,12 @@
 .sm-import {
 	padding-top: 20px;
 	height: 100%;
-    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
-        height: 75%;
-        width: 90%;
-        margin: auto;
-        margin-top: 5%;
+    @media screen and (min-width: $screen-sm) {
+	    height: 85%;
+	    width: 85%;
+	    margin: auto;
+	    padding-top: 5%;
     }
-	@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-        height: 85%;
-        width: 85%;
-        margin: auto;
-        margin-top: 5%;
-    }
-    @media screen and (min-width: $screen-xlg) and (max-width: $screen-xxlg) {
-        height: 85%;
-        width: 85%;
-        margin: auto;
-        margin-top: 2%;
-    }
-    @media screen and (min-width: $screen-xxlg) {
-        height: 80%;
-        width: 80%;
-        margin: auto;
-        margin-top: 2%;
-    }
-	.sm-import-bloc {
-	    padding: 15px;
-	    text-align: center;
-	    margin-bottom: 30px;	
-	}
 	.sm-import-text {
 		text-align: center;
 		color: $color-text;
@@ -41,17 +18,24 @@
 		margin-bottom: 30px;
 		button { font-size: 14px;}
 	}
-	.sm-import-img-content {
-		text-align: center;
-		.sm-import-img {
-			width: 100%;
-		    margin: auto;
-		    object-fit: cover;
-		    margin-bottom: 20px;
+
+	.sm-import-file {
+	    padding: 15px;
+	    text-align: center;
+	    margin-bottom: 30px;	
+	    .sm-import-error {
+			text-align: center;
+			padding: 10px;
 		}
 	}
-	.sm-import-error {
+
+	.sm-import-img {
 		text-align: center;
-		padding: 10px;
+		img {
+			width: 100%;
+		    margin: auto;
+		    margin-bottom: 20px;
+		    object-fit: cover;
+		}
 	}
 }

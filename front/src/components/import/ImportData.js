@@ -11,6 +11,10 @@ class ImportData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
+		if(!AuthHelper.getEntityId()) {
+            AppHelper.navigate("/")
+        }
+        
 		this.obj.onClickImport = this.onClickImport.bind(this)
 
 		this.obj.state = {

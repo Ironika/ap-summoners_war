@@ -15,19 +15,10 @@
         margin-bottom: 20px;
     }
     @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-        padding-top: 2% !important;
-        margin-top: 40px;
-        margin-bottom: 20px;
-    }
-    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
         padding-left: 12% !important;
-        margin-left: 2%;
+        margin-left: 6%;
     }
-    @media screen and (min-width: $screen-lg) and (max-width: $screen-xlg) {
-        padding-left: 11% !important;
-        margin-left: 2%;
-    }
-    @media screen and (min-width: $screen-xlg) {
+    @media screen and (min-width: $screen-md) {
         padding-left: 12% !important;
         margin-left: 2%;
     }
@@ -40,7 +31,7 @@
         cursor: pointer;
         z-index: 50;
         display: inline-block!important;
-        @media screen and (max-width: $screen-md) {
+        @media screen and (max-width: $screen-sm) {
             display: none !important;
         }
     }
@@ -109,11 +100,7 @@
             top: -6%;
             left: 18%;
         }
-        @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-            top: -6%;
-            left: 30%;
-        }
-        @media screen and (min-width: $screen-md) {
+        @media screen and (min-width: $screen-sm) {
             left: -55px;
             top: 100px;
         }     
@@ -134,10 +121,10 @@
         @media screen and (max-width: $screen-xs) {
             left: 52%;
         }
-        @media screen and (min-width: $screen-xs) and (max-width: $screen-md) {
+        @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
             left: 55%;
         }
-        @media screen and (min-width: $screen-md) {
+        @media screen and (min-width: $screen-sm) {
             top: 150px;
         }
     }

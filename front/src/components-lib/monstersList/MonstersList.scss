@@ -19,7 +19,7 @@
 
 	.sm-monster-list {
 		overflow: auto;
-		height: calc(80% - 40px);
+		height: 70%;
 		margin-top: 20px;
         .sm-monsters-busy {
             margin: 25px;
@@ -37,7 +37,7 @@
 	    	.sm-li-search-input {
 			    width: 50%;
 			    padding: 5px;
-			    @media screen and (min-width: $screen-md) {
+			    @media screen and (min-width: $screen-sm) {
 			        margin-right: 20px;
 			    }
 	    		

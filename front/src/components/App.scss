@@ -128,7 +128,7 @@ html, body, .app, .ap-app {
 	    background-image: radial-gradient($marroon-light 50%, $marroon-dark 100%);
 		border-color: $marroon-light;
 	    color: white;
-	    font-size: 18px;
+	    font-size: 14px;
 	    font-family: $font;
 	    text-shadow: 
             2px 2px 3px black,
@@ -235,19 +235,16 @@ html, body, .app, .ap-app {
 		width: 80%;
 		margin: auto;
 		text-align: center;
-		margin-top: 5%;
+		margin-top: 10%;
 		font-weight: bold;
 		color: $marroon-dark2;
-		@media screen and (min-width: $screen-xlg) {
-			margin-top: 15%;
-		}
 		.sm-paypal {
 			margin-top: 5px;
-			@media screen and (max-width: $screen-lg) {
+			@media screen and (max-width: $screen-md) {
 				width: 100%;
 			}
 			@media screen and (min-width: $screen-md) {
-				width: 80%;
+				width: 60%;
 			}
 		}
 	}

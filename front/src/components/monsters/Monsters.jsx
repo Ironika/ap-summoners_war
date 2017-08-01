@@ -22,10 +22,10 @@ class Monsters extends React.Component {
     render() { return (
         <div className='sm-monsters'>
             <div className="row sm-max-height">
-                <div className="col-xs-12 col-md-6 sm-max-height">
+                <div className="col-xs-12 col-sm-6 sm-max-height">
                     <MonstersList/>
                 </div>
-                <div className="col-xs-12 col-md-6 sm-max-height">
+                <div className="col-xs-12 col-sm-6 sm-max-height">
                     <MonsterProfil/>                
                 </div>
             </div>

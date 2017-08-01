@@ -50,7 +50,7 @@ class App extends React.Component {
 
 	buildPage(page, key) {
 		return (
-			<li key={key} className={(key == 'monsters' | key == 'runes' | key == 'builds' && !this.state.isLogged) ? " sm-hide" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
+			<li key={key} className={(!this.state.isLogged) ? " sm-hide" : ""}><a onClick={this[page].bind(this)} className={(key == this.state.activePage) ? "activePage" : ""}>{key}</a></li>
 		)
 	}
 
@@ -76,7 +76,6 @@ class App extends React.Component {
 			      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" className="sm-form-paypal">
 						<input type="hidden" name="cmd" value="_s-xclick"/>
 						<input type="hidden" name="hosted_button_id" value="N2LQ9Q723DR9S"/>
-						<span>Support Us !</span>
 						<input type="image" className="sm-paypal" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
 						<img alt=""src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
 					</form>
@@ -95,7 +94,6 @@ class App extends React.Component {
 			      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" className="sm-form-paypal">
 						<input type="hidden" name="cmd" value="_s-xclick"/>
 						<input type="hidden" name="hosted_button_id" value="N2LQ9Q723DR9S"/>
-						<span>Support Us !</span>
 						<input type="image" className="sm-paypal" src="assets/images/paypal.png" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
 						<img alt=""src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
 					</form>
