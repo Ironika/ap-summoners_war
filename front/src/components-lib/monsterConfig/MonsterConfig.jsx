@@ -83,7 +83,6 @@ class MonsterConfig extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.monsterName)
 		return (
 			<div className={"sm-build-buildmonsterconfig sm-content sm-build-content " + (this.state.isExpanded ? "sm-build-buildmonsterconfig-expanded" : "")}>
 				<i className="glyphicon glyphicon-remove sm-build-buildmonsterconfig-delete" onClick={this.props.onClick.bind(this, this.state.monsterConfig)}></i>
@@ -154,7 +153,7 @@ class MonsterConfig extends React.Component {
 					<label className="sm-label" onClick={this.onClickShow.bind(this, 'sets')}>Sets</label>
 					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
 					<div className="sm-monsterconfig-infos-content">
-						Choose your Runes Sets
+						Select your Runes Sets
 					</div>
 					<div className={"sm-builds-monster-stats-box " + (this.state.setsIsOpen ? "" : "sm-hide")}>
 						<FormSelect values={this.state.setTypeValues} className={'sm-input sm-builds-select'} onChange={this.onChangeSelect.bind(this, 'sets')}/>
@@ -165,6 +164,29 @@ class MonsterConfig extends React.Component {
 							<ul>
 								{Utils.map(this.state.sets, this._buildStat.bind(this, 'sets'))}
 							</ul>
+						</div>
+					</div>
+				</div>
+				<hr/>
+				<div className="sm-builds-monster-stats">
+					<label className="sm-label" onClick={this.onClickShow.bind(this, 'runeStats')}>Runes Stats</label>
+					<i className="glyphicon glyphicon-question-sign sm-monsterconfig-infos"></i>
+					<div className="sm-monsterconfig-infos-content">
+						Select the type of stat<br/>
+						on runes pos 2/4/6
+					</div>
+					<div className={"sm-builds-monster-stats-box center " + (this.state.runeStatsIsOpen ? "" : "sm-hide")}>
+						<div className='sm-input-rune'>
+							<label className="sm-label">Pos 2</label>
+							<FormSelect values={this.state.statsTypeRune2} defaultValue={this.state.monsterConfig.runeStat2Type} className='sm-input' onChange={this.onChangeRuneStats.bind(this, 'runeStat2Type')}/>
+						</div>
+						<div className='sm-input-rune'>
+							<label className="sm-label">Pos 4</label>
+							<FormSelect values={this.state.statsTypeRune4} defaultValue={this.state.monsterConfig.runeStat4Type} className='sm-input' onChange={this.onChangeRuneStats.bind(this, 'runeStat4Type')}/>
+						</div>
+						<div className='sm-input-rune'>
+							<label className="sm-label">Pos 6</label>
+							<FormSelect values={this.state.statsTypeRune6} defaultValue={this.state.monsterConfig.runeStat6Type} className='sm-input' onChange={this.onChangeRuneStats.bind(this, 'runeStat6Type')}/>
 						</div>
 					</div>
 				</div>

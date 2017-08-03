@@ -7,7 +7,9 @@ public class MonsterConfigData {
 	public Integer notationSpd;
 	public Integer requiredAcc;
 	public Integer notationHp;
+	public String runeStat2Type;
 	public Integer requiredCrate;
+	public String runeStat4Type;
 	public String monsterId;
 	public String id;
 	public Integer requiredAtk;
@@ -22,6 +24,7 @@ public class MonsterConfigData {
 	public String buildId;
 	public Integer requiredSpd;
 	public String userId;
+	public String runeStat6Type;
 	public Integer requiredHp;
 	public Integer notationCrate;
 	public Integer notationAtk;
@@ -61,12 +64,28 @@ public class MonsterConfigData {
 		this.notationHp = notationHp;
 	}
 
+	public String getRuneStat2Type() {
+		return this.runeStat2Type;
+	}
+
+	public void setRuneStat2Type(String runeStat2Type) {
+		this.runeStat2Type = runeStat2Type;
+	}
+
 	public Integer getRequiredCrate() {
 		return this.requiredCrate;
 	}
 
 	public void setRequiredCrate(Integer requiredCrate) {
 		this.requiredCrate = requiredCrate;
+	}
+
+	public String getRuneStat4Type() {
+		return this.runeStat4Type;
+	}
+
+	public void setRuneStat4Type(String runeStat4Type) {
+		this.runeStat4Type = runeStat4Type;
 	}
 
 	public String getMonsterId() {
@@ -179,6 +198,14 @@ public class MonsterConfigData {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getRuneStat6Type() {
+		return this.runeStat6Type;
+	}
+
+	public void setRuneStat6Type(String runeStat6Type) {
+		this.runeStat6Type = runeStat6Type;
 	}
 
 	public Integer getRequiredHp() {

@@ -88,7 +88,9 @@ public class MonsterConfigCollection {
 		data.notationSpd = document.getInteger("notationSpd");
 		data.requiredAcc = document.getInteger("requiredAcc");
 		data.notationHp = document.getInteger("notationHp");
+		data.runeStat2Type = document.getString("runeStat2Type");
 		data.requiredCrate = document.getInteger("requiredCrate");
+		data.runeStat4Type = document.getString("runeStat4Type");
 		data.monsterId = document.getString("monsterId");
 		data.id = document.getString("id");
 		data.requiredAtk = document.getInteger("requiredAtk");
@@ -103,6 +105,7 @@ public class MonsterConfigCollection {
 		data.buildId = document.getString("buildId");
 		data.requiredSpd = document.getInteger("requiredSpd");
 		data.userId = document.getString("userId");
+		data.runeStat6Type = document.getString("runeStat6Type");
 		data.requiredHp = document.getInteger("requiredHp");
 		data.notationCrate = document.getInteger("notationCrate");
 		data.notationAtk = document.getInteger("notationAtk");
@@ -122,8 +125,12 @@ public class MonsterConfigCollection {
 			document.append("requiredAcc", monsterConfig.requiredAcc);
 		if (monsterConfig.notationHp != null)
 			document.append("notationHp", monsterConfig.notationHp);
+		if (monsterConfig.runeStat2Type != null)
+			document.append("runeStat2Type", monsterConfig.runeStat2Type);
 		if (monsterConfig.requiredCrate != null)
 			document.append("requiredCrate", monsterConfig.requiredCrate);
+		if (monsterConfig.runeStat4Type != null)
+			document.append("runeStat4Type", monsterConfig.runeStat4Type);
 		if (monsterConfig.monsterId != null)
 			document.append("monsterId", monsterConfig.monsterId);
 		if (monsterConfig.id != null)
@@ -152,6 +159,8 @@ public class MonsterConfigCollection {
 			document.append("requiredSpd", monsterConfig.requiredSpd);
 		if (monsterConfig.userId != null)
 			document.append("userId", monsterConfig.userId);
+		if (monsterConfig.runeStat6Type != null)
+			document.append("runeStat6Type", monsterConfig.runeStat6Type);
 		if (monsterConfig.requiredHp != null)
 			document.append("requiredHp", monsterConfig.requiredHp);
 		if (monsterConfig.notationCrate != null)
@@ -173,7 +182,9 @@ public class MonsterConfigCollection {
 		document.append("notationSpd", monsterConfig.notationSpd);
 		document.append("requiredAcc", monsterConfig.requiredAcc);
 		document.append("notationHp", monsterConfig.notationHp);
+		document.append("runeStat2Type", monsterConfig.runeStat2Type);
 		document.append("requiredCrate", monsterConfig.requiredCrate);
+		document.append("runeStat4Type", monsterConfig.runeStat4Type);
 		document.append("monsterId", monsterConfig.monsterId);
 		document.append("id", monsterConfig.id);
 		document.append("requiredAtk", monsterConfig.requiredAtk);
@@ -188,6 +199,7 @@ public class MonsterConfigCollection {
 		document.append("buildId", monsterConfig.buildId);
 		document.append("requiredSpd", monsterConfig.requiredSpd);
 		document.append("userId", monsterConfig.userId);
+		document.append("runeStat6Type", monsterConfig.runeStat6Type);
 		document.append("requiredHp", monsterConfig.requiredHp);
 		document.append("notationCrate", monsterConfig.notationCrate);
 		document.append("notationAtk", monsterConfig.notationAtk);

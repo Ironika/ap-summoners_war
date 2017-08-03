@@ -7,26 +7,29 @@ public class MonsterConfigBean {
 	public String buildId;
 	public String userId;
 	public Integer requiredDef;
+	public Integer notationSpd;
+	public Integer requiredAcc;
+	public Integer notationHp;
+	public String runeStat2Type;
+	public Integer requiredCrate;
+	public String runeStat4Type;
+	public String id;
+	public Integer requiredAtk;
+	public Integer requiredCdmg;
+	public Integer notationCdmg;
+	public Integer notationAcc;
 	public Integer notationDef;
 	public String set3;
 	public Integer requiredRes;
-	public Integer notationSpd;
 	public String set2;
-	public Integer requiredAcc;
-	public Integer notationHp;
 	public Boolean brokenSet;
 	public Integer requiredSpd;
-	public Integer requiredCrate;
+	public String runeStat6Type;
 	public Integer requiredHp;
 	public Integer notationCrate;
 	public Integer notationAtk;
 	public String set1;
 	public Integer orderAtk;
-	public String id;
-	public Integer requiredAtk;
-	public Integer requiredCdmg;
 	public Integer notationRes;
-	public Integer notationCdmg;
-	public Integer notationAcc;
 
 }

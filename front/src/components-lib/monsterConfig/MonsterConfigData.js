@@ -50,6 +50,21 @@ class MonsterConfigData extends BaseData {
         	if(monsterConfig['set'+i]) 
         		sets.push(monsterConfig['set'+i])
 
+        let statsTypeRune2 = []
+        for(let i = 0; i < StatType.VALUES.length; i++)
+        	if (StatType.VALUES[i].key != 'Res' && StatType.VALUES[i].key != 'Acc' && StatType.VALUES[i].key != 'Crate' && StatType.VALUES[i].key != 'Cdmg')
+            	statsTypeRune2.push(StatType.VALUES[i].key)
+
+        let statsTypeRune4 = []
+        for(let i = 0; i < StatType.VALUES.length; i++)
+        	if (StatType.VALUES[i].key != 'Res' && StatType.VALUES[i].key != 'Acc' && StatType.VALUES[i].key != 'Spd')
+            	statsTypeRune4.push(StatType.VALUES[i].key)
+
+        let statsTypeRune6 = []
+        for(let i = 0; i < StatType.VALUES.length; i++)
+        	if (StatType.VALUES[i].key != 'Crate' && StatType.VALUES[i].key != 'Cdmg' && StatType.VALUES[i].key != 'Spd')
+            	statsTypeRune6.push(StatType.VALUES[i].key)
+
         let isExpanded = AppHelper.getData("/isExpanded")
 
         this.obj.onClickShow = this.onClickShow.bind(this)
@@ -62,6 +77,7 @@ class MonsterConfigData extends BaseData {
         this.obj.onInputNotation = this.onInputNotation.bind(this)
         this.obj.onClickMonster = this.onClickMonster.bind(this)
         this.obj.onChangeOrderAtk = this.onChangeOrderAtk.bind(this)
+        this.obj.onChangeRuneStats = this.onChangeRuneStats.bind(this)
 
 		this.obj.state = {
             statTypeValues: statTypeValues,
@@ -70,6 +86,7 @@ class MonsterConfigData extends BaseData {
             requiredStatsIsOpen: false,
             notationStatsIsOpen: false,
             setsIsOpen: false,
+            runeStatsIsOpen: false,
             
             monsterConfig: monsterConfig,
 
@@ -87,6 +104,10 @@ class MonsterConfigData extends BaseData {
 
             setsSelect: setTypeValues[0],
             sets: sets,
+
+            statsTypeRune2: statsTypeRune2,
+            statsTypeRune4: statsTypeRune4,
+            statsTypeRune6: statsTypeRune6,
 
             isExpanded: isExpanded,
 
@@ -151,6 +172,15 @@ class MonsterConfigData extends BaseData {
 				break
 			}
 		}
+	}
+
+	onChangeRuneStats(id, event) {
+		let build = AppHelper.getData('currentBuild')
+		AppHelper.put('/canSave/' + build.id, true)
+		
+		let monsterConfig = this.getState('monsterConfig')
+		monsterConfig[id] = event.target.value
+		this.setState({monsterConfig: monsterConfig})
 	}
 
 	onChangeOrderAtk(event) {
