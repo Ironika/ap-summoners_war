@@ -44,12 +44,37 @@ class BuildResults extends React.Component {
 
 	_buildMonsterResult(monsterResult) {
 		let monster = MonsterHelper.getData(MonsterConfigHelper.getData(monsterResult.monsterConfigId).monsterId)
+
 		let rune1 = RuneHelper.getData(monsterResult.rune1)
+		let monster1 = "Storage"
+		if (rune1.monsterId)
+			monster1 = MonsterHelper.getData(rune1.monsterId).name
+
 		let rune2 = RuneHelper.getData(monsterResult.rune2)
+		let monster2 = "Storage"
+		if (rune2.monsterId)
+			monster2 = MonsterHelper.getData(rune2.monsterId).name
+
 		let rune3 = RuneHelper.getData(monsterResult.rune3)
+		let monster3 = "Storage"
+		if (rune3.monsterId)
+			monster3 = MonsterHelper.getData(rune3.monsterId).name
+
 		let rune4 = RuneHelper.getData(monsterResult.rune4)
+		let monster4 = "Storage"
+		if (rune4.monsterId)
+			monster4 = MonsterHelper.getData(rune4.monsterId).name
+
 		let rune5 = RuneHelper.getData(monsterResult.rune5)
+		let monster5 = "Storage"
+		if (rune5.monsterId)
+			monster5 = MonsterHelper.getData(rune5.monsterId).name
+
 		let rune6 = RuneHelper.getData(monsterResult.rune6)
+		let monster6 = "Storage"
+		if (rune6.monsterId)
+			monster6 = MonsterHelper.getData(rune6.monsterId).name
+
 		return (
 			<li className="sm-build-monster-result" key={monsterResult.id}>
 				<div className="col-xs-6 sm-build-monster-result-left">
@@ -57,26 +82,32 @@ class BuildResults extends React.Component {
 					<div className="sm-build-monster-result-runes">
 						<img className="sm-rune1" src={"assets/images/runes/Rune-" + rune1.set + ".png"}/>
 						<div className="sm-build-monster-result-rune1">
+							<div>{monster1}</div>
 							<Rune rune={rune1}/>
 						</div>
 						<img className="sm-rune2" src={"assets/images/runes/Rune-" + rune2.set + ".png"}/>
 						<div className="sm-build-monster-result-rune2">
+							<div>{monster2}</div>
 							<Rune rune={rune2}/>
 						</div>
 						<img className="sm-rune3" src={"assets/images/runes/Rune-" + rune3.set + ".png"}/>
 						<div className="sm-build-monster-result-rune3">
+							<div>{monster3}</div>
 							<Rune rune={rune3}/>
 						</div>
 						<img className="sm-rune4" src={"assets/images/runes/Rune-" + rune4.set + ".png"}/>
 						<div className="sm-build-monster-result-rune4">
+							<div>{monster4}</div>
 							<Rune rune={rune4}/>
 						</div>
 						<img className="sm-rune5" src={"assets/images/runes/Rune-" + rune5.set + ".png"}/>
 						<div className="sm-build-monster-result-rune5">
+							<div>{monster5}</div>
 							<Rune rune={rune5}/>
 						</div>
 						<img className="sm-rune6" src={"assets/images/runes/Rune-" + rune6.set + ".png"}/>
 						<div className="sm-build-monster-result-rune6">
+							<div>{monster6}</div>
 							<Rune rune={rune6}/>
 						</div>
 					</div>
