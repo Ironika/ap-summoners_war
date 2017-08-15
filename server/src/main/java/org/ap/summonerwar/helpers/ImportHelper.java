@@ -110,9 +110,11 @@ public class ImportHelper {
 				rune.setLvl(obj.getInt("level"));
 				rune.setPos(String.valueOf(obj.getInt("slot")));
 				int monster = obj.getInt("monster");
-				if (monster != 0) {
+				if (monster != 0) 
 					rune.monsterId = monsterIds.get(monster).id;
-				}				
+				else
+					rune.monsterId = null;
+				
 				ImportHelper.buildStat(obj, "m", rune);
 				ImportHelper.buildStat(obj, "i", rune);
 				ImportHelper.buildStat(obj, "s1", rune);

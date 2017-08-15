@@ -23,9 +23,9 @@ class MonsterProfil extends React.Component {
 
     _buildMonsterProfil(id) {
         if(id === "infos" )
-            return (<MonsterInfos monster={this.state.monster}/>)
+            return (<MonsterInfos monster={this.state.monster} bonus={this.state.bonus}/>)
         else
-            return (<MonsterRunes runes={this.state.runes}/>)
+            return (<MonsterRunes runes={this.state.runes} sets={this.state.sets}/>)
     }
 
     render() { 

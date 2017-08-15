@@ -6,62 +6,10 @@ import RuneHelper from 'helpers/RuneHelper'
 
 import './MonsterRunes.scss'
 
-let SETS_BONUS = {
-    Energy: 2,
-    Swift: 4,
-    Despair: 4,
-    Blade: 2,
-    Focus: 2,
-    Fatal: 4,
-    Revenge: 2,
-    Vampire: 4,
-	Rage: 4,
-	Guard: 2,
-	Shield: 2,
-	Revenge: 2,
-	Will: 2,
-	Nemesis: 2,
-	Violent: 4,
-	Destroy: 2,
-	Fight: 0,
-	Determination: 0,
-	Enhance: 0,
-	Accuracy: 0,
-	Tolerance: 0,
-	Endure: 0,
-}
-
 class MonsterRunes extends React.Component {
 
 	constructor(props) {
 		super(props);
-	}
-
-	componentWillMount() {
-		this.state = this._buildSetsRunes(this.props)
-	}
-	componentWillReceiveProps(props) {
-		this.setState(this._buildSetsRunes(props))
-	}
-
-	_buildSetsRunes(props) {
-		let runeSets = {}
-		let sets = {}
-
-		for(let rune in props.runes)
-			if (props.runes[rune].set in runeSets)
-				runeSets[props.runes[rune].set]++ 
-			else 
-				runeSets[props.runes[rune].set] = 1
-
-		for(let set in runeSets)
-			if(runeSets[set] >= SETS_BONUS[set])
-				if (set in sets)
-					sets[set]++ 
-				else 
-					sets[set] = 1
-
-		return { runes: props.runes, sets: sets}
 	}
 
 	_buildRunes(rune) {
@@ -97,11 +45,11 @@ class MonsterRunes extends React.Component {
 				<div className="sm-monster-rune-set">
 					<h4>Set Effect</h4>
 					<ul>
-						{this._buildSets(this.state.sets)}
+						{this._buildSets(this.props.sets)}
 					</ul>
 				</div>
 				<div className="sm-monster-runes-list">
-					{Utils.map(this.state.runes, this._buildRunes)}
+					{Utils.map(this.props.runes, this._buildRunes)}
 				</div>
 			</div>
 		)
