@@ -41,7 +41,7 @@ class Home extends React.Component {
                             <p> 
                                 In order to provide you with the best user experience an account is required. 
                                 <br/><br/>
-                                The strict minimum is required.
+                                The strict minimum is expected.
                             </p>
                         </SWPanel>
                         <img className="sm-home-img" src={"assets/images/summonerswar.png"} alt="summonerswar-builder"/>

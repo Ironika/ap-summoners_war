@@ -16,6 +16,9 @@
 			font-size: 17px;
 		    padding: 5px;
 		    color: $color-text;
+		    input {
+		    	user-select: none;
+		    }
 		}
 	}
 	.sm-upload-profile {

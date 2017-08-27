@@ -110,7 +110,7 @@ class App extends React.Component {
 					<footer>
 						<div className={"sm-footer"}>
 						  	<p className={"sm-copyright"}>
-						  		Copyright @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.
+						  		Ankema @ 2017 Com2Us. This is a fan site, we are not affiliated with Com2Us.
 						  	</p>
 						</div>
 					</footer>
