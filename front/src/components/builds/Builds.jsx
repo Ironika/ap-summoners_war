@@ -28,11 +28,11 @@ class Builds extends React.Component {
 					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-hide" : "")}>
 						 <BuildsList/>
 					</div>
-					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-max-height" : "sm-builds-profil")}>
-						<BuildProfil />
-					</div>
 					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-hide" : "")}>
 						<BuildInfos/>
+					</div>
+					<div className={"col-xs-12 " + (this.state.isExpanded ? "sm-max-height" : "sm-builds-profil")}>
+						<BuildProfil />
 					</div>
 				</div>
 			</div>

@@ -136,42 +136,144 @@
 	    .sm-monster-keys {
 	    	li {
 	    		color: $yellow;
-				font-size: 17px;
 				text-shadow: 
 	            	2px 2px 3px black,
 	            	2px -2px 3px black,
 	            	-2px -2px 3px black,
 	            	-2px 2px 3px black;
-	            @media screen and (max-width: $screen-xs){
-					font-size: 10px; 
-				}
-	            @media screen and (min-width: $screen-xs) and (max-width: $screen-sm){
-					font-size: 13px; 
-				}
-				@media screen and (min-width: $screen-sm) and (max-width: $screen-lg){
-					font-size: 14px; 
-				}
+	            font-size: 14px; 
 	    	}
 	    }
 	    .sm-monster-values {
 	    	li {
 	    		color:	white;
-				font-size: 17px;
 				text-shadow: 
 	            	2px 2px 3px black,
 	            	2px -2px 3px black,
 	            	-2px -2px 3px black,
 	            	-2px 2px 3px black;
 				span { color: green; }
-				@media screen and (max-width: $screen-xs){
-					font-size: 10px; 
+				font-size: 14px; 
+				i {
+					margin-left: 10px;
 				}
-	            @media screen and (min-width: $screen-xs) and (max-width: $screen-sm){
-					font-size: 13px; 
-				}
-				@media screen and (min-width: $screen-sm) and (max-width: $screen-lg){
-					font-size: 14px; 
-				}
+				.sm-monster-hp-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: -25px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-hp-infos {
+			    	display: block;
+			    }
+			    .sm-monster-atk-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: -5px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-atk-infos {
+			    	display: block;
+			    }
+			    .sm-monster-def-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 15px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-def-infos {
+			    	display: block;
+			    }
+			    .sm-monster-spd-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 35px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-spd-infos {
+			    	display: block;
+			    }
+			    .sm-monster-cdmg-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 85px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-cdmg-infos {
+			    	display: block;
+			    }.sm-monster-crate-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 105px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-crate-infos {
+			    	display: block;
+			    }.sm-monster-res-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 125px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-res-infos {
+			    	display: block;
+			    }.sm-monster-acc-infos {
+			    	display:none;
+				    padding: 10px;
+			    	margin-bottom: 10px;
+			    	color: $color-text;
+			    	z-index: 50;
+			    	background-color: $marroon-dark2;
+			    	border: 1px solid $color-text;
+			    	position: absolute;
+		    	    top: 145px;
+			    	text-align: left;
+			    }
+			    i:hover + .sm-monster-acc-infos {
+			    	display: block;
+			    }
 	    	}
 	    }
 	    .sm-monster-separator { padding: 15px; }

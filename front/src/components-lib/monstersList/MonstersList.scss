@@ -18,11 +18,22 @@
 	}
 
 	.sm-monster-list {
-		overflow: auto;
-		height: 70%;
-		margin-top: 20px;
-        .sm-monsters-busy {
-            margin: 25px;
+		white-space: nowrap;
+		overflow-x: scroll; 
+		overflow-y: hidden;
+		@media screen and (min-width: $screen-sm) {
+			overflow: auto;
+			height: 70%;
+			margin-top: 20px;
+			white-space: normal;
+		}
+		.sm-monsters-busy {
+        	display: inline-block;
+        	@media screen and (min-width: $screen-sm) {
+            	margin: 25px;
+            	display: initial;
+            }
+
         }
 	}
 

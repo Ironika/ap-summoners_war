@@ -74,7 +74,7 @@ class Runes extends React.Component {
 							</div>
 						</SWPanel>
 					</div>
-					<div className="col-xs-12 col-sm-8 sm-max-height">
+					<div className="col-xs-12 col-sm-8 sm-max-height sm-max-height-fix">
 						<div className="row sm-runes-stats">
 							<div className="col-xs-12 col-sm-4 sm-max-height">
 								<SWPanel className="sm-runes-main-filters"> 

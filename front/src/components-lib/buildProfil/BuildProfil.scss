@@ -2,7 +2,6 @@
 
 .sm-build-profil {
     padding: 0;
-    height: 100%;
     position: relative;
     @media screen and (max-width: $screen-xs) {
         padding-top: 4% !important;
@@ -17,10 +16,12 @@
     @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
         padding-left: 12% !important;
         margin-left: 6%;
+        height: 100%;
     }
     @media screen and (min-width: $screen-md) {
         padding-left: 12% !important;
         margin-left: 2%;
+        height: 100%;
     }
 
     .sm-build-profil-expand {

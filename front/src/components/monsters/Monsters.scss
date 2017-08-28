@@ -15,4 +15,9 @@
         margin: auto;
         margin-top: 2%;
     }
+    .sm-max-height-mobile {
+        @media screen and (min-width: $screen-sm) {
+            height: 100%;
+        }
+    }
 }

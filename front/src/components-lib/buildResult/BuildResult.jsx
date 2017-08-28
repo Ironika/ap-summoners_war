@@ -82,32 +82,32 @@ class BuildResults extends React.Component {
 					<div className="sm-build-monster-result-runes">
 						<img className="sm-rune1" src={"assets/images/runes/Rune-" + rune1.set + ".png"}/>
 						<div className="sm-build-monster-result-rune1">
-							<div>{monster1}</div>
+							<div className="sm-build-monster-lock">{monster1}</div>
 							<Rune rune={rune1}/>
 						</div>
 						<img className="sm-rune2" src={"assets/images/runes/Rune-" + rune2.set + ".png"}/>
 						<div className="sm-build-monster-result-rune2">
-							<div>{monster2}</div>
+							<div className="sm-build-monster-lock">{monster2}</div>
 							<Rune rune={rune2}/>
 						</div>
 						<img className="sm-rune3" src={"assets/images/runes/Rune-" + rune3.set + ".png"}/>
 						<div className="sm-build-monster-result-rune3">
-							<div>{monster3}</div>
+							<div className="sm-build-monster-lock">{monster3}</div>
 							<Rune rune={rune3}/>
 						</div>
 						<img className="sm-rune4" src={"assets/images/runes/Rune-" + rune4.set + ".png"}/>
 						<div className="sm-build-monster-result-rune4">
-							<div>{monster4}</div>
+							<div className="sm-build-monster-lock">{monster4}</div>
 							<Rune rune={rune4}/>
 						</div>
 						<img className="sm-rune5" src={"assets/images/runes/Rune-" + rune5.set + ".png"}/>
 						<div className="sm-build-monster-result-rune5">
-							<div>{monster5}</div>
+							<div className="sm-build-monster-lock">{monster5}</div>
 							<Rune rune={rune5}/>
 						</div>
 						<img className="sm-rune6" src={"assets/images/runes/Rune-" + rune6.set + ".png"}/>
 						<div className="sm-build-monster-result-rune6">
-							<div>{monster6}</div>
+							<div className="sm-build-monster-lock">{monster6}</div>
 							<Rune rune={rune6}/>
 						</div>
 					</div>

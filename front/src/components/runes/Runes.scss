@@ -17,7 +17,9 @@
     }
 	.sm-runes-stats {
 		height: 20%;
-		margin-bottom: 20px;
+		@media screen and (min-width: $screen-sm) {
+			margin-bottom: 20px;
+		}
 	}
 	.sm-max-height-fix {
 		@media screen and (max-width: $screen-sm) {
@@ -25,20 +27,32 @@
 		}
 	}
 	.sm-runes-list {
-		height: calc(80% - 40px);
-	    overflow: auto;
-		@media screen and (max-width: $screen-xs) {
-			margin: 20% 0;
-		}
-    	@media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
-			margin: 10% 0;
+	    overflow-x: scroll;
+		overflow-y: hidden;
+		white-space: nowrap;
+	    margin-bottom: 20px;
+    	@media screen and (min-width: $screen-sm) {
+    		height: calc(80% - 40px);
+			overflow: auto;
+			white-space: normal;
+			margin-bottom: 0;
 		}
 		@media screen and (min-width: $screen-xlg) {
 	        height: calc(100% - 20px);;
 	    }
 	}
     .sm-runes-busy {
-        margin: 25px;
+    	display: inline-block;
+        @media screen and (max-width: $screen-sm) {
+			display: initial;
+			margin: 25px;
+		}
+    	.ap-busy-bars {
+    		display: inline-block;
+	        @media screen and (max-width: $screen-sm) {
+				display: initial;
+			}
+    	}
     }
 
 	.sm-runes-types {

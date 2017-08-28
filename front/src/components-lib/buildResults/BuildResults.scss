@@ -3,7 +3,9 @@
 .sm-build-results {
 	padding: 15px;
 	overflow: auto;
-    height: calc(100% - 20px);
+    @media screen and (min-width: $screen-sm) {
+        height: calc(100% - 20px);
+    }
     hr {
     	border-color: $color-text;
     }
@@ -68,6 +70,9 @@
 				    		&:hover {
 					    		width: 40%;
 					    	}
+				    	}
+				    	.sm-build-monster-lock {
+				    		text-align: center;
 				    	}
     				    .sm-build-monster-result-rune1 {
 				    		display: none;

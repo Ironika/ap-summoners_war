@@ -80,15 +80,63 @@ class MonsterInfos extends React.Component {
 						<div className="col-xs-7">
 							<ul className="sm-monster-values">
 								<li>{this.props.monster.lvl}</li>
-								<li>{this.props.monster.hp + " + " + this.props.bonus.hp + " = " + (this.props.monster.hp + this.props.bonus.hp)}</li>
-								<li>{this.props.monster.atk + " + " + this.props.bonus.atk + " = " + (this.props.monster.atk + this.props.bonus.atk)}</li>
-								<li>{this.props.monster.def + " + " + this.props.bonus.def + " = " + (this.props.monster.def + this.props.bonus.def)}</li>
-								<li>{this.props.monster.spd + " + " + this.props.bonus.spd + " = " + (this.props.monster.spd + this.props.bonus.spd)}</li>
+								<li>
+									{this.props.monster.hp + this.props.bonus.hp}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-hp-infos">
+										{this.props.monster.hp + " + " + this.props.bonus.hp}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.atk + this.props.bonus.atk}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-atk-infos">
+										{this.props.monster.atk + " + " + this.props.bonus.atk}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.def + this.props.bonus.def}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-def-infos">
+										{this.props.monster.def + " + " + this.props.bonus.def}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.spd + this.props.bonus.spd}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-spd-infos">
+										{this.props.monster.spd + " + " + this.props.bonus.spd}
+									</div>
+								</li>
 								<li className="sm-monster-separator"></li>
-								<li>{this.props.monster.crate + " + " + this.props.bonus.crate + " = " + (this.props.monster.crate + this.props.bonus.crate)}</li>
-								<li>{this.props.monster.cdmg + " + " + this.props.bonus.cdmg + " = " + (this.props.monster.cdmg + this.props.bonus.cdmg)}</li>
-								<li>{this.props.monster.res + " + " + this.props.bonus.res + " = " + (this.props.monster.res + this.props.bonus.res)}</li>
-								<li>{this.props.monster.acc + " + " + this.props.bonus.acc + " = " + (this.props.monster.acc + this.props.bonus.acc)}</li>
+								<li>
+									{this.props.monster.cdmg + this.props.bonus.cdmg}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-cdmg-infos">
+										{this.props.monster.cdmg + " + " + this.props.bonus.cdmg}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.crate + this.props.bonus.crate}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-crate-infos">
+										{this.props.monster.crate + " + " + this.props.bonus.crate}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.res + this.props.bonus.res}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-res-infos">
+										{this.props.monster.res + " + " + this.props.bonus.res}
+									</div>
+								</li>
+								<li>
+									{this.props.monster.acc + this.props.bonus.acc}
+									<i className="glyphicon glyphicon-question-sign"></i>
+									<div className="sm-monster-acc-infos">
+										{this.props.monster.acc + " + " + this.props.bonus.acc}
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
