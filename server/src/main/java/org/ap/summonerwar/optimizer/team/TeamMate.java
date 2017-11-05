@@ -15,6 +15,7 @@ public class TeamMate {
 	private Map<ERuneSet, Integer> requiredSets;
 	private Monster monster;
 	private boolean brokenSet;
+	private Integer attaqueOrder;
 	
 	private StuffedMonster[] selectedStuff;
 	
@@ -60,5 +61,8 @@ public class TeamMate {
 
 	public String getId() { return id; }
 	public void setId(String id) { this.id = id; }
+
+	public Integer getAttaqueOrder() { return attaqueOrder; }
+	public void setAttaqueOrder(Integer attaqueOrder) { this.attaqueOrder = attaqueOrder; }
 	
 }

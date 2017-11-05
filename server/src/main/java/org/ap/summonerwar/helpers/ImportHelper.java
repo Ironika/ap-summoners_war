@@ -162,7 +162,7 @@ public class ImportHelper {
 			}
 		}
 		
-		if (prefix.equals("m")) {
+ 		if (prefix.equals("m")) {
 			rune.statMainType = ImportHelper.getType(typeString);
 			rune.statMain = statValue;
 		} else if (prefix.equals("i")) {

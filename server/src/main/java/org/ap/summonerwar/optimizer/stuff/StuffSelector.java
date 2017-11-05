@@ -179,7 +179,19 @@ public class StuffSelector {
 	}
 	
 	public static List<StuffNode> selectStuffsForTeam(Team team) {
-		List<TeamMate> teamMates = team.getTeamMates();
+		List<TeamMate> rowTeamMates = team.getTeamMates();
+		List<TeamMate> teamMates = new ArrayList<TeamMate>();
+		
+		Integer teamMatesSize = 0;
+		for (TeamMate teamMate : rowTeamMates) {
+			int i = 0;
+			for (i = 0; i < teamMatesSize; i++) {
+				if (teamMate.getAttaqueOrder() <= teamMates.get(i).getAttaqueOrder())
+					break;
+			}
+			teamMates.add(i, teamMate);
+			teamMatesSize++;
+		}
 		
 		List<StuffNode> currentNodes = new ArrayList<>();
 		TeamMate teamMate = teamMates.get(0);
@@ -214,7 +226,9 @@ public class StuffSelector {
 					StuffNode parentNode = currentNode;
 					boolean add = true;
 					while (parentNode != null) {
-						if (StuffSelector.haveSameRune(currentMonster, parentNode.getStuffedMonster())) {
+						if (StuffSelector.haveSameRune(currentMonster, parentNode.getStuffedMonster())
+							|| (currentMonster.getTeamMate().getAttaqueOrder() > parentNode.getStuffedMonster().getTeamMate().getAttaqueOrder() 
+									&& currentMonster.getFinalStats().getSpd() >= parentNode.getStuffedMonster().getFinalStats().getSpd())) {
 							add = false;
 							break;
 						}

@@ -1,7 +1,6 @@
 package org.ap.summonerwar.optimizer.builder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +45,7 @@ public class ObjectBuilder {
 		teamMate.setEvalStats(ObjectBuilder.buildEvalStats(config));
 		teamMate.setRequiredSets(ObjectBuilder.buildRequiredSets(config));
 		teamMate.setBrokenSet(config.getBrokenSet());
+		teamMate.setAttaqueOrder(config.getOrderAtk());
 		return teamMate;
 	}
 	
@@ -150,7 +150,7 @@ public class ObjectBuilder {
 		
 		for (RuneData runeData : runeDatas) {
 			if (runeData.getLvl() >= buildData.getRunesLvl() && runeData.getStar() >= buildData.getRunesStars()) {
-				if (!bannedRunes.contains(runeData.getId())) {
+				if (!bannedRunes.contains(runeData.getId()) /*&& (runeData.getSet().equals("Violent") || runeData.getSet().equals("Revenge"))*/) {
 					Rune rune = ObjectBuilder.buildRune(runeData);
 					selectedRunes.get(rune.getSlot() - 1).add(rune);
 				}
@@ -171,11 +171,79 @@ public class ObjectBuilder {
 		return rune;
 	}
 	
+	public static final Map<EStatType, Map<Integer, Integer>> statsRunelevel12;
+	static{
+		statsRunelevel12 = new HashMap<EStatType, Map<Integer, Integer>>();
+		
+		Map<Integer, Integer> spd = new HashMap<Integer, Integer>();
+		spd.put(5, 29);
+		spd.put(6, 31);
+		statsRunelevel12.put(EStatType.SPD, spd);
+		
+		Map<Integer, Integer> hpFlat = new HashMap<Integer, Integer>();
+		hpFlat.put(5, 1530);
+		hpFlat.put(6, 1800);
+		statsRunelevel12.put(EStatType.HP_FLAT, hpFlat);
+		
+		Map<Integer, Integer> hp = new HashMap<Integer, Integer>();
+		hp.put(5, 37);
+		hp.put(6, 47);
+		statsRunelevel12.put(EStatType.HP, hp);
+		
+		Map<Integer, Integer> atkFlat = new HashMap<Integer, Integer>();
+		atkFlat.put(5, 99);
+		atkFlat.put(6, 118);
+		statsRunelevel12.put(EStatType.ATK_FLAT, atkFlat);
+		
+		Map<Integer, Integer> atk = new HashMap<Integer, Integer>();
+		atk.put(5, 37);
+		atk.put(6, 47);
+		statsRunelevel12.put(EStatType.ATK, atk);
+		
+		Map<Integer, Integer> defFlat = new HashMap<Integer, Integer>();
+		defFlat.put(5, 99);
+		defFlat.put(6, 118);
+		statsRunelevel12.put(EStatType.DEF_FLAT, defFlat);
+		
+		Map<Integer, Integer> def = new HashMap<Integer, Integer>();
+		def.put(5, 37);
+		def.put(6, 47);
+		statsRunelevel12.put(EStatType.DEF, def);
+		
+		Map<Integer, Integer> crate = new HashMap<Integer, Integer>();
+		crate.put(5, 34);
+		crate.put(6, 43);
+		statsRunelevel12.put(EStatType.CRATE, crate);
+		
+		Map<Integer, Integer> cdmg = new HashMap<Integer, Integer>();
+		cdmg.put(5, 48);
+		cdmg.put(6, 59);
+		statsRunelevel12.put(EStatType.CDMG, cdmg);
+		
+		Map<Integer, Integer> acc = new HashMap<Integer, Integer>();
+		acc.put(5, 38);
+		acc.put(6, 48);
+		statsRunelevel12.put(EStatType.ACC, acc);
+		
+		Map<Integer, Integer> res = new HashMap<Integer, Integer>();
+		res.put(5, 38);
+		res.put(6, 48);
+		statsRunelevel12.put(EStatType.RES, res);
+	}
+	
+	
 	public static Stat[] buildRuneStats(RuneData runeData) {
+		boolean level12Values = true;
+		
 		int nbStats = 0;		
 		
 		EStatType statType = EStatType.fromMarkup3(runeData.getStatMainType());
-		Stat mainStat  = new Stat(statType, runeData.getStatMain(), EStatPos.MAIN, false, 0);
+		Integer statMain = runeData.getStatMain();
+		
+		if (level12Values && runeData.lvl < 12)
+			statMain = statsRunelevel12.get(statType).get(runeData.star);			
+		
+		Stat mainStat  = new Stat(statType, statMain, EStatPos.MAIN, false, 0);
 		nbStats++;
 		Stat subMainStat = null;
 		if (runeData.getStatSubType() != null) {

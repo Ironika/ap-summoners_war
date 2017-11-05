@@ -46,7 +46,7 @@ public class Optimizer {
 		buildResultData.setCreationDate(TimeHelper.nowDateTimeIntegers());
 		BuildResultCollection.create(buildResultData);
 		
-		int nbStuff = 3;
+		int nbStuff = 10;
 		nbStuff = nbStuff > stuffNodes.size() ? stuffNodes.size() : nbStuff;
 		for (int i = 0; i < nbStuff; i++) {
 			StuffNode current = stuffNodes.get(i);
